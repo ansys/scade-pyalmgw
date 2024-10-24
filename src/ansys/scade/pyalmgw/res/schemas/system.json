@@ -1,0 +1,75 @@
+[
+	{
+		"class": "Model",
+		"parent": "Package"
+	},
+	{
+		"class": "Package",
+		"isllr": true,
+		"folder": "Package",
+		"structure": [
+			{
+				"folder": "Packages",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "package", "kind": "" }
+				]
+			},
+			{
+				"folder": "Types",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "type", "kind": "" }
+				]
+			},
+			{
+				"folder": "Constants",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "constant", "kind": "" }
+				]
+			},
+			{
+				"folder": "Blocks",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "block", "kind": "" }
+				]
+			},
+			{
+				"folder": "Allocations",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "allocation", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Block",
+		"folder": "Block",
+		"isllr": true,
+		"structure": [
+			{
+				"folder": "Blocks",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "block", "kind": "" }
+				]
+			},
+			{
+				"folder": "Connectors",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "connector", "kind": "" }
+				]
+			},
+			{
+				"folder": "Ports",
+				"content": [
+					{ "role": "port", "kind":  "flowport" }
+				]
+			}
+		]
+	}
+]

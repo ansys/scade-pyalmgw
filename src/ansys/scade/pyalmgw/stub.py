@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2021 - 2024 ANSYS, Inc. and/or its affiliates.
+# SPDX-License-Identifier: MIT
+#
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+"""
+Integration test.
+
+This entry point can be registered to Ansys SCADE ALM Gateway to exercise
+the commands and validate the format of the exchanged files.
+"""
+
+import json
+from pathlib import Path
+import shutil
+import sys
+
+from ansys.scade.pyalmgw.connector import Connector
+from ansys.scade.pyalmgw.documents import ReqProject, TraceabilityLink
+
+
+class StubProject(ReqProject):
+    def merge_links(self, file: Path):
+        try:
+            deltas = json.load(file.open())
+        except OSError as e:
+            print(e)
+            return
+
+        # cache existing requirements
+        requirements = {_.id: _ for doc in self.documents for _ in doc.iter_requirements()}
+        # cache existing links
+        links = {(_.source + _.target): _ for _ in self.traceability_links}
+        # assert isinstance(traceLinks, etree.Element)
+        for delta in deltas:
+            oid = delta['source']['oid']
+            req = delta['target']['req_id']
+            action = delta['action']
+            # action is either 'ADD' or 'REMOVE'
+            add = action == 'ADD'
+
+            key = oid + req
+            link = links.get(key)
+            if add:
+                if not link:
+                    requirement = requirements.get(req)
+                    if not requirement:
+                        print('add a link to an unexisting requirement:', oid, '-> ', req)
+                    else:
+                        print('adding link', oid, '-> ', req)
+                    link = TraceabilityLink(self, requirement, oid, req)
+                    links[key] = link
+                else:
+                    # error
+                    print('link already present:', oid, '-> ', req)
+            else:
+                if link:
+                    print('removing link', oid, '-> ', req)
+                    self.traceability_links.remove(link)
+                else:
+                    # error
+                    print('link not present:', oid, '-> ', req)
+
+
+class StubConnector(Connector):
+    def get_stub_file(self) -> Path:
+        assert self.project
+        local_stub = Path(self.project.pathname).with_suffix('.almgw.stub.xml')
+        if not local_stub.exists():
+            print('initializing stub file:', local_stub)
+            ref_stub = Path(__file__).parent / 'res' / 'stub.xml'
+            shutil.copyfile(ref_stub, local_stub)
+        return local_stub
+        # return str(Path(__file__).parent.parent.parent.parent.parent / 'tests' / 'res' / 'empty_docs.xml')
+
+    def on_settings(self) -> int:
+        print('settings: command stubbed')
+        return -1
+
+    def on_import(self, file: Path) -> int:
+        stub = self.get_stub_file()
+        print('import %s: using stub file %s' % (file, stub))
+        shutil.copyfile(stub, file)
+        return 0
+
+    def on_export(self, links: Path) -> int:
+        # 1. merge the traceability deltas into the stub file
+        stub = self.get_stub_file()
+        print('export %s: using stub file %s' % (links, stub))
+        copy = links.with_suffix('.stub' + links.suffix)
+        shutil.copyfile(links, copy)
+        doc = StubProject(stub)
+        doc.read()
+        doc.merge_links(links)
+        doc.write()
+        # 2. export the LLRs using default schemas depending on the project's nature
+        self.export_llrs()
+        return 1
+
+    def on_manage(self) -> int:
+        print('manage: command stubbed')
+        return -1
+
+    def on_locate(self, req: str) -> int:
+        print('locate %s: command stubbed' % req)
+        return -1
+
+
+def main():
+    """Package integration test entry point."""
+    print(' '.join(sys.argv))
+    connector = StubConnector('stub')
+    code = connector.main()
+    exit(code)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,37 @@
+[
+	{
+		"class": "TestApplication",
+		"isllr": false,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "procedure", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Container",
+		"structure": [
+			{
+				"content": [
+					{ "role": "testElement", "kind": "folder", "class": "Folder" },
+					{ "role": "testElement", "kind": "record", "class": "Record" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Procedure",
+		"isllr": false,
+		"folder": "Procedure",
+		"parent": "Container"
+	},
+	{
+		"class": "Folder",
+		"isllr": false,
+		"folder": "Folder",
+		"parent": "Container"
+	}
+]

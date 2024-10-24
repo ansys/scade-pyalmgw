@@ -1,0 +1,18 @@
+<ReqProject xmlns="http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1" identifier="xxx.xml" text="collection">
+  <traceabilityLinks/>
+  <documents>
+    <Document identifier="yyy" text="document">
+      <children>
+        <Section identifier="1" text="One" description="one description">
+          <children>
+            <Section identifier="1.1" text="empty One dot one" description="1.1 description"/>
+          </children>
+        </Section>
+        <Section identifier="2" text="empty two" description="two description"/>
+      </children>
+    </Document>
+    <Document identifier="zzz" text="other empty document">
+      <children/>
+    </Document>
+  </documents>
+</ReqProject>

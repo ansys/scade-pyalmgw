@@ -1,0 +1,156 @@
+[
+	{
+		"class": "DisplayApp",
+		"folder": "Project",
+		"isllr": false,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "files", "kind": "file" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Specification",
+		"isllr": false,
+		"folder": "",
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "layers", "kind": "layer" }
+				]
+			}
+		]
+	},
+	{
+		"class": "ReferenceObject",
+		"parent": "DataDef",
+		"isllr": false,
+		"folder": ""
+	},
+	{
+		"class": "VariableTable",
+		"isllr": false,
+		"structure": [
+			{
+				"folder": "Inputs",
+				"content": [
+					{ "role": "input", "kind": "" }
+				]
+			},
+			{
+				"folder": "Outputs",
+				"content": [
+					{ "role": "output", "kind": "" }
+				]
+			},
+			{
+				"folder": "Constants",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "constant", "kind": "" }
+				]
+			},
+			{
+				"folder": "Locals",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "local", "kind": "" }
+				]
+			},
+			{
+				"folder": "Local Constants",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "local_constant", "kind": "" }
+				]
+			},
+			{
+				"folder": "Probes",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "probe", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "AContainer",
+		"structure": [
+			{
+				"content": [
+					{ "role": "children" }
+				]
+			}
+		]
+	},
+	{
+		"class": "DataDef",
+		"structure": [
+			{
+				"folder": "Interface",
+				"content": [
+					{ "role": "declaration", "kind": "" }
+				]
+			},
+			{
+				"content": [
+					{ "role": "children" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Layer",
+		"parent": "DataDef",
+		"isllr": true
+	},
+	{
+		"class": "CondContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "Container",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "FilterRotationContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "FilterTranslationContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "MaskContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "NplicatorContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "PanelContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "RotationContainer",
+		"parent": "AContainer",
+		"isllr": true
+	},
+	{
+		"class": "TranslationContainer",
+		"parent": "AContainer",
+		"isllr": true
+	}
+]

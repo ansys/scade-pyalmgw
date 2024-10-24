@@ -1,0 +1,13 @@
+ANSYS
+Ansys
+ansys
+Ansys SCADE ALM Gateway Python Toolbox
+scade
+Scade
+SCADE
+endblock
+endif
+endfor
+fullname
+isort
+pytest

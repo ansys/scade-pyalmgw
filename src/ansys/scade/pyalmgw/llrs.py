@@ -69,12 +69,11 @@ def read_project_id(project):
     pathname = str(Path(project.pathname).with_suffix('.almgp'))
     try:
         f = open(pathname, 'r')
-    except Exception as e:
-        # TODO: how to get the error message of the exception?
-        scade.output(str(e) + '\n')
+    except BaseException as e:
+        print(str(e))
         return None
 
-    re = compile('.*\s+id="([^"]*)"')
+    re = compile(r'.*\s+id="([^"]*)"')
     for line in f:
         match = re.match(line)
         if match:
@@ -192,7 +191,7 @@ class LLRS(metaclass=ABCMeta):
         self.root = root
         self.version = LLRS.VCUSTOM
         # regular expression for paths
-        self.re_path = compile('(\w+)(?:{(.*)})?')
+        self.re_path = compile(r'(\w+)(?:{(.*)})?')
 
     def get_url(self, oid):
         return 'http://localhost:8080/scade_provider/services/{0}/requirements/{1}'.format(
@@ -738,7 +737,7 @@ class SystemLLRS(AnnotatedLLRS):
 
     def cache_ids(self, project):
         files = project.file_refs
-        re = compile('.*\s+xmi:id="([^"]*)"')
+        re = compile(r'.*\s+xmi:id="([^"]*)"')
         for file in files:
             # 'grep' all oids
             for line in open(file.pathname, 'r', encoding='utf-8'):
@@ -930,7 +929,7 @@ class DisplayLLRs(LLRS):
 # -----------------------------------------------------------------------------
 
 
-class PathError(Exception):
+class PathError(BaseException):
     def __init__(self, path, message, **kwargs):
         super().__init__(**kwargs)
         self.path = path

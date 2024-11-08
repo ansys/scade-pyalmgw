@@ -62,6 +62,8 @@ def cmp_file(fromfile: Path, tofile: Path, n=3, linejunk=None, root=''):
 
 
 class TestLLRExport(LLRExport):
+    __test__ = False
+
     def __init__(self, project, session):
         self.session = session
         super().__init__(project)

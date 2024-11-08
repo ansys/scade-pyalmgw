@@ -114,6 +114,9 @@ source = ["ansys.scade.pyalmgw"]
 
 [tool.coverage.report]
 show_missing = true
+exclude_also = [
+    "@(abc\\.)?abstractmethod",
+    ]
 
 [tool.pytest.ini_options]
 testpaths = "tests"

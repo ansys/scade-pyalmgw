@@ -33,7 +33,7 @@ from ansys.scade.apitools import declare_project
 # isort: split
 from scade.model.project.stdproject import Project, get_roots as get_projects
 
-from ansys.scade.pyalmgw.llrs import get_export_class
+from ansys.scade.pyalmgw.llrs import LLRExport, get_export_class
 import ansys.scade.pyalmgw.utils as utils
 from ansys.scade.pyalmgw.utils import traceln
 
@@ -48,7 +48,7 @@ class Connector(metaclass=ABCMeta):
         assert self.project
         return Path(self.project.pathname).with_suffix('.' + self.id + '.llrs')
 
-    def get_llr_schema(self) -> Optional[Path]:
+    def get_llr_schema(self) -> Path:
         assert self.project
         file = self.project.get_scalar_tool_prop_def('ALMGW', 'LLRSCHEMA', '', None)
         if file:
@@ -64,13 +64,15 @@ class Connector(metaclass=ABCMeta):
         assert self.project
         products = self.project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
         # give SCADE Test the priority if mixed projects Test/Suite
+        name = ''
         if 'QTE' in products:
             name = 'records.json'
-        if 'SYSTEM' in products:
+        elif 'SYSTEM' in products:
             name = 'system.json'
-        if 'DISPLAY' in products:
+        elif 'DISPLAY' in products:
             name = 'display.json'
-        if 'SC' in products or not name:
+        else:
+            # 'SC' or unknown:
             name = 'eqsets.json'
         return Path(__file__).parent / 'res' / 'schemas' / name
 
@@ -84,7 +86,7 @@ class Connector(metaclass=ABCMeta):
         pathname = self.get_llrs_file()
         schema = self.get_llr_schema()
         diagrams = self.get_llr_diagrams()
-        cls = get_export_class(self.project)
+        cls = self.get_export_class()
         if cls is None:
             traceln('No export class available for this project')
             return None
@@ -92,6 +94,10 @@ class Connector(metaclass=ABCMeta):
         data = cls.dump_model(diagrams=diagrams)
         cls.write(data, pathname)
         return pathname
+
+    def get_export_class(self) -> Optional[LLRExport]:
+        """Return an instance of LLRExport."""
+        return get_export_class(self.project)
 
     # ---------------------------------------------
     # virtuals
@@ -193,7 +199,7 @@ class Connector(metaclass=ABCMeta):
             code = -1
         return code
 
-    def main(self) -> int:
+    def main(self) -> int:  # pragma: no cover
         """Package entry point."""
         # the possible command lines are referenced in SC-IRS-040
         # generic pattern: -<command> <project> <arg>* <pid>

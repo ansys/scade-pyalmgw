@@ -21,92 +21,173 @@
 # SOFTWARE.
 
 import difflib
+import os
 from pathlib import Path
 from typing import Tuple
 
 import pytest
 
 # shall modify sys.path to access SCACE APIs
-import ansys.scade.apitools  # noqa: F401
+from ansys.scade.apitools.info import get_scade_home
 
 # isort: split
 import scade.model.project.stdproject as std
 import scade.model.suite as suite
+import scade.model.testenv as qte
 
-from ansys.scade.pyalmgw.llrs import LLRExport, ScadeLLRS
-from tests.conftest import load_project_session
+from ansys.scade.pyalmgw.llrs import LLRExport, QteLLRS, ScadeLLRS
+from tests.conftest import load_project_session, load_project_test
+
+root_dir = Path(__file__).parent.parent
 
 
 @pytest.fixture(scope='session')
 def eq_sets() -> Tuple[std.Project, suite.Session]:
     # unique model for these tests
-    path = Path('tests/EqSets/EqSets.etp')
+    path = root_dir / 'tests/EqSets/EqSets.etp'
     project, session = load_project_session(path, path)
     return project, session
 
 
-def cmp_file(fromfile: Path, tofile: Path, n=3, linejunk=None, root=''):
-    """
-    Return the differences between two files."""
-    with fromfile.open() as fromf, tofile.open() as tof:
-        if linejunk:
-            fromlines = [line.replace(root, '') for line in fromf if not linejunk(line)]
-            tolines = [line.replace(root, '') for line in tof if not linejunk(line)]
-        else:
-            fromlines = [line.replace(root, '') for line in fromf]
-            tolines = [line.replace(root, '') for line in tof]
-            fromlines, tolines = list(fromf), list(tof)
+@pytest.fixture(scope='session')
+def records() -> Tuple[std.Project, qte.TestApplication]:
+    # unique model for these tests
+    path = root_dir / 'tests/Records/Records.etp'
+    project, application = load_project_test(path)
+    return project, application
 
-    diff = difflib.context_diff(fromlines, tolines, str(fromfile), str(tofile), n=n)
+
+@pytest.fixture(scope='session')
+def qte_llrs() -> Tuple[std.Project, qte.TestApplication]:
+    # unique model for these tests
+    path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
+    project, application = load_project_test(path)
+    return project, application
+
+
+@pytest.fixture(scope='session')
+def scade_llrs() -> Tuple[std.Project, suite.Session]:
+    # unique model for these tests
+    path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
+    project, session = load_project_session(path, path)
+    return project, session
+
+
+def cmp_file(reference: Path, result: Path, n=3, linejunk=None):
+    """Return the differences between the reference and the result file."""
+    # reference: replace $(ROOT) and $(SCADE) with runtime data
+    ref_lines = reference.open().read().split('\n')
+    root = root_dir.as_posix()
+    scade_home = get_scade_home().as_posix()
+    ref_lines = [_.replace('$(ROOT)', root).replace('$(SCADE)', scade_home) for _ in ref_lines]
+    with result.open() as f:
+        if linejunk:
+            res_lines = [_ for _ in f if not linejunk(_)]
+        else:
+            res_lines = f.read().split('\n')
+
+    diff = difflib.context_diff(ref_lines, res_lines, str(reference), str(result), n=n)
     return diff
 
 
-class TestLLRExport(LLRExport):
+class TestLLRExportSuite(LLRExport):
     __test__ = False
 
-    def __init__(self, project, session):
+    def __init__(self, project, session: suite.Session):
         self.session = session
         super().__init__(project)
 
     def get_export_classes(self, project: std.Project):
         # get_roots not available
         assert project == self.project
-        llrs = []
-        products = project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
-        # give SCADE Test the priority if mixed projects Test/Suite
-        # if 'QTE' in products:
-        #     llrs.append(QteLLRS(self, test.get_roots()[0]))
-        if 'SC' in products:
-            llrs.append(ScadeLLRS(self, self.session.model))
-        # if 'SYSTEM' in products:
-        #     llrs.append(SystemLLRS(self, system.get_roots()[0]))
-        # if 'DISPLAY' in products:
-        #     llrs.append(DisplayLLRs(self))
-        return llrs
+        assert 'SC' in project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
+        return [ScadeLLRS(self, self.session.model)]
 
 
-def test_eq_sets(local_tmpdir, eq_sets: Tuple[std.Project, suite.Session]):
-    """
-    Build manually the test file links.xml and make sure it is identical.
-    """
-    root_dir = Path(__file__).parent.parent
-    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas/eqsets.json'
-    cls = TestLLRExport(*eq_sets)
-    cls.read_schema(schema)
-    d = cls.dump_model(diagrams=False)
-    dst = local_tmpdir / 'eq_sets_llrs.json'
-    cls.write(d, dst)
-    ref = root_dir / 'tests' / 'ref' / 'eq_sets_llrs.json'
+class TestLLRExportTest(LLRExport):
+    __test__ = False
+
+    def __init__(self, project, application: qte.TestApplication):
+        self.application = application
+        super().__init__(project)
+
+    def get_export_classes(self, project: std.Project):
+        # get_roots not available
+        assert project == self.project
+        assert 'QTE' in project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
+        return [QteLLRS(self, self.application)]
+
+
+def _call_export(cls, ref, tmp, diagrams=False) -> bool:
+    """Export the llrs and print the differences."""
+    dst = tmp / ref.name
+    dump = cls.dump_model(diagrams=diagrams)
+    cls.write(dump, dst)
     print('compare', str(ref), str(dst))
-    diffs = cmp_file(ref, dst, root=str(root_dir))
+    diffs = cmp_file(ref, dst)
     failure = False
     for d in diffs:
         print(d.rstrip('\r\n'))
         failure = True
+    return failure
+
+
+def test_eq_sets(local_tmpdir, eq_sets: Tuple[std.Project, suite.Session]):
+    """Test esqets.json schema."""
+    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'eqsets.json'
+    ref = root_dir / 'tests' / 'ref' / 'eq_sets_llrs.json'
+    cls = TestLLRExportSuite(*eq_sets)
+    cls.read_schema(schema)
+    failure = _call_export(cls, ref, local_tmpdir)
+    assert not failure
+
+
+def test_scade_llrs(local_tmpdir, scade_llrs: Tuple[std.Project, suite.Session]):
+    """Test ScadeLLRS."""
+    schema = root_dir / 'tests' / 'ScadeLLRS' / 'scade_all.json'
+    ref = root_dir / 'tests' / 'ref' / 'scade_llrs.json'
+    cls = TestLLRExportSuite(*scade_llrs)
+    cls.read_schema(schema)
+    failure = _call_export(cls, ref, local_tmpdir, diagrams=True)
+    assert not failure
+
+
+def test_records(local_tmpdir, records: Tuple[std.Project, qte.TestApplication]):
+    """Test esqets.json schema."""
+    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'records.json'
+    ref = root_dir / 'tests' / 'ref' / 'records_llrs.json'
+    cls = TestLLRExportTest(*records)
+    cls.read_schema(schema)
+    failure = _call_export(cls, ref, local_tmpdir)
+    assert not failure
+
+
+def test_qte_llrs(local_tmpdir, qte_llrs: Tuple[std.Project, qte.TestApplication]):
+    """Test QteLLRS."""
+    schema = root_dir / 'tests' / 'QteLLRS' / 'qte_all.json'
+    ref = root_dir / 'tests' / 'ref' / 'qte_llrs.json'
+    cls = TestLLRExportTest(*qte_llrs)
+    cls.read_schema(schema)
+    failure = _call_export(cls, ref, local_tmpdir)
     assert not failure
 
 
 if __name__ == '__main__':
-    path = Path('tests/EqSets/EqSets.etp')
-    project, session = load_project_session(path, path)
-    test_eq_sets(Path(__file__).parent / 'tmp', (project, session))
+    if False:
+        path = root_dir / 'tests/EqSets/EqSets.etp'
+        project, session = load_project_session(path, path)
+        test_eq_sets(Path(__file__).parent / 'tmp', (project, session))
+    if True:
+        os.environ['SCADE'] = str(get_scade_home() / 'SCADE')
+
+        path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
+        project, session = load_project_session(path)
+        test_scade_llrs(Path(__file__).parent / 'tmp', (project, session))
+    if False:
+        path = root_dir / 'tests/Records/Records.etp'
+        project, application = load_project_test(path)
+        test_records(Path(__file__).parent / 'tmp', (project, application))
+    if False:
+        path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
+        project, application = load_project_test(path)
+        test_qte_llrs(Path(__file__).parent / 'tmp', (project, application))

@@ -36,6 +36,7 @@ import ansys.scade.apitools  # noqa: F401
 import scade
 import scade.model.project.stdproject as std
 import scade.model.suite as suite
+import scade.model.testenv as qte
 
 
 @pytest.fixture(scope='session')
@@ -73,8 +74,19 @@ def load_project(path: Path) -> std.Project:
 
 def load_project_session(path: Path, *paths: Path) -> Tuple[std.Project, suite.Session]:
     project = load_project(path)
+    if not paths:
+        paths = (path,)
     session = load_session(*paths)
     if session.model:
         # bind the project to the main model
         session.model.project = project
     return project, session
+
+
+def load_project_test(path: Path) -> Tuple[std.Project, qte.TestApplication]:
+    project = load_project(path)
+    application = qte.TestApplication()
+    for file_ref in project.file_refs:
+        if Path(file_ref.pathname).suffix.lower() == '.stp':
+            application.load_procedure_tcl(file_ref.pathname)
+    return project, application

@@ -29,8 +29,7 @@ import ansys.scade.pyalmgw.documents as doc
 
 
 def cmp_file(fromfile: Path, tofile: Path, n=3, linejunk=None):
-    """
-    Return the differences between two files."""
+    """Return the differences between two files."""
     with fromfile.open() as fromf, tofile.open() as tof:
         if linejunk:
             fromlines = [line for line in fromf if not linejunk(line)]

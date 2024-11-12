@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 # shall modify sys.path to access SCACE APIs
-import ansys.scade.apitools  # noqa: F401
+from ansys.scade.apitools.info import get_scade_home
 
 # isort: split
 
@@ -131,14 +131,14 @@ class LLRExport:
             dict['almgid'] = prefix
             dict['name'] = main.get_model_name(main.root)
             dict['type'] = self.kind
-            dict['path'] = self.project.pathname
+            dict['path'] = Path(self.project.pathname).as_posix()
             dict['location'] = module_path
         else:
             if self.version == LLRS.V192_DXL:
                 dict['pathid'] = module_path
                 dict['prefix'] = prefix
                 dict['desc'] = ''
-            dict['scadeproject'] = self.project.pathname
+            dict['scadeproject'] = Path(self.project.pathname).as_posix()
             dict['scadetype'] = self.kind
 
         elements = []
@@ -194,9 +194,7 @@ class LLRS(metaclass=ABCMeta):
         self.re_path = compile(r'(\w+)(?:{(.*)})?')
 
     def get_url(self, oid):
-        return 'http://localhost:8080/scade_provider/services/{0}/requirements/{1}'.format(
-            self.llr_export.project_id, b64encode(oid.encode()).decode()
-        )
+        return self.llr_export.get_url(oid)
 
     # -----------------------------------------------------------------------------
     # abstractions
@@ -431,19 +429,15 @@ class LLRS(metaclass=ABCMeta):
             dict['scadetype'] = kind
             dict['almtype'] = 'req'
             if self.version == LLRS.VCUSTOM:
-                iconfile = str(script_dir / 'res' / self.kind / kind) + '.png'
-                if not os.access(iconfile, os.R_OK):
+                iconfile = script_dir / 'res' / self.kind / (kind + '.png')
+                if not iconfile.exists():
                     # icon not available locally, try in the product
                     almicondir = (
-                        Path(sys.executable).parent.parent.parent
-                        / 'SCADE LifeCycle'
-                        / 'ALM Gateway'
-                        / 'reqtifygw'
-                        / 'icons'
+                        get_scade_home() / 'SCADE LifeCycle' / 'ALM Gateway' / 'reqtifygw' / 'icons'
                     )
-                    iconfile = str(almicondir / self.kind / kind) + '.png'
-                if os.access(iconfile, os.R_OK):
-                    dict['icon'] = iconfile
+                    iconfile = almicondir / self.kind / (kind + '.png')
+                if iconfile.exists():
+                    dict['icon'] = iconfile.as_posix()
 
             if self.llr_export.diagrams:
                 path = self.get_item_image(item)
@@ -648,10 +642,9 @@ class QteLLRS(StdLLRS):
     def get_item_attributes(self, item):
         return []
 
-    def get_note_value(self, note, attribute):
+    def get_note_value(self, note, attribute):  # pragma: no cover
         # no annotations, shall not be called
         assert False
-        return None
 
 
 class SystemLLRS(AnnotatedLLRS):
@@ -685,7 +678,7 @@ class SystemLLRS(AnnotatedLLRS):
     def get_item_oid(self, item):
         try:
             # recent version of SCADE?
-            oid = scade.architect.get_oid(item)
+            oid = scade.model.architect.get_oid(item)
         except BaseException:
             oid = None
 
@@ -828,13 +821,7 @@ class DisplayLLRs(LLRS):
         # cache of specifications for which the images have been generated
         self.generated_specs = set()
         # scade display exe
-        etbin = os.environ.get('ETBIN')
-        if not etbin:
-            # unit tests, the process is python.exe and etbin is ../../scade/bin
-            etbin = Path(sys.executable).parent.parent.parent / 'SCADE' / 'bin'
-        else:
-            etbin = Path(etbin)
-        self.sdyexe = etbin.parent.parent / 'SCADE Display' / 'bin' / 'ScadeDisplayConsole.exe'
+        self.sdyexe = get_scade_home() / 'SCADE Display' / 'bin' / 'ScadeDisplayConsole.exe'
 
     def get_model_name(self, model):
         return model.name

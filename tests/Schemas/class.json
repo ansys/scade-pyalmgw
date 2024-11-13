@@ -1,0 +1,33 @@
+[
+    {
+        "class": "Model",
+        "isllr": false,
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "isllr": false,
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "activateBlock",
+                        "kind": "ifBlock",
+                        "class":  "IfBlock"
+                    }
+                ]
+            }
+        ]
+    }
+]

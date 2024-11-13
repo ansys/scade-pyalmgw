@@ -1,4 +1,5 @@
 *.almgr
-*.json
 *.llrs
 *.xml
+links.json
+links.*.json

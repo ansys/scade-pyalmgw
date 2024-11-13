@@ -1,0 +1,37 @@
+[
+    {
+        "class": "Model",
+        "isllr": false,
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator",
+                        "filter": "child.name == 'Role'"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "isllr": false,
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "input.type"
+                    },
+                    {
+                        "role": "equation.right{ExprId}.reference"
+                    },
+                    {
+                        "kind": "input"
+                    }
+                ]
+            }
+        ]
+    }
+]

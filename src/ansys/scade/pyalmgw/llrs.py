@@ -37,25 +37,18 @@ from ansys.scade.apitools.info import get_scade_home
 # isort: split
 
 import _scade_api
-import scade.model.project.stdproject as std
-import scade.model.testenv as test
-
-# SCADE Display API might be not available when pyparsing >= 3.0.0 is installed
-try:
-    import scade.model.display as sdy
-    from scade.model.display import AContainer, Layer, ReferenceObject, Specification
-except BaseException:
-    pass
-
 import scade
+import scade.model.display as sdy
+import scade.model.project.stdproject as std
 import scade.model.suite as suite
+import scade.model.testenv as test
 
 from ansys.scade.pyalmgw.utils import read_json, traceln, write_json
 
 # make script's implementation directory visible
 script_dir = Path(__file__).parent
 
-if __name__ != '__main__':
+if __name__ != '__main__':  # pragma: no cover
     import scade.model.architect as system
 
 # -----------------------------------------------------------------------------
@@ -116,8 +109,8 @@ class LLRExport:
             self.project_id, b64encode(oid.encode()).decode()
         )
 
-    # TODO VCUSTOM def dump_model(self, diagrams = False, module_path = '', prefix = '', version = VCUSTOM):
-    def dump_model(self, diagrams=False, module_path='', prefix='', version=0):
+    # TODO VCUSTOM def dump_model(self, diagrams = False, version = VCUSTOM):
+    def dump_model(self, diagrams: bool = False, version: int = 0) -> dict:
         assert self.export_classes
 
         # main export class
@@ -127,21 +120,6 @@ class LLRExport:
         self.version = version
         for export_class in self.export_classes:
             export_class.version = version
-
-        dict = {}
-        if self.version >= LLRS.V193:
-            dict['almgid'] = prefix
-            dict['name'] = main.get_model_name(main.root)
-            dict['type'] = self.kind
-            dict['path'] = Path(self.project.pathname).as_posix()
-            dict['location'] = module_path
-        else:
-            if self.version == LLRS.V192_DXL:
-                dict['pathid'] = module_path
-                dict['prefix'] = prefix
-                dict['desc'] = ''
-            dict['scadeproject'] = Path(self.project.pathname).as_posix()
-            dict['scadetype'] = self.kind
 
         elements = []
         section_oid = main.get_model_oid(main.root) + ':_'
@@ -153,9 +131,15 @@ class LLRExport:
                 export_class.get_item_class(export_class.root),
                 section_oid,
             )
-        dict['elements'] = [section]
 
-        return dict
+        model = {
+            'name': main.get_model_name(main.root),
+            'type': self.kind,
+            'path': Path(self.project.pathname).as_posix(),
+            'elements': [section],
+        }
+
+        return model
 
     def write(self, llrs, pathname):
         write_json(llrs, pathname)
@@ -178,14 +162,8 @@ class LLRExport:
 class LLRS(metaclass=ABCMeta):
     # versions
     VCUSTOM = 0
-    V192_NG = 1
-    V192_DXL = 2
-    V193 = 3
     V194 = 4
-    V194_DXL = 5
-
-    # backward compatibility
-    V193_DXL = V193
+    # other versions are deprecated and not supported anymore
 
     def __init__(self, llr_export: LLRExport, kind, root):
         self.llr_export = llr_export
@@ -193,7 +171,7 @@ class LLRS(metaclass=ABCMeta):
         self.root = root
         self.version = LLRS.VCUSTOM
         # regular expression for paths
-        self.re_path = compile(r'(\w+)(?:{(.*)})?')
+        self.re_path = compile(r'^(\w+)(?:{(.*)})?$')
 
     def get_url(self, oid):
         return self.llr_export.get_url(oid)
@@ -249,14 +227,14 @@ class LLRS(metaclass=ABCMeta):
     # schema based visit
     # -----------------------------------------------------------------------------
 
-    def new_section(self, name, elements, oid):
-        dict = {}
-        dict['name'] = name
-        dict['almtype'] = 'section'
-        if (self.version == LLRS.V192_NG or self.version >= LLRS.V193) and oid is not None:
-            dict['oid'] = oid
-        dict['elements'] = elements
-        return dict
+    def new_section(self, name: str, elements: list, oid: str) -> dict:
+        section = {
+            'name': name,
+            'almtype': 'section',
+            'oid': oid,
+            'elements': elements,
+        }
+        return section
 
     def dump_sub_elements(self, container, item, cls, flatten, parent_oid):
         global child
@@ -266,11 +244,8 @@ class LLRS(metaclass=ABCMeta):
         schema = self.llr_export.classes.get(cls)
         if schema is None:
             return []
-        # output "*schema $schema\n"
         parent = schema.get('parent')
         structure = schema.get('structure', [])
-        # output "**parent $parent\n"
-        # output "**subschema $structure\n"
         for entry in structure:
             folder = entry.get('folder')
             flags = entry.get('flags', [])
@@ -298,8 +273,8 @@ class LLRS(metaclass=ABCMeta):
                 kind = composition.get('kind')
                 class_ = composition.get('class')
                 filter = composition.get('filter')
-                # if kind is not specified, get the last role of the path
-                if kind is not None and kind == '':
+                # if kind is specified as empty, get the last role of the path
+                if kind == '':
                     kind, _ = self.decompose_role(item, role.split('.')[-1])
                 for child in self.get_links(item, role, sort):
                     # deprecated
@@ -421,16 +396,17 @@ class LLRS(metaclass=ABCMeta):
             subelements = container
 
         if isllr:
-            dict = {}
             oid = self.get_item_oid(item)
-            dict['oid'] = oid
+            element = {
+                'oid': oid,
+                'pathname': self.get_item_pathname(item),
+                'name': self.get_item_name(item),
+                'scadetype': kind,
+                'almtype': 'req',
+            }
             if self.version == LLRS.VCUSTOM:
-                dict['url'] = self.get_url(oid)
-            dict['pathname'] = self.get_item_pathname(item)
-            dict['name'] = self.get_item_name(item)
-            dict['scadetype'] = kind
-            dict['almtype'] = 'req'
-            if self.version == LLRS.VCUSTOM:
+                # for custom connectors
+                element['url'] = self.get_url(oid)
                 iconfile = script_dir / 'res' / self.kind / (kind + '.png')
                 if not iconfile.exists():
                     # icon not available locally, try in the product
@@ -439,40 +415,37 @@ class LLRS(metaclass=ABCMeta):
                     )
                     iconfile = almicondir / self.kind / (kind + '.png')
                 if iconfile.exists():
-                    dict['icon'] = iconfile.as_posix()
+                    element['icon'] = iconfile.as_posix()
 
             if self.llr_export.diagrams:
                 path = self.get_item_image(item)
                 if path is not None:
-                    dict['image'] = path
+                    element['image'] = path
 
             # attributes
             attributes = self.get_item_attributes(item)
             for property in properties:
                 name = property.get('name')
-                if name is None:
+                if not name:
                     continue
                 path = property.get('path')
-                if path is None:
+                if not path:
                     continue
                 value = self.get_attribute(item, path)
-                if name[0] == '@':
-                    # value is expected to be a reference
-                    value = self.get_item_pathname(value) if value is not None else ''
-                elif name[0] == '#':
-                    # value is expected to be a reference
-                    value = self.get_item_oid(value) if value is not None else ''
-                elif value is None:
+                if not value:
                     # may happen if the attribute is a null reference object w/o # or @
                     value = ''
-                if self.version == LLRS.V194_DXL and value == '':
-                    # DXL error when the value is empty
-                    value = '<empty>'
+                elif name[0] == '@':
+                    # value is expected to be a reference
+                    value = self.get_item_pathname(value)
+                elif name[0] == '#':
+                    # value is expected to be a reference
+                    value = self.get_item_oid(value)
                 attributes.append({'name': name, 'value': str(value)})
 
             if len(attributes) != 0:
-                dict['attributes'] = attributes
-            subelements.append(dict)
+                element['attributes'] = attributes
+            subelements.append(element)
             if section is not None:
                 # add content as sibling of item's llr
                 children = subelements
@@ -491,7 +464,7 @@ class LLRS(metaclass=ABCMeta):
                 container.append(section)
         elif isllr:
             if len(children) != 0:
-                dict['elements'] = children
+                element['elements'] = children
 
 
 # -----------------------------------------------------------------------------
@@ -559,9 +532,6 @@ class AnnotatedLLRS(StdLLRS):
                 continue
             for kind, attribute in pairs:
                 value = self.get_note_value(note, attribute)
-                if self.version == LLRS.V194_DXL and value == '':
-                    # DXL error when the value is empty
-                    value = '<empty>'
                 attributes.append({'name': kind, 'value': value})
 
         return attributes
@@ -712,8 +682,6 @@ class SystemLLRS(AnnotatedLLRS):
         return filter
 
     def get_item_image(self, item):
-        if self.version < LLRS.V194:
-            return None
         if not isinstance(item, scade.model.architect.Diagram):
             return None
         # R2019 R2a bug: cannot generate the diagram in a subdirectory
@@ -754,9 +722,8 @@ class SystemLLRS(AnnotatedLLRS):
 
 
 # -----------------------------------------------------------------------------
-# SCADE Display API has a different design. let's introduce some
-# additional methods so that we can reuse the schema based engine
-# developed for the other APIs.
+# SCADE Display API has a different design: introduce methods so that we can
+# reuse the schema based engine developed for the other APIs.
 # -----------------------------------------------------------------------------
 
 
@@ -791,19 +758,19 @@ class DisplayApp:
             if owner.qualified_name == ''
             else owner.qualified_name + '/' + link + item.name
         )
-        if isinstance(item, Specification):
+        if isinstance(item, sdy.Specification):
             item.qualified_name = ''
             for layer in item.layers:
                 self.cache_properties(file, item, layer)
-        elif isinstance(item, AContainer):
+        elif isinstance(item, sdy.AContainer):
             for child in item.children:
                 self.cache_properties(file, item, child)
-        elif isinstance(item, ReferenceObject):
+        elif isinstance(item, sdy.ReferenceObject):
             item.qualified_name = ''
             self.cache_properties(file, item, item.children)
         if (
-            isinstance(item, Layer)
-            or isinstance(item, ReferenceObject)
+            isinstance(item, sdy.Layer)
+            or isinstance(item, sdy.ReferenceObject)
             and item.declaration is not None
         ):
             declaration = item.declaration
@@ -853,7 +820,7 @@ class DisplayLLRs(LLRS):
 
     def get_item_oid(self, item):
         # prefix = self.prefixes[item.file.pathname].replace(' ', '%20')
-        if isinstance(item, Specification):
+        if isinstance(item, sdy.Specification):
             return item.name
         else:
             try:
@@ -944,9 +911,7 @@ def get_export_class(project: std.Project):
 # -----------------------------------------------------------------------------
 
 
-def main(
-    file, *cmd_line, module_path='', prefix='', schema=None, diagrams=False, version=LLRS.V194
-):
+def main(file, *cmd_line, version=LLRS.V194):
     project = std.get_roots()[0]
     project_path = Path(project.pathname)
 
@@ -978,9 +943,7 @@ def main(
     if cls:
         cls.read_schema(schema)
         try:
-            d = cls.dump_model(
-                diagrams=diagrams, module_path=module_path, prefix=prefix, version=version
-            )
+            d = cls.dump_model(diagrams=diagrams, version=version)
             cls.write(d, Path(file))
         except PathError as e:
             print(str(e))
@@ -992,8 +955,8 @@ def main(
 # unit test
 # -----------------------------------------------------------------------------
 
-if __name__ == '__main__':
-    # usage python.exe script project file schema
+if __name__ == '__main__':  # pragma: no cover
+    # usage python.exe script <project> <file> <schema> <option>*
     declare_project(sys.argv[1])
     import scade.model.architect as system
 

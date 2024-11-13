@@ -1,0 +1,50 @@
+[
+	{
+		"class": "TestApplication",
+		"isllr": false,
+		"structure": [
+			{
+				"content": [
+					{ "role": "procedure", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Container",
+		"structure": [
+			{
+				"content": [
+					{ "role": "testElement", "kind": "folder", "class": "Folder" },
+					{ "role": "testElement{Record}", "kind": "record" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Procedure",
+		"isllr": true,
+		"folder": "Procedure",
+		"parent": "Container"
+	},
+	{
+		"class": "Folder",
+		"isllr": true,
+		"folder": "Folder",
+		"parent": "Container"
+	},
+	{
+		"class": "Record",
+		"isllr": true,
+		"folder": "Record",
+		"structure": [
+			{
+				"content": [
+					{ "role": "init", "kind": ""},
+					{ "role": "preamble", "kind": ""},
+					{ "role": "scenario", "kind": ""}
+				]
+			}
+		]
+	}
+]

@@ -35,7 +35,7 @@ import scade.model.project.stdproject as std
 import scade.model.suite as suite
 import scade.model.testenv as qte
 
-from ansys.scade.pyalmgw.llrs import LLRExport, QteLLRS, ScadeLLRS
+from ansys.scade.pyalmgw.llrs import LLRS, LLRExport, PathError, QteLLRS, ScadeLLRS
 from tests.conftest import load_project_session, load_project_test
 
 root_dir = Path(__file__).parent.parent
@@ -69,6 +69,14 @@ def qte_llrs() -> Tuple[std.Project, qte.TestApplication]:
 def scade_llrs() -> Tuple[std.Project, suite.Session]:
     # unique model for these tests
     path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
+    project, session = load_project_session(path, path)
+    return project, session
+
+
+@pytest.fixture(scope='session')
+def schemas() -> Tuple[std.Project, suite.Session]:
+    # unique model for these tests
+    path = root_dir / 'tests/Schemas/Schemas.etp'
     project, session = load_project_session(path, path)
     return project, session
 
@@ -118,10 +126,10 @@ class TestLLRExportTest(LLRExport):
         return [QteLLRS(self, self.application)]
 
 
-def _call_export(cls, ref, tmp, diagrams=False) -> bool:
+def _call_export(cls, ref, tmp, diagrams: bool = False, version: int = LLRS.VCUSTOM) -> bool:
     """Export the llrs and print the differences."""
     dst = tmp / ref.name
-    dump = cls.dump_model(diagrams=diagrams)
+    dump = cls.dump_model(diagrams=diagrams, version=version)
     cls.write(dump, dst)
     print('compare', str(ref), str(dst))
     diffs = cmp_file(ref, dst)
@@ -171,8 +179,54 @@ def test_qte_llrs(local_tmpdir, qte_llrs: Tuple[std.Project, qte.TestApplication
     ref = root_dir / 'tests' / 'ref' / 'qte_llrs.json'
     cls = TestLLRExportTest(*qte_llrs)
     cls.read_schema(schema)
-    failure = _call_export(cls, ref, local_tmpdir)
+    failure = _call_export(cls, ref, local_tmpdir, diagrams=True)
     assert not failure
+
+
+@pytest.mark.parametrize(
+    'schema',
+    [
+        'attribute_oid.json',
+        'attribute_path.json',
+        'attribute_value.json',
+        'class.json',
+        'filter.json',
+        'folder.json',
+        'nofolder.json',
+        'nosibling.json',
+        'nosort.json',
+        'role.json',
+        'sibling.json',
+        'sort.json',
+        'unknown.json',
+    ],
+)
+def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session], schema: str):
+    """Test schema capabilities."""
+    path = root_dir / 'tests' / 'Schemas' / schema
+    ref = root_dir / 'tests' / 'ref' / ('schema_' + schema)
+    cls = TestLLRExportSuite(*schemas)
+    cls.read_schema(path)
+    failure = _call_export(cls, ref, local_tmpdir, version=LLRS.V194)
+    assert not failure
+
+
+@pytest.mark.parametrize(
+    'schema',
+    [
+        'path_error_end.json',
+        'path_error_start.json',
+        'path_error_syntax.json',
+        'path_error_unknown.json',
+    ],
+)
+def test_schema_robustness(local_tmpdir, schemas: Tuple[std.Project, suite.Session], schema: str):
+    """Test schema capabilities."""
+    path = root_dir / 'tests' / 'Schemas' / schema
+    cls = TestLLRExportSuite(*schemas)
+    cls.read_schema(path)
+    with pytest.raises(PathError):
+        cls.dump_model()
 
 
 if __name__ == '__main__':
@@ -192,3 +246,11 @@ if __name__ == '__main__':
         path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
         project, application = load_project_test(path)
         test_qte_llrs(Path(__file__).parent / 'tmp', (project, application))
+    if True:
+        path = root_dir / 'tests/Schemas/Schemas.etp'
+        project, session = load_project_session(path, path)
+        schema = root_dir / 'tests' / 'Schemas' / 'path_error_syntax.json'
+        ref = root_dir / 'tests' / 'ref' / ('schema_' + schema.name)
+        cls = TestLLRExportSuite(project, session)
+        cls.read_schema(schema)
+        failure = _call_export(cls, ref, root_dir / 'tests' / 'tmp')

@@ -1,0 +1,43 @@
+[
+    {
+        "class": "Model",
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator",
+                        "filter": "child.name == 'Attribute'"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "input"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "LocalVariable",
+        "isllr": true,
+        "properties": [
+            {
+                "name": "@Type",
+                "path": "type"
+            },
+            {
+                "name": "@Usage",
+                "path": "exprId.owner"
+            }
+        ]
+    }
+]

@@ -1,0 +1,13 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

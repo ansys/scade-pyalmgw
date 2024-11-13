@@ -1,0 +1,21 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "name": "IB",
+                    "oid": "!ed/217/6294/AC5C/67347b5b2d54",
+                    "pathname": "P::Class/IB:",
+                    "scadetype": "ifBlock"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

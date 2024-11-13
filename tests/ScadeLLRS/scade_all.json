@@ -1,0 +1,233 @@
+[
+	{
+		"class": "Model",
+		"parent": "Package",
+		"isllr": true
+	},
+	{
+		"class": "Package",
+		"folder": "Package",
+		"isllr": true,
+		"structure": [
+			{
+				"folder": "Constants",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "constant", "kind": "" }
+				]
+			},
+			{
+				"folder": "Sensors",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "sensor", "kind": "" }
+				]
+			},
+			{
+				"folder": "Types",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "namedType", "kind": "type" }
+				]
+			},
+			{
+				"folder": "Operators",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "operator", "kind": "" }
+				]
+			},
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "package", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "DataDef",
+		"folder": "n/a",
+		"isllr": false,
+		"structure": [
+			{
+				"folder": "Locals",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "local", "kind": "" },
+					{ "role": "signal", "kind": "" }
+				]
+			},
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "stateMachine", "kind": "" },
+					{ "role": "activateBlock", "kind": "ifBlock", "class":  "IfBlock" },
+					{ "role": "activateBlock", "kind": "whenBlock", "class":  "WhenBlock" }
+				]
+			},
+			{
+				"folder": "Diagrams",
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "diagram{NetDiagram}", "kind": "netDiagram" },
+					{ "role": "diagram{TextDiagram}", "kind": "textDiagram" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Operator",
+		"parent": "DataDef",
+		"folder": "Operator",
+		"isllr": true,
+		"structure": [
+			{
+				"folder": "Interface",
+				"content": [
+					{ "role": "input", "kind": "" },
+					{ "role": "hidden", "kind": "input" },
+					{ "role": "output", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "StateMachine",
+		"folder": "State Machine",
+		"isllr": true,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "state", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "WhenBlock",
+		"folder": "When Block",
+		"isllr": true,
+		"structure": [
+			{
+				"content": [
+					{ "role": "whenBranch", "kind": "branch" }
+				]
+			}
+		]
+	},
+	{
+		"class": "WhenBranch",
+		"folder": "Branch",
+		"isllr": true,
+		"structure": [
+			{
+				"content": [
+					{ "role": "action", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "IfBlock",
+		"folder": "If Block",
+		"isllr": true,
+		"structure": [
+			{
+				"content": [
+					{ "role": "ifNode", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "IfNode",
+		"parent": "IfBranch",
+		"isllr": true,
+		"structure": [
+			{
+				"content": [
+					{ "role": "then", "kind": "branch" },
+					{ "role": "else", "kind": "branch" }
+				]
+			}
+		]
+	},
+	{
+		"class": "IfBranch",
+		"folder": "n/a",
+		"isllr": false
+	},
+	{
+		"class": "IfAction",
+		"parent": "IfBranch",
+		"isllr": true,
+		"structure": [
+			{
+				"content": [
+					{ "role": "action", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Action",
+		"parent": "DataDef",
+		"isllr": true
+	},
+	{
+		"class": "State",
+		"parent": "DataDef",
+		"isllr": true,
+		"structure": [
+			{
+				"folder": "Transitions",
+				"content": [
+					{ "role": "outgoing", "kind": "transition" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Transition",
+		"folder": "n/a",
+		"isllr": false,
+		"structure": [
+			{
+				"flags": [ "sibling" ],
+				"content": [
+					{ "role": "forkedTransition", "kind": "transition" }
+				]
+			},
+			{
+				"flags": [ "sibling" ],
+				"content": [
+					{ "role": "effect", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "MainTransition",
+		"parent": "Transition",
+		"isllr": true
+	},
+	{
+		"class": "ForkedTransition",
+		"parent": "Transition",
+		"isllr": true
+	},
+	{
+		"class": "NetDiagram",
+		"isllr": true,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "equationSet", "kind": "" }
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "class": "Model",
+        "isllr": false,
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator",
+                        "filter": "child.name == 'Interface'"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "isllr": false,
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "input",
+                        "kind": ""
+                    }
+                ]
+            }
+        ]
+    }
+]

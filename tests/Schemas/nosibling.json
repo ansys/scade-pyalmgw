@@ -1,0 +1,80 @@
+[
+    {
+        "class": "Model",
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator",
+                        "filter": "child.name == 'Sibling'"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "stateMachine"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "StateMachine",
+        "folder": "State Machine",
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "state"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "State",
+        "structure": [
+            {
+                "folder": "Transitions",
+                "content": [
+                    {
+                        "role": "outgoing",
+                        "kind": "transition"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Transition",
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "forkedTransition",
+                        "kind": "transition"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "MainTransition",
+        "parent": "Transition",
+        "isllr": true
+    },
+    {
+        "class": "ForkedTransition",
+        "parent": "Transition",
+        "isllr": true
+    }
+]

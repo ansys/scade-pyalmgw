@@ -31,6 +31,7 @@ import subprocess
 import sys
 
 # shall modify sys.path to access SCACE APIs
+from ansys.scade.apitools import declare_project
 from ansys.scade.apitools.info import get_scade_home
 
 # isort: split
@@ -992,32 +993,9 @@ def main(
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    # usage python.exe script project file <options>
-    if '-i' in sys.argv or '--images' in sys.argv:
-        # images can't be produced when launched with python.exe (2024 R2):
-        # re-run using scade.exe -script
-        scade_exe = get_scade_home() / 'SCADE' / 'bin' / 'scade.exe'
-        cmd = [
-            str(scade_exe),
-            '-script',
-            sys.argv[0],  # script
-            sys.argv[1],  # project
-            "main(r'%s', '-s', %s)" % (sys.argv[2], ', '.join([f"r'{_}'" for _ in sys.argv[3:]])),
-        ]
-        try:
-            print('re-run using scade.exe -script for producing the images:', ' '.join(cmd))
-            status = subprocess.run(cmd, capture_output=True)
-            if status.stdout:
-                print(status.stdout.decode('utf-8').strip('\n'))
-            if status.stderr:
-                print(status.stderr.decode('utf-8').strip('\n'))
-        except BaseException as e:
-            print(e)
-    else:
-        import scade_env as stdpy
+    # usage python.exe script project file schema
+    declare_project(sys.argv[1])
+    import scade.model.architect as system
 
-        stdpy.load_project(sys.argv[1])
-        import scade.model.architect as system
-
-        main(sys.argv[2], schema=sys.argv[3], version=LLRS.VCUSTOM)
-        print('done')
+    main(sys.argv[2], '-s', *sys.argv[3:])
+    print('done')

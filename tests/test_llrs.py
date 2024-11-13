@@ -21,8 +21,8 @@
 # SOFTWARE.
 
 import difflib
-import os
 from pathlib import Path
+import shutil
 from typing import Tuple
 
 import pytest
@@ -144,6 +144,9 @@ def test_eq_sets(local_tmpdir, eq_sets: Tuple[std.Project, suite.Session]):
 
 def test_scade_llrs(local_tmpdir, scade_llrs: Tuple[std.Project, suite.Session]):
     """Test ScadeLLRS."""
+    img = root_dir / 'tests' / 'ScadeLLRS' / 'img'
+    if img.exists():
+        shutil.rmtree(img)
     schema = root_dir / 'tests' / 'ScadeLLRS' / 'scade_all.json'
     ref = root_dir / 'tests' / 'ref' / 'scade_llrs.json'
     cls = TestLLRExportSuite(*scade_llrs)
@@ -177,9 +180,7 @@ if __name__ == '__main__':
         path = root_dir / 'tests/EqSets/EqSets.etp'
         project, session = load_project_session(path, path)
         test_eq_sets(Path(__file__).parent / 'tmp', (project, session))
-    if True:
-        os.environ['SCADE'] = str(get_scade_home() / 'SCADE')
-
+    if False:
         path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
         project, session = load_project_session(path)
         test_scade_llrs(Path(__file__).parent / 'tmp', (project, session))

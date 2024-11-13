@@ -20,6 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from abc import ABCMeta, abstractmethod
+from argparse import ArgumentParser
+from base64 import b64encode
+import os
+from pathlib import Path
+from re import compile
+from shutil import copyfile
+import subprocess
+import sys
+
 # shall modify sys.path to access SCACE APIs
 from ansys.scade.apitools.info import get_scade_home
 
@@ -35,15 +45,6 @@ try:
     from scade.model.display import AContainer, Layer, ReferenceObject, Specification
 except BaseException:
     pass
-from abc import ABCMeta, abstractmethod
-from argparse import ArgumentParser
-from base64 import b64encode
-import os
-from pathlib import Path
-from re import compile
-from shutil import copyfile
-import subprocess
-import sys
 
 import scade
 import scade.model.suite as suite
@@ -541,7 +542,7 @@ class AnnotatedLLRS(StdLLRS):
                         break
 
             if len(attributes) != 0:
-                #' register the note type and its attributes
+                # register the note type and its attributes
                 self.llr_fields[type] = attributes
 
     def get_item_attributes(self, item):
@@ -945,8 +946,11 @@ def get_export_class(project: std.Project):
 def main(
     file, *cmd_line, module_path='', prefix='', schema=None, diagrams=False, version=LLRS.V194
 ):
+    project = std.get_roots()[0]
+    project_path = Path(project.pathname)
+
     if len(cmd_line) > 0:
-        #' args not empty --> called by ALMGW 2019 R3
+        # args not empty --> called by ALMGW 2019 R3
         parser = ArgumentParser()
         parser.add_argument(
             '-s', '--schema', metavar='<schema>', help='json export schema', required=True
@@ -959,27 +963,16 @@ def main(
 
         try:
             args = parser.parse_args(cmd_line)
-        except BaseException:
+        except BaseException as e:
+            print(e)
             return
         if args.version == 'V194':
             version = LLRS.V194
         if args.images:
             diagrams = True
-        schema = args.schema
-
-    project = std.get_roots()[0]
-    project_path = Path(project.pathname)
-    if schema is None:
-        # try a json file with the same name/location as the project
-        path = project_path.with_suffix('.json')
-        if not path.exists():
-            # backward compatibility
-            # try a json file with the same name/location as the script
-            path = Path(__file__).with_suffix('.json')
-        schema = path.as_posix()
-    else:
         # make the path relative to the project , when not absolute
-        schema = project_path.parent.joinpath(schema).as_posix()
+        schema = project_path.parent.joinpath(args.schema)
+
     cls = get_export_class(project)
     if cls:
         cls.read_schema(schema)
@@ -987,7 +980,7 @@ def main(
             d = cls.dump_model(
                 diagrams=diagrams, module_path=module_path, prefix=prefix, version=version
             )
-            cls.write(d, file)
+            cls.write(d, Path(file))
         except PathError as e:
             print(str(e))
     else:
@@ -999,15 +992,32 @@ def main(
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    # usage python.exe script project file schema
-    import scade_env as stdpy
+    # usage python.exe script project file <options>
+    if '-i' in sys.argv or '--images' in sys.argv:
+        # images can't be produced when launched with python.exe (2024 R2):
+        # re-run using scade.exe -script
+        scade_exe = get_scade_home() / 'SCADE' / 'bin' / 'scade.exe'
+        cmd = [
+            str(scade_exe),
+            '-script',
+            sys.argv[0],  # script
+            sys.argv[1],  # project
+            "main(r'%s', '-s', %s)" % (sys.argv[2], ', '.join([f"r'{_}'" for _ in sys.argv[3:]])),
+        ]
+        try:
+            print('re-run using scade.exe -script for producing the images:', ' '.join(cmd))
+            status = subprocess.run(cmd, capture_output=True)
+            if status.stdout:
+                print(status.stdout.decode('utf-8').strip('\n'))
+            if status.stderr:
+                print(status.stderr.decode('utf-8').strip('\n'))
+        except BaseException as e:
+            print(e)
+    else:
+        import scade_env as stdpy
 
-    stdpy.load_project(sys.argv[1])
-    import scade.model.architect as system
+        stdpy.load_project(sys.argv[1])
+        import scade.model.architect as system
 
-    main(sys.argv[2], schema=sys.argv[3])
-    print('done')
-
-# -----------------------------------------------------------------------------
-# end of file
-# -----------------------------------------------------------------------------
+        main(sys.argv[2], schema=sys.argv[3], version=LLRS.VCUSTOM)
+        print('done')

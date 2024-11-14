@@ -35,7 +35,7 @@ DesignElement ::=
 	    name STRING,
 	    information {
 		Nature ENUM {
-		    NT_ENUM_VALUES {"Low Level Requirement", "Architecture", "Derived Low Level Requirement"},
+		    NT_ENUM_VALUES {"Low Level Requirement", "Architecture", "Derived Low Level Requirement", ""},
 		    NT_DEFAULT_VALUE "Low Level Requirement",
 		    NT_FIELD_WIDTH  20,
 		    LLR_PROP "Nature"},

@@ -140,10 +140,12 @@ class TestLLRExportTest(LLRExport):
         return [QteLLRS(self, self.application)]
 
 
-def _call_export(cls, ref, tmp, diagrams: bool = False, version: int = LLRS.VCUSTOM) -> bool:
+def _call_export(
+    cls, ref, tmp, diagrams: bool = False, version: int = LLRS.VCUSTOM, empty: str = ''
+) -> bool:
     """Export the llrs and print the differences."""
     dst = tmp / ref.name
-    dump = cls.dump_model(diagrams=diagrams, version=version)
+    dump = cls.dump_model(diagrams=diagrams, version=version, empty=empty)
     cls.write(dump, dst)
     print('compare', str(ref), str(dst))
     diffs = cmp_file(ref, dst)
@@ -173,7 +175,7 @@ def test_scade_llrs(local_tmpdir, scade_llrs: Tuple[std.Project, suite.Session])
     ref = root_dir / 'tests' / 'ref' / 'scade_llrs.json'
     cls = TestLLRExportSuite(*scade_llrs)
     cls.read_schema(schema)
-    failure = _call_export(cls, ref, local_tmpdir, diagrams=True)
+    failure = _call_export(cls, ref, local_tmpdir, diagrams=True, empty='<empty>')
     assert not failure
 
 
@@ -244,7 +246,7 @@ def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session]
     ref = root_dir / 'tests' / 'ref' / ('schema_' + schema)
     cls = TestLLRExportSuite(*schemas)
     cls.read_schema(path)
-    failure = _call_export(cls, ref, local_tmpdir, version=LLRS.V194)
+    failure = _call_export(cls, ref, local_tmpdir, version=LLRS.V194, empty='<empty>')
     assert not failure
 
 
@@ -284,15 +286,17 @@ if __name__ == '__main__':
         path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
         project, application = load_project_test(path)
         test_qte_llrs(Path(__file__).parent / 'tmp', (project, application))
-    if False:
+    if True:
         path = root_dir / 'tests/Schemas/Schemas.etp'
         project, session = load_project_session(path, path)
-        schema = root_dir / 'tests' / 'Schemas' / 'path_error_syntax.json'
+        schema = root_dir / 'tests' / 'Schemas' / 'attribute_value.json'
         ref = root_dir / 'tests' / 'ref' / ('schema_' + schema.name)
         cls = TestLLRExportSuite(project, session)
         cls.read_schema(schema)
-        failure = _call_export(cls, ref, root_dir / 'tests' / 'tmp')
-    if True:
+        failure = _call_export(
+            cls, ref, root_dir / 'tests' / 'tmp', empty='<empty>', version=LLRS.V194
+        )
+    if False:
         path = root_dir / 'tests/DisplayLLRS/DisplayLLRS.etp'
         project = load_project(path)
         test_display_llrs(Path(__file__).parent / 'tmp', (project))

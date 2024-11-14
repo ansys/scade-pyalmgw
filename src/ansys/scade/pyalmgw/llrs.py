@@ -110,7 +110,7 @@ class LLRExport:
         )
 
     # TODO VCUSTOM def dump_model(self, diagrams = False, version = VCUSTOM):
-    def dump_model(self, diagrams: bool = False, version: int = 0) -> dict:
+    def dump_model(self, diagrams: bool = False, version: int = 0, empty: str = '') -> dict:
         assert self.export_classes
 
         # main export class
@@ -118,6 +118,7 @@ class LLRExport:
 
         self.diagrams = diagrams
         self.version = version
+        self.empty = empty
         for export_class in self.export_classes:
             export_class.version = version
 
@@ -430,7 +431,8 @@ class LLRS(metaclass=ABCMeta):
                 value = self.get_attribute(item, path)
                 if not value:
                     # may happen if the attribute is a null reference object w/o # or @
-                    value = ''
+                    # some ALM tools raise exceptions with empty values
+                    value = self.llr_export.empty
                 elif name[0] == '@':
                     # value is expected to be a reference
                     value = self.get_item_pathname(value)
@@ -529,6 +531,9 @@ class AnnotatedLLRS(StdLLRS):
                 continue
             for kind, attribute in pairs:
                 value = self.get_note_value(note, attribute)
+                if not value:
+                    # some ALM tools raise exceptions with empty values
+                    value = self.llr_export.empty
                 attributes.append({'name': kind, 'value': value})
 
         return attributes
@@ -905,35 +910,32 @@ def main(file, *cmd_line, version=LLRS.V194):
     project = std.get_roots()[0]
     project_path = Path(project.pathname)
 
-    if len(cmd_line) > 0:
-        # args not empty --> called by ALMGW 2019 R3
-        parser = ArgumentParser()
-        parser.add_argument(
-            '-s', '--schema', metavar='<schema>', help='json export schema', required=True
-        )
-        parser.add_argument(
-            '-i', '--images', action='store_true', help='export images', required=False
-        )
-        # for now, applies only to V194
-        parser.add_argument('-v', '--version', choices=['V194'], help='version', required=False)
+    parser = ArgumentParser()
+    parser.add_argument(
+        '-s', '--schema', metavar='<schema>', help='json export schema', required=True
+    )
+    parser.add_argument('-i', '--images', action='store_true', help='export images', required=False)
+    parser.add_argument(
+        '-e', '--empty', metavar='<empty value>', help='placeholder for empty values', default=''
+    )
+    # for now, applies only to V194
+    parser.add_argument('-v', '--version', choices=['V194'], help='version', required=False)
 
-        try:
-            args = parser.parse_args(cmd_line)
-        except BaseException as e:
-            print(e)
-            return
-        if args.version == 'V194':
-            version = LLRS.V194
-        if args.images:
-            diagrams = True
-        # make the path relative to the project , when not absolute
-        schema = project_path.parent.joinpath(args.schema)
+    try:
+        args = parser.parse_args(cmd_line)
+    except BaseException as e:
+        print(e)
+        return
+    if args.version == 'V194':
+        version = LLRS.V194
+    # make the path relative to the project , when not absolute
+    schema = project_path.parent.joinpath(args.schema)
 
     cls = get_export_class(project)
     if cls:
         cls.read_schema(schema)
         try:
-            d = cls.dump_model(diagrams=diagrams, version=version)
+            d = cls.dump_model(diagrams=args.images, version=version, empty=args.empty)
             cls.write(d, Path(file))
         except PathError as e:
             print(str(e))

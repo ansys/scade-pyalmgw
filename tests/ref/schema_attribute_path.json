@@ -29,7 +29,7 @@
                         },
                         {
                             "name": "@Usage",
-                            "value": ""
+                            "value": "<empty>"
                         }
                     ],
                     "name": "f",
@@ -42,11 +42,11 @@
                     "attributes": [
                         {
                             "name": "@Type",
-                            "value": ""
+                            "value": "<empty>"
                         },
                         {
                             "name": "@Usage",
-                            "value": ""
+                            "value": "<empty>"
                         }
                     ],
                     "name": "u",

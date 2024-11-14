@@ -371,7 +371,7 @@
                                                             "attributes": [
                                                                 {
                                                                     "name": "Nature",
-                                                                    "value": "Low Level Requirement"
+                                                                    "value": "<empty>"
                                                                 }
                                                             ],
                                                             "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",

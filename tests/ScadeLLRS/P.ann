@@ -16,6 +16,16 @@ BEGIN
             	 NT_FIELD_WIDTH 60 }
     } } }
 
+    Remark ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        information {
+            Description TEXT
+            {
+            	 NT_FIELD_HEIGHT 20 ,
+            	 NT_FIELD_WIDTH 60 }
+    } } }
+
 END
 
 Notes-Values { Esterel-Technologies }  DEFINITIONS ::=
@@ -23,5 +33,7 @@ BEGIN
     DesignElement ::= {
         {"!ed/6a/6294/AC5C/67336f72efd", "DesignElement","Low Level Requirement" , "" },
         {"!ed/35/6294/AC5C/67336ede4e9d", "DesignElement","Derived Low Level Requirement" , "" }}
+    Remark ::= {
+        {"!ed/14/6294/AC5C/67336eb642c", "Remark","Remark" }}
 END
 

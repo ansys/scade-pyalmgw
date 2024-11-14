@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?dom version="19.0" ?>
+
+<globals>
+    <type name="Bool" oid="54d983fe-bbf8-4a9b-beed-11acb430d39b">
+        <definition>bool</definition>
+    </type>
+    <constant name="PI" oid="4f2aa274-fd98-4700-ab73-cf160b8d5b28" type="float32">
+        <init>3.14</init>
+    </constant>
+</globals>
+
+<!-- crc32 : 76289714 -->
+

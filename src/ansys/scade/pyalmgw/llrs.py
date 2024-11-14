@@ -155,7 +155,7 @@ class LLRExport:
         if 'SYSTEM' in products:
             llrs.append(SystemLLRS(self, system.get_roots()[0]))
         if 'DISPLAY' in products:
-            llrs.append(DisplayLLRs(self))
+            llrs.append(DisplayLLRS(self))
         return llrs
 
 
@@ -215,10 +215,6 @@ class LLRS(metaclass=ABCMeta):
     @abstractmethod
     def get_item_attributes(self, item):
         raise NotImplementedError('Abstract method call: get_item_attributes')
-
-    @abstractmethod
-    def get_note_value(self, note, attribute):
-        raise NotImplementedError('Abstract method call: get_note_value')
 
     def get_item_image(self, item):
         return None
@@ -462,7 +458,8 @@ class LLRS(metaclass=ABCMeta):
         if section is not None:
             if len(subelements) != 0:
                 container.append(section)
-        elif isllr:
+        else:
+            assert isllr
             if len(children) != 0:
                 element['elements'] = children
 
@@ -535,6 +532,10 @@ class AnnotatedLLRS(StdLLRS):
                 attributes.append({'name': kind, 'value': value})
 
         return attributes
+
+    @abstractmethod
+    def get_note_value(self, note, attribute):
+        raise NotImplementedError('Abstract method call: get_note_value')
 
 
 class ScadeLLRS(AnnotatedLLRS):
@@ -613,10 +614,6 @@ class QteLLRS(StdLLRS):
 
     def get_item_attributes(self, item):
         return []
-
-    def get_note_value(self, note, attribute):  # pragma: no cover
-        # no annotations, shall not be called
-        assert False
 
 
 class SystemLLRS(AnnotatedLLRS):
@@ -749,8 +746,6 @@ class DisplayApp:
                 self.cache_properties(file, self, file)
 
     def cache_properties(self, file, owner, item, link=''):
-        if item is None:
-            return
         item.owner = owner
         item.file = file
         item.qualified_name = (
@@ -780,7 +775,7 @@ class DisplayApp:
                     self.cache_properties(file, item, child, link)
 
 
-class DisplayLLRs(LLRS):
+class DisplayLLRS(LLRS):
     def __init__(self, llr_export: LLRExport):
         self.app = DisplayApp(llr_export.project)
         super().__init__(llr_export, 'display', self.app)
@@ -836,11 +831,6 @@ class DisplayLLRs(LLRS):
 
     def get_item_attributes(self, item):
         return []
-
-    def get_note_value(self, note, attribute):
-        # no annotations, shall not be called
-        assert False
-        return None
 
     def get_item_image(self, item):
         # only containers can have images

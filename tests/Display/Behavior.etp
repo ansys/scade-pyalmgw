@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project id="1" oid_count="91" defaultConfiguration="23">
+<Project id="1" oid_count="87" defaultConfiguration="23">
 	<props>
 		<Prop id="10" name="@STUDIO:PRODUCT">
 			<value>SC</value>
@@ -262,10 +262,13 @@
 			<configuration>65</configuration>
 		</Prop>
 		<Prop id="73" name="@SCADE:DEFAULTFILE">
-			<value>ScadeLLRS.xscade</value>
+			<value>Behavior.xscade</value>
 		</Prop>
 		<Prop id="74" name="@SCADE:SEMFILE">
-			<value>ScadeLLRS.err</value>
+			<value>Behavior.err</value>
+		</Prop>
+		<Prop id="75" name="@SCADE:NOTEFILE">
+			<value>$(SCADE)/lib/DefaultAty.aty</value>
 		</Prop>
 		<Prop id="76" name="@SCADE:NEWVARIABLESYMBOLS">
 			<value>true</value>
@@ -305,42 +308,9 @@
 			<value>57</value>
 			<value>65</value>
 		</Prop>
-		<Prop id="86" name="@STUDIO:TOOLCONF">
-			<value>DiffAnalyzer</value>
-			<value>14</value>
-			<value>23</value>
-			<value>34</value>
-			<value>39</value>
-			<value>44</value>
-			<value>54</value>
-			<value>57</value>
-			<value>65</value>
-		</Prop>
-		<Prop id="87" name="@STUDIO:TOOLCONF">
-			<value>Synchronization</value>
-			<value>14</value>
-			<value>23</value>
-			<value>34</value>
-			<value>39</value>
-			<value>44</value>
-			<value>54</value>
-			<value>57</value>
-			<value>65</value>
-		</Prop>
-		<Prop id="88" name="@STUDIO:TOOLCONF">
-			<value>Import/Export</value>
-			<value>14</value>
-			<value>23</value>
-			<value>34</value>
-			<value>39</value>
-			<value>44</value>
-			<value>54</value>
-			<value>57</value>
-			<value>65</value>
-		</Prop>
-		<Prop id="91" name="@SCADE:NOTEFILE">
-			<value>TraceabilityEqs.aty</value>
-			<value>Remark.aty</value>
+		<Prop id="87" name="@GENERATOR:ROOTNODE">
+			<value>P::O</value>
+			<configuration>14</configuration>
 		</Prop>
 	</props>
 	<roots>
@@ -348,7 +318,7 @@
 		<Folder id="12" extensions="xscade;scade" name="Model Files">
 			<elements>
 				<Folder id="13" extensions="xscade;scade" name="Separate Files"/>
-				<FileRef id="89" persistAs="P.xscade"/>
+				<FileRef id="86" persistAs="P.xscade"/>
 			</elements>
 		</Folder>
 	</roots>

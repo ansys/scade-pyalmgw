@@ -2,6 +2,7 @@
     {
         "class": "DisplayApp",
         "folder": "Project",
+        "isllr": false,
         "structure": [
             {
                 "flags": [ "sort" ],
@@ -16,6 +17,7 @@
     },
     {
         "class": "Specification",
+        "isllr": false,
         "folder": "",
         "structure": [
             {
@@ -32,10 +34,12 @@
     {
         "class": "ReferenceObject",
         "parent": "DataDef",
+        "isllr": false,
         "folder": ""
     },
     {
         "class": "VariableTable",
+        "isllr": false,
         "structure": [
             {
                 "folder": "Inputs",
@@ -131,7 +135,13 @@
         "class": "Layer",
         "parent": "DataDef",
         "folder": "Layer",
-        "isllr": true
+        "isllr": true,
+        "properties": [
+            {
+                "name": "Comment",
+                "path": "comment.comment"
+            }
+        ]
     },
     {
         "class": "CondContainer",
@@ -171,12 +181,6 @@
     },
     {
         "class": "PanelContainer",
-        "parent": "AContainer",
-        "folder": "",
-        "isllr": true
-    },
-    {
-        "class": "ReferenceContainer",
         "parent": "AContainer",
         "folder": "",
         "isllr": true

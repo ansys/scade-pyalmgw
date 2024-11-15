@@ -155,6 +155,9 @@ def _run_export(
 
     Run the export in a sub-process: required when get_roots must be used
     for example: for printing SCADE Suite diagrams or using SCADE Architect.
+
+    It allows also to test the command line parser for standalone usage and
+    the factory of export classes.
     """
     dst = tmp / ref.name
     cmd = [
@@ -168,12 +171,12 @@ def _run_export(
         cmd.append('-i')
     if version == LLRS.V194:
         cmd.extend(['-v', 'V194'])
-    capture = subprocess.run(cmd, capture_output=True)
-    if capture.stderr:
-        print(capture.stderr.decode('utf-8').strip('\n'))
-    if capture.stdout:
-        print(capture.stdout.decode('utf-8').strip('\n'))
-    return diff_files(ref, dst)
+    status = subprocess.run(cmd, capture_output=True)
+    if status.stderr:
+        print(status.stderr.decode('utf-8').strip('\n'))
+    if status.stdout:
+        print(status.stdout.decode('utf-8').strip('\n'))
+    return status.returncode != 0 or diff_files(ref, dst)
 
 
 def test_eq_sets(local_tmpdir):
@@ -298,19 +301,39 @@ def test_schema_robustness(local_tmpdir, schemas: Tuple[std.Project, suite.Sessi
     print(excinfo.value)
 
 
+@pytest.mark.parametrize(
+    'index, project, args',
+    [
+        [0, 'Unknown/Unknown.vsp', [root_dir / 'tests' / 'Unknown' / 'noschema.json']],
+        [1, 'Schemas/Schemas.etp', []],
+        [2, 'Schemas/Schemas.etp', [root_dir / 'tests' / 'Schemas' / 'path_error_end.json']],
+    ],
+)
+def test_llr_robustness(local_tmpdir, index, project, args):
+    path = root_dir / 'tests' / project
+    # shouldn't be produced
+    dst = local_tmpdir / ('robustness_%d.json' % index)
+    cmd = [
+        sys.executable,
+        root_dir / 'src/ansys/scade/pyalmgw/' / 'llrs.py',
+        str(path),
+        str(dst),
+    ]
+    cmd.extend(args)
+    status = subprocess.run(cmd, capture_output=True)
+    print(status.stderr.decode('utf-8').strip('\n'))
+    print(status.stdout.decode('utf-8').strip('\n'))
+    assert status.returncode != 0
+    assert not dst.exists()
+
+
 if __name__ == '__main__':
-    # if False:
-    #     path = root_dir / 'tests/EqSets/EqSets.etp'
-    #     project, session = load_project_session(path, path)
-    #     test_eq_sets(Path(__file__).parent / 'tmp', (project, session))
+    # sometimes, debugging tests with PTVS fails:
+    # following entry points are workarounds
     if False:
         path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
         project, session = load_project_session(path)
         test_scade_llrs(Path(__file__).parent / 'tmp', (project, session))
-    if False:
-        path = root_dir / 'tests/Records/Records.etp'
-        project, application = load_project_test(path)
-        test_records(Path(__file__).parent / 'tmp', (project, application))
     if False:
         path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
         project, application = load_project_test(path)

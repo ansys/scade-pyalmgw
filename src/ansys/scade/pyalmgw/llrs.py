@@ -648,22 +648,13 @@ class SystemLLRS(AnnotatedLLRS):
 
     def get_item_oid(self, item):
         try:
-            # recent version of SCADE?
-            oid = scade.model.architect.get_oid(item)
+            oid = item.oid
+            file = self.ids[oid]
         except BaseException:
-            oid = None
+            # defensive programming: the schema shouldn't target such objects:
+            # return something volatile, but unique
+            return str(item)
 
-        if oid is None:
-            try:
-                oid = item.oid
-            except BaseException:
-                # TODO: what shall be the oid?
-                return item.name
-
-        file = self.ids[oid]
-        if file is None:
-            traceln(oid + ': undefined in the current project')
-            return oid
         prefix = self.prefixes[file].replace(' ', '%20')
         return 'platform:/resource/' + prefix + '#' + oid
 
@@ -689,10 +680,7 @@ class SystemLLRS(AnnotatedLLRS):
                 match = re.match(line)
                 if match:
                     oid = match.groups()[0]
-                    if oid in self.ids:
-                        traceln(oid + ': Duplicate id')
-                    else:
-                        self.ids[oid] = file
+                    self.ids[oid] = file
             # get file prefix
             prefix = Path(file.pathname).name
             folder = file.folder
@@ -886,7 +874,7 @@ def get_export_class(project: std.Project):
 # -----------------------------------------------------------------------------
 
 
-def main(file, *cmd_line, version=LLRS.V194):
+def main(file, *cmd_line, version=LLRS.V194) -> int:
     project = std.get_roots()[0]
     project_path = Path(project.pathname)
 
@@ -905,7 +893,7 @@ def main(file, *cmd_line, version=LLRS.V194):
         args = parser.parse_args(cmd_line)
     except BaseException as e:
         print(e)
-        return
+        return 1
     if args.version == 'V194':
         version = LLRS.V194
     # make the path relative to the project , when not absolute
@@ -919,8 +907,12 @@ def main(file, *cmd_line, version=LLRS.V194):
             cls.write(d, Path(file))
         except PathError as e:
             print(str(e))
+            return 1
     else:
         print('%s: This kind of project is not supported' % project.pathname)
+        return 1
+
+    return 0
 
 
 # -----------------------------------------------------------------------------
@@ -932,5 +924,7 @@ if __name__ == '__main__':  # pragma: no cover
     declare_project(sys.argv[1])
     import scade.model.architect as system
 
-    main(sys.argv[2], '-s', *sys.argv[3:])
-    print('done')
+    code = main(sys.argv[2], '-s', *sys.argv[3:])
+    if code == 0:
+        print('export successful')
+    sys.exit(code)

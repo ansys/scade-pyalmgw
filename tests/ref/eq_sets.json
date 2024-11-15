@@ -8,75 +8,67 @@
                     "elements": [
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action Action Or.png",
                             "name": "Action Action Or",
                             "oid": "!ed/bb/54D3/7FD4/671a5a8545f",
                             "pathname": "P::Flatten/Net/Action Action Or/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2JiLzU0RDMvN0ZENC82NzFhNWE4NTQ1Zg=="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action Div.png",
                             "name": "Action Div",
                             "oid": "!ed/71/54D3/7FD4/671a59d12430",
                             "pathname": "P::Flatten/Net/Action Div/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzcxLzU0RDMvN0ZENC82NzFhNTlkMTI0MzA="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action State Lt.png",
                             "name": "Action State Lt",
                             "oid": "!ed/8a/54D3/7FD4/671a5a0e4be2",
                             "pathname": "P::Flatten/Net/Action State Lt/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzhhLzU0RDMvN0ZENC82NzFhNWEwZTRiZTI="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Root Add.png",
                             "name": "Root Add",
                             "oid": "!ed/3f/54D3/7FD4/671a590e390b",
                             "pathname": "P::Flatten/Net/Root Add/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzNmLzU0RDMvN0ZENC82NzFhNTkwZTM5MGI="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Root Mul.png",
                             "name": "Root Mul",
                             "oid": "!ed/4d/54D3/7FD4/671a591d3a79",
                             "pathname": "P::Flatten/Net/Root Mul/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzRkLzU0RDMvN0ZENC82NzFhNTkxZDNhNzk="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State Action Init.png",
                             "name": "State Action Init",
                             "oid": "!ed/117/54D3/7FD4/671a5afa35bc",
                             "pathname": "P::Flatten/Net/State Action Init/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzExNy81NEQzLzdGRDQvNjcxYTVhZmEzNWJj"
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State Add.png",
                             "name": "State Add",
                             "oid": "!ed/61/54D3/7FD4/671a59ac2ceb",
                             "pathname": "P::Flatten/Net/State Add/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkLzYxLzU0RDMvN0ZENC82NzFhNTlhYzJjZWI="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State State Not.png",
                             "name": "State State Not",
                             "oid": "!ed/d6/54D3/7FD4/671a5ab558a6",
                             "pathname": "P::Flatten/Net/State State Not/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2Q2LzU0RDMvN0ZENC82NzFhNWFiNTU4YTY="
+                            "scadetype": "equationSet"
                         }
                     ],
                     "name": "Operator Flatten",
@@ -87,75 +79,67 @@
                     "elements": [
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State Add.png",
                             "name": "State Add",
                             "oid": "!ed/e0/3F6A/1110/672e3d1a2a7e",
                             "pathname": "P::Hierarchy/SM1:State1:State1_1/State Add/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2UwLzNGNkEvMTExMC82NzJlM2QxYTJhN2U="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State State Not.png",
                             "name": "State State Not",
                             "oid": "!ed/e4/3F6A/1110/672e3d1a2b1d",
                             "pathname": "P::Hierarchy/SM1:State1:SM2:State2:State2_1/State State Not/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2U0LzNGNkEvMTExMC82NzJlM2QxYTJiMWQ="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/State Action Init.png",
                             "name": "State Action Init",
                             "oid": "!ed/e5/3F6A/1110/672e3d1a43c3",
                             "pathname": "P::Hierarchy/SM1:State1:IfBlock2:else:Else_1/State Action Init/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2U1LzNGNkEvMTExMC82NzJlM2QxYTQzYzM="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action Div.png",
                             "name": "Action Div",
                             "oid": "!ed/e1/3F6A/1110/672e3d1a3e7e",
                             "pathname": "P::Hierarchy/IfBlock1:then:Then_1/Action Div/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2UxLzNGNkEvMTExMC82NzJlM2QxYTNlN2U="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action Action Or.png",
                             "name": "Action Action Or",
                             "oid": "!ed/e3/3F6A/1110/672e3d1a66d0",
                             "pathname": "P::Hierarchy/IfBlock1:then:IfBlock2:else:Else_1/Action Action Or/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2UzLzNGNkEvMTExMC82NzJlM2QxYTY2ZDA="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Action State Lt.png",
                             "name": "Action State Lt",
                             "oid": "!ed/e2/3F6A/1110/672e3d1a5a51",
                             "pathname": "P::Hierarchy/IfBlock1:else:SM2:State2:State2_1/Action State Lt/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2UyLzNGNkEvMTExMC82NzJlM2QxYTVhNTE="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Root Add.png",
                             "name": "Root Add",
                             "oid": "!ed/de/3F6A/1110/672e3d1a5f3a",
                             "pathname": "P::Hierarchy/Net/Root Add/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2RlLzNGNkEvMTExMC82NzJlM2QxYTVmM2E="
+                            "scadetype": "equationSet"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                            "image": "$(ROOT)/tests/EqSets/llr_img/Root Mul.png",
                             "name": "Root Mul",
                             "oid": "!ed/df/3F6A/1110/672e3d1a24ad",
                             "pathname": "P::Hierarchy/Net/Root Mul/",
-                            "scadetype": "equationSet",
-                            "url": "http://localhost:8080/scade_provider/services/_weAhoJITEe-Aj5rcO44ADA/requirements/IWVkL2RmLzNGNkEvMTExMC82NzJlM2QxYTI0YWQ="
+                            "scadetype": "equationSet"
                         }
                     ],
                     "name": "Operator Hierarchy",

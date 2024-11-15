@@ -14,12 +14,10 @@
                                     "elements": [
                                         {
                                             "almtype": "req",
-                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                             "name": "R111-1",
                                             "oid": "7077B90F-9011-43D2-AA41-3065572042F3",
                                             "pathname": "R111-1",
-                                            "scadetype": "record",
-                                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/NzA3N0I5MEYtOTAxMS00M0QyLUFBNDEtMzA2NTU3MjA0MkYz"
+                                            "scadetype": "record"
                                         }
                                     ],
                                     "name": "Folder F111",
@@ -27,12 +25,10 @@
                                 },
                                 {
                                     "almtype": "req",
-                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                     "name": "R11-1",
                                     "oid": "2AC8BC69-C84D-418F-BB96-EC9FECEB21F8",
                                     "pathname": "R11-1",
-                                    "scadetype": "record",
-                                    "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/MkFDOEJDNjktQzg0RC00MThGLUJCOTYtRUM5RkVDRUIyMUY4"
+                                    "scadetype": "record"
                                 }
                             ],
                             "name": "Folder F11",
@@ -43,12 +39,10 @@
                             "elements": [
                                 {
                                     "almtype": "req",
-                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                     "name": "R12-1",
                                     "oid": "6D416D19-B8C0-4EB5-91AE-16C92AC2898F",
                                     "pathname": "R12-1",
-                                    "scadetype": "record",
-                                    "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/NkQ0MTZEMTktQjhDMC00RUI1LTkxQUUtMTZDOTJBQzI4OThG"
+                                    "scadetype": "record"
                                 }
                             ],
                             "name": "Folder F12",
@@ -56,12 +50,10 @@
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                             "name": "R1-1",
                             "oid": "65CBE3B2-FD74-4F7A-8F1F-1DCEF8A7D029",
                             "pathname": "R1-1",
-                            "scadetype": "record",
-                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/NjVDQkUzQjItRkQ3NC00RjdBLThGMUYtMURDRUY4QTdEMDI5"
+                            "scadetype": "record"
                         }
                     ],
                     "name": "Procedure P1",
@@ -78,21 +70,17 @@
                                     "elements": [
                                         {
                                             "almtype": "req",
-                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                             "name": "R211-1",
                                             "oid": "1E145CAF-492E-4F0D-85AB-F482F41635CA",
                                             "pathname": "R211-1",
-                                            "scadetype": "record",
-                                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/MUUxNDVDQUYtNDkyRS00RjBELTg1QUItRjQ4MkY0MTYzNUNB"
+                                            "scadetype": "record"
                                         },
                                         {
                                             "almtype": "req",
-                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                             "name": "R211-2",
                                             "oid": "84732C3E-D00C-4F30-920D-2AC0E57C18B5",
                                             "pathname": "R211-2",
-                                            "scadetype": "record",
-                                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/ODQ3MzJDM0UtRDAwQy00RjMwLTkyMEQtMkFDMEU1N0MxOEI1"
+                                            "scadetype": "record"
                                         }
                                     ],
                                     "name": "Folder F211",
@@ -100,21 +88,17 @@
                                 },
                                 {
                                     "almtype": "req",
-                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                     "name": "R21-2",
                                     "oid": "5618E201-90C2-4F44-B4B6-C18A155B4075",
                                     "pathname": "R21-2",
-                                    "scadetype": "record",
-                                    "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/NTYxOEUyMDEtOTBDMi00RjQ0LUI0QjYtQzE4QTE1NUI0MDc1"
+                                    "scadetype": "record"
                                 },
                                 {
                                     "almtype": "req",
-                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                                     "name": "R22-1",
                                     "oid": "50298336-FBB0-43B4-8015-9EDCE464AFFD",
                                     "pathname": "R22-1",
-                                    "scadetype": "record",
-                                    "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/NTAyOTgzMzYtRkJCMC00M0I0LTgwMTUtOUVEQ0U0NjRBRkZE"
+                                    "scadetype": "record"
                                 }
                             ],
                             "name": "Folder F21",
@@ -122,21 +106,17 @@
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                             "name": "R2-1",
                             "oid": "10193CAD-6C13-4FF6-8333-7CFC8C14C284",
                             "pathname": "R2-1",
-                            "scadetype": "record",
-                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/MTAxOTNDQUQtNkMxMy00RkY2LTgzMzMtN0NGQzhDMTRDMjg0"
+                            "scadetype": "record"
                         },
                         {
                             "almtype": "req",
-                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
                             "name": "R2-2",
                             "oid": "3A3AF8E4-53DC-4A98-8FD7-093526E03C7B",
                             "pathname": "R2-2",
-                            "scadetype": "record",
-                            "url": "http://localhost:8080/scade_provider/services/_FE32IKD1Ee-ALoSz6wLeMA/requirements/M0EzQUY4RTQtNTNEQy00QTk4LThGRDctMDkzNTI2RTAzQzdC"
+                            "scadetype": "record"
                         }
                     ],
                     "name": "Procedure P2",

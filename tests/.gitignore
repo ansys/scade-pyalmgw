@@ -1,5 +1,7 @@
 *.almgr
+*.almgt
 *.llrs
 *.xml
 links.json
 links.*.json
+**/llr_img

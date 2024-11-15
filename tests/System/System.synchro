@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<synchro:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:synchro="http://www.esterel-technologies.com/ns/synchro/1" lastSettingID="1" activeSetting="1">
+  <settings id="1" name="Synchronization with &lt;project>">
+    <properties name="referenced_files" value=""/>
+    <properties name="sync_parameters" value=""/>
+    <properties name="selected_elements_ids"/>
+    <properties name="synchronization_direction" value="sync"/>
+    <properties name="custom_synchronization_id" value="com.esterel.scsys.synchronization.default"/>
+    <properties name="synchronization_kind" value="ArchitectSuite"/>
+    <properties name="import_into_package" value=""/>
+    <properties name="push_selected_elements_ids" value=""/>
+  </settings>
+</synchro:Root>

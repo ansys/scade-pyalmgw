@@ -15,7 +15,7 @@
                                         {
                                             "almtype": "req",
                                             "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Container.png",
-                                            "image": "$(ROOT)/tests/DisplayLLRS/img/e8203cff-b00c-417e-8429-dc79b45168d6.bmp",
+                                            "image": "$(ROOT)/tests/DisplayLLRS/llr_img/e8203cff-b00c-417e-8429-dc79b45168d6.bmp",
                                             "name": "group",
                                             "oid": "e8203cff-b00c-417e-8429-dc79b45168d6",
                                             "pathname": "group",
@@ -28,7 +28,7 @@
                                                 {
                                                     "almtype": "req",
                                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/TranslationContainer.png",
-                                                    "image": "$(ROOT)/tests/DisplayLLRS/img/84235830-135e-465d-a993-fc57136169f9.bmp",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/84235830-135e-465d-a993-fc57136169f9.bmp",
                                                     "name": "translation",
                                                     "oid": "84235830-135e-465d-a993-fc57136169f9",
                                                     "pathname": "group/translation",
@@ -75,7 +75,7 @@
                                         }
                                     ],
                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
-                                    "image": "$(ROOT)/tests/DisplayLLRS/img/2f8bf707-5f3c-4ded-9994-34e30df59d9f.bmp",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/2f8bf707-5f3c-4ded-9994-34e30df59d9f.bmp",
                                     "name": "layer",
                                     "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f",
                                     "pathname": "layer",
@@ -123,7 +123,7 @@
                                                 {
                                                     "almtype": "req",
                                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/RotationContainer.png",
-                                                    "image": "$(ROOT)/tests/DisplayLLRS/img/abfe46f5-a8bf-4bb3-a003-4833102e56b3.bmp",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/abfe46f5-a8bf-4bb3-a003-4833102e56b3.bmp",
                                                     "name": "empty",
                                                     "oid": "abfe46f5-a8bf-4bb3-a003-4833102e56b3",
                                                     "pathname": "layer/empty",
@@ -170,7 +170,7 @@
                                         }
                                     ],
                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
-                                    "image": "$(ROOT)/tests/DisplayLLRS/img/909a3f1f-bc05-4b35-8bc5-e251d903ca41.bmp",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/909a3f1f-bc05-4b35-8bc5-e251d903ca41.bmp",
                                     "name": "layer1",
                                     "oid": "909a3f1f-bc05-4b35-8bc5-e251d903ca41",
                                     "pathname": "layer1",
@@ -186,7 +186,7 @@
                                                 {
                                                     "almtype": "req",
                                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Container.png",
-                                                    "image": "$(ROOT)/tests/DisplayLLRS/img/c972e9bf-be01-49b6-85d3-e2fbc7319b0f.bmp",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/c972e9bf-be01-49b6-85d3-e2fbc7319b0f.bmp",
                                                     "name": "container",
                                                     "oid": "c972e9bf-be01-49b6-85d3-e2fbc7319b0f",
                                                     "pathname": "layer1/container",
@@ -235,7 +235,7 @@
                                         }
                                     ],
                                     "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
-                                    "image": "$(ROOT)/tests/DisplayLLRS/img/53cab750-2c09-48bf-839f-0f2748bf7584.bmp",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/53cab750-2c09-48bf-839f-0f2748bf7584.bmp",
                                     "name": "layer2",
                                     "oid": "53cab750-2c09-48bf-839f-0f2748bf7584",
                                     "pathname": "layer2",

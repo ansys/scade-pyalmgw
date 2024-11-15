@@ -1,0 +1,242 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "name": "P",
+                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_K4jPkKKjEe-JSMimk7-Xtg",
+                                    "pathname": "System::P",
+                                    "scadetype": "package"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "name": "Component",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_UujEUKKjEe-JSMimk7-Xtg",
+                                                    "pathname": "System::P::Component",
+                                                    "scadetype": "block"
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "section",
+                                                            "elements": [
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "name": "Sub Component",
+                                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_z-UdkKKkEe-JSMimk7-Xtg",
+                                                                    "pathname": "System::P::Component::Sub Component",
+                                                                    "scadetype": "block"
+                                                                }
+                                                            ],
+                                                            "name": "Block Sub Component",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_z-UdkKKkEe-JSMimk7-Xtg:_"
+                                                        }
+                                                    ],
+                                                    "name": "Blocks",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_UujEUKKjEe-JSMimk7-Xtg:Blocks"
+                                                }
+                                            ],
+                                            "name": "Block Component",
+                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_UujEUKKjEe-JSMimk7-Xtg:_"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "Nature",
+                                                            "value": "Architecture"
+                                                        }
+                                                    ],
+                                                    "name": "Root",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_QfCW8KKjEe-JSMimk7-Xtg",
+                                                    "pathname": "System::P::Root",
+                                                    "scadetype": "block"
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "section",
+                                                            "elements": [
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "name": "Nature",
+                                                                            "value": "Low Level Requirement"
+                                                                        }
+                                                                    ],
+                                                                    "name": "Sub Root",
+                                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_V41tMKKjEe-JSMimk7-Xtg",
+                                                                    "pathname": "System::P::Root::Sub Root",
+                                                                    "scadetype": "block"
+                                                                },
+                                                                {
+                                                                    "almtype": "section",
+                                                                    "elements": [
+                                                                        {
+                                                                            "almtype": "section",
+                                                                            "elements": [
+                                                                                {
+                                                                                    "almtype": "req",
+                                                                                    "name": "Sub Sub Root",
+                                                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_qvtUwKKrEe-hkfy2SB6mYQ",
+                                                                                    "pathname": "System::P::Root::Sub Root::Sub Sub Root",
+                                                                                    "scadetype": "block"
+                                                                                }
+                                                                            ],
+                                                                            "name": "Block Sub Sub Root",
+                                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_qvtUwKKrEe-hkfy2SB6mYQ:_"
+                                                                        }
+                                                                    ],
+                                                                    "name": "Blocks",
+                                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_V41tMKKjEe-JSMimk7-Xtg:Blocks"
+                                                                }
+                                                            ],
+                                                            "name": "Block Sub Root",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_V41tMKKjEe-JSMimk7-Xtg:_"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "Component1",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_awYq9aKjEe-JSMimk7-Xtg",
+                                                            "pathname": "System::P::Root::Component1",
+                                                            "scadetype": "part"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "Component2",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_dDeu8KKjEe-JSMimk7-Xtg",
+                                                            "pathname": "System::P::Root::Component2",
+                                                            "scadetype": "part"
+                                                        }
+                                                    ],
+                                                    "name": "Blocks",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_QfCW8KKjEe-JSMimk7-Xtg:Blocks"
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "StateMachine",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_m2N0UKKjEe-JSMimk7-Xtg",
+                                                            "pathname": "System::P::Root::StateMachine",
+                                                            "scadetype": "statemachine"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "Activity",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_DW9Q8KKkEe-JSMimk7-Xtg",
+                                                            "pathname": "System::P::Root::Activity",
+                                                            "scadetype": "activity"
+                                                        }
+                                                    ],
+                                                    "name": "Behaviors",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_QfCW8KKjEe-JSMimk7-Xtg:Behaviors"
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "image": "$(ROOT)/tests/System/llr_img/IBD_Root_1.png",
+                                                            "name": "IBD_Root_1",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_g21r0KKjEe-JSMimk7-Xtg",
+                                                            "pathname": "IBD_Root_1",
+                                                            "scadetype": "ibd"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "image": "$(ROOT)/tests/System/llr_img/IBD_Root_2.png",
+                                                            "name": "IBD_Root_2",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_2cArMKKoEe-hkfy2SB6mYQ",
+                                                            "pathname": "IBD_Root_2",
+                                                            "scadetype": "ibd"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "image": "$(ROOT)/tests/System/llr_img/AD_Activity.png",
+                                                            "name": "AD_Activity",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_DXD-oKKkEe-JSMimk7-Xtg",
+                                                            "pathname": "AD_Activity",
+                                                            "scadetype": "ad"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "image": "$(ROOT)/tests/System/llr_img/SMD_StateMachine.png",
+                                                            "name": "SMD_StateMachine",
+                                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_m2T68aKjEe-JSMimk7-Xtg",
+                                                            "pathname": "SMD_StateMachine",
+                                                            "scadetype": "smd"
+                                                        }
+                                                    ],
+                                                    "name": "Diagrams",
+                                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_QfCW8KKjEe-JSMimk7-Xtg:Diagrams"
+                                                }
+                                            ],
+                                            "name": "Block Root",
+                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_QfCW8KKjEe-JSMimk7-Xtg:_"
+                                        }
+                                    ],
+                                    "name": "Blocks",
+                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_K4jPkKKjEe-JSMimk7-Xtg:Blocks"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "image": "$(ROOT)/tests/System/llr_img/BDD_P_1.png",
+                                            "name": "BDD_P_1",
+                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_ghImgKMwEe-D3ps1A05L-A",
+                                            "pathname": "BDD_P_1",
+                                            "scadetype": "bdd"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "image": "$(ROOT)/tests/System/llr_img/UCD_P_1.png",
+                                            "name": "UCD_P_1",
+                                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.notation#_bqFYAKMwEe-D3ps1A05L-A",
+                                            "pathname": "UCD_P_1",
+                                            "scadetype": "ucd"
+                                        }
+                                    ],
+                                    "name": "Diagrams",
+                                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_K4jPkKKjEe-JSMimk7-Xtg:Diagrams"
+                                }
+                            ],
+                            "name": "Package P",
+                            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_K4jPkKKjEe-JSMimk7-Xtg:_"
+                        }
+                    ],
+                    "name": "Packages",
+                    "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_GzoooKKjEe-JSMimk7-Xtg:_:Packages"
+                }
+            ],
+            "name": "System",
+            "oid": "platform:/resource/System/SCADE%20Architect%20Model%20Files/System.uml#_GzoooKKjEe-JSMimk7-Xtg:_"
+        }
+    ],
+    "name": "System",
+    "path": "$(ROOT)/tests/System/System.etp",
+    "type": "architect"
+}

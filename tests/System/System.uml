@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Blocks" xmlns:DeprecatedElements="http://www.eclipse.org/papyrus/sysml/1.4/SysML/DeprecatedElements" xmlns:Nature="http:///schemas/Nature/_aty_/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/Nature/_aty_/0 pathmap://SCADE_ANNOTATIONS/Nature.profile.uml#SCADE_ANNOTATIONS__Nature__0">
+  <uml:Model xmi:id="_GzoooKKjEe-JSMimk7-Xtg" name="System">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_GzoooaKjEe-JSMimk7-Xtg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCADE_LIBRARIES/SCADE_Library.library.uml#_-8LBt6EHEdyt3aizUshLbA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_K4jPkKKjEe-JSMimk7-Xtg" name="P">
+      <packagedElement xmi:type="uml:Class" xmi:id="_QfCW8KKjEe-JSMimk7-Xtg" name="Root">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_V4w0sKKjEe-JSMimk7-Xtg" name="Sub Root" type="_V41tMKKjEe-JSMimk7-Xtg" aggregation="composite" association="_V41tM6KjEe-JSMimk7-Xtg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_X-cu0KKjEe-JSMimk7-Xtg" name="Component1" type="_UujEUKKjEe-JSMimk7-Xtg" aggregation="composite" association="_awYq8KKjEe-JSMimk7-Xtg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_b_JkIKKjEe-JSMimk7-Xtg" name="Component2" type="_UujEUKKjEe-JSMimk7-Xtg" aggregation="composite" association="_dDdg0KKjEe-JSMimk7-Xtg"/>
+        <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_m2N0UKKjEe-JSMimk7-Xtg" name="StateMachine">
+          <region xmi:type="uml:Region" xmi:id="_m2T68KKjEe-JSMimk7-Xtg" name="Region1">
+            <transition xmi:type="uml:Transition" xmi:id="_swnWMKKjEe-JSMimk7-Xtg" name="Transition" source="_q7-v0KKjEe-JSMimk7-Xtg" target="_qf9iMKKjEe-JSMimk7-Xtg"/>
+            <subvertex xmi:type="uml:State" xmi:id="_qf9iMKKjEe-JSMimk7-Xtg" name="State"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_q7-v0KKjEe-JSMimk7-Xtg" name="Init"/>
+          </region>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_DW9Q8KKkEe-JSMimk7-Xtg" name="Activity">
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_HylHsKKkEe-JSMimk7-Xtg" name="DataFlow1" target="_Fv1z4KKkEe-JSMimk7-Xtg" source="_GJY8UKKkEe-JSMimk7-Xtg"/>
+          <node xmi:type="uml:InitialNode" xmi:id="_FFAuMKKkEe-JSMimk7-Xtg" name="Start1"/>
+          <node xmi:type="uml:FlowFinalNode" xmi:id="_Fv1z4KKkEe-JSMimk7-Xtg" name="FinalFlow1" incoming="_HylHsKKkEe-JSMimk7-Xtg"/>
+          <node xmi:type="uml:DecisionNode" xmi:id="_GJY8UKKkEe-JSMimk7-Xtg" name="Decision1" outgoing="_HylHsKKkEe-JSMimk7-Xtg"/>
+        </ownedBehavior>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_QfIdkaKjEe-JSMimk7-Xtg" name="Root">
+          <generalization xmi:type="uml:Generalization" xmi:id="_QfIdk6KjEe-JSMimk7-Xtg" general="_QfCW8KKjEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_V41tN6KjEe-JSMimk7-Xtg" name="Sub Root" type="_V41tPKKjEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_V4w0sKKjEe-JSMimk7-Xtg" association="_V41tQKKjEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_awYq9KKjEe-JSMimk7-Xtg" name="Component1" type="_awYq9aKjEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_X-cu0KKjEe-JSMimk7-Xtg" association="_awbHMaKjEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_dDeH4aKjEe-JSMimk7-Xtg" name="Component2" type="_dDeu8KKjEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_b_JkIKKjEe-JSMimk7-Xtg" association="_dDeu9KKjEe-JSMimk7-Xtg"/>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_dDeu8KKjEe-JSMimk7-Xtg" name="Component2">
+            <generalization xmi:type="uml:Generalization" xmi:id="_dDeu8qKjEe-JSMimk7-Xtg" general="_UujEUqKjEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_ue0H9aKkEe-JSMimk7-Xtg" name="i" aggregation="composite" redefinedProperty="_ue0H8aKkEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_vs_yVqKkEe-JSMimk7-Xtg" name="o" aggregation="composite" redefinedProperty="_vs_yUqKkEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_z-Xg7KKkEe-JSMimk7-Xtg" name="Sub Component" type="_z-Xg7aKkEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_z-Udl6KkEe-JSMimk7-Xtg" association="_z-Xg8aKkEe-JSMimk7-Xtg"/>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_z-Xg7aKkEe-JSMimk7-Xtg" name="Sub Component">
+              <generalization xmi:type="uml:Generalization" xmi:id="_z-Xg8KKkEe-JSMimk7-Xtg" general="_z-UdnKKkEe-JSMimk7-Xtg"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_z-Xg8aKkEe-JSMimk7-Xtg" name="Association4" redefinedClassifier="_z-UdoKKkEe-JSMimk7-Xtg" memberEnd="_z-Xg7KKkEe-JSMimk7-Xtg _z-Xg9KKkEe-JSMimk7-Xtg">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z-Xg8qKkEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z-Xg86KkEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_z-Xg9KKkEe-JSMimk7-Xtg" name="component" type="_dDeu8KKjEe-JSMimk7-Xtg" association="_z-Xg8aKkEe-JSMimk7-Xtg"/>
+            </nestedClassifier>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_awYq9aKjEe-JSMimk7-Xtg" name="Component1">
+            <generalization xmi:type="uml:Generalization" xmi:id="_awYq96KjEe-JSMimk7-Xtg" general="_UujEUqKjEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_ue0H86KkEe-JSMimk7-Xtg" name="i" aggregation="composite" redefinedProperty="_ue0H8aKkEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_vs_yVKKkEe-JSMimk7-Xtg" name="o" aggregation="composite" redefinedProperty="_vs_yUqKkEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_z-Xg46KkEe-JSMimk7-Xtg" name="Sub Component" type="_z-Xg5KKkEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_z-Udl6KkEe-JSMimk7-Xtg" association="_z-Xg6KKkEe-JSMimk7-Xtg"/>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_z-Xg5KKkEe-JSMimk7-Xtg" name="Sub Component">
+              <generalization xmi:type="uml:Generalization" xmi:id="_z-Xg56KkEe-JSMimk7-Xtg" general="_z-UdnKKkEe-JSMimk7-Xtg"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_z-Xg6KKkEe-JSMimk7-Xtg" name="Association4" redefinedClassifier="_z-UdoKKkEe-JSMimk7-Xtg" memberEnd="_z-Xg46KkEe-JSMimk7-Xtg _z-Xg66KkEe-JSMimk7-Xtg">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z-Xg6aKkEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z-Xg6qKkEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_z-Xg66KkEe-JSMimk7-Xtg" name="component" type="_awYq9aKjEe-JSMimk7-Xtg" association="_z-Xg6KKkEe-JSMimk7-Xtg"/>
+            </nestedClassifier>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_V41tPKKjEe-JSMimk7-Xtg" name="Sub Root">
+            <generalization xmi:type="uml:Generalization" xmi:id="_V41tP6KjEe-JSMimk7-Xtg" general="_V41tOKKjEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_qwAQRqKrEe-hkfy2SB6mYQ" name="Sub Sub Root" type="_qwAQR6KrEe-hkfy2SB6mYQ" aggregation="composite" redefinedProperty="_qvtUx6KrEe-hkfy2SB6mYQ" association="_qwAQS6KrEe-hkfy2SB6mYQ"/>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_qwAQR6KrEe-hkfy2SB6mYQ" name="Sub Sub Root">
+              <generalization xmi:type="uml:Generalization" xmi:id="_qwAQSqKrEe-hkfy2SB6mYQ" general="_qwAQPqKrEe-hkfy2SB6mYQ"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_qwAQS6KrEe-hkfy2SB6mYQ" name="Association5" redefinedClassifier="_qwAQQqKrEe-hkfy2SB6mYQ" memberEnd="_qwAQRqKrEe-hkfy2SB6mYQ _qwAQTqKrEe-hkfy2SB6mYQ">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qwAQTKKrEe-hkfy2SB6mYQ" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qwAQTaKrEe-hkfy2SB6mYQ" key="nature" value="SysML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_qwAQTqKrEe-hkfy2SB6mYQ" name="sub root" type="_V41tPKKjEe-JSMimk7-Xtg" association="_qwAQS6KrEe-hkfy2SB6mYQ"/>
+            </nestedClassifier>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Association" xmi:id="_V41tQKKjEe-JSMimk7-Xtg" name="Association1" redefinedClassifier="_V41tM6KjEe-JSMimk7-Xtg" memberEnd="_V41tN6KjEe-JSMimk7-Xtg _V41tQ6KjEe-JSMimk7-Xtg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_V41tQaKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_V41tQqKjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_V41tQ6KjEe-JSMimk7-Xtg" name="root" type="_QfIdkaKjEe-JSMimk7-Xtg" association="_V41tQKKjEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Association" xmi:id="_awbHMaKjEe-JSMimk7-Xtg" name="Association2" redefinedClassifier="_awYq8KKjEe-JSMimk7-Xtg" memberEnd="_awYq9KKjEe-JSMimk7-Xtg _awbHNKKjEe-JSMimk7-Xtg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_awbHMqKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_awbHM6KjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_awbHNKKjEe-JSMimk7-Xtg" name="root" type="_QfIdkaKjEe-JSMimk7-Xtg" association="_awbHMaKjEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Association" xmi:id="_dDeu9KKjEe-JSMimk7-Xtg" name="Association3" redefinedClassifier="_dDdg0KKjEe-JSMimk7-Xtg" memberEnd="_dDeH4aKjEe-JSMimk7-Xtg _dDeu96KjEe-JSMimk7-Xtg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dDeu9aKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dDeu9qKjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_dDeu96KjEe-JSMimk7-Xtg" name="root" type="_QfIdkaKjEe-JSMimk7-Xtg" association="_dDeu9KKjEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_V41tMKKjEe-JSMimk7-Xtg" name="Sub Root">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_qvjjwKKrEe-hkfy2SB6mYQ" name="Sub Sub Root" type="_qvtUwKKrEe-hkfy2SB6mYQ" aggregation="composite" association="_qvtUw6KrEe-hkfy2SB6mYQ"/>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_V41tOKKjEe-JSMimk7-Xtg" name="Sub Root">
+            <generalization xmi:type="uml:Generalization" xmi:id="_V41tO6KjEe-JSMimk7-Xtg" general="_V41tMKKjEe-JSMimk7-Xtg"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_qvtUx6KrEe-hkfy2SB6mYQ" name="Sub Sub Root" type="_qwAQPqKrEe-hkfy2SB6mYQ" aggregation="composite" redefinedProperty="_qvjjwKKrEe-hkfy2SB6mYQ" association="_qwAQQqKrEe-hkfy2SB6mYQ"/>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_qwAQPqKrEe-hkfy2SB6mYQ" name="Sub Sub Root">
+              <generalization xmi:type="uml:Generalization" xmi:id="_qwAQQaKrEe-hkfy2SB6mYQ" general="_qvtUyKKrEe-hkfy2SB6mYQ"/>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Association" xmi:id="_qwAQQqKrEe-hkfy2SB6mYQ" name="Association5" redefinedClassifier="_qvtUw6KrEe-hkfy2SB6mYQ" memberEnd="_qvtUx6KrEe-hkfy2SB6mYQ _qwAQRaKrEe-hkfy2SB6mYQ">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qwAQQ6KrEe-hkfy2SB6mYQ" source="org.eclipse.papyrus">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qwAQRKKrEe-hkfy2SB6mYQ" key="nature" value="SysML_Nature"/>
+              </eAnnotations>
+              <ownedEnd xmi:type="uml:Property" xmi:id="_qwAQRaKrEe-hkfy2SB6mYQ" name="sub root" type="_V41tOKKjEe-JSMimk7-Xtg" association="_qwAQQqKrEe-hkfy2SB6mYQ"/>
+            </nestedClassifier>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_qvtUwKKrEe-hkfy2SB6mYQ" name="Sub Sub Root">
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_qvtUyKKrEe-hkfy2SB6mYQ" name="Sub Sub Root">
+              <generalization xmi:type="uml:Generalization" xmi:id="_qvtUy6KrEe-hkfy2SB6mYQ" general="_qvtUwKKrEe-hkfy2SB6mYQ"/>
+            </nestedClassifier>
+          </nestedClassifier>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UujEUKKjEe-JSMimk7-Xtg" name="Component">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ueszMKKkEe-JSMimk7-Xtg" name="i" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_vs_yUKKkEe-JSMimk7-Xtg" name="o" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_z-O-AKKkEe-JSMimk7-Xtg" name="Sub Component" type="_z-UdkKKkEe-JSMimk7-Xtg" aggregation="composite" association="_z-Udk6KkEe-JSMimk7-Xtg"/>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_UujEUqKjEe-JSMimk7-Xtg" name="Component">
+          <generalization xmi:type="uml:Generalization" xmi:id="_UujEVKKjEe-JSMimk7-Xtg" general="_UujEUKKjEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_ue0H8aKkEe-JSMimk7-Xtg" name="i" aggregation="composite" redefinedProperty="_ueszMKKkEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_vs_yUqKkEe-JSMimk7-Xtg" name="o" aggregation="composite" redefinedProperty="_vs_yUKKkEe-JSMimk7-Xtg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_z-Udl6KkEe-JSMimk7-Xtg" name="Sub Component" type="_z-UdnKKkEe-JSMimk7-Xtg" aggregation="composite" redefinedProperty="_z-O-AKKkEe-JSMimk7-Xtg" association="_z-UdoKKkEe-JSMimk7-Xtg"/>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_z-UdnKKkEe-JSMimk7-Xtg" name="Sub Component">
+            <generalization xmi:type="uml:Generalization" xmi:id="_z-Udn6KkEe-JSMimk7-Xtg" general="_z-UdmKKkEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+          <nestedClassifier xmi:type="uml:Association" xmi:id="_z-UdoKKkEe-JSMimk7-Xtg" name="Association4" redefinedClassifier="_z-Udk6KkEe-JSMimk7-Xtg" memberEnd="_z-Udl6KkEe-JSMimk7-Xtg _z-Xg4qKkEe-JSMimk7-Xtg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z-Xg4KKkEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z-Xg4aKkEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+            </eAnnotations>
+            <ownedEnd xmi:type="uml:Property" xmi:id="_z-Xg4qKkEe-JSMimk7-Xtg" name="component" type="_UujEUqKjEe-JSMimk7-Xtg" association="_z-UdoKKkEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_z-UdkKKkEe-JSMimk7-Xtg" name="Sub Component">
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_z-UdmKKkEe-JSMimk7-Xtg" name="Sub Component">
+            <generalization xmi:type="uml:Generalization" xmi:id="_z-Udm6KkEe-JSMimk7-Xtg" general="_z-UdkKKkEe-JSMimk7-Xtg"/>
+          </nestedClassifier>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_V41tM6KjEe-JSMimk7-Xtg" name="Association1" memberEnd="_V4w0sKKjEe-JSMimk7-Xtg _V41tNqKjEe-JSMimk7-Xtg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_V41tNKKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_V41tNaKjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_V41tNqKjEe-JSMimk7-Xtg" name="root" type="_QfCW8KKjEe-JSMimk7-Xtg" association="_V41tM6KjEe-JSMimk7-Xtg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_awYq8KKjEe-JSMimk7-Xtg" name="Association2" memberEnd="_X-cu0KKjEe-JSMimk7-Xtg _awYq86KjEe-JSMimk7-Xtg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_awYq8aKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_awYq8qKjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_awYq86KjEe-JSMimk7-Xtg" name="root" type="_QfCW8KKjEe-JSMimk7-Xtg" association="_awYq8KKjEe-JSMimk7-Xtg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_dDdg0KKjEe-JSMimk7-Xtg" name="Association3" memberEnd="_b_JkIKKjEe-JSMimk7-Xtg _dDeH4KKjEe-JSMimk7-Xtg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dDdg0aKjEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dDdg0qKjEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_dDeH4KKjEe-JSMimk7-Xtg" name="root" type="_QfCW8KKjEe-JSMimk7-Xtg" association="_dDdg0KKjEe-JSMimk7-Xtg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_z-Udk6KkEe-JSMimk7-Xtg" name="Association4" memberEnd="_z-O-AKKkEe-JSMimk7-Xtg _z-UdlqKkEe-JSMimk7-Xtg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z-UdlKKkEe-JSMimk7-Xtg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z-UdlaKkEe-JSMimk7-Xtg" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_z-UdlqKkEe-JSMimk7-Xtg" name="component" type="_UujEUKKjEe-JSMimk7-Xtg" association="_z-Udk6KkEe-JSMimk7-Xtg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_qvtUw6KrEe-hkfy2SB6mYQ" name="Association5" memberEnd="_qvjjwKKrEe-hkfy2SB6mYQ _qvtUxqKrEe-hkfy2SB6mYQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qvtUxKKrEe-hkfy2SB6mYQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qvtUxaKrEe-hkfy2SB6mYQ" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_qvtUxqKrEe-hkfy2SB6mYQ" name="sub root" type="_V41tMKKjEe-JSMimk7-Xtg" association="_qvtUw6KrEe-hkfy2SB6mYQ"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoooqKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gzooo6KjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoopKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GzoopaKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/ModelElements#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoopqKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gzoop6KjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Blocks#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzooqKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GzooqaKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/DeprecatedElements#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzooqqKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gzooq6KjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/PortsAndFlows#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoorKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GzooraKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/ConstraintBlocks#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ConstraintBlocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoorqKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gzoor6KjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Activities#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Activities"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoosKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GzoosaKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Allocations#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Allocations"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzoosqKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Gzoos6KjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Requirements#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Requirements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_GzootKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GzootaKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCADE_PROFILES/SCADE.profile.uml#_88hEQTtDEd-Aqb9iwhjfmA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SCADE_PROFILES/SCADE.profile.uml#_Cv7moDs_Ed-XMcE3Rb1Iow"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_HtRmYKKjEe-JSMimk7-Xtg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HtUpsKKjEe-JSMimk7-Xtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCADE_ANNOTATIONS/SyncSystem.profile.uml#SCADE_ANNOTATIONS__SyncSystem__0"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SCADE_ANNOTATIONS/SyncSystem.profile.uml#SCADE_ANNOTATIONS__SyncSystem"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_N460oKM4Ee-4RodsOo84HQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_N49Q0KM4Ee-4RodsOo84HQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCADE_ANNOTATIONS/Nature.profile.uml#SCADE_ANNOTATIONS__Nature__0"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SCADE_ANNOTATIONS/Nature.profile.uml#SCADE_ANNOTATIONS__Nature"/>
+    </profileApplication>
+  </uml:Model>
+  <Blocks:Block xmi:id="_QfIdkKKjEe-JSMimk7-Xtg" base_Class="_QfCW8KKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_QfIdkqKjEe-JSMimk7-Xtg" base_Class="_QfIdkaKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_UujEUaKjEe-JSMimk7-Xtg" base_Class="_UujEUKKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_UujEU6KjEe-JSMimk7-Xtg" base_Class="_UujEUqKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_V41tMaKjEe-JSMimk7-Xtg" base_Class="_V41tMKKjEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_V41tMqKjEe-JSMimk7-Xtg" base_Classifier="_V41tMKKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_V41tOaKjEe-JSMimk7-Xtg" base_Class="_V41tOKKjEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_V41tOqKjEe-JSMimk7-Xtg" base_Classifier="_V41tOKKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_V41tPaKjEe-JSMimk7-Xtg" base_Class="_V41tPKKjEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_V41tPqKjEe-JSMimk7-Xtg" base_Classifier="_V41tPKKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_awYq9qKjEe-JSMimk7-Xtg" base_Class="_awYq9aKjEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_awbHMKKjEe-JSMimk7-Xtg" base_Classifier="_awYq9aKjEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_dDeu8aKjEe-JSMimk7-Xtg" base_Class="_dDeu8KKjEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_dDeu86KjEe-JSMimk7-Xtg" base_Classifier="_dDeu8KKjEe-JSMimk7-Xtg"/>
+  <DeprecatedElements:FlowPort xmi:id="_ue0H8KKkEe-JSMimk7-Xtg" base_Port="_ueszMKKkEe-JSMimk7-Xtg" direction="in"/>
+  <DeprecatedElements:FlowPort xmi:id="_ue0H8qKkEe-JSMimk7-Xtg" base_Port="_ue0H8aKkEe-JSMimk7-Xtg" direction="in"/>
+  <DeprecatedElements:FlowPort xmi:id="_ue0H9KKkEe-JSMimk7-Xtg" base_Port="_ue0H86KkEe-JSMimk7-Xtg" direction="in"/>
+  <DeprecatedElements:FlowPort xmi:id="_ue0H9qKkEe-JSMimk7-Xtg" base_Port="_ue0H9aKkEe-JSMimk7-Xtg" direction="in"/>
+  <DeprecatedElements:FlowPort xmi:id="_vs_yUaKkEe-JSMimk7-Xtg" base_Port="_vs_yUKKkEe-JSMimk7-Xtg" direction="out"/>
+  <DeprecatedElements:FlowPort xmi:id="_vs_yU6KkEe-JSMimk7-Xtg" base_Port="_vs_yUqKkEe-JSMimk7-Xtg" direction="out"/>
+  <DeprecatedElements:FlowPort xmi:id="_vs_yVaKkEe-JSMimk7-Xtg" base_Port="_vs_yVKKkEe-JSMimk7-Xtg" direction="out"/>
+  <DeprecatedElements:FlowPort xmi:id="_vs_yV6KkEe-JSMimk7-Xtg" base_Port="_vs_yVqKkEe-JSMimk7-Xtg" direction="out"/>
+  <Blocks:Block xmi:id="_z-UdkaKkEe-JSMimk7-Xtg" base_Class="_z-UdkKKkEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_z-UdkqKkEe-JSMimk7-Xtg" base_Classifier="_z-UdkKKkEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_z-UdmaKkEe-JSMimk7-Xtg" base_Class="_z-UdmKKkEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_z-UdmqKkEe-JSMimk7-Xtg" base_Classifier="_z-UdmKKkEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_z-UdnaKkEe-JSMimk7-Xtg" base_Class="_z-UdnKKkEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_z-UdnqKkEe-JSMimk7-Xtg" base_Classifier="_z-UdnKKkEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_z-Xg5aKkEe-JSMimk7-Xtg" base_Class="_z-Xg5KKkEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_z-Xg5qKkEe-JSMimk7-Xtg" base_Classifier="_z-Xg5KKkEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_z-Xg7qKkEe-JSMimk7-Xtg" base_Class="_z-Xg7aKkEe-JSMimk7-Xtg"/>
+  <Blocks:PropertySpecificType xmi:id="_z-Xg76KkEe-JSMimk7-Xtg" base_Classifier="_z-Xg7aKkEe-JSMimk7-Xtg"/>
+  <Blocks:Block xmi:id="_qvtUwaKrEe-hkfy2SB6mYQ" base_Class="_qvtUwKKrEe-hkfy2SB6mYQ"/>
+  <Blocks:PropertySpecificType xmi:id="_qvtUwqKrEe-hkfy2SB6mYQ" base_Classifier="_qvtUwKKrEe-hkfy2SB6mYQ"/>
+  <Blocks:Block xmi:id="_qvtUyaKrEe-hkfy2SB6mYQ" base_Class="_qvtUyKKrEe-hkfy2SB6mYQ"/>
+  <Blocks:PropertySpecificType xmi:id="_qvtUyqKrEe-hkfy2SB6mYQ" base_Classifier="_qvtUyKKrEe-hkfy2SB6mYQ"/>
+  <Blocks:Block xmi:id="_qwAQP6KrEe-hkfy2SB6mYQ" base_Class="_qwAQPqKrEe-hkfy2SB6mYQ"/>
+  <Blocks:PropertySpecificType xmi:id="_qwAQQKKrEe-hkfy2SB6mYQ" base_Classifier="_qwAQPqKrEe-hkfy2SB6mYQ"/>
+  <Blocks:Block xmi:id="_qwAQSKKrEe-hkfy2SB6mYQ" base_Class="_qwAQR6KrEe-hkfy2SB6mYQ"/>
+  <Blocks:PropertySpecificType xmi:id="_qwAQSaKrEe-hkfy2SB6mYQ" base_Classifier="_qwAQR6KrEe-hkfy2SB6mYQ"/>
+  <Nature:Nature xmi:id="_V3LEkKM4Ee-4RodsOo84HQ" Nature="Architecture" base_Class="_QfCW8KKjEe-JSMimk7-Xtg"/>
+  <Nature:Nature xmi:id="_alTAkKM4Ee-4RodsOo84HQ" base_Class="_V41tMKKjEe-JSMimk7-Xtg"/>
+</xmi:XMI>

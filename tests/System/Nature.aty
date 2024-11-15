@@ -1,0 +1,60 @@
+-- MIT License
+--
+-- Copyright (c) 2022 ANSYS, Inc. All rights reserved.
+--
+-- Permission is hereby granted, free of charge, to any person obtaining a copy
+-- of this software and associated documentation files (the "Software"), to deal
+-- in the Software without restriction, including without limitation the rights
+-- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-- copies of the Software, and to permit persons to whom the Software is
+-- furnished to do so, subject to the following conditions:
+--
+-- The above copyright notice and this permission notice shall be included in all
+-- copies or substantial portions of the Software.
+--
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-- SOFTWARE.
+
+-- --------------------------------------------------------------------------
+-- notes types
+-- --------------------------------------------------------------------------
+
+Notes-Types { Esterel-Technologies }  DEFINITIONS ::=
+
+BEGIN
+
+Nature ::=
+    SEQUENCE OF {
+	SEQUENCE {
+	    annot_object OID,
+	    name STRING,
+	    information {
+		Nature ENUM {
+		    NT_ENUM_VALUES {"Low Level Requirement", "Architecture", "Derived Low Level Requirement"},
+		    NT_DEFAULT_VALUE "Low Level Requirement",
+		    NT_FIELD_WIDTH  20,
+		    LLR_PROP "Nature"},
+		Description TEXT {
+		    NT_FIELD_HEIGHT 20,
+		    NT_FIELD_WIDTH  60 }
+} } }
+
+END
+
+-- --------------------------------------------------------------------------
+-- annotation rules
+-- --------------------------------------------------------------------------
+
+Annotation-Rules { Esterel-Technologies }  DEFINITIONS ::=
+BEGIN
+
+    Block ::= {
+	{Nature F 0 1}
+    }
+
+END

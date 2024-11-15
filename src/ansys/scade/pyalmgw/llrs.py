@@ -23,10 +23,8 @@
 from abc import ABCMeta, abstractmethod
 from argparse import ArgumentParser
 from base64 import b64encode
-import os
 from pathlib import Path
 from re import compile
-from shutil import copyfile
 import subprocess
 import sys
 
@@ -586,9 +584,8 @@ class ScadeLLRS(AnnotatedLLRS):
     def get_item_image(self, item):
         if not isinstance(item, suite.NetDiagram) and not isinstance(item, suite.EquationSet):
             return None
-        path = Path(self.llr_export.project.pathname).parent / 'img'
-        if not os.access(path.as_posix(), os.F_OK):
-            os.mkdir(path.as_posix())
+        path = Path(self.llr_export.project.pathname).parent / 'llr_img'
+        path.mkdir(exist_ok=True)
         path = (path / (item.name + '.png')).as_posix()
         scade.print(item, path, 'png')
         return path
@@ -675,29 +672,12 @@ class SystemLLRS(AnnotatedLLRS):
         text = _scade_api.call(value, 'toString')
         return text
 
-    def filter_file_name(self, name: str) -> str:
-        if name.isidentifier():
-            return name
-        filter = ''
-        for c in name:
-            filter += '_' if not c.isalnum() and c != '_' else c
-        return filter
-
     def get_item_image(self, item):
         if not isinstance(item, scade.model.architect.Diagram):
             return None
-        # R2019 R2a bug: cannot generate the diagram in a subdirectory
-        #                --> generate in temp then copy the file
-        temp = Path(os.environ['TEMP']) / (self.filter_file_name(item.name) + '.png')
-        path = Path(self.llr_export.project.pathname).parent / 'llr_img'
-        if os.path.basename(sys.executable).lower() != 'stdtcl.exe':
-            # R2019 R2a: crash, do not print the item
-            return path.as_posix()
-        scade.print(item, str(temp), 'png')
-        if not os.access(path.as_posix(), os.F_OK):
-            os.mkdir(path.as_posix())
-        path = path / (item.name + '.png')
-        copyfile(str(temp), str(path))
+        path = Path(self.llr_export.project.pathname).parent / 'llr_img' / (item.name + '.png')
+        path.parent.mkdir(exist_ok=True)
+        scade.print(item, str(path), 'png')
         return path.as_posix()
 
     def cache_ids(self, project):
@@ -785,8 +765,7 @@ class DisplayLLRS(LLRS):
         self.app = DisplayApp(llr_export.project)
         super().__init__(llr_export, 'display', self.app)
 
-        self.img_dir = Path(llr_export.project.pathname).parent / 'img'
-        self.img_dir.mkdir(exist_ok=True)
+        self.img_dir = Path(llr_export.project.pathname).parent / 'llr_img'
         # cache of specifications for which the images have been generated
         self.generated_specs = set()
         # scade display exe
@@ -853,6 +832,7 @@ class DisplayLLRS(LLRS):
         # update the cache, whether the generation succeeds or not
         self.generated_specs.add(spec)
         # call scadedisplayconsole
+        self.img_dir.mkdir(exist_ok=True)
         cmd = [
             str(self.sdyexe),
             'batch',

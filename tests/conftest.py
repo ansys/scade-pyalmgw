@@ -29,7 +29,7 @@ from typing import Tuple
 import pytest
 
 # note: importing apitools modifies sys.path to access SCADE APIs
-from ansys.scade.apitools import declare_project
+import ansys.scade.apitools  # noqa: F401
 
 # must be imported after apitools
 # isort: split
@@ -37,12 +37,6 @@ import scade
 import scade.model.project.stdproject as std
 import scade.model.suite as suite
 import scade.model.testenv as qte
-
-# load en empty project to initialize the SCADE Suite environment,
-# else scade.print does not generate png files
-assert declare_project
-declare_project(str(Path(__file__).parent / 'Empty' / 'Empty.etp'))
-suite.get_roots()
 
 
 @pytest.fixture(scope='session')

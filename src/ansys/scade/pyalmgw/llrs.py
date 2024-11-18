@@ -1148,12 +1148,12 @@ def get_export_class(project: std.Project) -> Optional[LLRExport]:
 
 
 def main(file, *cmd_line, version=LLRS.V194) -> int:
-    """
+    r"""
     Create a surrogate model to the given output file.
 
-    This script is launched by SCADE ALM Gateway as follows::
+    This script is launched by SCADE ALM Gateway as follows:
 
-       scade.exe -script <project> <install path>/llrs.py "main(r'<file>' [, <arg>]*)"
+    ``scade.exe -script <project> <install path>/llrs.py "main(r'<file>' [, <arg>]*)"``
     """
     project = std.get_roots()[0]
     project_path = Path(project.pathname)

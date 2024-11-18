@@ -125,8 +125,10 @@ class StubConnector(Connector):
 
         Parameters
         ----------
-        file : Path
-            Path of the file to produce.
+        path : Path
+            Absolute path where the XML requirements file is saved.
+        pid : int
+            SCADE product process ID.
         """
         stub = self.get_stub_file()
         print('import %s (%d): using stub file %s' % (file, pid, stub))
@@ -140,7 +142,9 @@ class StubConnector(Connector):
         Parameters
         ----------
         links : Path
-            Input ALMGT file.
+            Path of a JSON file that contains the links to add and remove.
+        pid : int
+            SCADE product process ID.
         """
         # 1. merge the traceability deltas into the stub file
         stub = self.get_stub_file()

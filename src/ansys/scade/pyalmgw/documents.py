@@ -20,6 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+Provides means to create a Requirements Document for ALM Gateway.
+
+The classes defined by the module correspond to the the XML schema
+of a Requirements Document.
+"""
 
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional
@@ -42,8 +48,20 @@ class ReqObject:
         # serialization
         self.xml_tag = ''
 
-    # add the element to the dom
     def serialize(self, parent=None) -> Any:
+        """
+        Add the element to the XML DOM.
+
+        Parameters
+        ----------
+        parent : Any
+            Parent element or None if the element to create is the root element.
+
+        Returns
+        -------
+        Any
+            Corresponding XML element.
+        """
         # attributes
         if parent is None:
             elem = etree.Element(self.xml_tag, self.attributes, {}, xmlns=self.scade_req_ns)
@@ -66,37 +84,57 @@ class ReqObject:
         return elem
 
     def parse(self, elem: Any):
+        """
+        Parse the current object from an XML element.
+
+        Parameters
+        ----------
+        elem : Any
+            XML element to parse.
+        """
         # assert elem.tag == self.xml_tag
         pass
 
     @property
     def attributes(self) -> Dict[str, str]:
+        """Return the attributes to be serialized as a dictionary."""
         return {}
 
     @property
     def children(self) -> Dict[str, List[List['Element']]]:
+        """
+        Return the contained elements to be serialized as a dictionary.
+
+        The entries are indexed by their tag, and contain the lists of child elements.
+        """
         return {}
 
 
 class Element(ReqObject):
+    """Base class for ``ReqProject`` and ``Container`` classes."""
+
     def __init__(self, owner: Optional['Element'], identifier: str = '', text: str = ''):
         super().__init__(owner)
         self.identifier = identifier
         self.text = text
 
     def parse(self, elem: Any):
+        """Parse the current object from an XML element."""
         super().parse(elem)
         self.identifier = elem.get('identifier')
         self.text = elem.get('text')
 
     @property
     def attributes(self) -> Dict[str, str]:
+        """Return the attributes to be serialized as a dictionary."""
         attributes_ = super().attributes
         attributes_.update({'identifier': self.identifier, 'text': self.text})
         return attributes_
 
 
 class TraceabilityLink(ReqObject):
+    """Implements the ``TraceabilityLinkEntity`` complex type."""
+
     def __init__(
         self,
         owner: 'ReqProject',
@@ -112,6 +150,7 @@ class TraceabilityLink(ReqObject):
         owner.traceability_links.append(self)
 
     def parse(self, elem: Any):
+        """Parse the current object from an XML element."""
         super().parse(elem)
         self.source = elem.get('source')
         self.target = elem.get('target')
@@ -119,6 +158,7 @@ class TraceabilityLink(ReqObject):
 
     @property
     def attributes(self) -> Dict[str, str]:
+        """Return the attributes to be serialized as a dictionary."""
         attributes_ = super().attributes
         target = self.requirement.id if self.requirement else self.target
         attributes_.update(
@@ -129,7 +169,7 @@ class TraceabilityLink(ReqObject):
 
 class Container(Element):
     """
-    Abstraction for Document, Section and Requirement.
+    Base class for ``ReqDocument``, ``Section``, and ``Requirement`` classes.
 
     Container of hierarchical elements.
     """
@@ -141,11 +181,13 @@ class Container(Element):
 
     @property
     def children(self) -> Dict[str, List[List[Element]]]:
+        """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('children', []).extend([self.sections, self.requirements])
         return children_
 
     def iter_requirements(self) -> Generator['Requirement', Any, Any]:
+        """Iterate through the contained requirements."""
         for requirement in self.requirements:
             yield requirement
             yield from requirement.iter_requirements()
@@ -153,9 +195,11 @@ class Container(Element):
             yield from section.iter_requirements()
 
     def is_empty(self) -> bool:
+        """Return whether a container does not contain requirements."""
         return not self.requirements and all([_.is_empty() for _ in self.sections])
 
     def parse(self, tree: Any):
+        """Parse the current object from an XML element."""
         super().parse(tree)
         children = tree.find('children', self.ns)
         if children is not None:
@@ -168,7 +212,7 @@ class Container(Element):
 
 
 class HierarchyElement(Container):
-    """Abstraction for Section and Requirement."""
+    """Base class for ``Section`` and ``Requirement`` classes."""
 
     def __init__(self, owner, identifier: str = '', text: str = '', description: str = ''):
         super().__init__(owner, identifier, text)
@@ -176,17 +220,19 @@ class HierarchyElement(Container):
 
     @property
     def attributes(self) -> Dict[str, str]:
+        """Return the attributes to be serialized as a dictionary."""
         attributes_ = super().attributes
         attributes_.update({'description': self.description})
         return attributes_
 
     def parse(self, tree: Any):
+        """Parse the current object from an XML element."""
         super().parse(tree)
         self.description = tree.get('description')
 
 
 class Requirement(HierarchyElement):
-    # anonymous_req_count = 0
+    """Implements the ``Requirement`` complex type."""
 
     def __init__(self, owner: Container, id: str = '', *args, **kwargs):
         super().__init__(owner, id, *args, **kwargs)
@@ -195,28 +241,20 @@ class Requirement(HierarchyElement):
 
     @property
     def id(self) -> str:
+        """Return the ID of a requirement."""
         # semantic of base classs' identifier
         return self.identifier
 
     @id.setter
     def id(self, id: str):
+        """Set the ID of a requirement."""
         # semantic of base classs' identifier
         self.identifier = id
 
-    # @classmethod
-    # def valid_id(cls, id: str) -> str:
-    #     if id is None or id == '':
-    #         Requirement.anonymous_req_count += 1
-    #         id = '<Missing Requirement ID>_{0}'.format(Requirement.anonymous_req_count)
-    #     return id
-
-    def parse(self, tree: Any):
-        super().parse(tree)
-        # self.xxx = tree.get('xxx')
-
 
 class Section(HierarchyElement):
-    """
+    """Implements the ``Section`` complex type.
+
     Level of the a document hierarchy.
 
     Persistence:
@@ -232,36 +270,43 @@ class Section(HierarchyElement):
 
     @property
     def number(self) -> str:
+        """Return the section number."""
         # semantic of base classs' identifier
         return self.identifier
 
     @number.setter
     def number(self, number: str):
+        """Set the section number."""
         # semantic of base classs' identifier
         self.identifier = number
 
     @property
     def title(self) -> str:
+        """Return the section title."""
         # semantic of base classs' text
         return self.text
 
     @title.setter
     def title(self, title: str):
+        """Set the section title."""
         # semantic of base classs' text
         self.text = title
 
     @property
     def level(self) -> int:
-        """Number of owners."""
+        """Return the level of a section, defined as its number of owners."""
         return (self.owner.level + 1) if type(self.owner) is Section else 1
 
     @property
     def depth(self) -> int:
+        """Return the maximum depth of a section."""
         return 1 + max([_.depth for _ in self.sections], default=0)
 
 
 class ReqDocument(Container):
     r"""
+    Implements the ``Document`` complex type.
+
     Persistence.
 
     * ``file`` maps to ``identifier``.
@@ -280,10 +325,14 @@ class ReqDocument(Container):
 
     @property
     def path(self) -> Path:
+        """Return the path of the document."""
+        # semantic of base classs' identifier
         return Path(self.identifier)
 
     @path.setter
     def path(self, path: Path):
+        """Set the path of the document."""
+        # semantic of base classs' identifier
         self.identifier = str(path)
 
 
@@ -299,7 +348,14 @@ class ReqProject(Element):
         self.xml_tag = 'ReqProject'
 
     def bind(self) -> List[TraceabilityLink]:
-        """Bind the traceability links."""
+        """
+        Bind the traceability links.
+
+        Returns
+        -------
+        List[TraceabilityLink]
+            Traceability links that can't be resolved.
+        """
         cache = {_.id: _ for doc in self.documents for _ in doc.iter_requirements()}
         unresolved: List[TraceabilityLink] = []
         for link in self.traceability_links:
@@ -310,12 +366,21 @@ class ReqProject(Element):
 
     @property
     def children(self) -> Dict[str, List[List[Element]]]:
+        """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('traceabilityLinks', []).append(self.traceability_links)
         children_.setdefault('documents', []).append(self.documents)
         return children_
 
     def parse(self, root: Any):
+        """
+        Build the project structure from a Requirements Document XMl file.
+
+        Parameters
+        ----------
+        root : Any
+            Root element of the XML DOM.
+        """
         super().parse(root)
         documents = root.find('documents', self.ns)
         if documents is not None:
@@ -329,6 +394,15 @@ class ReqProject(Element):
                 link.parse(elem)
 
     def write(self, path: Optional[Path] = None):
+        """
+        Serialize the project to a Requirements Document XMl file.
+
+        Parameters
+        ----------
+        path : Path
+            Path of the output file. Whene none, the file is saved to
+            current path of the project.
+        """
         if path:
             # save as...
             self.path = path
@@ -339,5 +413,6 @@ class ReqProject(Element):
         tree.write(self.path, pretty_print=True, encoding='utf-8')
 
     def read(self):
+        """Build the project structure from a Requirements Document XMl file."""
         tree = etree.parse(str(self.path), etree.XMLParser())
         self.parse(tree.getroot())

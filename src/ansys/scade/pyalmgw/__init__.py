@@ -22,6 +22,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""Ansys SCADE ALM Gateway Python Toolbox."""
+
 try:
     import importlib.metadata as importlib_metadata
 except ModuleNotFoundError:

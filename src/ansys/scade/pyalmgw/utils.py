@@ -20,20 +20,43 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""Adds logs."""
 
 import json
 from pathlib import Path
+from typing import Any
 
 # debug
 traceon = False
 
 
 def traceln(text: str):
+    """
+    Log test on the standard output.
+
+    Parameters
+    ----------
+    text : string
+        Text to log.
+    """
     if traceon:
         print(text)
 
 
-def read_json(path: Path):
+def read_json(path: Path) -> Any:
+    """
+    Load a ``json`` file.
+
+    Parameters
+    ----------
+    path : Path
+        Path of the input file.
+
+    Returns
+    -------
+    object
+        The content of the file.
+    """
     if traceon:
         # save a copy for debug purposes
         # shutil.copyfile(file, "c:/temp/json.txt")
@@ -41,19 +64,29 @@ def read_json(path: Path):
     try:
         return json.load(path.open())
     except BaseException as e:
-        print(e)
+        print(str(e))
         return None
 
 
-def write_json(object, path: Path) -> bool:
+def write_json(object_: object, path: Path) -> bool:
+    """
+    Write an object to a ``json`` file.
+
+    Parameters
+    ----------
+    object_ : object
+        object to serialize to json.
+    path : Path
+        Path of the output file.
+    """
     if traceon:
         # save a copy for debug purposes
         # shutil.copyfile(file, "c:/temp/json.txt")
         pass
     try:
         with path.open('w') as f:
-            json.dump(object, f, indent=4, sort_keys=True)
+            json.dump(object_, f, indent=4, sort_keys=True)
         return True
     except BaseException as e:
-        print(e)
+        print(str(e))
         return False

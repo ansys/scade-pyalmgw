@@ -85,12 +85,6 @@ lint.ignore = [
     "E501",  # Line too long. Ignoring this so "ruff.formatter" manages line length.
     "D203",  # One blank line required before class docstring.
     "D204",  # One blank line required after class docstring.
-    "D100",
-    "D101",
-    "D102",
-    "D103",
-    "D104",
-    "D105",
 ]
 
 # TODO: "preserve" leads to an error, although it is documented

@@ -29,22 +29,30 @@ This entry point can be registered to Ansys SCADE ALM Gateway to exercise
 the commands and validate the format of the exchanged files.
 """
 
-import json
 from pathlib import Path
 import shutil
 import sys
 
 from ansys.scade.pyalmgw.connector import Connector
 from ansys.scade.pyalmgw.documents import ReqProject, TraceabilityLink
+from ansys.scade.pyalmgw.utils import read_json
 
 
 class StubProject(ReqProject):
+    """Stubs the ``ReqProject`` class for unit testing and example."""
+
     def merge_links(self, file: Path):
-        try:
-            deltas = json.load(file.open())
-        except OSError as e:
-            print(e)
-            return
+        """
+        Merge the traceability deltas from a the cache file (ALMGT).
+
+        The links are either created or deleted.
+
+        Parameters
+        ----------
+        file : Path
+            Input ALMGT file.
+        """
+        deltas = read_json(file)
 
         # cache existing requirements
         requirements = {_.id: _ for doc in self.documents for _ in doc.iter_requirements()}
@@ -82,7 +90,20 @@ class StubProject(ReqProject):
 
 
 class StubConnector(Connector):
+    """Stubs the ``Connector`` class for unit testing and example."""
+
     def get_stub_file(self) -> Path:
+        """
+        Return a stub requirements file for ALM Gateway.
+
+        The function makes a local copy of a resource file
+        so that it can be modified by the ALMGW commands.
+
+        Returns
+        -------
+        Path
+            Path of the requirements file.
+        """
         assert self.project
         local_stub = Path(self.project.pathname).with_suffix('.almgw.stub.xml')
         if not local_stub.exists():
@@ -90,23 +111,41 @@ class StubConnector(Connector):
             ref_stub = Path(__file__).parent / 'res' / 'stub.xml'
             shutil.copyfile(ref_stub, local_stub)
         return local_stub
-        # return str(Path(__file__).parent.parent.parent.parent.parent / 'tests' / 'res' / 'empty_docs.xml')
 
-    def on_settings(self) -> int:
-        print('settings: command stubbed')
+    def on_settings(self, pid: int) -> int:
+        """Stub the command ``settings``."""
+        print('settings (%d): command stubbed' % pid)
         return -1
 
-    def on_import(self, file: Path) -> int:
+    def on_import(self, file: Path, pid: int) -> int:
+        """
+        Import requirements and traceability links to ALM Gateway.
+
+        The functions copies the stub file to the provided path.
+
+        Parameters
+        ----------
+        file : Path
+            Path of the file to produce.
+        """
         stub = self.get_stub_file()
-        print('import %s: using stub file %s' % (file, stub))
+        print('import %s (%d): using stub file %s' % (file, pid, stub))
         shutil.copyfile(stub, file)
         return 0
 
-    def on_export(self, links: Path) -> int:
+    def on_export(self, links: Path, pid: int) -> int:
+        """
+        Export traceability links and Contributing Elements (surrogate model).
+
+        Parameters
+        ----------
+        links : Path
+            Input ALMGT file.
+        """
         # 1. merge the traceability deltas into the stub file
         stub = self.get_stub_file()
-        print('export %s: using stub file %s' % (links, stub))
-        copy = links.with_suffix('.stub' + links.suffix)
+        print('export %s (%d): using stub file %s' % (links, pid, stub))
+        copy = stub.with_name(links.with_suffix('.stub' + links.suffix).name)
         shutil.copyfile(links, copy)
         doc = StubProject(stub)
         doc.read()
@@ -116,12 +155,14 @@ class StubConnector(Connector):
         self.export_llrs()
         return 1
 
-    def on_manage(self) -> int:
-        print('manage: command stubbed')
+    def on_manage(self, pid: int) -> int:
+        """Stub the command ``manage``."""
+        print('manage (%d): command stubbed' % pid)
         return -1
 
-    def on_locate(self, req: str) -> int:
-        print('locate %s: command stubbed' % req)
+    def on_locate(self, req: str, pid: int) -> int:
+        """Stub the command ``locate``."""
+        print('locate %s (%d): command stubbed' % (req, pid))
         return -1
 
 
@@ -130,8 +171,10 @@ def main():
     print(' '.join(sys.argv))
     connector = StubConnector('stub')
     code = connector.main()
-    exit(code)
+    return code
 
 
 if __name__ == '__main__':
-    main()
+    code = main()
+    print('done')
+    sys.exit(code)

@@ -1,0 +1,62 @@
+[
+    {
+        "source": {
+            "oid": "!ed/3",
+            "path": "<unused> nominal add link"
+        },
+        "target": {
+            "req_id": "REQ_1"
+        },
+        "action": "ADD"
+    },
+    {
+        "source": {
+            "oid": "!ed/1",
+            "path": "<unused> robustness add existing link"
+        },
+        "target": {
+            "req_id": "REQ_1"
+        },
+        "action": "ADD"
+    },
+    {
+        "source": {
+            "oid": "!ed/3",
+            "path": "<unused> robustness add to non existing requirement"
+        },
+        "target": {
+            "req_id": "UNKNOWN"
+        },
+        "action": "ADD"
+    },
+    {
+        "source": {
+            "oid": "!ed/1",
+            "path": "<unused> nominal remove link"
+        },
+        "target": {
+            "req_id": "REQ_1"
+        },
+        "action": "REMOVE"
+    },
+    {
+        "source": {
+            "oid": "!ed/1",
+            "path": "<unused> remove non existing link"
+        },
+        "target": {
+            "req_id": "REQ_2"
+        },
+        "action": "REMOVE"
+    },
+    {
+        "source": {
+            "oid": "!ed/1",
+            "path": "<unused> robustness remove from non existing requirement"
+        },
+        "target": {
+            "req_id": "UNKNOWN"
+        },
+        "action": "REMOVE"
+    }
+]

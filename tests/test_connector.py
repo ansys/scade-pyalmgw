@@ -22,6 +22,8 @@
 
 import filecmp
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -51,36 +53,43 @@ class TestExecuteConnector(cnt.Connector):
         self.manage = False
         self.locate = False
         self.req = None
+        self.pid = 0
 
-    def on_settings(self) -> int:
+    def on_settings(self, pid: int) -> int:
         self.settings = True
+        self.pid = pid
         return self.return_code
 
-    def on_import(self, file: Path) -> int:
+    def on_import(self, file: Path, pid: int) -> int:
         self.import_ = True
         self.file = file
+        self.pid = pid
         return self.return_code
 
-    def on_export(self, links: Path) -> int:
+    def on_export(self, links: Path, pid: int) -> int:
         self.export = True
         self.links = links
+        self.pid = pid
         return self.return_code
 
-    def on_manage(self) -> int:
+    def on_manage(self, pid: int) -> int:
         self.manage = True
+        self.pid = pid
         return self.return_code
 
-    def on_locate(self, req: str) -> int:
+    def on_locate(self, req: str, pid: int) -> int:
         self.locate = True
         self.req = req
+        self.pid = pid
         return self.return_code
 
 
 def test_execute_settings():
     code = 9
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('settings')
+    return_code = connector.execute('settings', 5)
     assert connector.settings
+    assert connector.pid == 5
     assert return_code == code
 
 
@@ -94,10 +103,11 @@ def test_execute_import(file, code, trace):
     req_file = _ref_dir / file
     trace_file = Path('c:/temp/req.xml')
     trace_file.unlink(missing_ok=True)
-    return_code = connector.execute('import', str(req_file))
+    return_code = connector.execute('import', str(req_file), 1)
     utils.traceon = save_trace
     assert connector.import_
     assert return_code == code
+    assert connector.pid == 1
     if trace and code == 0 and req_file.stem != 'unknown':
         if Path('c:/temp').exists():
             assert trace_file.exists()
@@ -116,9 +126,10 @@ def test_execute_export(file, trace):
     links_file = _ref_dir / file
     trace_file = Path('c:/temp/links.json')
     trace_file.unlink(missing_ok=True)
-    return_code = connector.execute('export', str(links_file))
+    return_code = connector.execute('export', str(links_file), 2)
     utils.traceon = save_trace
     assert connector.export
+    assert connector.pid == 2
     assert return_code == code
     if trace and links_file.stem != 'unknown':
         if Path('c:/temp').exists():
@@ -131,8 +142,9 @@ def test_execute_export(file, trace):
 def test_execute_manage():
     code = 32
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('manage')
+    return_code = connector.execute('manage', 3)
     assert connector.manage
+    assert connector.pid == 3
     assert return_code == code
 
 
@@ -140,15 +152,17 @@ def test_execute_locate():
     code = 46
     req = 'REQ_081'
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('locate', req)
+    return_code = connector.execute('locate', req, 4)
     assert connector.locate
     assert connector.req == req
+    assert connector.pid == 4
     assert return_code == code
 
 
 def test_execute_robustness():
     connector = TestExecuteConnector(0, 'ut', None)
-    return_code = connector.execute('unknown', 'a', 'b', 'c')
+    return_code = connector.execute('unknown', 'a', 'b', 'c', 9)
+    assert connector.pid == 0
     assert return_code == -1
 
 
@@ -184,19 +198,19 @@ class TestLLRConnector(cnt.Connector):
         else:
             return super().get_export_class()
 
-    def on_settings(self) -> int:
+    def on_settings(self, pid: int) -> int:
         assert False
 
-    def on_import(self, file: Path) -> int:
+    def on_import(self, file: Path, pid: int) -> int:
         assert False
 
-    def on_export(self, links: Path) -> int:
+    def on_export(self, links: Path, pid: int) -> int:
         assert False
 
-    def on_manage(self) -> int:
+    def on_manage(self, pid: int) -> int:
         assert False
 
-    def on_locate(self, req: str) -> int:
+    def on_locate(self, req: str, pid: int) -> int:
         assert False
 
 
@@ -268,3 +282,43 @@ def test_export_llrs_robustness():
     connector = TestLLRConnector('ut', project)
     path = connector.export_llrs()
     assert path is None
+
+
+@pytest.mark.parametrize(
+    'command, args, pid, expected',
+    [
+        # return code is expected to be unsigned: 4294967295 == -1
+        ('settings', [], 9, 4294967295),
+        ('manage', [], 12, 4294967295),
+        ('locate', ['REQ_ID_031'], 32, 4294967295),
+        ('locate', [], 46, 3),
+        ('import', ['<tmp>/export.xml'], 65, 0),
+        ('export', [str(Path(__file__).parent / 'res' / 'empty.almgt')], 81, 1),
+        ('unknown', [], 82, 4294967295),
+    ],
+)
+def test_main(local_tmpdir, command: str, args: list[str], pid: int, expected: int):
+    # create an empty project
+    path = local_tmpdir / ('main_' + command) / 'empty.vsp'
+    path.parent.mkdir(exist_ok=True)
+    with path.open('w'):
+        pass
+    # use the stub connector
+    cmd = [
+        sys.executable,
+        '-m',
+        'ansys.scade.pyalmgw.stub',
+        '-' + command,
+        Path(path),
+    ]
+    args = [_.replace('<tmp>', str(path.parent)) for _ in args]
+    cmd.extend(args)
+    cmd.append(str(pid))
+    status = subprocess.run(cmd, capture_output=True)
+    if status.stderr:
+        print(status.stderr.decode('utf-8').strip('\n'))
+        assert False
+    out = status.stdout.decode('utf-8').strip('\n')
+    print(out)
+    assert command in out
+    assert status.returncode == expected

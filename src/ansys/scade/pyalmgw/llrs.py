@@ -20,6 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+Generic tool for exporting the surrogate model to an ALM tool.
+
+This tool uses a json schema to find the contributing elements of a model,
+as well the document structure.
+
+Refer to *Model Export Customization* in appendix H of the *SCADE LifeCycle User Manual*
+in the SCADE documentation for a complete reference of the json output file.
+
+.. Note::
+
+   The term ``LLR`` used in this tool comes from its initial version for
+   SCADE Suite. It should be read as Contributing Element for traceability.
+"""
+
 from abc import ABCMeta, abstractmethod
 from argparse import ArgumentParser
 from base64 import b64encode
@@ -27,6 +42,7 @@ from pathlib import Path
 from re import compile
 import subprocess
 import sys
+from typing import Any, List, Optional
 
 # shall modify sys.path to access SCACE APIs
 from ansys.scade.apitools import declare_project
@@ -39,6 +55,7 @@ import scade
 import scade.model.display as sdy
 import scade.model.project.stdproject as std
 import scade.model.suite as suite
+import scade.model.suite.annotation as ann
 import scade.model.testenv as test
 
 from ansys.scade.pyalmgw.utils import read_json, traceln, write_json
@@ -58,7 +75,8 @@ if __name__ != '__main__':  # pragma: no cover
 child = None
 
 
-def read_project_id(project):
+def read_project_id(project: std.Project) -> Optional[str]:
+    """Return the ALM Gateway ID of a project."""
     pathname = str(Path(project.pathname).with_suffix('.almgp'))
     try:
         f = open(pathname, 'r')
@@ -76,6 +94,8 @@ def read_project_id(project):
 
 
 class LLRExport:
+    """Entry point for exporting the surrogate model."""
+
     def __init__(self, project):
         self.schema = None
         self.project = project
@@ -96,19 +116,41 @@ class LLRExport:
         self.classes = {}
         self.version = LLRS.VCUSTOM
 
-    def read_schema(self, pathname):
-        self.schema = read_json(pathname)
+    def read_schema(self, path: Path):
+        """Parse the input configuration schema."""
+        self.schema = read_json(path)
         if self.schema is not None:
             for element in self.schema:
                 self.classes[element.get('class')] = element
 
-    def get_url(self, oid):
+    def get_url(self, oid: str) -> str:
+        """Return the URL corresponding to an oid."""
         return 'http://localhost:8080/scade_provider/services/{0}/requirements/{1}'.format(
             self.project_id, b64encode(oid.encode()).decode()
         )
 
-    # TODO VCUSTOM def dump_model(self, diagrams = False, version = VCUSTOM):
     def dump_model(self, diagrams: bool = False, version: int = 0, empty: str = '') -> dict:
+        """
+        Generate the surrogate model as a dictionary.
+
+        Parameters
+        ----------
+        diagrams : bool
+            Whether the images should be generated, for applicable elements.
+        version : int
+            Target version of the surrogate model.
+
+            * 0 (LLRS.VCUSTOM): Default format + icons + urls. Applies to custom connectors.
+            * 4 (LLRS.V194): Default format for ALM Gateway interface.
+        empty : str
+            Value to use when the value of an attribute is empty. This is required for
+            some target ALM tools, such as DOORS for SCADE releases up to 2025 R1.
+
+        Returns
+        -------
+        dict
+            Surrogate model.
+        """
         assert self.export_classes
 
         # main export class
@@ -140,10 +182,12 @@ class LLRExport:
 
         return model
 
-    def write(self, llrs, pathname):
-        write_json(llrs, pathname)
+    def write(self, llrs: dict, path: Path):
+        """Write the dictionary to a file."""
+        write_json(llrs, path)
 
-    def get_export_classes(self, project: std.Project):
+    def get_export_classes(self, project: std.Project) -> List['LLRS']:
+        """Return the export classes applicable to a project."""
         llrs = []
         products = project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
         # give SCADE Test the priority if mixed projects Test/Suite
@@ -159,6 +203,8 @@ class LLRExport:
 
 
 class LLRS(metaclass=ABCMeta):
+    """Base class for creating a surrogate model for a given product."""
+
     # versions
     VCUSTOM = 0
     V194 = 4
@@ -173,6 +219,11 @@ class LLRS(metaclass=ABCMeta):
         self.re_path = compile(r'^(\w+)(?:{(.*)})?$')
 
     def get_url(self, oid):
+        """
+        Return the URL corresponding to an oid.
+
+        The default implementation uses the generic one.
+        """
         return self.llr_export.get_url(oid)
 
     # -----------------------------------------------------------------------------
@@ -180,49 +231,110 @@ class LLRS(metaclass=ABCMeta):
     # -----------------------------------------------------------------------------
 
     @abstractmethod
-    def get_model_name(self, model):
+    def get_model_name(self, model: Any) -> str:
+        """Return the name of a model."""
         raise NotImplementedError('Abstract method call: get_model_name')
 
     @abstractmethod
-    def get_model_oid(self, model):
+    def get_model_oid(self, model: Any) -> str:
+        """Return the oid of a model."""
         raise NotImplementedError('Abstract method call: get_model_oid')
 
     @abstractmethod
-    def get_item_class(self, item):
+    def get_item_class(self, item: Any) -> str:
+        """Return the class name of a model element."""
         raise NotImplementedError('Abstract method call: get_item_class')
 
     @abstractmethod
-    def get_item_name(self, item):
+    def get_item_name(self, item: Any) -> str:
+        """Return the name of a model element."""
         raise NotImplementedError('Abstract method call: get_item_name')
 
     @abstractmethod
-    def get_item_pathname(self, item):
+    def get_item_pathname(self, item: Any) -> str:
+        """Return the path of a model element."""
         raise NotImplementedError('Abstract method call: get_item_pathname')
 
     @abstractmethod
-    def get_item_oid(self, item):
+    def get_item_oid(self, item: Any) -> str:
+        """Return the oid of a model element."""
         raise NotImplementedError('Abstract method call: get_item_oid')
 
     @abstractmethod
-    def get_item_links(self, item, role, sort):
+    def get_item_links(self, item: Any, role: str, sort: bool) -> List[Any]:
+        """
+        Return the elements linked to a model element for a given association.
+
+        Parameters
+        ----------
+        item : Any
+            Input model element.
+        role : str
+            Name of the association end to consider in the meta-model.
+        sort : bool
+            Whether the output collection should be sorted.
+
+        Returns
+        -------
+        List[Any]
+            List of linked elements.
+        """
         raise NotImplementedError('Abstract method call: get_item_links')
 
     @abstractmethod
-    def get_item_attribute(self, item, name):
+    def get_item_attribute(self, item: Any, name: str) -> str:
+        """
+        Return the value of an attribute of a model element.
+
+        Parameters
+        ----------
+        item : Any
+            Input model element.
+        name : str
+            Name of the attribute to consider in the meta-model.
+
+        Returns
+        -------
+        str
+            Attribute value.
+        """
         raise NotImplementedError('Abstract method call: get_item_attribute')
 
     @abstractmethod
-    def get_item_attributes(self, item):
+    def get_item_attributes(self, item: Any) -> list:
+        """
+        Return the built-in attributes of a model element.
+
+        This applies to annotatable elements: the list contains
+        the annotation values tagged as ``LLR_PROP``.
+        """
         raise NotImplementedError('Abstract method call: get_item_attributes')
 
-    def get_item_image(self, item):
+    def get_item_image(self, item: Any) -> Optional[str]:
+        """Generate the image of a model element and return its path when applicable or None."""
         return None
 
     # -----------------------------------------------------------------------------
     # schema based visit
     # -----------------------------------------------------------------------------
 
-    def new_section(self, name: str, elements: list, oid: str) -> dict:
+    def new_section(self, name: str, elements: List[Any], oid: str) -> dict:
+        """
+        Create a Section entry.
+
+        Parameters
+        ----------
+        name : str
+            Title of the section.
+        elements : List[Any]
+            List of contained elements.
+        oid : str
+            Oid of the section.
+
+        Returns
+        -------
+        dict
+        """
         section = {
             'name': name,
             'almtype': 'section',
@@ -231,14 +343,32 @@ class LLRS(metaclass=ABCMeta):
         }
         return section
 
-    def dump_sub_elements(self, container, item, cls, flatten, parent_oid):
+    def dump_sub_elements(
+        self, container: List[Any], item: Any, cls: str, flatten: bool, parent_oid: str
+    ):
+        """
+        Dump the children of a model element to a list.
+
+        Parameters
+        ----------
+        container : List[Any]
+            List to add the child elements to.
+        item : Any
+            Input model element.
+        cls : str
+            Name of the model element' class.
+        flatten :
+            Whether the child elements are in the same list or in a sub-tree.
+        parent_oid : str
+            Oid of the parent item.
+        """
         global child
 
         if cls is None:
-            return []
+            return
         schema = self.llr_export.classes.get(cls)
         if schema is None:
-            return []
+            return
         parent = schema.get('parent')
         structure = schema.get('structure', [])
         for entry in structure:
@@ -285,6 +415,11 @@ class LLRS(metaclass=ABCMeta):
         self.dump_sub_elements(container, item, parent, flatten, parent_oid)
 
     def decompose_role(self, item, role_expression: str):
+        """
+        Parse a role expressions and return the role name and the list of classes.
+
+        The syntax of a role expression is ``<role> [ '{' <class> [ ',' <class> ]* '}' ]``.
+        """
         m = self.re_path.match(role_expression)
         if not m:
             raise PathError(
@@ -297,7 +432,22 @@ class LLRS(metaclass=ABCMeta):
         names = [_.strip() for _ in classes.split(',')] if classes else None
         return role, names
 
-    def get_attribute(self, item, path):
+    def get_attribute(self, item: Any, path: str) -> Optional[str]:
+        """
+        Return the attribute value of a model element.
+
+        Parameters
+        ----------
+        item : Any
+            Input model element.
+        path : str
+            Path of the attribute.
+
+        Returns
+        -------
+        str | None
+            The value of the attribute or None if an error occurs.
+        """
         path_elements = path.split('.')
         dstitem = item
         for role in path_elements[:-1]:
@@ -327,7 +477,24 @@ class LLRS(metaclass=ABCMeta):
             )
         return value
 
-    def get_links(self, item, path, sort):
+    def get_links(self, item: Any, path: str, sort: bool) -> List[Any]:
+        """
+        Return the linked elements of a model element for a given path.
+
+        Parameters
+        ----------
+        item : Any
+            Input model element.
+        path : str
+            Dot-separated list of association ends of the meta-model.
+        sort : bool
+            Whether the list should be sorted.
+
+        Returns
+        -------
+        List[Any]
+            List of linked elements.
+        """
         roles = path.split('.')
         items = [item]
         for role_expression in roles:
@@ -348,12 +515,28 @@ class LLRS(metaclass=ABCMeta):
         return dstitems
 
     def dump_children(self, container, item, cls, parent_oid):
+        """Dump the child elements as a tree."""
         self.dump_sub_elements(container, item, cls, False, parent_oid)
 
     def dump_siblings(self, container, item, cls, parent_oid):
+        """Dump the child elements as a list."""
         self.dump_sub_elements(container, item, cls, True, parent_oid)
 
-    def dump_item(self, container, item, kind, parent_oid):
+    def dump_item(self, container: List[Any], item: Any, kind: str, parent_oid: str):
+        """
+        Add an entry for a model element.
+
+        Parameters
+        ----------
+        container : List[Any]
+            List to add the element to.
+        item : Any
+            Input model element.
+        kind : str
+            Kind of the model element, that overrides the default if not empty.
+        parent_oid : str
+            Oid of the element's parent.
+        """
         cls = self.get_item_class(item)
         schema = self.llr_export.classes.get(cls) if cls is not None else None
 
@@ -470,13 +653,17 @@ class LLRS(metaclass=ABCMeta):
 
 
 class StdLLRS(LLRS):
+    """Base implementation class for models edited inside SCADE Studio IDE."""
+
     def __init__(self, llr_export: LLRExport, kind, root):
         return super().__init__(llr_export, kind, root)
 
-    def get_item_class(self, item):
+    def get_item_class(self, item: Any) -> str:
+        """Implement ``get_item_class``."""
         return item._class_
 
-    def get_item_links(self, item, role, sort):
+    def get_item_links(self, item: Any, role: str, sort: bool) -> List[Any]:
+        """Implement ``get_item_links``."""
         items = _scade_api.get(item, role)
         if items is None:
             return []
@@ -488,12 +675,15 @@ class StdLLRS(LLRS):
             items.sort(key=lambda elem: self.get_item_name(elem).lower())
         return items
 
-    def get_item_attribute(self, item, name):
+    def get_item_attribute(self, item: Any, name: str) -> str:
+        """Implement ``get_item_attribute``."""
         value = _scade_api.get(item, name)
         return value
 
 
 class AnnotatedLLRS(StdLLRS):
+    """Base implementation class for models that support annotations."""
+
     def __init__(self, llr_export: LLRExport, kind, root, note_types):
         super().__init__(llr_export, kind, root)
         self.note_types = note_types
@@ -502,6 +692,7 @@ class AnnotatedLLRS(StdLLRS):
 
     # helper for suite/system
     def gather_llr_fields(self):
+        """Cache the annotation fields tagged as ``LLR_PROP``."""
         for type in self.note_types:
             attributes = []
             for att in type.ann_att_definitions:
@@ -516,7 +707,8 @@ class AnnotatedLLRS(StdLLRS):
                 # register the note type and its attributes
                 self.llr_fields[type] = attributes
 
-    def get_item_attributes(self, item):
+    def get_item_attributes(self, item: Any) -> list:
+        """Implement ``get_item_attributes``."""
         attributes = []
         try:
             notes = item.ann_notes
@@ -537,21 +729,41 @@ class AnnotatedLLRS(StdLLRS):
         return attributes
 
     @abstractmethod
-    def get_note_value(self, note, attribute):
+    def get_note_value(self, note: ann.AnnNote, attribute: str) -> str:
+        """
+        Return the value of a note attribute.
+
+        Parameters
+        ----------
+        note : ann.AnnNote
+            Input note.
+        attribute : str
+            Name of the attribute.
+
+        Returns
+        -------
+        str
+            Value of the attribute.
+        """
         raise NotImplementedError('Abstract method call: get_note_value')
 
 
 class ScadeLLRS(AnnotatedLLRS):
+    """LLRS implementation for SCADE Suite."""
+
     def __init__(self, llr_export: LLRExport, root):
         return super().__init__(llr_export, 'suite', root, root.ann_note_types)
 
-    def get_model_name(self, model):
+    def get_model_name(self, model: Any) -> str:
+        """Implement ``get_model_name``."""
         return model.name
 
-    def get_model_oid(self, model):
+    def get_model_oid(self, model: Any) -> str:
+        """Implement ``get_model_oid``."""
         return model.name
 
-    def get_item_name(self, item):
+    def get_item_name(self, item: Any) -> str:
+        """Implement ``get_item_name``."""
         try:
             return item.name
         except BaseException:
@@ -570,18 +782,22 @@ class ScadeLLRS(AnnotatedLLRS):
         name = item_path.replace(owner_path, '', 1).strip(':')
         return name
 
-    def get_item_pathname(self, item):
+    def get_item_pathname(self, item: Any) -> str:
+        """Implement ``get_item_pathname``."""
         return item.get_full_path()
 
-    def get_item_oid(self, item):
+    def get_item_oid(self, item: Any) -> str:
+        """Implement ``get_item_oid``."""
         return item.get_oid()
 
     def get_note_value(self, note, attribute):
+        """Implement ``get_note_value``."""
         value = note.get_ann_att_value_by_name(attribute)
         text = value.to_string()
         return text
 
-    def get_item_image(self, item):
+    def get_item_image(self, item: Any) -> Optional[str]:
+        """Implement ``get_item_image``."""
         if not isinstance(item, suite.NetDiagram) and not isinstance(item, suite.EquationSet):
             return None
         path = Path(self.llr_export.project.pathname).parent / 'llr_img'
@@ -592,33 +808,43 @@ class ScadeLLRS(AnnotatedLLRS):
 
 
 class QteLLRS(StdLLRS):
+    """LLRS implementation for SCADE Test."""
+
     def __init__(self, llr_export: LLRExport, root):
         return super().__init__(llr_export, 'test', root)
 
-    def get_model_name(self, model):
+    def get_model_name(self, model: Any) -> str:
+        """Implement ``get_model_name``."""
         return Path(self.llr_export.project.pathname).stem
 
-    def get_model_oid(self, model):
+    def get_model_oid(self, model: Any) -> str:
+        """Implement ``get_model_oid``."""
         return Path(self.llr_export.project.pathname).name
 
-    def get_item_name(self, item):
+    def get_item_name(self, item: Any) -> str:
+        """Implement ``get_item_name``."""
         if isinstance(item, test.Scenario):
             return Path(item.pathname).name
         return item.name
 
-    def get_item_pathname(self, item):
+    def get_item_pathname(self, item: Any) -> str:
+        """Implement ``get_item_pathname``."""
         if isinstance(item, test.Scenario):
             return Path(item.pathname).as_posix()
         return self.get_item_name(item)
 
-    def get_item_oid(self, item):
+    def get_item_oid(self, item: Any) -> str:
+        """Implement ``get_item_oid``."""
         return item.oid
 
-    def get_item_attributes(self, item):
+    def get_item_attributes(self, item: Any) -> list:
+        """Implement ``get_item_attributes``."""
         return []
 
 
 class SystemLLRS(AnnotatedLLRS):
+    """LLRS implementation for SCADE Architect."""
+
     def __init__(self, llr_export: LLRExport, root):
         # dict oid -> FileRef
         self.ids = {}
@@ -629,16 +855,20 @@ class SystemLLRS(AnnotatedLLRS):
             llr_export, 'architect', root, root.annotations.schema.ann_note_types
         )
 
-    def get_model_name(self, model):
+    def get_model_name(self, model: Any) -> str:
+        """Implement ``get_model_name``."""
         return model.name
 
-    def get_model_oid(self, model):
+    def get_model_oid(self, model: Any) -> str:
+        """Implement ``get_model_oid``."""
         return self.get_item_oid(model)
 
-    def get_item_name(self, item):
+    def get_item_name(self, item: Any) -> str:
+        """Implement ``get_item_name``."""
         return item.name
 
-    def get_item_pathname(self, item):
+    def get_item_pathname(self, item: Any) -> str:
+        """Implement ``get_item_pathname``."""
         try:
             return item.qualified_name
         except BaseException:
@@ -646,7 +876,8 @@ class SystemLLRS(AnnotatedLLRS):
             # TODO: what shall be the pathname?
             return item.name
 
-    def get_item_oid(self, item):
+    def get_item_oid(self, item: Any) -> str:
+        """Implement ``get_item_oid``."""
         try:
             oid = item.oid
             file = self.ids[oid]
@@ -659,11 +890,13 @@ class SystemLLRS(AnnotatedLLRS):
         return 'platform:/resource/' + prefix + '#' + oid
 
     def get_note_value(self, note, attribute):
+        """Implement ``get_note_value``."""
         value = _scade_api.call(note, 'getAnnAttValueByName', attribute)
         text = _scade_api.call(value, 'toString')
         return text
 
-    def get_item_image(self, item):
+    def get_item_image(self, item: Any) -> Optional[str]:
+        """Implement ``get_item_image``."""
         if not isinstance(item, scade.model.architect.Diagram):
             return None
         path = Path(self.llr_export.project.pathname).parent / 'llr_img' / (item.name + '.png')
@@ -671,7 +904,13 @@ class SystemLLRS(AnnotatedLLRS):
         scade.print(item, str(path), 'png')
         return path.as_posix()
 
-    def cache_ids(self, project):
+    def cache_ids(self, project: std.Project):
+        """
+        Cache all the ids defined in a file.
+
+        It is required to know the resource file where is defined an id
+        to build the URL.
+        """
         files = project.file_refs
         re = compile(r'.*\s+xmi:id="([^"]*)"')
         for file in files:
@@ -698,13 +937,24 @@ class SystemLLRS(AnnotatedLLRS):
 
 
 class DisplayApp:
-    def __init__(self, project):
+    """
+    Top-level class for SCADE Display models.
+
+    A SCADE Display model does not have a "root" class, that is required
+    for defining an export schema.
+
+    This class gives access to the sepeicifations and reference objects
+    contained in a project. It also cache in the loaded instances the properties
+    as new attributes.
+    """
+
+    def __init__(self, project: std.Project):
         self.name = Path(project.pathname).stem
         self.qualified_name = ''
         self.files = []
         self.owner = None
-        for file in project.file_refs:
-            path = Path(file.pathname)
+        for file_ref in project.file_refs:
+            path = Path(file_ref.pathname)
             pathname = path.as_posix()
             if path.suffixes[-1].lower() == '.sgfx':
                 file = sdy.load_sgfx(pathname)
@@ -712,6 +962,7 @@ class DisplayApp:
                 file = sdy.load_ogfx(pathname)
             else:
                 continue
+            # create new attributes
             file.pathname = pathname
             file.name = path.name
             self.files.append(file)
@@ -719,6 +970,7 @@ class DisplayApp:
                 self.cache_properties(file, self, file)
 
     def cache_properties(self, file, owner, item, link=''):
+        """Add the attributes owner, file and qualified_name to the model elements."""
         item.owner = owner
         item.file = file
         item.qualified_name = (
@@ -749,6 +1001,8 @@ class DisplayApp:
 
 
 class DisplayLLRS(LLRS):
+    """LLRS implementation for SCADE Display."""
+
     def __init__(self, llr_export: LLRExport):
         self.app = DisplayApp(llr_export.project)
         super().__init__(llr_export, 'display', self.app)
@@ -759,22 +1013,28 @@ class DisplayLLRS(LLRS):
         # scade display exe
         self.sdyexe = get_scade_home() / 'SCADE Display' / 'bin' / 'ScadeDisplayConsole.exe'
 
-    def get_model_name(self, model):
+    def get_model_name(self, model: Any) -> str:
+        """Implement ``get_model_name``."""
         return model.name
 
-    def get_model_oid(self, model):
+    def get_model_oid(self, model: Any) -> str:
+        """Implement ``get_model_oid``."""
         return model.name
 
-    def get_item_name(self, item):
+    def get_item_name(self, item: Any) -> str:
+        """Implement ``get_item_name``."""
         return item.name
 
-    def get_item_pathname(self, item):
+    def get_item_pathname(self, item: Any) -> str:
+        """Implement ``get_item_pathname``."""
         return item.qualified_name
 
-    def get_item_class(self, item):
+    def get_item_class(self, item: Any) -> str:
+        """Implement ``get_item_class``."""
         return item.__class__.__name__
 
-    def get_item_links(self, item, role, sort):
+    def get_item_links(self, item: Any, role: str, sort: bool) -> List[Any]:
+        """Implement ``get_item_links``."""
         items = item.__dict__[role]
         if items is None:
             return []
@@ -785,7 +1045,8 @@ class DisplayLLRS(LLRS):
             items.sort(key=lambda elem: self.get_item_name(elem).lower())
         return items
 
-    def get_item_oid(self, item):
+    def get_item_oid(self, item: Any) -> str:
+        """Implement ``get_item_oid``."""
         # prefix = self.prefixes[item.file.pathname].replace(' ', '%20')
         if isinstance(item, sdy.Specification):
             return item.name
@@ -797,14 +1058,17 @@ class DisplayLLRS(LLRS):
             except BaseException:
                 return ''
 
-    def get_item_attribute(self, item, name):
+    def get_item_attribute(self, item: Any, name: str) -> str:
+        """Implement ``get_item_attribute``."""
         value = getattr(item, name, '')
         return value
 
-    def get_item_attributes(self, item):
+    def get_item_attributes(self, item: Any) -> list:
+        """Implement ``get_item_attributes``."""
         return []
 
-    def get_item_image(self, item):
+    def get_item_image(self, item: Any) -> Optional[str]:
+        """Implement ``get_item_image``."""
         # only containers can have images
         if not isinstance(item, sdy.AContainer):
             return None
@@ -814,6 +1078,7 @@ class DisplayLLRS(LLRS):
         return path.as_posix() if path.exists() else None
 
     def export_images(self, spec: sdy.Specification):
+        """Generate the all the images of a specification."""
         if spec in self.generated_specs:
             # already generated
             return
@@ -849,12 +1114,15 @@ class DisplayLLRS(LLRS):
 
 
 class PathError(BaseException):
+    """Exception for erroneous paths in schemas."""
+
     def __init__(self, path, message, **kwargs):
         super().__init__(**kwargs)
         self.path = path
         self.message = message
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Return the string representation of the exception."""
         return '{0}: {1}'.format(self.path, self.message)
 
 
@@ -863,7 +1131,12 @@ class PathError(BaseException):
 # -----------------------------------------------------------------------------
 
 
-def get_export_class(project: std.Project):
+def get_export_class(project: std.Project) -> Optional[LLRExport]:
+    """
+    Create an instance of ``LLRExport`` for the input project.
+
+    The function returns ``None`` when the project is not suitable for creating a surrogate model.
+    """
     # backward compatibility
     export_class = LLRExport(project)
     return export_class if export_class.valid else None
@@ -875,6 +1148,13 @@ def get_export_class(project: std.Project):
 
 
 def main(file, *cmd_line, version=LLRS.V194) -> int:
+    """
+    Create a surrogate model to the given output file.
+
+    This script is launched by SCADE ALM Gateway as follows::
+
+       scade.exe -script <project> <install path>/llrs.py "main(r'<file>' [, <arg>]*)"
+    """
     project = std.get_roots()[0]
     project_path = Path(project.pathname)
 
@@ -916,7 +1196,7 @@ def main(file, *cmd_line, version=LLRS.V194) -> int:
 
 
 # -----------------------------------------------------------------------------
-# unit test
+# unit test or debug
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':  # pragma: no cover

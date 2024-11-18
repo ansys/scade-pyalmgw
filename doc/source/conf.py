@@ -43,12 +43,13 @@ html_theme_options = {
         'own_page_level': 'function',
         'class_content': 'both',  # documentation in https://sphinxdocs.ansys.com/version/stable/user-guide/autoapi.html
         'member_order': 'alphabetical',
-        'ignore': ['*/src/ansys/scade/wux/impl/*', '*/src/ansys/scade/wux/test/*'],
+        'ignore': ['*/src/ansys/scade/pyalmgw/stub*', '*/src/ansys/scade/pyalmgw/test/*'],
     },
 }
 
 # Configuration for Sphinx autoapi
 # TODO autoapi_render_in_single_page = ["class", "enum", "exception", "function"]
+suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions
 extensions = [

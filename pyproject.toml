@@ -39,7 +39,9 @@ build = [
 tests = [
     # 8.0.2 at most: https://github.com/microsoft/PTVS/issues/7853
     "pytest==8.0.2",
-    "pytest-cov==5.0.0"
+    "pytest-cov==5.0.0",
+    # required for SCADE Display API
+    "pyparsing",
 ]
 doc = [
     "ansys-sphinx-theme[autoapi]==1.0.9",

@@ -88,8 +88,8 @@ The properties of a class are described in the list ``properties``. Each propert
 
 * ``name``: Name of the property to be created. It is possible to declare associations by adding a prefix to the name:
 
-  * ``#name``: The value is the oid of the entity accessed by the path or empty if the entity is optional.
-  * ``@name``: The value is the pathname of the entity accessed by the path or empty if the entity is optional.
+  * ``#name``: The value is the OID of the entity accessed by the path or empty if the entity is optional.
+  * ``@name``: The value is the path of the entity accessed by the path or empty if the entity is optional.
 
 * ``path``: Path of the attribute in the model. It is possible to use roles thanks to a dotted notation provided there aren't any collections.
 
@@ -124,7 +124,7 @@ an additional property ``Type`` containing the name of the type.
     }
 
 Each instance of ``LocalVariable`` leads to a new requirement in the document
-with an additional property ``#Type`` containing the oid of the type.
+with an additional property ``#Type`` containing the OID of the type.
 
 **Example 3:**
 
@@ -254,7 +254,7 @@ inputs, hidden inputs and outputs. Hidden inputs are declared as ``"input"``.
         "isllr": true
     }
 
-Each instance of ``Transition`` is a LLR. Their children, e.g. forked transitions,
+Each instance of ``Transition`` is a LLR. Their children, for example forked transitions,
 are added as sibling items, avoiding numbering issues or extra complexity.
 
 **Example 4:**

@@ -23,7 +23,7 @@
 """
 Provides means to create a Requirements Document for ALM Gateway.
 
-The classes defined by the module correspond to the the XML schema
+The classes defined by the module correspond to the XML schema
 of a Requirements Document.
 """
 

@@ -12,7 +12,7 @@ The connector executable should implement 5 commands:
 * ``import``: Import the requirements and traceability data from the ALM tool. The connector should deliver
   these data in an intermediate XML file.
 * ``export``: Export the surrogate model and the updated traceability data to the ALM tool. The connector should
-  reade the traceability updates from an intermediate json file.
+  read the traceability updates from an intermediate json file.
 * ``manage``: Open the ALM tool user interface.
 * ``locate``: Open the ALM tool user interface and display the specified requirement.
 

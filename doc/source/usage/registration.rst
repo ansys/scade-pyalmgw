@@ -24,8 +24,8 @@ And register this function as a script entry, for example in ``pyproject.toml``:
 
 The installation of the package with ``pip`` produces ``my_connector.exe`` in the Python environment's ``Scripts`` directory.
 
-Registration for SCADE LifeCycle ALM Gateway 2025 R1 and above
---------------------------------------------------------------
+Registration for SCADE LifeCycle ALM Gateway 2025 R1 and greater
+----------------------------------------------------------------
 
 Create a function to retrieve the name of your connector and its executable path,
 for example in ``__init__.py``::

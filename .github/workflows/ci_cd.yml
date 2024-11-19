@@ -72,7 +72,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        scade-version: ['25.1']
+        scade-version: ['24.2']
       fail-fast: false
     steps:
       - name: "Install Git and clone project"

@@ -27,13 +27,14 @@ import sys
 
 import pytest
 
+import ansys.scade.pyalmgw as pyalmgw
 import ansys.scade.pyalmgw.connector as cnt
 import ansys.scade.pyalmgw.llrs as llrs
 import ansys.scade.pyalmgw.utils as utils
 from tests.conftest import load_project, load_project_session, std, suite
 
-_root_dir = Path(__file__).parent.parent
-_test_dir = _root_dir / 'tests'
+_pyalmgw_dir = Path(pyalmgw.__file__).parent
+_test_dir = Path(__file__).parent.parent / 'tests'
 _ref_dir = _test_dir / 'ref'
 _settings_dir = _test_dir / 'LLRSettings'
 
@@ -249,7 +250,7 @@ def test_get_llr_default_schema(products, expected):
     [
         (
             _settings_dir / 'Default.etp',
-            _root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'eqsets.json',
+            _pyalmgw_dir / 'res/schemas' / 'eqsets.json',
         ),
         (_settings_dir / 'Relative.etp', _settings_dir / 'relative.json'),
         (_settings_dir / 'Absolute.etp', 'c:/absolute.json'),

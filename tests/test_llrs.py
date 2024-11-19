@@ -37,15 +37,17 @@ import scade.model.project.stdproject as std
 import scade.model.suite as suite
 import scade.model.testenv as qte
 
+import ansys.scade.pyalmgw as pyalmgw
 from ansys.scade.pyalmgw.llrs import LLRS, LLRExport, PathError, QteLLRS, ScadeLLRS
 from tests.conftest import load_project, load_project_session, load_project_test
 
-root_dir = Path(__file__).parent.parent
+_pyalmgw_dir = Path(pyalmgw.__file__).parent
+_root_dir = Path(__file__).parent.parent
 
 
 @pytest.fixture(scope='session')
 def display() -> std.Project:
-    path = root_dir / 'tests/Display/Display.etp'
+    path = _root_dir / 'tests/Display/Display.etp'
     project = load_project(path)
     return project
 
@@ -53,7 +55,7 @@ def display() -> std.Project:
 @pytest.fixture(scope='session')
 def qte_llrs() -> Tuple[std.Project, qte.TestApplication]:
     # unique model for these tests
-    path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
+    path = _root_dir / 'tests/QteLLRS/QteLLRS.etp'
     project, application = load_project_test(path)
     return project, application
 
@@ -61,14 +63,14 @@ def qte_llrs() -> Tuple[std.Project, qte.TestApplication]:
 @pytest.fixture(scope='session')
 def scade_llrs() -> Tuple[std.Project, suite.Session]:
     # unique model for these tests
-    path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
+    path = _root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
     project, session = load_project_session(path, path)
     return project, session
 
 
 @pytest.fixture(scope='session')
 def display_llrs() -> std.Project:
-    path = root_dir / 'tests/DisplayLLRS/DisplayLLRS.etp'
+    path = _root_dir / 'tests/DisplayLLRS/DisplayLLRS.etp'
     project = load_project(path)
     return project
 
@@ -76,7 +78,7 @@ def display_llrs() -> std.Project:
 @pytest.fixture(scope='session')
 def schemas() -> Tuple[std.Project, suite.Session]:
     # unique model for these tests
-    path = root_dir / 'tests/Schemas/Schemas.etp'
+    path = _root_dir / 'tests/Schemas/Schemas.etp'
     project, session = load_project_session(path, path)
     return project, session
 
@@ -85,9 +87,15 @@ def cmp_file(reference: Path, result: Path, n=3, linejunk=None):
     """Return the differences between the reference and the result file."""
     # reference: replace $(ROOT) and $(SCADE) with runtime data
     ref_lines = reference.open().read().split('\n')
-    root = root_dir.as_posix()
+    root = _root_dir.as_posix()
+    pyalmgw_home = _pyalmgw_dir.as_posix()
     scade_home = get_scade_home().as_posix()
-    ref_lines = [_.replace('$(ROOT)', root).replace('$(SCADE)', scade_home) for _ in ref_lines]
+    ref_lines = [
+        _.replace('$(ROOT)', root)
+        .replace('$(SCADE)', scade_home)
+        .replace('$(PYALMGW)', pyalmgw_home)
+        for _ in ref_lines
+    ]
     with result.open() as f:
         if linejunk:
             res_lines = [_ for _ in f if not linejunk(_)]
@@ -162,7 +170,7 @@ def _run_export(
     dst = tmp / ref.name
     cmd = [
         sys.executable,
-        root_dir / 'src/ansys/scade/pyalmgw/' / 'llrs.py',
+        _pyalmgw_dir / 'llrs.py',
         str(path),
         str(dst),
         str(schema),
@@ -181,23 +189,23 @@ def _run_export(
 
 def test_eq_sets(local_tmpdir):
     """Test esqets.json schema."""
-    img = root_dir / 'tests' / 'EqSets' / 'llr_img'
+    img = _root_dir / 'tests' / 'EqSets' / 'llr_img'
     if img.exists():
         shutil.rmtree(img)
-    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'eqsets.json'
-    ref = root_dir / 'tests' / 'ref' / 'eq_sets.json'
-    path = root_dir / 'tests/EqSets/EqSets.etp'
+    schema = _pyalmgw_dir / 'res' / 'schemas' / 'eqsets.json'
+    ref = _root_dir / 'tests' / 'ref' / 'eq_sets.json'
+    path = _root_dir / 'tests/EqSets/EqSets.etp'
     failure = _run_export(path, schema, ref, local_tmpdir, diagrams=True)
     assert not failure
 
 
 def test_scade_llrs(local_tmpdir, scade_llrs: Tuple[std.Project, suite.Session]):
     """Test ScadeLLRS."""
-    img = root_dir / 'tests' / 'EqSets' / 'llr_img'
+    img = _root_dir / 'tests' / 'EqSets' / 'llr_img'
     if img.exists():
         shutil.rmtree(img)
-    schema = root_dir / 'tests' / 'ScadeLLRS' / 'scade_all.json'
-    ref = root_dir / 'tests' / 'ref' / 'scade_llrs.json'
+    schema = _root_dir / 'tests' / 'ScadeLLRS' / 'scade_all.json'
+    ref = _root_dir / 'tests' / 'ref' / 'scade_llrs.json'
     cls = TestLLRExportSuite(*scade_llrs)
     # diagrams are included in the result json file but not generated
     failure = _call_export(cls, schema, ref, local_tmpdir, diagrams=True, empty='<empty>')
@@ -206,17 +214,17 @@ def test_scade_llrs(local_tmpdir, scade_llrs: Tuple[std.Project, suite.Session])
 
 def test_records(local_tmpdir):
     """Test esqets.json schema."""
-    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'records.json'
-    ref = root_dir / 'tests' / 'ref' / 'records.json'
-    path = root_dir / 'tests/Records/Records.etp'
+    schema = _pyalmgw_dir / 'res' / 'schemas' / 'records.json'
+    ref = _root_dir / 'tests' / 'ref' / 'records.json'
+    path = _root_dir / 'tests/Records/Records.etp'
     failure = _run_export(path, schema, ref, local_tmpdir)
     assert not failure
 
 
 def test_qte_llrs(local_tmpdir, qte_llrs: Tuple[std.Project, qte.TestApplication]):
     """Test QteLLRS."""
-    schema = root_dir / 'tests' / 'QteLLRS' / 'qte_all.json'
-    ref = root_dir / 'tests' / 'ref' / 'qte_llrs.json'
+    schema = _root_dir / 'tests' / 'QteLLRS' / 'qte_all.json'
+    ref = _root_dir / 'tests' / 'ref' / 'qte_llrs.json'
     cls = TestLLRExportTest(*qte_llrs)
     failure = _call_export(cls, schema, ref, local_tmpdir, diagrams=True)
     assert not failure
@@ -224,8 +232,8 @@ def test_qte_llrs(local_tmpdir, qte_llrs: Tuple[std.Project, qte.TestApplication
 
 def test_display(local_tmpdir, display: std.Project):
     """Test DisplayLLRS."""
-    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'display.json'
-    ref = root_dir / 'tests' / 'ref' / 'display.json'
+    schema = _pyalmgw_dir / 'res' / 'schemas' / 'display.json'
+    ref = _root_dir / 'tests' / 'ref' / 'display.json'
     cls = LLRExport(display)
     failure = _call_export(cls, schema, ref, local_tmpdir)
     assert not failure
@@ -233,11 +241,11 @@ def test_display(local_tmpdir, display: std.Project):
 
 def test_display_llrs(local_tmpdir, display_llrs: std.Project):
     """Test DisplayLLRS."""
-    img = root_dir / 'tests' / 'ScadeLLRS' / 'llr_img'
+    img = _root_dir / 'tests' / 'ScadeLLRS' / 'llr_img'
     if img.exists():
         shutil.rmtree(img)
-    schema = root_dir / 'tests' / 'DisplayLLRS' / 'sample.json'
-    ref = root_dir / 'tests' / 'ref' / 'display_llrs.json'
+    schema = _root_dir / 'tests' / 'DisplayLLRS' / 'sample.json'
+    ref = _root_dir / 'tests' / 'ref' / 'display_llrs.json'
     cls = LLRExport(display_llrs)
     failure = _call_export(cls, schema, ref, local_tmpdir, diagrams=True)
     assert not failure
@@ -245,12 +253,12 @@ def test_display_llrs(local_tmpdir, display_llrs: std.Project):
 
 def test_system(local_tmpdir):
     """Test System."""
-    img = root_dir / 'tests' / 'System' / 'llr_img'
+    img = _root_dir / 'tests' / 'System' / 'llr_img'
     if img.exists():
         shutil.rmtree(img)
-    schema = root_dir / 'src/ansys/scade/pyalmgw/res/schemas' / 'system.json'
-    ref = root_dir / 'tests' / 'ref' / 'system.json'
-    path = root_dir / 'tests/System/System.etp'
+    schema = _pyalmgw_dir / 'res' / 'schemas' / 'system.json'
+    ref = _root_dir / 'tests' / 'ref' / 'system.json'
+    path = _root_dir / 'tests/System/System.etp'
     failure = _run_export(path, schema, ref, local_tmpdir, version=LLRS.V194, diagrams=True)
     assert not failure
 
@@ -275,8 +283,8 @@ def test_system(local_tmpdir):
 )
 def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session], schema: str):
     """Test schema capabilities."""
-    path = root_dir / 'tests' / 'Schemas' / schema
-    ref = root_dir / 'tests' / 'ref' / ('schema_' + schema)
+    path = _root_dir / 'tests' / 'Schemas' / schema
+    ref = _root_dir / 'tests' / 'ref' / ('schema_' + schema)
     cls = TestLLRExportSuite(*schemas)
     failure = _call_export(cls, path, ref, local_tmpdir, version=LLRS.V194, empty='<empty>')
     assert not failure
@@ -293,7 +301,7 @@ def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session]
 )
 def test_schema_robustness(local_tmpdir, schemas: Tuple[std.Project, suite.Session], schema: str):
     """Test schema capabilities."""
-    path = root_dir / 'tests' / 'Schemas' / schema
+    path = _root_dir / 'tests' / 'Schemas' / schema
     cls = TestLLRExportSuite(*schemas)
     cls.read_schema(path)
     with pytest.raises(PathError) as excinfo:
@@ -304,18 +312,18 @@ def test_schema_robustness(local_tmpdir, schemas: Tuple[std.Project, suite.Sessi
 @pytest.mark.parametrize(
     'index, project, args',
     [
-        [0, 'Unknown/Unknown.vsp', [root_dir / 'tests' / 'Unknown' / 'noschema.json']],
+        [0, 'Unknown/Unknown.vsp', [_root_dir / 'tests' / 'Unknown' / 'noschema.json']],
         [1, 'Schemas/Schemas.etp', []],
-        [2, 'Schemas/Schemas.etp', [root_dir / 'tests' / 'Schemas' / 'path_error_end.json']],
+        [2, 'Schemas/Schemas.etp', [_root_dir / 'tests' / 'Schemas' / 'path_error_end.json']],
     ],
 )
 def test_llr_robustness(local_tmpdir, index, project, args):
-    path = root_dir / 'tests' / project
+    path = _root_dir / 'tests' / project
     # shouldn't be produced
     dst = local_tmpdir / ('robustness_%d.json' % index)
     cmd = [
         sys.executable,
-        root_dir / 'src/ansys/scade/pyalmgw/' / 'llrs.py',
+        _pyalmgw_dir / 'llrs.py',
         str(path),
         str(dst),
     ]
@@ -331,23 +339,23 @@ if __name__ == '__main__':
     # sometimes, debugging tests with PTVS fails:
     # following entry points are workarounds
     if False:
-        path = root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
+        path = _root_dir / 'tests/ScadeLLRS/ScadeLLRS.etp'
         project, session = load_project_session(path)
         test_scade_llrs(Path(__file__).parent / 'tmp', (project, session))
     if False:
-        path = root_dir / 'tests/QteLLRS/QteLLRS.etp'
+        path = _root_dir / 'tests/QteLLRS/QteLLRS.etp'
         project, application = load_project_test(path)
         test_qte_llrs(Path(__file__).parent / 'tmp', (project, application))
     if False:
-        path = root_dir / 'tests/Schemas/Schemas.etp'
+        path = _root_dir / 'tests/Schemas/Schemas.etp'
         project, session = load_project_session(path, path)
-        schema = root_dir / 'tests' / 'Schemas' / 'attribute_value.json'
-        ref = root_dir / 'tests' / 'ref' / ('schema_' + schema.name)
+        schema = _root_dir / 'tests' / 'Schemas' / 'attribute_value.json'
+        ref = _root_dir / 'tests' / 'ref' / ('schema_' + schema.name)
         cls = TestLLRExportSuite(project, session)
         failure = _call_export(
-            cls, schema, ref, root_dir / 'tests' / 'tmp', empty='<empty>', version=LLRS.V194
+            cls, schema, ref, _root_dir / 'tests' / 'tmp', empty='<empty>', version=LLRS.V194
         )
     if False:
-        path = root_dir / 'tests/DisplayLLRS/DisplayLLRS.etp'
+        path = _root_dir / 'tests/DisplayLLRS/DisplayLLRS.etp'
         project = load_project(path)
         test_display_llrs(Path(__file__).parent / 'tmp', (project))

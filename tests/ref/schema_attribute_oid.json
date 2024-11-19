@@ -48,6 +48,6 @@
         }
     ],
     "name": "Schemas",
-    "path": "D:/AnsysDev/Nobackup/PyAnsys/pyalmgw/tests/Schemas/Schemas.etp",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
     "type": "suite"
 }

@@ -43,7 +43,7 @@ html_theme_options = {
         'own_page_level': 'function',
         'class_content': 'both',  # documentation in https://sphinxdocs.ansys.com/version/stable/user-guide/autoapi.html
         'member_order': 'alphabetical',
-        'ignore': ['*/src/ansys/scade/pyalmgw/test/*'],
+        'ignore': [],
     },
 }
 

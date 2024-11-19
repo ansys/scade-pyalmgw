@@ -383,7 +383,7 @@
                                                             "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzZhLzYyOTQvQUM1Qy82NzMzNmY3MmVmZA=="
                                                         }
                                                     ],
-                                                    "icon": "$(ROOT)/src/ansys/scade/pyalmgw/res/suite/netDiagram.png",
+                                                    "icon": "$(PYALMGW)/res/suite/netDiagram.png",
                                                     "image": "$(ROOT)/tests/ScadeLLRS/llr_img/Graphical.png",
                                                     "name": "Graphical",
                                                     "oid": "!ed/19/6294/AC5C/67336ec04b3d",
@@ -399,7 +399,7 @@
                                                             "value": "Derived Low Level Requirement"
                                                         }
                                                     ],
-                                                    "icon": "$(ROOT)/src/ansys/scade/pyalmgw/res/suite/textDiagram.png",
+                                                    "icon": "$(PYALMGW)/res/suite/textDiagram.png",
                                                     "name": "Textual",
                                                     "oid": "!ed/35/6294/AC5C/67336ede4e9d",
                                                     "pathname": "P::O/Textual/",

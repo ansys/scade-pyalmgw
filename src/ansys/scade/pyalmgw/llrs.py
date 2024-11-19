@@ -282,7 +282,7 @@ class LLRS(metaclass=ABCMeta):
         raise NotImplementedError('Abstract method call: get_item_links')
 
     @abstractmethod
-    def get_item_attribute(self, item: Any, name: str) -> str:
+    def get_item_attribute(self, item: Any, name: str) -> Any:
         """
         Return the value of an attribute of a model element.
 
@@ -295,7 +295,7 @@ class LLRS(metaclass=ABCMeta):
 
         Returns
         -------
-        str
+        Any
             Attribute value.
         """
         raise NotImplementedError('Abstract method call: get_item_attribute')
@@ -432,7 +432,7 @@ class LLRS(metaclass=ABCMeta):
         names = [_.strip() for _ in classes.split(',')] if classes else None
         return role, names
 
-    def get_attribute(self, item: Any, path: str) -> Optional[str]:
+    def get_attribute(self, item: Any, path: str) -> Any:
         """
         Return the attribute value of a model element.
 
@@ -445,7 +445,7 @@ class LLRS(metaclass=ABCMeta):
 
         Returns
         -------
-        str | None
+        Any
             The value of the attribute or None if an error occurs.
         """
         path_elements = path.split('.')
@@ -547,7 +547,13 @@ class LLRS(metaclass=ABCMeta):
         else:
             isllr = schema.get('isllr', False)
             folder = schema.get('folder')
-            properties = schema.get('properties', [])
+            properties = schema.get('properties', []).copy()
+            # add the inherited properties
+            parent = schema.get('parent')
+            while parent:
+                parent_schema = self.llr_export.classes.get(parent, {})
+                properties.extend(parent_schema.get('properties', []))
+                parent = parent_schema.get('parent')
         if kind is None:
             kind = self.get_item_class(item)
 
@@ -675,9 +681,12 @@ class StdLLRS(LLRS):
             items.sort(key=lambda elem: self.get_item_name(elem).lower())
         return items
 
-    def get_item_attribute(self, item: Any, name: str) -> str:
+    def get_item_attribute(self, item: Any, name: str) -> Any:
         """Implement ``get_item_attribute``."""
         value = _scade_api.get(item, name)
+        if isinstance(value, list):
+            # comments for example
+            value = '\n'.join(str(_) for _ in value)
         return value
 
 

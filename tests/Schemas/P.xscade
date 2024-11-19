@@ -530,7 +530,9 @@
 								</NamedType>
 							</type>
 							<pragmas>
-								<ed:Variable oid="!ed/3bd/6294/AC5C/6734d01b6ad0"/>
+								<ed:Variable oid="!ed/3bd/6294/AC5C/6734d01b6ad0" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/8">
+									<comment>Comment for b</comment>
+								</ed:Variable>
 							</pragmas>
 						</Variable>
 						<Variable name="f">
@@ -554,7 +556,10 @@
 								</NamedType>
 							</type>
 							<pragmas>
-								<ed:Variable oid="!ed/3bf/6294/AC5C/6734d01b4111"/>
+								<ed:Variable oid="!ed/3bf/6294/AC5C/6734d01b4111" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/8">
+									<comment>No</comment>
+									<comment>comment?</comment>
+								</ed:Variable>
 							</pragmas>
 						</Variable>
 					</inputs>

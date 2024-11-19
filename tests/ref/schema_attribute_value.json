@@ -9,6 +9,10 @@
                         {
                             "name": "Type",
                             "value": "Bool"
+                        },
+                        {
+                            "name": "Comment",
+                            "value": "Comment for b"
                         }
                     ],
                     "name": "b",
@@ -22,6 +26,10 @@
                         {
                             "name": "Type",
                             "value": "Real"
+                        },
+                        {
+                            "name": "Comment",
+                            "value": "<empty>"
                         }
                     ],
                     "name": "f",
@@ -35,6 +43,10 @@
                         {
                             "name": "Type",
                             "value": "<empty>"
+                        },
+                        {
+                            "name": "Comment",
+                            "value": "No\ncomment?"
                         }
                     ],
                     "name": "u",

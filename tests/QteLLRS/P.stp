@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns:test="http://www.esterel-technologies.com/ns/testenv/2" oid="59372C6D-47FB-465D-AED1-5DE6BB1FE878" name="P" operator="Root">
+	<testElements>
+		<Folder name="F">
+			<testElements>
+				<Record oid="14B5C0F6-6D27-431F-A9FA-D085C5339AFC" name="R" description="Record1">
+					<inits>
+						<Scenario oid="B7F43C54-BB63-4365-87F7-08C011A9439D" persistAs="Alias.sss"/>
+						<Scenario oid="CAECE3F2-EB5B-4B73-8968-C175D5B52A3D" persistAs="Init.sss"/>
+					</inits>
+					<preambles>
+						<Scenario oid="B516AA77-8AE0-4869-B45B-D4210FEE3279" persistAs="Preamble.sss"/>
+					</preambles>
+					<scenarios>
+						<Scenario oid="D3FEFCB6-D23F-4972-81DD-0FA0780520CD" persistAs="Scenario.sss"/>
+					</scenarios>
+				</Record>
+			</testElements>
+		</Folder>
+	</testElements>
+</Procedure>

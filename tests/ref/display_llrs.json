@@ -1,0 +1,293 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Container.png",
+                                            "image": "$(ROOT)/tests/DisplayLLRS/llr_img/e8203cff-b00c-417e-8429-dc79b45168d6.bmp",
+                                            "name": "group",
+                                            "oid": "e8203cff-b00c-417e-8429-dc79b45168d6",
+                                            "pathname": "group",
+                                            "scadetype": "Container",
+                                            "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/ZTgyMDNjZmYtYjAwYy00MTdlLTg0MjktZGM3OWI0NTE2OGQ2"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/TranslationContainer.png",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/84235830-135e-465d-a993-fc57136169f9.bmp",
+                                                    "name": "translation",
+                                                    "oid": "84235830-135e-465d-a993-fc57136169f9",
+                                                    "pathname": "group/translation",
+                                                    "scadetype": "TranslationContainer",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/ODQyMzU4MzAtMTM1ZS00NjVkLWE5OTMtZmM1NzEzNjE2OWY5"
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Text.png",
+                                                    "name": "lost",
+                                                    "oid": "3acd4b17-3f14-431e-9024-45a04c5b7fd4",
+                                                    "pathname": "group/translation/lost",
+                                                    "scadetype": "Text",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/M2FjZDRiMTctM2YxNC00MzFlLTkwMjQtNDVhMDRjNWI3ZmQ0"
+                                                }
+                                            ],
+                                            "name": "translation",
+                                            "oid": "84235830-135e-465d-a993-fc57136169f9:_"
+                                        }
+                                    ],
+                                    "name": "group",
+                                    "oid": "e8203cff-b00c-417e-8429-dc79b45168d6:_"
+                                }
+                            ],
+                            "name": "Definition",
+                            "oid": "DisplayLLRS:_Object.ogfx:Definition"
+                        }
+                    ],
+                    "name": "Object.ogfx",
+                    "oid": "DisplayLLRS:_Object.ogfx:_"
+                },
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "attributes": [
+                                        {
+                                            "name": "Comment",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/2f8bf707-5f3c-4ded-9994-34e30df59d9f.bmp",
+                                    "name": "layer",
+                                    "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f",
+                                    "pathname": "layer",
+                                    "scadetype": "layer",
+                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/MmY4YmY3MDctNWYzYy00ZGVkLTk5OTQtMzRlMzBkZjU5ZDlm"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/local.png",
+                                                    "name": "local",
+                                                    "oid": "0a23263a-4b50-4989-85cb-9f37da7a2db1",
+                                                    "pathname": "layer/local/local",
+                                                    "scadetype": "local",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/MGEyMzI2M2EtNGI1MC00OTg5LTg1Y2ItOWYzN2RhN2EyZGIx"
+                                                }
+                                            ],
+                                            "name": "Locals",
+                                            "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f:Interface:Locals"
+                                        }
+                                    ],
+                                    "name": "Interface",
+                                    "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f:Interface"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/ReferenceContainer.png",
+                                            "name": "Object",
+                                            "oid": "4f825619-ca66-405b-af71-41134a4d0115",
+                                            "pathname": "layer/Object",
+                                            "scadetype": "ReferenceContainer",
+                                            "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/NGY4MjU2MTktY2E2Ni00MDViLWFmNzEtNDExMzRhNGQwMTE1"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/RotationContainer.png",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/abfe46f5-a8bf-4bb3-a003-4833102e56b3.bmp",
+                                                    "name": "empty",
+                                                    "oid": "abfe46f5-a8bf-4bb3-a003-4833102e56b3",
+                                                    "pathname": "layer/empty",
+                                                    "scadetype": "RotationContainer",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/YWJmZTQ2ZjUtYThiZi00YmIzLWEwMDMtNDgzMzEwMmU1NmIz"
+                                                }
+                                            ],
+                                            "name": "empty",
+                                            "oid": "abfe46f5-a8bf-4bb3-a003-4833102e56b3:_"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Rectangle.png",
+                                            "name": "rectangle",
+                                            "oid": "a97c925d-0b1b-4342-9c8c-b4712e0498fd",
+                                            "pathname": "layer/rectangle",
+                                            "scadetype": "Rectangle",
+                                            "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/YTk3YzkyNWQtMGIxYi00MzQyLTljOGMtYjQ3MTJlMDQ5OGZk"
+                                        }
+                                    ],
+                                    "name": "Definition",
+                                    "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f:Definition"
+                                }
+                            ],
+                            "name": "Layer layer",
+                            "oid": "2f8bf707-5f3c-4ded-9994-34e30df59d9f:_"
+                        }
+                    ],
+                    "name": "One.sgfx",
+                    "oid": "One.sgfx:_"
+                },
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "attributes": [
+                                        {
+                                            "name": "Comment",
+                                            "value": "First layer"
+                                        }
+                                    ],
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/909a3f1f-bc05-4b35-8bc5-e251d903ca41.bmp",
+                                    "name": "layer1",
+                                    "oid": "909a3f1f-bc05-4b35-8bc5-e251d903ca41",
+                                    "pathname": "layer1",
+                                    "scadetype": "layer",
+                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/OTA5YTNmMWYtYmMwNS00YjM1LThiYzUtZTI1MWQ5MDNjYTQx"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Container.png",
+                                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/c972e9bf-be01-49b6-85d3-e2fbc7319b0f.bmp",
+                                                    "name": "container",
+                                                    "oid": "c972e9bf-be01-49b6-85d3-e2fbc7319b0f",
+                                                    "pathname": "layer1/container",
+                                                    "scadetype": "Container",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/Yzk3MmU5YmYtYmUwMS00OWI2LTg1ZDMtZTJmYmM3MzE5YjBm"
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/BiFont.png",
+                                                    "name": "bi1",
+                                                    "oid": "eed3d39a-1546-47fa-abfc-0be324d44d08",
+                                                    "pathname": "layer1/container/bi1",
+                                                    "scadetype": "BiFont",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/ZWVkM2QzOWEtMTU0Ni00N2ZhLWFiZmMtMGJlMzI0ZDQ0ZDA4"
+                                                }
+                                            ],
+                                            "name": "container",
+                                            "oid": "c972e9bf-be01-49b6-85d3-e2fbc7319b0f:_"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Arc.png",
+                                            "name": "arc1",
+                                            "oid": "2653eb4d-75bf-4470-8a7b-bf2916563b06",
+                                            "pathname": "layer1/arc1",
+                                            "scadetype": "Arc",
+                                            "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/MjY1M2ViNGQtNzViZi00NDcwLThhN2ItYmYyOTE2NTYzYjA2"
+                                        }
+                                    ],
+                                    "name": "Definition",
+                                    "oid": "909a3f1f-bc05-4b35-8bc5-e251d903ca41:Definition"
+                                }
+                            ],
+                            "name": "Layer layer1",
+                            "oid": "909a3f1f-bc05-4b35-8bc5-e251d903ca41:_"
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "attributes": [
+                                        {
+                                            "name": "Comment",
+                                            "value": "Second layer"
+                                        }
+                                    ],
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/layer.png",
+                                    "image": "$(ROOT)/tests/DisplayLLRS/llr_img/53cab750-2c09-48bf-839f-0f2748bf7584.bmp",
+                                    "name": "layer2",
+                                    "oid": "53cab750-2c09-48bf-839f-0f2748bf7584",
+                                    "pathname": "layer2",
+                                    "scadetype": "layer",
+                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/NTNjYWI3NTAtMmMwOS00OGJmLTgzOWYtMGYyNzQ4YmY3NTg0"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/Line.png",
+                                            "name": "line2",
+                                            "oid": "0f6f53ea-9833-4ba0-8016-114fc8b62d10",
+                                            "pathname": "layer2/line2",
+                                            "scadetype": "Line",
+                                            "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/MGY2ZjUzZWEtOTgzMy00YmEwLTgwMTYtMTE0ZmM4YjYyZDEw"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/display/NplicatorContainer.png",
+                                                    "name": "lost x 2",
+                                                    "oid": "c02efa26-1112-4ab6-b59c-56aa2b742aeb",
+                                                    "pathname": "layer2/lost x 2",
+                                                    "scadetype": "NplicatorContainer",
+                                                    "url": "http://localhost:8080/scade_provider/services/_o6tIUKJmEe-ssMkK30Twpg/requirements/YzAyZWZhMjYtMTExMi00YWI2LWI1OWMtNTZhYTJiNzQyYWVi"
+                                                }
+                                            ],
+                                            "name": "lost x 2",
+                                            "oid": "c02efa26-1112-4ab6-b59c-56aa2b742aeb:_"
+                                        }
+                                    ],
+                                    "name": "Definition",
+                                    "oid": "53cab750-2c09-48bf-839f-0f2748bf7584:Definition"
+                                }
+                            ],
+                            "name": "Layer layer2",
+                            "oid": "53cab750-2c09-48bf-839f-0f2748bf7584:_"
+                        }
+                    ],
+                    "name": "Two.sgfx",
+                    "oid": "Two.sgfx:_"
+                }
+            ],
+            "name": "DisplayLLRS",
+            "oid": "DisplayLLRS:_"
+        }
+    ],
+    "name": "DisplayLLRS",
+    "path": "$(ROOT)/tests/DisplayLLRS/DisplayLLRS.etp",
+    "type": "display"
+}

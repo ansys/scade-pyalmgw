@@ -1,0 +1,51 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "name": "<1.1>",
+                                            "oid": "!ed/24c/6294/AC5C/67347c4c1d44",
+                                            "pathname": "P::Sibling/SM1:State1:<1.1>:",
+                                            "scadetype": "transition"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "name": "<1.2>",
+                                            "oid": "!ed/254/6294/AC5C/67347c5e5685",
+                                            "pathname": "P::Sibling/SM1:State1:<1.2>:",
+                                            "scadetype": "transition"
+                                        }
+                                    ],
+                                    "name": "<1>",
+                                    "oid": "!ed/247/6294/AC5C/67347c4371f3",
+                                    "pathname": "P::Sibling/SM1:State1:<1>:",
+                                    "scadetype": "transition"
+                                }
+                            ],
+                            "name": "Transitions",
+                            "oid": "!ed/229/6294/AC5C/67347c2d5ee2:Transitions"
+                        }
+                    ],
+                    "name": "State Machine SM1",
+                    "oid": "!ed/229/6294/AC5C/67347c2d5ee2:_"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

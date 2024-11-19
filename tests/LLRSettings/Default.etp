@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project id="1" oid_count="4" defaultConfiguration="2">
+	<props>
+		<Prop id="4" name="@ALMGW:DIAGRAMS">
+			<value>true</value>
+		</Prop>
+	</props>
+	<configurations>
+		<Configuration id="2" name="Default"/>
+	</configurations>
+</Project>

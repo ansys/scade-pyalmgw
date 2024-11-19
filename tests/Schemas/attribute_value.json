@@ -1,0 +1,56 @@
+[
+    {
+        "class": "Model",
+        "structure": [
+            {
+                "flags": [ "sort" ],
+                "content": [
+                    {
+                        "role": "subOperator",
+                        "kind": "operator",
+                        "filter": "child.name == 'Attribute'"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Operator",
+        "structure": [
+            {
+                "content": [
+                    {
+                        "role": "input"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "class": "Annotatable",
+        "isllr": true,
+        "properties": [
+            {
+                "name": "Comment",
+                "path": "comments"
+            }
+        ]
+    },
+    {
+        "class": "LocalVariable",
+        "parent": "Annotatable",
+        "isllr": true,
+        "properties": [
+            {
+                "name": "Type",
+                "path": "type.name"
+            },
+            {
+                "name": "No path"
+            },
+            {
+                "path": "no.name"
+            }
+        ]
+    }
+]

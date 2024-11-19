@@ -1,0 +1,433 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "req",
+                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/package.png",
+                            "name": "P",
+                            "oid": "!ed/14/6294/AC5C/67336eb642c",
+                            "pathname": "P::",
+                            "scadetype": "package",
+                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzE0LzYyOTQvQUM1Qy82NzMzNmViNjQyYw=="
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/constant.png",
+                                    "name": "C",
+                                    "oid": "!ed/37/6294/AC5C/67336ef6436b",
+                                    "pathname": "P::C/",
+                                    "scadetype": "constant",
+                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzM3LzYyOTQvQUM1Qy82NzMzNmVmNjQzNmI="
+                                }
+                            ],
+                            "name": "Constants",
+                            "oid": "!ed/14/6294/AC5C/67336eb642c:Constants"
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/sensor.png",
+                                    "name": "S",
+                                    "oid": "!ed/48/6294/AC5C/67336f036d52",
+                                    "pathname": "P::S/",
+                                    "scadetype": "sensor",
+                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzQ4LzYyOTQvQUM1Qy82NzMzNmYwMzZkNTI="
+                                }
+                            ],
+                            "name": "Sensors",
+                            "oid": "!ed/14/6294/AC5C/67336eb642c:Sensors"
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/type.png",
+                                    "name": "T",
+                                    "oid": "!ed/36/6294/AC5C/67336eef3449",
+                                    "pathname": "P::T/",
+                                    "scadetype": "type",
+                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzM2LzYyOTQvQUM1Qy82NzMzNmVlZjM0NDk="
+                                }
+                            ],
+                            "name": "Types",
+                            "oid": "!ed/14/6294/AC5C/67336eb642c:Types"
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/operator.png",
+                                            "name": "O",
+                                            "oid": "!ed/18/6294/AC5C/67336ec01847",
+                                            "pathname": "P::O/",
+                                            "scadetype": "operator",
+                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzE4LzYyOTQvQUM1Qy82NzMzNmVjMDE4NDc="
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/input.png",
+                                                    "name": "i",
+                                                    "oid": "!ed/1a/6294/AC5C/67336ec67289",
+                                                    "pathname": "P::O/i/",
+                                                    "scadetype": "input",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzFhLzYyOTQvQUM1Qy82NzMzNmVjNjcyODk="
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/input.png",
+                                                    "name": "h",
+                                                    "oid": "!ed/23/6294/AC5C/67336ecd6318",
+                                                    "pathname": "P::O/h/",
+                                                    "scadetype": "input",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzIzLzYyOTQvQUM1Qy82NzMzNmVjZDYzMTg="
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/output.png",
+                                                    "name": "o",
+                                                    "oid": "!ed/2c/6294/AC5C/67336ed048d3",
+                                                    "pathname": "P::O/o/",
+                                                    "scadetype": "output",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzJjLzYyOTQvQUM1Qy82NzMzNmVkMDQ4ZDM="
+                                                }
+                                            ],
+                                            "name": "Interface",
+                                            "oid": "!ed/18/6294/AC5C/67336ec01847:Interface"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/stateMachine.png",
+                                                    "name": "SM",
+                                                    "oid": "!ed/52/6294/AC5C/67336f31418e",
+                                                    "pathname": "P::O/SM:",
+                                                    "scadetype": "stateMachine",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzUyLzYyOTQvQUM1Qy82NzMzNmYzMTQxOGU="
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "section",
+                                                            "elements": [
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/transition.png",
+                                                                    "name": "<1>",
+                                                                    "oid": "!ed/90/6294/AC5C/67336fd04c92",
+                                                                    "pathname": "P::O/SM:ST:<1>:",
+                                                                    "scadetype": "transition",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzkwLzYyOTQvQUM1Qy82NzMzNmZkMDRjOTI="
+                                                                },
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/transition.png",
+                                                                    "name": "<1.1>",
+                                                                    "oid": "!ed/95/6294/AC5C/67336fef5b59",
+                                                                    "pathname": "P::O/SM:ST:<1.1>:",
+                                                                    "scadetype": "transition",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzk1LzYyOTQvQUM1Qy82NzMzNmZlZjViNTk="
+                                                                },
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/transition.png",
+                                                                    "name": "<1.2>",
+                                                                    "oid": "!ed/97/6294/AC5C/673370061a92",
+                                                                    "pathname": "P::O/SM:ST:<1.2>:",
+                                                                    "scadetype": "transition",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzk3LzYyOTQvQUM1Qy82NzMzNzAwNjFhOTI="
+                                                                }
+                                                            ],
+                                                            "name": "Transitions",
+                                                            "oid": "!ed/57/6294/AC5C/67336f3e6603:Transitions"
+                                                        }
+                                                    ],
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/state.png",
+                                                    "name": "ST",
+                                                    "oid": "!ed/57/6294/AC5C/67336f3e6603",
+                                                    "pathname": "P::O/SM:ST:",
+                                                    "scadetype": "state",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzU3LzYyOTQvQUM1Qy82NzMzNmYzZTY2MDM="
+                                                }
+                                            ],
+                                            "name": "State Machine SM",
+                                            "oid": "!ed/52/6294/AC5C/67336f31418e:_"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/ifBlock.png",
+                                                    "name": "IB",
+                                                    "oid": "!ed/6e/6294/AC5C/67336f7b1358",
+                                                    "pathname": "P::O/IB:",
+                                                    "scadetype": "ifBlock",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzZlLzYyOTQvQUM1Qy82NzMzNmY3YjEzNTg="
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "elements": [
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "elements": [
+                                                                        {
+                                                                            "almtype": "req",
+                                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                                            "name": "then:then",
+                                                                            "oid": "!ed/74/6294/AC5C/67336f7e465e",
+                                                                            "pathname": "P::O/IB:then:then:",
+                                                                            "scadetype": "action",
+                                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzc0LzYyOTQvQUM1Qy82NzMzNmY3ZTQ2NWU="
+                                                                        }
+                                                                    ],
+                                                                    "name": "then:then",
+                                                                    "oid": "",
+                                                                    "pathname": "P::O/IB:then:then:",
+                                                                    "scadetype": "branch",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/"
+                                                                },
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "elements": [
+                                                                        {
+                                                                            "almtype": "req",
+                                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                                            "name": "then:else",
+                                                                            "oid": "!ed/141/6294/AC5C/67337956470a",
+                                                                            "pathname": "P::O/IB:then:else:",
+                                                                            "scadetype": "action",
+                                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzE0MS82Mjk0L0FDNUMvNjczMzc5NTY0NzBh"
+                                                                        }
+                                                                    ],
+                                                                    "name": "then:else",
+                                                                    "oid": "",
+                                                                    "pathname": "P::O/IB:then:else:",
+                                                                    "scadetype": "branch",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/"
+                                                                }
+                                                            ],
+                                                            "name": "then",
+                                                            "oid": "!ed/13c/6294/AC5C/673379555047",
+                                                            "pathname": "P::O/IB:then:",
+                                                            "scadetype": "branch",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzEzYy82Mjk0L0FDNUMvNjczMzc5NTU1MDQ3"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "elements": [
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "elements": [
+                                                                        {
+                                                                            "almtype": "req",
+                                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                                            "name": "else:then",
+                                                                            "oid": "!ed/13b/6294/AC5C/6733793f43ab",
+                                                                            "pathname": "P::O/IB:else:then:",
+                                                                            "scadetype": "action",
+                                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzEzYi82Mjk0L0FDNUMvNjczMzc5M2Y0M2Fi"
+                                                                        }
+                                                                    ],
+                                                                    "name": "else:then",
+                                                                    "oid": "",
+                                                                    "pathname": "P::O/IB:else:then:",
+                                                                    "scadetype": "branch",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/"
+                                                                },
+                                                                {
+                                                                    "almtype": "req",
+                                                                    "elements": [
+                                                                        {
+                                                                            "almtype": "req",
+                                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                                            "name": "else:else",
+                                                                            "oid": "!ed/75/6294/AC5C/67336f7ec68",
+                                                                            "pathname": "P::O/IB:else:else:",
+                                                                            "scadetype": "action",
+                                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzc1LzYyOTQvQUM1Qy82NzMzNmY3ZWM2OA=="
+                                                                        }
+                                                                    ],
+                                                                    "name": "else:else",
+                                                                    "oid": "",
+                                                                    "pathname": "P::O/IB:else:else:",
+                                                                    "scadetype": "branch",
+                                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/"
+                                                                }
+                                                            ],
+                                                            "name": "else",
+                                                            "oid": "!ed/136/6294/AC5C/6733793d6db6",
+                                                            "pathname": "P::O/IB:else:",
+                                                            "scadetype": "branch",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzEzNi82Mjk0L0FDNUMvNjczMzc5M2Q2ZGI2"
+                                                        }
+                                                    ],
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/ifNode.png",
+                                                    "name": "",
+                                                    "oid": "!ed/73/6294/AC5C/67336f7e5346",
+                                                    "pathname": "P::O/IB:",
+                                                    "scadetype": "ifNode",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzczLzYyOTQvQUM1Qy82NzMzNmY3ZTUzNDY="
+                                                }
+                                            ],
+                                            "name": "If Block IB",
+                                            "oid": "!ed/6e/6294/AC5C/67336f7b1358:_"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/whenBlock.png",
+                                                    "name": "WB",
+                                                    "oid": "!ed/76/6294/AC5C/67336f8456c3",
+                                                    "pathname": "P::O/WB:",
+                                                    "scadetype": "whenBlock",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzc2LzYyOTQvQUM1Qy82NzMzNmY4NDU2YzM="
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "true",
+                                                            "oid": "!ed/7b/6294/AC5C/67336f853104",
+                                                            "pathname": "P::O/WB:true:",
+                                                            "scadetype": "branch",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzdiLzYyOTQvQUM1Qy82NzMzNmY4NTMxMDQ="
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                            "name": "true",
+                                                            "oid": "!ed/7c/6294/AC5C/67336f857906",
+                                                            "pathname": "P::O/WB:true:",
+                                                            "scadetype": "action",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzdjLzYyOTQvQUM1Qy82NzMzNmY4NTc5MDY="
+                                                        }
+                                                    ],
+                                                    "name": "Branch true",
+                                                    "oid": "!ed/7b/6294/AC5C/67336f853104:_"
+                                                },
+                                                {
+                                                    "almtype": "section",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "name": "false",
+                                                            "oid": "!ed/118/6294/AC5C/673378e15e50",
+                                                            "pathname": "P::O/WB:false:",
+                                                            "scadetype": "branch",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzExOC82Mjk0L0FDNUMvNjczMzc4ZTE1ZTUw"
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/action.png",
+                                                            "name": "false",
+                                                            "oid": "!ed/11d/6294/AC5C/673378e23659",
+                                                            "pathname": "P::O/WB:false:",
+                                                            "scadetype": "action",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzExZC82Mjk0L0FDNUMvNjczMzc4ZTIzNjU5"
+                                                        }
+                                                    ],
+                                                    "name": "Branch false",
+                                                    "oid": "!ed/118/6294/AC5C/673378e15e50:_"
+                                                }
+                                            ],
+                                            "name": "When Block WB",
+                                            "oid": "!ed/76/6294/AC5C/67336f8456c3:_"
+                                        },
+                                        {
+                                            "almtype": "section",
+                                            "elements": [
+                                                {
+                                                    "almtype": "req",
+                                                    "elements": [
+                                                        {
+                                                            "almtype": "req",
+                                                            "attributes": [
+                                                                {
+                                                                    "name": "Nature",
+                                                                    "value": "<empty>"
+                                                                }
+                                                            ],
+                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                                                            "image": "$(ROOT)/tests/ScadeLLRS/llr_img/EQ.png",
+                                                            "name": "EQ",
+                                                            "oid": "!ed/6a/6294/AC5C/67336f72efd",
+                                                            "pathname": "P::O/Graphical/EQ/",
+                                                            "scadetype": "equationSet",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzZhLzYyOTQvQUM1Qy82NzMzNmY3MmVmZA=="
+                                                        }
+                                                    ],
+                                                    "icon": "$(PYALMGW)/res/suite/netDiagram.png",
+                                                    "image": "$(ROOT)/tests/ScadeLLRS/llr_img/Graphical.png",
+                                                    "name": "Graphical",
+                                                    "oid": "!ed/19/6294/AC5C/67336ec04b3d",
+                                                    "pathname": "P::O/Graphical/",
+                                                    "scadetype": "netDiagram",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzE5LzYyOTQvQUM1Qy82NzMzNmVjMDRiM2Q="
+                                                },
+                                                {
+                                                    "almtype": "req",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "Nature",
+                                                            "value": "Derived Low Level Requirement"
+                                                        }
+                                                    ],
+                                                    "icon": "$(PYALMGW)/res/suite/textDiagram.png",
+                                                    "name": "Textual",
+                                                    "oid": "!ed/35/6294/AC5C/67336ede4e9d",
+                                                    "pathname": "P::O/Textual/",
+                                                    "scadetype": "textDiagram",
+                                                    "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzM1LzYyOTQvQUM1Qy82NzMzNmVkZTRlOWQ="
+                                                }
+                                            ],
+                                            "name": "Diagrams",
+                                            "oid": "!ed/18/6294/AC5C/67336ec01847:Diagrams"
+                                        }
+                                    ],
+                                    "name": "Operator O",
+                                    "oid": "!ed/18/6294/AC5C/67336ec01847:_"
+                                }
+                            ],
+                            "name": "Operators",
+                            "oid": "!ed/14/6294/AC5C/67336eb642c:Operators"
+                        }
+                    ],
+                    "name": "Package P",
+                    "oid": "!ed/14/6294/AC5C/67336eb642c:_"
+                }
+            ],
+            "name": "ScadeLLRS",
+            "oid": "ScadeLLRS:_"
+        }
+    ],
+    "name": "ScadeLLRS",
+    "path": "$(ROOT)/tests/ScadeLLRS/ScadeLLRS.etp",
+    "type": "suite"
+}

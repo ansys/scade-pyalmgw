@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?dom version="19.0" ?>
+
+<globals>
+    <type name="Bool" oid="28818644-706b-4478-85ea-b4df417a3b49">
+        <definition>bool</definition>
+    </type>
+    <constant name="C" oid="50e57f2d-394a-4fd1-b7a3-f115f0e3b752" type="bool">
+        <init>false</init>
+    </constant>
+</globals>
+
+<!-- crc32 : 2009062738 -->
+

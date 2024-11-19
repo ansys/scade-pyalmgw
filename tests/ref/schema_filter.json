@@ -1,0 +1,21 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "name": "Filter",
+                    "oid": "!ed/213/6294/AC5C/673479d33a5a",
+                    "pathname": "P::Filter/",
+                    "scadetype": "operator"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

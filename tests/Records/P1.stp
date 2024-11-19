@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns:test="http://www.esterel-technologies.com/ns/testenv/2" oid="C7D7ED20-6682-4143-B7EA-C97F0CF72620" name="P1" operator="Root">
+	<testElements>
+		<Folder name="F11">
+			<testElements>
+				<Folder name="F111">
+					<testElements>
+						<Record oid="7077B90F-9011-43D2-AA41-3065572042F3" name="R111-1" description="Record1"/>
+					</testElements>
+				</Folder>
+				<Folder name="F112-Empty"/>
+				<Record oid="2AC8BC69-C84D-418F-BB96-EC9FECEB21F8" name="R11-1" description="Record1"/>
+			</testElements>
+		</Folder>
+		<Folder name="F12">
+			<testElements>
+				<Record oid="6D416D19-B8C0-4EB5-91AE-16C92AC2898F" name="R12-1" description="Record1"/>
+			</testElements>
+		</Folder>
+		<Record oid="65CBE3B2-FD74-4F7A-8F1F-1DCEF8A7D029" name="R1-1" description="Record1"/>
+	</testElements>
+</Procedure>

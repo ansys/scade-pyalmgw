@@ -1,0 +1,65 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "@Type",
+                            "value": "P::Bool/"
+                        },
+                        {
+                            "name": "@Usage",
+                            "value": "P::Attribute/_L1="
+                        }
+                    ],
+                    "name": "b",
+                    "oid": "!ed/3bd/6294/AC5C/6734d01b6ad0",
+                    "pathname": "P::Attribute/b/",
+                    "scadetype": "LocalVariable"
+                },
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "@Type",
+                            "value": "P::Real/"
+                        },
+                        {
+                            "name": "@Usage",
+                            "value": "<empty>"
+                        }
+                    ],
+                    "name": "f",
+                    "oid": "!ed/3be/6294/AC5C/6734d01b3271",
+                    "pathname": "P::Attribute/f/",
+                    "scadetype": "LocalVariable"
+                },
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "@Type",
+                            "value": "<empty>"
+                        },
+                        {
+                            "name": "@Usage",
+                            "value": "<empty>"
+                        }
+                    ],
+                    "name": "u",
+                    "oid": "!ed/3bf/6294/AC5C/6734d01b4111",
+                    "pathname": "P::Attribute/u/",
+                    "scadetype": "LocalVariable"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

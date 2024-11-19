@@ -1,0 +1,35 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "name": "Bool",
+                    "oid": "!ed/36a/6294/AC5C/6734ca9f457f",
+                    "pathname": "P::Bool/",
+                    "scadetype": "NamedType"
+                },
+                {
+                    "almtype": "req",
+                    "name": "Real",
+                    "oid": "!ed/373/6294/AC5C/6734caba49c",
+                    "pathname": "P::Real/",
+                    "scadetype": "NamedType"
+                },
+                {
+                    "almtype": "req",
+                    "name": "b",
+                    "oid": "!ed/358/6294/AC5C/6734ca7c654c",
+                    "pathname": "P::Role/b/",
+                    "scadetype": "LocalVariable"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

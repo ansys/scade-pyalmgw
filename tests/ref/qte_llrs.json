@@ -1,0 +1,98 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "section",
+                    "elements": [
+                        {
+                            "almtype": "req",
+                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/procedure.png",
+                            "name": "P",
+                            "oid": "59372C6D-47FB-465D-AED1-5DE6BB1FE878",
+                            "pathname": "P",
+                            "scadetype": "procedure",
+                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/NTkzNzJDNkQtNDdGQi00NjVELUFFRDEtNURFNkJCMUZFODc4"
+                        },
+                        {
+                            "almtype": "section",
+                            "elements": [
+                                {
+                                    "almtype": "req",
+                                    "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/folder.png",
+                                    "name": "F",
+                                    "oid": "",
+                                    "pathname": "F",
+                                    "scadetype": "folder",
+                                    "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/"
+                                },
+                                {
+                                    "almtype": "section",
+                                    "elements": [
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/record.png",
+                                            "name": "R",
+                                            "oid": "14B5C0F6-6D27-431F-A9FA-D085C5339AFC",
+                                            "pathname": "R",
+                                            "scadetype": "record",
+                                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/MTRCNUMwRjYtNkQyNy00MzFGLUE5RkEtRDA4NUM1MzM5QUZD"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/init.png",
+                                            "name": "Alias.sss",
+                                            "oid": "B7F43C54-BB63-4365-87F7-08C011A9439D",
+                                            "pathname": "$(ROOT)/tests/QteLLRS/Alias.sss",
+                                            "scadetype": "init",
+                                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/QjdGNDNDNTQtQkI2My00MzY1LTg3RjctMDhDMDExQTk0MzlE"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/init.png",
+                                            "name": "Init.sss",
+                                            "oid": "CAECE3F2-EB5B-4B73-8968-C175D5B52A3D",
+                                            "pathname": "$(ROOT)/tests/QteLLRS/Init.sss",
+                                            "scadetype": "init",
+                                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/Q0FFQ0UzRjItRUI1Qi00QjczLTg5NjgtQzE3NUQ1QjUyQTNE"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/preamble.png",
+                                            "name": "Preamble.sss",
+                                            "oid": "B516AA77-8AE0-4869-B45B-D4210FEE3279",
+                                            "pathname": "$(ROOT)/tests/QteLLRS/Preamble.sss",
+                                            "scadetype": "preamble",
+                                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/QjUxNkFBNzctOEFFMC00ODY5LUI0NUItRDQyMTBGRUUzMjc5"
+                                        },
+                                        {
+                                            "almtype": "req",
+                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/test/scenario.png",
+                                            "name": "Scenario.sss",
+                                            "oid": "D3FEFCB6-D23F-4972-81DD-0FA0780520CD",
+                                            "pathname": "$(ROOT)/tests/QteLLRS/Scenario.sss",
+                                            "scadetype": "scenario",
+                                            "url": "http://localhost:8080/scade_provider/services/_AoH-AKD1Ee-ALoSz6wLeMA/requirements/RDNGRUZDQjYtRDIzRi00OTcyLTgxREQtMEZBMDc4MDUyMENE"
+                                        }
+                                    ],
+                                    "name": "Record R",
+                                    "oid": "14B5C0F6-6D27-431F-A9FA-D085C5339AFC:_"
+                                }
+                            ],
+                            "name": "Folder F",
+                            "oid": "59372C6D-47FB-465D-AED1-5DE6BB1FE878F:_"
+                        }
+                    ],
+                    "name": "Procedure P",
+                    "oid": "59372C6D-47FB-465D-AED1-5DE6BB1FE878:_"
+                }
+            ],
+            "name": "QteLLRS",
+            "oid": "QteLLRS.etp:_"
+        }
+    ],
+    "name": "QteLLRS",
+    "path": "$(ROOT)/tests/QteLLRS/QteLLRS.etp",
+    "type": "test"
+}

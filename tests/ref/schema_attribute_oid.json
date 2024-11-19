@@ -1,0 +1,53 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "#Type",
+                            "value": "!ed/36a/6294/AC5C/6734ca9f457f"
+                        }
+                    ],
+                    "name": "b",
+                    "oid": "!ed/3bd/6294/AC5C/6734d01b6ad0",
+                    "pathname": "P::Attribute/b/",
+                    "scadetype": "LocalVariable"
+                },
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "#Type",
+                            "value": "!ed/373/6294/AC5C/6734caba49c"
+                        }
+                    ],
+                    "name": "f",
+                    "oid": "!ed/3be/6294/AC5C/6734d01b3271",
+                    "pathname": "P::Attribute/f/",
+                    "scadetype": "LocalVariable"
+                },
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "#Type",
+                            "value": "<empty>"
+                        }
+                    ],
+                    "name": "u",
+                    "oid": "!ed/3bf/6294/AC5C/6734d01b4111",
+                    "pathname": "P::Attribute/u/",
+                    "scadetype": "LocalVariable"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

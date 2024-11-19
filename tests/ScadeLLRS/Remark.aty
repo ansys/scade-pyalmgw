@@ -1,0 +1,29 @@
+Notes-Types { Esterel-Technologies }  DEFINITIONS ::=
+BEGIN
+
+Remark ::=
+    SEQUENCE OF {
+	SEQUENCE {
+	    annot_object OID,
+	    name STRING,
+	    information {
+		Description TEXT {
+		    NT_FIELD_HEIGHT 20,
+		    NT_FIELD_WIDTH  60
+		}
+	    }
+	}
+    }
+
+END
+
+Annotation-Rules { Esterel-Technologies }  DEFINITIONS ::=
+BEGIN
+
+package ::= {
+    {
+	Remark F 0 99
+    }
+}
+
+END

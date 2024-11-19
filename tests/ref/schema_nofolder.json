@@ -1,0 +1,35 @@
+{
+    "elements": [
+        {
+            "almtype": "section",
+            "elements": [
+                {
+                    "almtype": "req",
+                    "name": "i1",
+                    "oid": "!ed/163/6294/AC5C/673473695693",
+                    "pathname": "P::Interface/i1/",
+                    "scadetype": "input"
+                },
+                {
+                    "almtype": "req",
+                    "name": "i2",
+                    "oid": "!ed/175/6294/AC5C/67347376490d",
+                    "pathname": "P::Interface/i2/",
+                    "scadetype": "input"
+                },
+                {
+                    "almtype": "req",
+                    "name": "i3",
+                    "oid": "!ed/16c/6294/AC5C/673473707065",
+                    "pathname": "P::Interface/i3/",
+                    "scadetype": "input"
+                }
+            ],
+            "name": "Schemas",
+            "oid": "Schemas:_"
+        }
+    ],
+    "name": "Schemas",
+    "path": "$(ROOT)/tests/Schemas/Schemas.etp",
+    "type": "suite"
+}

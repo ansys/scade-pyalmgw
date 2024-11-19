@@ -1,0 +1,65 @@
+[
+	{
+		"class": "Model",
+		"isllr": false,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "subOperator", "kind": "operator" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Operator",
+		"parent": "DataDef",
+		"folder": "Operator",
+		"isllr": false,
+		"structure": [
+			{
+				"content": [
+					{ "role": "subDataDef", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "DataDef",
+		"folder": "n/a",
+		"isllr": false,
+		"structure": [
+			{
+				"content": [
+					{ "role": "diagram", "kind": "" }
+				]
+			}
+		]
+	},
+	{
+		"class": "Action",
+		"parent": "DataDef",
+		"isllr": false
+	},
+	{
+		"class": "State",
+		"parent": "DataDef",
+		"isllr": false
+	},
+	{
+		"class": "TextDiagram",
+		"isllr": false
+	},
+	{
+		"class": "NetDiagram",
+		"isllr": false,
+		"structure": [
+			{
+				"flags": [ "sort" ],
+				"content": [
+					{ "role": "equationSet", "kind": "" }
+				]
+			}
+		]
+	}
+]

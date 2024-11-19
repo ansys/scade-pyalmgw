@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1"
+    xmlns:this="http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1"
+    elementFormDefault="qualified">
+
+    <xsd:group name="ChoiceDocEntity">
+        <xsd:choice>
+            <xsd:element name="Section" type="this:Section"/>
+            <xsd:element name="Requirement" type="this:Requirement"/>
+        </xsd:choice>
+    </xsd:group>
+
+    <xsd:complexType name="ChildrenEntity" abstract="true">
+        <xsd:all>
+            <xsd:element name="children" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:group ref="this:ChoiceDocEntity"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:all>
+        <xsd:attribute name="identifier" type="xsd:string"/>
+        <xsd:attribute name="text" type="xsd:string"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="ReqProject">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element name="traceabilityLinks">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xsd:element name="TraceabilityLink" type="this:TraceabilityLinkEntity"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="documents">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xsd:element name="Document" type="this:Document"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:all>
+            <xsd:attribute name="identifier" type="xsd:string"/>
+            <xsd:attribute name="text" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Document">
+        <xsd:complexContent>
+            <xsd:extension base="this:ChildrenEntity"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="Section">
+        <xsd:complexContent>
+	    <xsd:extension base="this:ChildrenEntity"/>
+	</xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="Requirement">
+	<xsd:complexContent>
+	    <xsd:extension base="this:ChildrenEntity"/>
+	</xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TraceabilityLinkEntity">
+        <xsd:attribute name="type" type="xsd:string"/>
+        <xsd:attribute name="local" type="xsd:boolean"/>
+        <xsd:attribute name="source" type="xsd:string"/>
+        <xsd:attribute name="target" type="xsd:string"/>
+    </xsd:complexType>
+
+</xsd:schema>

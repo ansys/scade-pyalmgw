@@ -1,7 +1,5 @@
-*.almgr
-*.almgt
 *.llrs
-*.xml
+*.almgw.stub.xml
 links.json
 links.*.json
 **/llr_img

@@ -74,7 +74,7 @@ def test_merge_stub(local_tmpdir):
     doc.merge_links(links)
     doc.write()
     #
-    ref = _ref_dir / 'stub.almgw.stub.xml'
+    ref = _ref_dir / 'stub.almgw.xml'
 
     failure = diff_files(ref, stub_reqs)
     assert not failure

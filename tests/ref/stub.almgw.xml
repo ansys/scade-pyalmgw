@@ -1,0 +1,29 @@
+<ReqProject xmlns="http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1" identifier="xxx.xml" text="collection">
+  <traceabilityLinks>
+    <TraceabilityLink type="Covering:trace" local="true" source="!ed/2" target="REQ_2"/>
+    <TraceabilityLink type="Covering:trace" local="true" source="!ed/3" target="REQ_2.1"/>
+    <TraceabilityLink type="Covering:trace" local="true" source="!ed/3" target="REQ_1"/>
+    <TraceabilityLink type="Covering:trace" local="true" source="!ed/3" target="UNKNOWN"/>
+  </traceabilityLinks>
+  <documents>
+    <Document identifier="yyy" text="document">
+      <children>
+        <Section identifier="1" text="One" description="one description">
+          <children>
+            <Section identifier="1.1" text="One dot one" description="1.1 description"/>
+            <Requirement identifier="REQ_1" text="first" description="first first"/>
+          </children>
+        </Section>
+        <Section identifier="2" text="empty two" description="two description"/>
+        <Requirement identifier="REQ_2" text="second" description="second second">
+          <children>
+            <Requirement identifier="REQ_2.1" text="sub" description="sub sub"/>
+          </children>
+        </Requirement>
+      </children>
+    </Document>
+    <Document identifier="zzz" text="other empty document">
+      <children/>
+    </Document>
+  </documents>
+</ReqProject>

@@ -1,5 +1,5 @@
 Ansys SCADE ALM Gateway Python Toolbox
-=====================
+======================================
 |pyansys| |python| |pypi| |GH-CI| |codecov| |MIT| |ruff| |doc|
 
 ..

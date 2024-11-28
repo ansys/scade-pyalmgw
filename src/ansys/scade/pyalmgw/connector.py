@@ -41,6 +41,7 @@ from ansys.scade.apitools import declare_project
 # isort: split
 from scade.model.project.stdproject import Project, get_roots as get_projects
 
+import ansys.scade.pyalmgw as pyalmgw
 from ansys.scade.pyalmgw.llrs import LLRExport, get_export_class
 import ansys.scade.pyalmgw.utils as utils
 
@@ -67,7 +68,9 @@ class Connector(metaclass=ABCMeta):
         method returns a default schema.
         """
         assert self.project
-        file = self.project.get_scalar_tool_prop_def('ALMGW', 'LLRSCHEMA', '', None)
+        file = self.project.get_scalar_tool_prop_def(
+            pyalmgw.TOOL, pyalmgw.LLRSCHEMA, pyalmgw.LLRSCHEMA_DEFAULT, None
+        )
         if file:
             directory = Path(self.project.pathname).resolve().parent
             path = Path(file)
@@ -255,7 +258,7 @@ class Connector(metaclass=ABCMeta):
 
             * -1: if an error occurs launching the command
             * 0: if ‘Management Requirements’ UI of ALM tool is successfully launched
-            * 1: to clean requirement list on the SCADE IDE ‘Requirements’ window
+            * 1: to clean requirement list on the SCADE IDE 'Requirements' window
         """
         code = self.on_manage(pid)
         return code

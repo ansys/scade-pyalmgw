@@ -335,6 +335,11 @@ class ReqDocument(Container):
         # semantic of base classs' identifier
         self.identifier = str(path)
 
+    @property
+    def depth(self) -> int:
+        """Return the maximum depth of a section."""
+        return 1 + max([_.depth for _ in self.sections], default=0)
+
 
 class ReqProject(Element):
     """Provides an implementation of a Requirement File."""
@@ -416,3 +421,8 @@ class ReqProject(Element):
         """Build the project structure from a Requirements Document XMl file."""
         tree = etree.parse(str(self.path), etree.XMLParser())
         self.parse(tree.getroot())
+
+    @property
+    def depth(self) -> int:
+        """Return the maximum depth of a section."""
+        return 1 + max([_.depth for _ in self.documents], default=0)

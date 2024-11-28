@@ -101,7 +101,7 @@ class ReqObject:
         return {}
 
     @property
-    def children(self) -> Dict[str, List[List['Element']]]:
+    def children(self) -> Dict[str, List[List['ReqObject']]]:
         """
         Return the contained elements to be serialized as a dictionary.
 
@@ -365,7 +365,7 @@ class ReqProject(Element):
         return unresolved
 
     @property
-    def children(self) -> Dict[str, List[List[Element]]]:
+    def children(self) -> Dict[str, List[List[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('traceabilityLinks', []).append(self.traceability_links)

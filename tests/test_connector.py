@@ -294,7 +294,7 @@ def test_export_llrs_robustness():
         ('locate', ['REQ_ID_031'], 32, 4294967295),
         ('locate', [], 46, 3),
         ('import', ['<tmp>/export.xml'], 65, 0),
-        ('export', [str(Path(__file__).parent / 'res' / 'empty.almgt')], 81, 1),
+        ('export', [str(Path(__file__).parent / 'res' / 'empty.json')], 81, 1),
         ('unknown', [], 82, 4294967295),
     ],
 )

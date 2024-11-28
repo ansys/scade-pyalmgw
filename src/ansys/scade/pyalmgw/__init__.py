@@ -34,3 +34,8 @@ try:
 except importlib_metadata.PackageNotFoundError:
     # happens with pre-commit, the package is not installed in the virtual environment
     __version__ = '<unknown>'
+
+# constants for built-in settings
+TOOL = 'ALMGW'
+LLRSCHEMA = 'LLRSCHEMA'
+LLRSCHEMA_DEFAULT = ''

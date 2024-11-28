@@ -101,7 +101,7 @@ class ReqObject:
         return {}
 
     @property
-    def children(self) -> Dict[str, List[List['Element']]]:
+    def children(self) -> Dict[str, List[List['ReqObject']]]:
         """
         Return the contained elements to be serialized as a dictionary.
 
@@ -180,7 +180,7 @@ class Container(Element):
         self.requirements: List['Requirement'] = []
 
     @property
-    def children(self) -> Dict[str, List[List[Element]]]:
+    def children(self) -> Dict[str, List[List[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('children', []).extend([self.sections, self.requirements])
@@ -295,7 +295,7 @@ class Section(HierarchyElement):
     @property
     def level(self) -> int:
         """Return the level of a section, defined as its number of owners."""
-        return (self.owner.level + 1) if type(self.owner) is Section else 1
+        return (self.owner.level + 1) if isinstance(self.owner, Section) else 1
 
     @property
     def depth(self) -> int:
@@ -311,10 +311,10 @@ class ReqDocument(Container):
 
     * ``file`` maps to ``identifier``.
 
-      For example ``C:\Program Files\ANSYS Inc\examples\CruiseControl\CruiseControl.docx``...
+      For example ``C:\Program Files\ANSYS Inc\examples\CruiseControl\CruiseControl.docx``.
     * ``file.name`` maps to ``text``.
 
-      For example ``CruiseControl.docx``...
+      For example ``CruiseControl.docx``.
     """
 
     def __init__(self, owner: 'ReqProject', file: str = '', name: str = ''):
@@ -326,22 +326,36 @@ class ReqDocument(Container):
     @property
     def path(self) -> Path:
         """Return the path of the document."""
-        # semantic of base classs' identifier
-        return Path(self.identifier)
+        # semantic of base class' identifier
+        assert isinstance(self.owner, ReqProject)
+        return (
+            (self.owner.path.parent / self.identifier) if self.owner.path else Path(self.identifier)
+        )
 
     @path.setter
     def path(self, path: Path):
         """Set the path of the document."""
-        # semantic of base classs' identifier
-        self.identifier = str(path)
+        # semantic of base class' identifier
+        assert isinstance(self.owner, ReqProject)
+        if self.owner.path:
+            try:
+                path = path.relative_to(self.owner.path.parent)
+            except ValueError:
+                pass
+        self.identifier = path.as_posix()
+
+    @property
+    def depth(self) -> int:
+        """Return the maximum depth of a section."""
+        return 1 + max([_.depth for _ in self.sections], default=0)
 
 
 class ReqProject(Element):
     """Provides an implementation of a Requirement File."""
 
-    def __init__(self, path: Path, *args, **kwargs) -> None:
+    def __init__(self, path: Optional[Path] = None, **kwargs) -> None:
         # root of the hierarchy: no owner
-        super().__init__(None, *args, **kwargs)
+        super().__init__(None, **kwargs)
         self.path = path
         self.documents: List[ReqDocument] = []
         self.traceability_links: List[TraceabilityLink] = []
@@ -365,7 +379,7 @@ class ReqProject(Element):
         return unresolved
 
     @property
-    def children(self) -> Dict[str, List[List[Element]]]:
+    def children(self) -> Dict[str, List[List[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('traceabilityLinks', []).append(self.traceability_links)
@@ -374,7 +388,7 @@ class ReqProject(Element):
 
     def parse(self, root: Any):
         """
-        Build the project structure from a Requirements Document XMl file.
+        Build the project structure from a Requirements Document XML file.
 
         Parameters
         ----------
@@ -416,3 +430,8 @@ class ReqProject(Element):
         """Build the project structure from a Requirements Document XMl file."""
         tree = etree.parse(str(self.path), etree.XMLParser())
         self.parse(tree.getroot())
+
+    @property
+    def depth(self) -> int:
+        """Return the maximum depth of a section."""
+        return 1 + max([_.depth for _ in self.documents], default=0)

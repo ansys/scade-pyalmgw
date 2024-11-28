@@ -295,7 +295,7 @@ class Section(HierarchyElement):
     @property
     def level(self) -> int:
         """Return the level of a section, defined as its number of owners."""
-        return (self.owner.level + 1) if type(self.owner) is Section else 1
+        return (self.owner.level + 1) if isinstance(self.owner, Section) else 1
 
     @property
     def depth(self) -> int:
@@ -311,10 +311,10 @@ class ReqDocument(Container):
 
     * ``file`` maps to ``identifier``.
 
-      For example ``C:\Program Files\ANSYS Inc\examples\CruiseControl\CruiseControl.docx``...
+      For example ``C:\Program Files\ANSYS Inc\examples\CruiseControl\CruiseControl.docx``.
     * ``file.name`` maps to ``text``.
 
-      For example ``CruiseControl.docx``...
+      For example ``CruiseControl.docx``.
     """
 
     def __init__(self, owner: 'ReqProject', file: str = '', name: str = ''):
@@ -379,7 +379,7 @@ class ReqProject(Element):
 
     def parse(self, root: Any):
         """
-        Build the project structure from a Requirements Document XMl file.
+        Build the project structure from a Requirements Document XML file.
 
         Parameters
         ----------

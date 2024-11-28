@@ -180,7 +180,7 @@ class Container(Element):
         self.requirements: List['Requirement'] = []
 
     @property
-    def children(self) -> Dict[str, List[List[Element]]]:
+    def children(self) -> Dict[str, List[List[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('children', []).extend([self.sections, self.requirements])

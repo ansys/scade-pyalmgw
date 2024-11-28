@@ -22,6 +22,7 @@
 
 import difflib
 from pathlib import Path
+from typing import Optional
 
 import pytest
 
@@ -79,9 +80,9 @@ def test_factory(local_tmpdir):
 
     d1 = doc.ReqDocument(project, file='stub_yyy', name='document')
     # test init vs get property
-    assert d1.path == Path('stub_yyy')
+    assert d1.path == local_tmpdir / 'stub_yyy'
     # set property tested on save + compare
-    d1.path = Path('yyy')
+    d1.path = local_tmpdir / 'yyy'
 
     s1 = doc.Section(d1, number='stub_1', title='stub_One', description='one description')
     # test init vs get property
@@ -156,6 +157,25 @@ def test_bind():
     t1 = doc.TraceabilityLink(project, None, source='!ed/1', target='<unknown>')
     unresolved = project.bind()
     assert unresolved == [t1]
+
+
+@pytest.mark.parametrize(
+    'project, path, expected',
+    [
+        ('x:/a/b/c/project.xml', 'x:/a/b/c/doc.docx', 'doc.docx'),
+        ('x:/a/b/c/project.xml', 'x:/a/b/c/d/doc.docx', 'd/doc.docx'),
+        # do not expect '../d/doc.docx'
+        ('x:/a/b/c/project.xml', 'x:/a/b/d/doc.docx', 'x:/a/b/d/doc.docx'),
+        ('x:/a/b/c/project.xml', 'y:/a/b/c/d/doc.docx', 'y:/a/b/c/d/doc.docx'),
+        (None, 'x:/a/b/c/doc.docx', 'x:/a/b/c/doc.docx'),
+    ],
+)
+def test_document_path(project: Optional[str], path: str, expected: str):
+    p = doc.ReqProject(Path(project) if project else None)
+    d = doc.ReqDocument(p)
+    d.path = Path(path)
+    assert d.identifier == expected
+    assert d.path == Path(path)
 
 
 if __name__ == '__main__':

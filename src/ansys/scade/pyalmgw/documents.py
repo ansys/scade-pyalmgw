@@ -326,14 +326,23 @@ class ReqDocument(Container):
     @property
     def path(self) -> Path:
         """Return the path of the document."""
-        # semantic of base classs' identifier
-        return Path(self.identifier)
+        # semantic of base class' identifier
+        assert isinstance(self.owner, ReqProject)
+        return (
+            (self.owner.path.parent / self.identifier) if self.owner.path else Path(self.identifier)
+        )
 
     @path.setter
     def path(self, path: Path):
         """Set the path of the document."""
-        # semantic of base classs' identifier
-        self.identifier = str(path)
+        # semantic of base class' identifier
+        assert isinstance(self.owner, ReqProject)
+        if self.owner.path:
+            try:
+                path = path.relative_to(self.owner.path.parent)
+            except ValueError:
+                pass
+        self.identifier = path.as_posix()
 
     @property
     def depth(self) -> int:
@@ -344,9 +353,9 @@ class ReqDocument(Container):
 class ReqProject(Element):
     """Provides an implementation of a Requirement File."""
 
-    def __init__(self, path: Path, *args, **kwargs) -> None:
+    def __init__(self, path: Optional[Path] = None, **kwargs) -> None:
         # root of the hierarchy: no owner
-        super().__init__(None, *args, **kwargs)
+        super().__init__(None, **kwargs)
         self.path = path
         self.documents: List[ReqDocument] = []
         self.traceability_links: List[TraceabilityLink] = []

@@ -161,10 +161,10 @@ def _run_export(
     """
     Export the llrs and print the differences.
 
-    Run the export in a sub-process: required when get_roots must be used
-    for example: for printing SCADE Suite diagrams or using SCADE Architect.
+    Run the export in a sub-process: required when get_roots must be used,
+    for example, for printing SCADE Suite diagrams or using SCADE Architect.
 
-    It allows also to test the command line parser for standalone usage and
+    It also allows to test the command line parser for standalone usage and
     the factory of export classes.
     """
     dst = tmp / ref.name

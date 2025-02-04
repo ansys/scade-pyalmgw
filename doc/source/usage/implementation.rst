@@ -40,7 +40,7 @@ The following piece of code demonstrates the creation of a project with one docu
 Export
 ------
 
-The connector should integrate the traceability changes provided as an intermediate json file.
+The connector should integrate the traceability changes provided as an intermediate JSON file.
 The format of this file is not documented yet, you can replicate the following piece of code
 and add your semantic actions::
 

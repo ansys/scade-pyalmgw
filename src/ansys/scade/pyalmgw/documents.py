@@ -351,7 +351,7 @@ class ReqDocument(Container):
 
 
 class ReqProject(Element):
-    """Provides an implementation of a Requirement File."""
+    """Provides an implementation of a Requirements File."""
 
     def __init__(self, path: Optional[Path] = None, **kwargs) -> None:
         # root of the hierarchy: no owner
@@ -409,7 +409,7 @@ class ReqProject(Element):
 
     def write(self, path: Optional[Path] = None):
         """
-        Serialize the project to a Requirements Document XMl file.
+        Serialize the project to a Requirements Document XML file.
 
         Parameters
         ----------
@@ -427,7 +427,7 @@ class ReqProject(Element):
         tree.write(self.path, pretty_print=True, encoding='utf-8')
 
     def read(self):
-        """Build the project structure from a Requirements Document XMl file."""
+        """Build the project structure from a Requirements Document XML file."""
         tree = etree.parse(str(self.path), etree.XMLParser())
         self.parse(tree.getroot())
 

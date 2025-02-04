@@ -43,7 +43,7 @@ class StubProject(ReqProject):
 
     def merge_links(self, file: Path):
         """
-        Merge the traceability deltas from a the cache file (ALMGT).
+        Merge the traceability deltas from a cache file (ALMGT).
 
         The links are either created or deleted.
 
@@ -121,7 +121,7 @@ class StubConnector(Connector):
         """
         Import requirements and traceability links to ALM Gateway.
 
-        The functions copies the stub file to the provided path.
+        The function copies the stub file to the provided path.
 
         Parameters
         ----------

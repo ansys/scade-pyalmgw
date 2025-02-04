@@ -54,7 +54,7 @@ def cmp_file(fromfile: Path, tofile: Path, n=3, linejunk=None):
 )
 def test_load_save_req_document(name, local_tmpdir):
     """
-    Use load-save to test the parsing and serialization of a document
+    Use load-save to test the parsing and serialization of a document.
     """
     res_dir = Path(__file__).parent / 'ref'
     path = res_dir / name
@@ -143,7 +143,7 @@ def test_factory(local_tmpdir):
 
 def test_bind():
     """
-    Use load-save to test the parsing and serialization of a document
+    Use load-save to test the parsing and serialization of a document.
     """
     res_dir = Path(__file__).parent / 'ref'
     path = res_dir / 'links.xml'

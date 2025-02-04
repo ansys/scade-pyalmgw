@@ -278,7 +278,7 @@ class Connector(metaclass=ABCMeta):
         -------
         int
 
-            * -1: if an error occurs executing the command
+            * -1: if an error occurs while executing the command
             * 0: if the command is successfully executed
         """
         code = self.on_locate(req, pid)

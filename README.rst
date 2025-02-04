@@ -40,7 +40,7 @@ Ansys SCADE ALM Gateway Python Toolbox
 
 Overview
 --------
-Ansys SCADE ALM Gateway Python Toolbox provides a high level interface to the
+Ansys SCADE ALM Gateway Python Toolbox provides a high-level interface to the
 Ansys SCADE LifeCycle customization APIs:
 
 * Connection to a new ALM tool

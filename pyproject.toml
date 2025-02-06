@@ -44,7 +44,7 @@ tests = [
     "pyparsing",
 ]
 doc = [
-    "ansys-sphinx-theme[autoapi]==1.2.6",
+    "ansys-sphinx-theme[autoapi]==1.2.7",
     "autodoc_pydantic==2.2.0",
     "jupyter_sphinx==0.5.3",
     "nbsphinx==0.9.6",

@@ -35,7 +35,7 @@ Each class description has the following attributes:
     }
 
 Each instance of ``Package`` leads to a new section in the document called ``Package <package name>``.
-The instance itself is not a LLR.
+The instance itself is not an LLR.
 
 **Example 2:**
 
@@ -48,10 +48,10 @@ The instance itself is not a LLR.
         "isllr": true
     }
 
-The class ``Operator`` inherits from ``DataDef``. Each instance of ``Operator`` introduces a
-``Operator <operator name>`` section, that contains a LLR for the operator and additional items if any,
-like interface, diagrams, etc. If ``folder`` were left empty, the additional items would be children of the LLR itself,
-leading to potential awkward title numbering when exporting to DOORS for example.
+The class ``Operator`` inherits from ``DataDef``. Each instance of ``Operator`` introduces an
+``Operator <operator name>`` section, that contains an LLR for the operator and additional items if any,
+like interface, diagrams, etc. If ``folder`` was left empty, the additional items would be children of the LLR itself,
+which could lead to awkward title numbering when exporting to DOORS, for example.
 
 **Example 3:**
 
@@ -63,7 +63,7 @@ leading to potential awkward title numbering when exporting to DOORS for example
         "isllr": true
     }
 
-Each transition is a LLR but does not introduce a section. This is particularly useful for leaf items.
+Each transition is an LLR but does not introduce a section. This is particularly useful for leaf items.
 
 **Notes**:
 
@@ -74,7 +74,7 @@ Each transition is a LLR but does not introduce a section. This is particularly 
       { "class": "<class>", "isllr": true }
 
 * The fields ``isllr`` and ``folder`` are ignored for abstract classes.
-* Refer to the *Composition* and *Inheritance* class diagrams of the from the documentation
+* Refer to the *Composition* and *Inheritance* class diagrams from the documentation
   of the meta-models to customize the export schema:
 
   *Common Help Resources/SCADE Products API Resources/SCADE API Reference Cards* sections.
@@ -82,18 +82,18 @@ Each transition is a LLR but does not introduce a section. This is particularly 
 Class properties
 ----------------
 
-Each class can have implicit properties through the annotation system, cf. the dedicated section of this document.
+Each class can have implicit properties through the annotation system (cf. the dedicated section of this document).
 It is also possible to define new attributes by querying the model. This tool only accepts scalar values.
 The properties of a class are described in the list ``properties``. Each property element has the following attributes:
 
 * ``name``: Name of the property to be created. It is possible to declare associations by adding a prefix to the name:
 
-  * ``#name``: The value is the OID of the entity accessed by the path or empty if the entity is optional.
-  * ``@name``: The value is the path of the entity accessed by the path or empty if the entity is optional.
+  * ``#name``: The value is the OID of the entity accessed by the path, or empty if the entity is optional.
+  * ``@name``: The value is the path of the entity accessed by the path, or empty if the entity is optional.
 
-* ``path``: Path of the attribute in the model. It is possible to use roles thanks to a dotted notation provided there aren't any collections.
+* ``path``: Path of the attribute in the model. It is possible to use roles thanks to a dotted notation provided there are not any collections.
 
-Prefixes allows declaring references that can be bound in the ALM tool.
+Prefixes allow declaring references that can be bound in the ALM tool.
 For example, a DXL script can search for all properties starting by the prefix and create an internal link to ease the navigation.
 
 **Example 1:**
@@ -153,7 +153,7 @@ The structure of a class is described in the list ``structure``. Each structure 
   * ``sort``: The collection shall be sorted by alphabetical order.
     When used with the option ``sibling``, there is only a partial order.
 
-* ``content`` (default ``null``): List of associations to be traversed to gather new items
+* ``content`` (default ``null``): List of associations to be traversed to gather new items.
 
   * ``role``: Name of the role to be traversed. It is possible to chain several roles using a dotted notation.
     Each role name can be suffixed with a list of class names, enclosed by ``{}``, to filter the result.
@@ -254,7 +254,7 @@ inputs, hidden inputs and outputs. Hidden inputs are declared as ``"input"``.
         "isllr": true
     }
 
-Each instance of ``Transition`` is a LLR. Their children, for example forked transitions,
+Each instance of ``Transition`` is an LLR. Their children, for example forked transitions,
 are added as sibling items, avoiding numbering issues or extra complexity.
 
 **Example 4:**
@@ -276,7 +276,7 @@ are added as sibling items, avoiding numbering issues or extra complexity.
         ]
     }
 
-In the SCADE Test meta-model, there is only one association to access both sub-folders and records of a folder or a procedure.
+In the SCADE Test meta-model, there is only one association to access both sub-folders and records of a folder or procedure.
 In this example, the association ``"testElement"`` is traversed twice and filtered:
 The first iteration retrieves only the folders while the second one retrieves the records.
 

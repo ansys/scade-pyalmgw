@@ -144,7 +144,7 @@ class LLRExport:
             * 4 (LLRS.V194): Default format for ALM Gateway interface.
         empty : str
             Value to use when the value of an attribute is empty. This is required for
-            some target ALM tools, such as DOORS for SCADE releases up to 2025 R1.
+            some target ALM tools such as DOORS for SCADE releases up to 2025 R1.
 
         Returns
         -------
@@ -356,7 +356,7 @@ class LLRS(metaclass=ABCMeta):
         item : Any
             Input model element.
         cls : str
-            Name of the model element' class.
+            Name of the model element's class.
         flatten :
             Whether the child elements are in the same list or in a sub-tree.
         parent_oid : str
@@ -917,7 +917,7 @@ class SystemLLRS(AnnotatedLLRS):
         """
         Cache all the ids defined in a file.
 
-        It is required to know the resource file where is defined an id
+        It is required to know the resource file where an id is defined
         to build the URL.
         """
         files = project.file_refs
@@ -952,8 +952,8 @@ class DisplayApp:
     A SCADE Display model does not have a "root" class, that is required
     for defining an export schema.
 
-    This class gives access to the sepeicifations and reference objects
-    contained in a project. It also cache in the loaded instances the properties
+    This class gives access to the specifications and reference objects
+    contained in a project. It also caches in the loaded instances the properties
     as new attributes.
     """
 

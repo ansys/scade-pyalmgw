@@ -12,7 +12,7 @@ The connector executable should implement 5 commands:
 * ``import``: Import the requirements and traceability data from the ALM tool. The connector should deliver
   these data in an intermediate XML file.
 * ``export``: Export the surrogate model and the updated traceability data to the ALM tool. The connector should
-  read the traceability updates from an intermediate json file.
+  read the traceability updates from an intermediate JSON file.
 * ``manage``: Open the ALM tool user interface.
 * ``locate``: Open the ALM tool user interface and display the specified requirement.
 
@@ -35,7 +35,7 @@ Customized export
 -----------------
 
 The script ``ansys/scade/pyalmgw/llrs.py`` can be used as a customization script for exporting
-the surrogate model. The script is generic and is parametrized by a json configuration file, called export schema,
+the surrogate model. The script is generic and is parametrized by a JSON configuration file, called export schema,
 that describes the model elements to export as well as an optional documentation structure.
 
 The script accepts the following parameters:
@@ -45,7 +45,7 @@ The script accepts the following parameters:
 * ``-e``, ``--empty <value>`` (default ``''``): placeholder value for empty attribute values. This is required for some target ALM tools,
   such as DOORS, for SCADE releases up to 2025 R1.
 
-Refer to the SCADE LifeCycle ALM Gateway user documentation for details to register an
+Refer to the SCADE LifeCycle ALM Gateway user documentation for details on how to register an
 export customization script.
 
 .. toctree::

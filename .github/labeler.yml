@@ -6,8 +6,13 @@ documentation:
 maintenance:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ['.github/**/*', 'pyproject.toml']
+          - any-glob-to-any-file: ['pyproject.toml']
 testing:
   - any:
       - changed-files:
           - any-glob-to-any-file: ['tests/**']
+
+ci:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ['.github/workflows/**']

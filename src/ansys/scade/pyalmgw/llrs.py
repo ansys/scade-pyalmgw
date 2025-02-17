@@ -79,7 +79,7 @@ def read_project_id(project: std.Project) -> Optional[str]:
     """Return the ALM Gateway ID of a project."""
     pathname = str(Path(project.pathname).with_suffix('.almgp'))
     try:
-        f = open(pathname, 'r')
+        f = Path.open(pathname, 'r')
     except BaseException as e:
         print(str(e))
         return None
@@ -924,7 +924,7 @@ class SystemLLRS(AnnotatedLLRS):
         re = compile(r'.*\s+xmi:id="([^"]*)"')
         for file in files:
             # 'grep' all oids
-            for line in open(file.pathname, 'r', encoding='utf-8'):
+            for line in Path.open(file.pathname, 'r', encoding='utf-8'):
                 match = re.match(line)
                 if match:
                     oid = match.groups()[0]

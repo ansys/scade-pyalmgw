@@ -48,7 +48,7 @@ html_theme_options = {
 }
 
 # Configuration for Sphinx autoapi
-# TODO autoapi_render_in_single_page = ["class", "enum", "exception", "function"]
+# TODO: autoapi_render_in_single_page = ["class", "enum", "exception", "function"]
 suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions

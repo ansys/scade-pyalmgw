@@ -124,6 +124,8 @@ This way, it's not possible for you to push code that fails the style checks::
   debug statements (python)................................................Passed
   check yaml...............................................................Passed
   trim trailing whitespace.................................................Passed
+  Validate GitHub Workflows................................................Passed
+  check pre-commit.ci config...............................................Passed
 
 Build documentation
 -------------------

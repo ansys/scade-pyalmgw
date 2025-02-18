@@ -51,7 +51,7 @@ Contents
    :maxdepth: 1
    :hidden:
 
-   getting_started/index
+   getting-started/index
    usage/index
    api/index
    contributing

@@ -54,7 +54,6 @@ suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions
 extensions = [
-    'sphinx_autodoc_typehints',
     'numpydoc',
     'sphinx.ext.intersphinx',
     'sphinx_copybutton',
@@ -65,9 +64,6 @@ extensions = [
 
 # Make sure the target is unique
 autosectionlabel_prefix_document = True
-
-# Print the type annotations from the signature in the description only
-autodoc_typehints = 'description'
 
 # Intersphinx mapping
 intersphinx_mapping = {

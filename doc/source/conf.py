@@ -54,8 +54,6 @@ suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
     'sphinx_autodoc_typehints',
     'numpydoc',
     'sphinx.ext.intersphinx',
@@ -70,17 +68,6 @@ autosectionlabel_prefix_document = True
 
 # Print the type annotations from the signature in the description only
 autodoc_typehints = 'description'
-# When the documentation is run on Linux systems
-autodoc_mock_imports = ['scade', 'scade_env', '_scade_api']
-# Purpose of this option?
-add_module_names = False
-
-# autoclass_content: keep default
-# autodoc/autosummary flags
-autoclass_content = 'both'
-autosummary_generate = True
-# autodoc_class_signature: can't be used with enums
-# autodoc_class_signature = 'separated'
 
 # Intersphinx mapping
 intersphinx_mapping = {

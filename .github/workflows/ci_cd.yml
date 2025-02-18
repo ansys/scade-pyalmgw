@@ -126,26 +126,17 @@ jobs:
     needs: [build-library, update-changelog]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
-
-      - name: "Release to private PyPI"
-        uses: ansys/actions/release-pypi-private@v8
+      - name: "Release to the public PyPI repository"
+        uses: ansys/actions/release-pypi-public@v8
         with:
           library-name: ${{ env.LIBRARY_NAME }}
-          twine-username: "__token__"
-          twine-token: ${{ secrets.PYANSYS_PYPI_PRIVATE_PAT }}
-
-      # not public yet
-      # - name: "Release to the public PyPI repository"
-      #   uses: ansys/actions/release-pypi-public@v8
-      #   with:
-      #     library-name: ${{ env.LIBRARY_NAME }}
-      #     use-trusted-publisher: true
+          use-trusted-publisher: true
 
       - name: "Release to GitHub"
         uses: ansys/actions/release-github@v8
         with:
           library-name: ${{ env.LIBRARY_NAME }}
-          # additional-artifacts: 'examples'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   doc-deploy-dev:
     name: "Deploy development documentation"

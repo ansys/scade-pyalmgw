@@ -7,8 +7,6 @@ Ansys SCADE LifeCycle customization APIs:
 * Connection to a new ALM tool
 * Customization of the export of the surrogate model
 
-
-
 .. grid:: 1 2 3 3
     :gutter: 1 2 3 3
     :padding: 1 2 3 3
@@ -43,9 +41,6 @@ Ansys SCADE LifeCycle customization APIs:
 
       View the changelog for the Ansys SCADE ALM Gateway Python Toolbox.
 
-
-Contents
---------
 
 .. toctree::
    :maxdepth: 1

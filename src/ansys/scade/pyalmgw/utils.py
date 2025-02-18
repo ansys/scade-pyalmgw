@@ -63,7 +63,7 @@ def read_json(path: Path) -> Any:
         pass
     try:
         return json.load(path.open())
-    except BaseException as e:
+    except (OSError, json.JSONDecodeError) as e:
         print(str(e))
         return None
 
@@ -87,6 +87,6 @@ def write_json(object_: object, path: Path) -> bool:
         with path.open('w') as f:
             json.dump(object_, f, indent=4, sort_keys=True)
         return True
-    except BaseException as e:
+    except (OSError, json.JSONDecodeError) as e:
         print(str(e))
         return False

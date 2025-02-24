@@ -7,7 +7,7 @@ repos:
       args:
       - --start_year=2024
 
-- repo: https://github.com/charliermarsh/ruff-pre-commit
+- repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.9.6
   hooks:
     - id: ruff
@@ -39,13 +39,13 @@ repos:
     exclude: (?x)^(.*\.tot|.*\.swan.?)$
 
 # this validates our github workflow files
-  - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.31.1
-    hooks:
-      - id: check-github-workflows
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0.31.1
+  hooks:
+    - id: check-github-workflows
 
-  # this validates our pre-commit.ci configuration
-  - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
-    rev: v1.6.1
-    hooks:
-    -   id: check-pre-commit-ci-config
+# this validates our pre-commit.ci configuration
+- repo: https://github.com/pre-commit-ci/pre-commit-ci-config
+  rev: v1.6.1
+  hooks:
+  -   id: check-pre-commit-ci-config

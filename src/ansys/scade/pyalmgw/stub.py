@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2021 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -55,9 +55,9 @@ class StubProject(ReqProject):
         deltas = read_json(file)
 
         # cache existing requirements
-        requirements = {_.id: _ for doc in self.documents for _ in doc.iter_requirements()}
+        requirements = {req.id: req for doc in self.documents for req in doc.iter_requirements()}
         # cache existing links
-        links = {(_.source + _.target): _ for _ in self.traceability_links}
+        links = {f'{link.source}{link.target}': link for link in self.traceability_links}
         # assert isinstance(traceLinks, etree.Element)
         for delta in deltas:
             oid = delta['source']['oid']
@@ -72,21 +72,21 @@ class StubProject(ReqProject):
                 if not link:
                     requirement = requirements.get(req)
                     if not requirement:
-                        print('add a link to an unexisting requirement:', oid, '-> ', req)
+                        print(f'add a link to an unexisting requirement: {oid} -> {req}')
                     else:
-                        print('adding link', oid, '-> ', req)
+                        print(f'adding link {oid} -> {req}')
                     link = TraceabilityLink(self, requirement, oid, req)
                     links[key] = link
                 else:
                     # error
-                    print('link already present:', oid, '-> ', req)
+                    print(f'link already present: {oid} -> {req}')
             else:
                 if link:
-                    print('removing link', oid, '-> ', req)
+                    print(f'removing link {oid} -> {req}')
                     self.traceability_links.remove(link)
                 else:
                     # error
-                    print('link not present:', oid, '-> ', req)
+                    print(f'link not present: {oid} -> {req}')
 
 
 class StubConnector(Connector):

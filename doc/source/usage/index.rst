@@ -1,5 +1,5 @@
-Usage
-=====
+User Guide
+==========
 
 External connector
 ------------------
@@ -18,9 +18,28 @@ The connector executable should implement 5 commands:
 
 .. toctree::
     :maxdepth: 1
+    :caption: External connector
+    :hidden:
 
     implementation
     registration
+
+.. grid:: 1 2 3 3
+    :gutter: 1 2 3 3
+    :padding: 1 2 3 3
+
+    .. grid-item-card:: :material-regular:`settings;1.25em` Implementation
+        :link: implementation
+        :link-type: doc
+
+        Learn how to implement the external connector.
+
+    .. grid-item-card:: :material-regular:`link;1.25em` Registration
+        :link: registration
+        :link-type: doc
+
+        Learn how to register the external connector.
+
 
 You may refer to the following examples:
 
@@ -50,6 +69,24 @@ export customization script.
 
 .. toctree::
     :maxdepth: 1
+    :caption: Customized export
+    :hidden:
 
     schema
     tutorial
+
+.. grid:: 1 2 3 3
+  :gutter: 1 2 3 3
+  :padding: 1 2 3 3
+
+  .. grid-item-card:: :material-regular:`description;1.25em` Schema
+    :link: schema
+    :link-type: doc
+
+    Learn how to create an export schema.
+
+  .. grid-item-card:: :material-regular:`local_library;1.25em` Tutorial
+    :link: tutorial
+    :link-type: doc
+
+    Learn how to customize the export of the surrogate model.

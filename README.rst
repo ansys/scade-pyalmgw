@@ -55,7 +55,7 @@ Ansys SCADE, starting from 2021 R2:
 * 2023 R2 and later: Python 3.10
 
 Ansys SCADE ALM Gateway Python Toolbox has two installation modes: user and developer. To install for use,
-see `Getting started <https://pyalmgw.scade.docs.pyansys.com/version/stable/getting_started/index.html>`_.
+see `Getting started <https://pyalmgw.scade.docs.pyansys.com/version/stable/getting-started/index.html>`_.
 To install for development, see `Contribute <https://pyalmgw.scade.docs.pyansys.com/version/stable/contributing.html>`_.
 
 Documentation and issues

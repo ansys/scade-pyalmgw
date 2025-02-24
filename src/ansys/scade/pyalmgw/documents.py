@@ -76,7 +76,7 @@ class ReqObject:
                 or (tag == 'children' and isinstance(self, ReqDocument))
             )
             # }}
-            if force or (collections and any((_ for _ in collections))):
+            if force or (collections and any(collections)):
                 collection = etree.SubElement(elem, tag, {}, None)
                 for children in collections:
                     for child in children:
@@ -196,7 +196,7 @@ class Container(Element):
 
     def is_empty(self) -> bool:
         """Return whether a container does not contain requirements."""
-        return not self.requirements and all([_.is_empty() for _ in self.sections])
+        return not self.requirements and all(_.is_empty() for _ in self.sections)
 
     def parse(self, tree: Any):
         """Parse the current object from an XML element."""

@@ -429,7 +429,7 @@ class LLRS(metaclass=ABCMeta):
                 ),
             )
         role, classes = m.groups()
-        names = [_.strip() for _ in classes.split(',')] if classes else None
+        names = [name.strip() for name in classes.split(',')] if classes else None
         return role, names
 
     def get_attribute(self, item: Any, path: str) -> Any:
@@ -908,7 +908,7 @@ class SystemLLRS(AnnotatedLLRS):
         """Implement ``get_item_image``."""
         if not isinstance(item, scade.model.architect.Diagram):
             return None
-        path = Path(self.llr_export.project.pathname).parent / 'llr_img' / (item.name + '.png')
+        path = Path(self.llr_export.project.pathname).parent / 'llr_img' / f'{item.name}.png'
         path.parent.mkdir(exist_ok=True)
         scade.print(item, str(path), 'png')
         return path.as_posix()
@@ -933,9 +933,9 @@ class SystemLLRS(AnnotatedLLRS):
             prefix = Path(file.pathname).name
             folder = file.folder
             while folder is not None:
-                prefix = folder.name + '/' + prefix
+                prefix = f'{folder.name}/{prefix}'
                 folder = folder.folder
-            prefix = Path(project.pathname).stem + '/' + prefix
+            prefix = f'{Path(project.pathname).stem}/{prefix}'
             self.prefixes[file] = prefix
 
 
@@ -1050,8 +1050,7 @@ class DisplayLLRS(LLRS):
         if not isinstance(items, list):
             items = [items]
         if sort:
-            items = items.copy()
-            items.sort(key=lambda elem: self.get_item_name(elem).lower())
+            items = sorted(items, key=lambda elem: self.get_item_name(elem).lower())
         return items
 
     def get_item_oid(self, item: Any) -> str:

@@ -1,10 +1,6 @@
-ANSYS
-Ansys
-ansys
+(?i)ansys
 Ansys SCADE ALM Gateway Python Toolbox
-scade
-Scade
-SCADE
+(?i)scade
 endblock
 endif
 endfor

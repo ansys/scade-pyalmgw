@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name="ansys-scade-pyalmgw"
-version="1.0.dev0"
+version="2.0.dev0"
 description ="Python toolbox for Ansys SCADE LifeCycle ALM Gateway."
 readme="README.rst"
 
@@ -12,10 +12,10 @@ readme="README.rst"
 requires-python = ">=3.7,!=3.8.*,!=3.9.*,<3.11"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Ansys, Inc.", email = "pyansys.core@ansys.com"},
+    {name = "ANSYS, Inc.", email = "pyansys.core@ansys.com"},
 ]
 maintainers = [
-    {name = "Ansys, Inc.", email = "pyansys.core@ansys.com"},
+    {name = "ANSYS, Inc.", email = "pyansys.core@ansys.com"},
 ]
 dependencies=[
     "importlib-metadata >= 1.0; python_version < '3.8'",
@@ -26,6 +26,8 @@ dependencies=[
 classifiers=[
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.10",
     "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
 ]
@@ -44,7 +46,7 @@ tests = [
     "pyparsing",
 ]
 doc = [
-    "ansys-sphinx-theme[autoapi]==1.2.7",
+    "ansys-sphinx-theme[autoapi]==1.3.1",
     "autodoc_pydantic==2.2.0",
     "jupyter_sphinx==0.5.3",
     "nbsphinx==0.9.6",
@@ -75,24 +77,26 @@ pyalmgw_stub_connector = "ansys.scade.pyalmgw.stub:main"
 
 [tool.ruff]
 line-length = 100
-lint.select = [
-    "E",    # pycodestyle, see https://beta.ruff.rs/docs/rules/#pycodestyle-e-w
-    "D",    # pydocstyle, see https://beta.ruff.rs/docs/rules/#pydocstyle-d
-    "F",    # pyflakes, see https://beta.ruff.rs/docs/rules/#pyflakes-f
-    "I",    # isort, see https://beta.ruff.rs/docs/rules/#isort-i
-    "N",    # pep8-naming, see https://beta.ruff.rs/docs/rules/#pep8-naming-n
-]
-lint.ignore = [
-    "D206",  # To ignore: conflict with the formatter
-    "E501",  # Line too long. Ignoring this so "ruff.formatter" manages line length.
-    "D203",  # One blank line required before class docstring.
-    "D204",  # One blank line required after class docstring.
-]
+fix = true
 
-# TODO: "preserve" leads to an error, although it is documented
-# and used in other repositories
 [tool.ruff.format]
 quote-style = "single"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle, see https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "D",    # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
+    "F",    # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "I",    # isort, see https://docs.astral.sh/ruff/rules/#isort-i
+    "N",    # pep8-naming, see https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "PTH",  # flake8-use-pathlib, https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+    "TD",   # flake8-todos, https://docs.astral.sh/ruff/rules/#flake8-todos-td
+]
+ignore = [
+    "TD002", # Missing author in TODOs comment
+    "TD003", # Missing issue in TODOs comment
+]
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
@@ -104,6 +108,9 @@ convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["D",]
+"src/ansys/scade/pyalmgw/connector.py" = ["E501"]
+"src/ansys/scade/pyalmgw/llrs.py" = ["PTH"]
+
 
 [tool.coverage.run]
 source = ["ansys.scade.pyalmgw"]
@@ -151,6 +158,7 @@ showcontent = true
 directory = "miscellaneous"
 name = "Miscellaneous"
 showcontent = true
+
 [[tool.towncrier.type]]
 directory = "documentation"
 name = "Documentation"

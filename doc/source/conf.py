@@ -1,4 +1,5 @@
 """Sphinx documentation configuration file."""
+
 from datetime import datetime
 import os
 
@@ -48,38 +49,20 @@ html_theme_options = {
 }
 
 # Configuration for Sphinx autoapi
-# TODO autoapi_render_in_single_page = ["class", "enum", "exception", "function"]
+# TODO: autoapi_render_in_single_page = ["class", "enum", "exception", "function"]
 suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx_autodoc_typehints',
     'numpydoc',
     'sphinx.ext.intersphinx',
     'sphinx_copybutton',
     'sphinx_design',
     'ansys_sphinx_theme.extension.autoapi',
-    'sphinx.ext.autosectionlabel',
 ]
 
 # Make sure the target is unique
 autosectionlabel_prefix_document = True
-
-# Print the type annotations from the signature in the description only
-autodoc_typehints = 'description'
-# When the documentation is run on Linux systems
-autodoc_mock_imports = ['scade', 'scade_env', '_scade_api']
-# Purpose of this option?
-add_module_names = False
-
-# autoclass_content: keep default
-# autodoc/autosummary flags
-autoclass_content = 'both'
-autosummary_generate = True
-# autodoc_class_signature: can't be used with enums
-# autodoc_class_signature = 'separated'
 
 # Intersphinx mapping
 intersphinx_mapping = {

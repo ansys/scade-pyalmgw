@@ -24,7 +24,7 @@ import difflib
 from pathlib import Path
 
 import ansys.scade.pyalmgw.stub as stub
-from tests.conftest import load_project
+from conftest import load_project
 
 _root_dir = Path(__file__).parent.parent
 _test_dir = _root_dir / 'tests'

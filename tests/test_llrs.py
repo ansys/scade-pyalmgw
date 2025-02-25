@@ -39,7 +39,7 @@ import scade.model.testenv as qte
 
 import ansys.scade.pyalmgw as pyalmgw
 from ansys.scade.pyalmgw.llrs import LLRS, LLRExport, PathError, QteLLRS, ScadeLLRS
-from tests.conftest import load_project, load_project_session, load_project_test
+from conftest import load_project, load_project_session, load_project_test
 
 _pyalmgw_dir = Path(pyalmgw.__file__).parent
 _root_dir = Path(__file__).parent.parent

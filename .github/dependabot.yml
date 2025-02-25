@@ -16,15 +16,6 @@ updates:
           patterns:
             - "*"
 
-      doc-deps:
-          patterns:
-            - "ansys-sphinx-theme*"
-            - "sphinx*"
-            - "nbsphinx"
-            - "jupyter_sphinx"
-            - "numpydoc"
-            - "autodoc_pydantic"
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

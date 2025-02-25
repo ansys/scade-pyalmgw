@@ -31,7 +31,7 @@ import ansys.scade.pyalmgw as pyalmgw
 import ansys.scade.pyalmgw.connector as cnt
 import ansys.scade.pyalmgw.llrs as llrs
 import ansys.scade.pyalmgw.utils as utils
-from tests.conftest import load_project, load_project_session, std, suite
+from conftest import load_project, load_project_session, std, suite
 
 _pyalmgw_dir = Path(pyalmgw.__file__).parent
 _test_dir = Path(__file__).parent.parent / 'tests'

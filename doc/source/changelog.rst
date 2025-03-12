@@ -9,6 +9,14 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`1.1.2 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.2>`_ - March 12, 2025
+======================================================================================
+
+Fixed
+^^^^^
+
+- fix: limit flit version `#17 <https://github.com/ansys/scade-pyalmgw/pull/17>`_
+
 `1.1.0 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.0>`_ - March 12, 2025
 ======================================================================================
 

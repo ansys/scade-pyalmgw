@@ -9,6 +9,47 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`1.1.0 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.0>`_ - March 12, 2025
+======================================================================================
+
+Added
+^^^^^
+
+- feat: tech review `#12 <https://github.com/ansys/scade-pyalmgw/pull/12>`_
+
+
+Fixed
+^^^^^
+
+- fix: cleanup `#14 <https://github.com/ansys/scade-pyalmgw/pull/14>`_
+- fix: Correct the import of conftest in test files `#15 <https://github.com/ansys/scade-pyalmgw/pull/15>`_
+
+
+Dependencies
+^^^^^^^^^^^^
+
+- build(deps): Bump the dependencies group with 3 updates `#9 <https://github.com/ansys/scade-pyalmgw/pull/9>`_
+- build(deps): Bump the dependencies group with 2 updates `#13 <https://github.com/ansys/scade-pyalmgw/pull/13>`_
+
+
+Documentation
+^^^^^^^^^^^^^
+
+- chore: update CHANGELOG for v1.0.0 `#6 <https://github.com/ansys/scade-pyalmgw/pull/6>`_
+- docs: documentation only changes `#10 <https://github.com/ansys/scade-pyalmgw/pull/10>`_
+
+
+Maintenance
+^^^^^^^^^^^
+
+- build(deps): Bump codecov/codecov-action from 4 to 5 in the actions group `#2 <https://github.com/ansys/scade-pyalmgw/pull/2>`_
+
+
+Test
+^^^^
+
+- build(deps): Bump the dependencies group across 1 directory with 5 updates `#8 <https://github.com/ansys/scade-pyalmgw/pull/8>`_
+
 `1.0.0 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.0.0>`_ - 2024-11-28
 ==================================================================================
 

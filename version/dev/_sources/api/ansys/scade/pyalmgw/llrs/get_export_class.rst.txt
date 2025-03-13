@@ -1,0 +1,26 @@
+ansys.scade.pyalmgw.llrs.get_export_class
+=========================================
+
+.. py:function:: ansys.scade.pyalmgw.llrs.get_export_class(project: scade.model.project.stdproject.Project) -> Optional[LLRExport]
+
+   
+   Create an instance of ``LLRExport`` for the input project.
+
+   The function returns ``None`` when the project is not suitable for creating a surrogate model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!

@@ -1,0 +1,162 @@
+
+
+
+
+
+
+The ``ansys.scade.pyalmgw`` library
+===================================
+
+.. py:module:: ansys.scade.pyalmgw
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: pyalmgw
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.connector`
+            - SCADE LifeCycle ALM Gateway Python interface for external connectors.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents`
+            - Provides means to create a Requirements Document for ALM Gateway.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs`
+            - Generic tool for exporting the surrogate model to an ALM tool.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.stub`
+            - Integration test.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.utils`
+            - Adds logs.
+
+
+
+
+
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~__version__`
+            - 
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~LLRSCHEMA`
+            - 
+
+
+          * - :py:obj:`~LLRSCHEMA_DEFAULT`
+            - 
+
+
+          * - :py:obj:`~TOOL`
+            - 
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> connector</api/ansys/scade/pyalmgw/connector/index>
+    <span class="nf nf-fa-file"></span> documents</api/ansys/scade/pyalmgw/documents/index>
+    <span class="nf nf-fa-file"></span> llrs</api/ansys/scade/pyalmgw/llrs/index>
+    <span class="nf nf-fa-file"></span> stub</api/ansys/scade/pyalmgw/stub/index>
+    <span class="nf nf-fa-file"></span> utils</api/ansys/scade/pyalmgw/utils/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Ansys SCADE ALM Gateway Python Toolbox.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: LLRSCHEMA
+   :value: 'LLRSCHEMA'
+
+
+.. py:data:: LLRSCHEMA_DEFAULT
+   :value: ''
+
+
+.. py:data:: TOOL
+   :value: 'ALMGW'
+
+
+.. py:data:: __version__
+
+
+

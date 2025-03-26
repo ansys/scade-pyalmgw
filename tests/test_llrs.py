@@ -170,7 +170,7 @@ def _run_export(
     dst = tmp / ref.name
     cmd = [
         sys.executable,
-        _pyalmgw_dir / 'llrs.py',
+        str(_pyalmgw_dir / 'llrs.py'),
         str(path),
         str(dst),
         str(schema),
@@ -323,11 +323,11 @@ def test_llr_robustness(local_tmpdir, index, project, args):
     dst = local_tmpdir / ('robustness_%d.json' % index)
     cmd = [
         sys.executable,
-        _pyalmgw_dir / 'llrs.py',
+        str(_pyalmgw_dir / 'llrs.py'),
         str(path),
         str(dst),
     ]
-    cmd.extend(args)
+    cmd.extend([str(_) for _ in args])
     status = subprocess.run(cmd, capture_output=True)
     print(status.stderr.decode('utf-8').strip('\n'))
     print(status.stdout.decode('utf-8').strip('\n'))

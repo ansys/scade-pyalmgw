@@ -24,6 +24,7 @@ import filecmp
 from pathlib import Path
 import subprocess
 import sys
+from typing import List, Optional
 
 import pytest
 
@@ -103,7 +104,9 @@ def test_execute_import(file, code, trace):
     connector = TestExecuteConnector(code, 'ut', None)
     req_file = _ref_dir / file
     trace_file = Path('c:/temp/req.xml')
-    trace_file.unlink(missing_ok=True)
+    if trace_file.exists():
+        # missing_ok not available with Python 3.7
+        trace_file.unlink()
     return_code = connector.execute('import', str(req_file), 1)
     utils.traceon = save_trace
     assert connector.import_
@@ -126,7 +129,9 @@ def test_execute_export(file, trace):
     connector = TestExecuteConnector(code, 'ut', None)
     links_file = _ref_dir / file
     trace_file = Path('c:/temp/links.json')
-    trace_file.unlink(missing_ok=True)
+    if trace_file.exists():
+        # missing_ok not available with Python 3.7
+        trace_file.unlink()
     return_code = connector.execute('export', str(links_file), 2)
     utils.traceon = save_trace
     assert connector.export
@@ -184,7 +189,11 @@ class TestLLRConnector(cnt.Connector):
     __test__ = False
 
     def __init__(
-        self, *args, llrs_file: Path | None = None, session: suite.Session | None = None, **kwargs
+        self,
+        *args,
+        llrs_file: Optional[Path] = None,
+        session: Optional[suite.Session] = None,
+        **kwargs,
     ):
         super().__init__(*args, **kwargs)
         self.llrs_file = llrs_file
@@ -193,7 +202,7 @@ class TestLLRConnector(cnt.Connector):
     def get_llrs_file(self) -> Path:
         return self.llrs_file if self.llrs_file else super().get_llrs_file()
 
-    def get_export_class(self) -> llrs.LLRExport | None:
+    def get_export_class(self) -> Optional[llrs.LLRExport]:
         if self.session:
             return TestLLRExport(self.project, self.session)
         else:
@@ -298,7 +307,7 @@ def test_export_llrs_robustness():
         ('unknown', [], 82, 4294967295),
     ],
 )
-def test_main(local_tmpdir, command: str, args: list[str], pid: int, expected: int):
+def test_main(local_tmpdir, command: str, args: List[str], pid: int, expected: int):
     # create an empty project
     path = local_tmpdir / ('main_' + command) / 'empty.vsp'
     path.parent.mkdir(exist_ok=True)
@@ -310,7 +319,7 @@ def test_main(local_tmpdir, command: str, args: list[str], pid: int, expected: i
         '-m',
         'ansys.scade.pyalmgw.stub',
         '-' + command,
-        Path(path),
+        str(path),
     ]
     args = [_.replace('<tmp>', str(path.parent)) for _ in args]
     cmd.extend(args)

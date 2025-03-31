@@ -381,6 +381,22 @@
                                                             "pathname": "P::O/Graphical/EQ/",
                                                             "scadetype": "equationSet",
                                                             "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzZhLzYyOTQvQUM1Qy82NzMzNmY3MmVmZA=="
+                                                        },
+                                                        {
+                                                            "almtype": "req",
+                                                            "attributes": [
+                                                                {
+                                                                    "name": "Nature",
+                                                                    "value": "Low Level Requirement"
+                                                                }
+                                                            ],
+                                                            "icon": "$(SCADE)/SCADE LifeCycle/ALM Gateway/reqtifygw/icons/suite/equationSet.png",
+                                                            "image": "$(ROOT)/tests/ScadeLLRS/llr_img/Wrong _f_i_l_e_n_a_m_e_.png",
+                                                            "name": "Wrong *f\"i/l\\e<n>a:m|e?",
+                                                            "oid": "!ed/79/345F/D1BC/67ea40107305",
+                                                            "pathname": "P::O/Graphical/Wrong *f\"i/l\\e<n>a:m|e?/",
+                                                            "scadetype": "equationSet",
+                                                            "url": "http://localhost:8080/scade_provider/services/_vejBYKEJEe-4oO9EmPYzqg/requirements/IWVkLzc5LzM0NUYvRDFCQy82N2VhNDAxMDczMDU="
                                                         }
                                                     ],
                                                     "icon": "$(PYALMGW)/res/suite/netDiagram.png",

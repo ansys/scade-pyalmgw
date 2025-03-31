@@ -6,7 +6,7 @@ BEGIN
         information {
             Nature ENUM
             {
-            	 NT_ENUM_VALUES {"Low Level Requirement", "Architecture", "Derived Low Level Requirement"},
+            	 NT_ENUM_VALUES {"Low Level Requirement", "Architecture", "Derived Low Level Requirement", ""},
             	 NT_DEFAULT_VALUE "Low Level Requirement" ,
             	 NT_FIELD_WIDTH 20 ,
             	 LLR_PROP "Nature" },
@@ -32,6 +32,7 @@ Notes-Values { Esterel-Technologies }  DEFINITIONS ::=
 BEGIN
     DesignElement ::= {
         {"!ed/6a/6294/AC5C/67336f72efd", "DesignElement","" , "" },
+        {"!ed/79/345F/D1BC/67ea40107305", "DesignElement_1","Low Level Requirement" , "" },
         {"!ed/35/6294/AC5C/67336ede4e9d", "DesignElement","Derived Low Level Requirement" , "" }}
     Remark ::= {
         {"!ed/14/6294/AC5C/67336eb642c", "Remark","Remark" }}

@@ -39,7 +39,7 @@ from abc import ABCMeta, abstractmethod
 from argparse import ArgumentParser
 from base64 import b64encode
 from pathlib import Path
-from re import compile
+from re import compile, sub
 import subprocess
 import sys
 from typing import Any, List, Optional
@@ -811,7 +811,9 @@ class ScadeLLRS(AnnotatedLLRS):
             return None
         path = Path(self.llr_export.project.pathname).parent / 'llr_img'
         path.mkdir(exist_ok=True)
-        path = (path / (item.name + '.png')).as_posix()
+        # name may contain illegal characters (equation sets)
+        name = sub(r'[*"/\\<>:|?]', '_', item.name)
+        path = (path / (name + '.png')).as_posix()
         scade.print(item, path, 'png')
         return path
 
@@ -908,7 +910,9 @@ class SystemLLRS(AnnotatedLLRS):
         """Implement ``get_item_image``."""
         if not isinstance(item, scade.model.architect.Diagram):
             return None
-        path = Path(self.llr_export.project.pathname).parent / 'llr_img' / f'{item.name}.png'
+        # name may contain illegal characters?
+        name = sub(r'[*"/\\<>:|?]', '_', item.name)
+        path = Path(self.llr_export.project.pathname).parent / 'llr_img' / f'{name}.png'
         path.parent.mkdir(exist_ok=True)
         scade.print(item, str(path), 'png')
         return path.as_posix()

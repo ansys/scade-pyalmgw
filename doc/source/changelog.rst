@@ -9,6 +9,14 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`1.1.4 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.4>`_ - March 31, 2025
+======================================================================================
+
+Fixed
+^^^^^
+
+- fix: Replace illegal filename characters `#23 <https://github.com/ansys/scade-pyalmgw/pull/23>`_
+
 `1.1.3 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.3>`_ - March 26, 2025
 ======================================================================================
 

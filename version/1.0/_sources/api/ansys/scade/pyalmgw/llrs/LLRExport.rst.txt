@@ -1,0 +1,261 @@
+
+
+
+
+
+
+:class:`LLRExport`
+==================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.LLRExport(project)
+
+   
+   Entry point for exporting the surrogate model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: LLRExport
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~dump_model`
+            - Generate the surrogate model as a dictionary.
+          * - :py:attr:`~get_export_classes`
+            - Return the export classes applicable to a project.
+          * - :py:attr:`~get_url`
+            - Return the URL corresponding to an oid.
+          * - :py:attr:`~read_schema`
+            - Parse the input configuration schema.
+          * - :py:attr:`~write`
+            - Write the dictionary to a file.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~classes`
+            - 
+          * - :py:attr:`~diagrams`
+            - 
+          * - :py:attr:`~export_classes`
+            - 
+          * - :py:attr:`~project`
+            - 
+          * - :py:attr:`~project_id`
+            - 
+          * - :py:attr:`~roots`
+            - 
+          * - :py:attr:`~schema`
+            - 
+          * - :py:attr:`~version`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import LLRExport
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: classes
+
+.. py:attribute:: diagrams
+   :value: False
+
+
+.. py:attribute:: export_classes
+
+.. py:attribute:: project
+
+.. py:attribute:: project_id
+
+.. py:attribute:: roots
+
+.. py:attribute:: schema
+   :value: None
+
+
+.. py:attribute:: version
+
+
+
+Method detail
+-------------
+
+.. py:method:: dump_model(diagrams = False, version = 0, empty = '')
+
+   
+   Generate the surrogate model as a dictionary.
+
+
+   :Parameters:
+
+       **diagrams** : :ref:`bool <python:bltin-boolean-values>`
+           Whether the images should be generated, for applicable elements.
+
+       **version** : :class:`python:int`
+           Target version of the surrogate model.
+           
+           * 0 (LLRS.VCUSTOM): Default format + icons + urls. Applies to custom connectors.
+           * 4 (LLRS.V194): Default format for ALM Gateway interface.
+
+       **empty** : :class:`python:str`
+           Value to use when the value of an attribute is empty. This is required for
+           some target ALM tools, such as DOORS for SCADE releases up to 2025 R1.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Surrogate model.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_export_classes(project)
+
+   
+   Return the export classes applicable to a project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_url(oid)
+
+   
+   Return the URL corresponding to an oid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: read_schema(path)
+
+   
+   Parse the input configuration schema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: write(llrs, path)
+
+   
+   Write the dictionary to a file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

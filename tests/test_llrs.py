@@ -241,7 +241,7 @@ def test_display(local_tmpdir, display: std.Project):
 
 def test_display_llrs(local_tmpdir, display_llrs: std.Project):
     """Test DisplayLLRS."""
-    img = _root_dir / 'tests' / 'ScadeLLRS' / 'llr_img'
+    img = _root_dir / 'tests' / 'DisplayLLRS' / 'llr_img'
     if img.exists():
         shutil.rmtree(img)
     schema = _root_dir / 'tests' / 'DisplayLLRS' / 'sample.json'

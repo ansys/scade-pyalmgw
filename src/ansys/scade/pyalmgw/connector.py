@@ -285,14 +285,14 @@ class Connector(metaclass=ABCMeta):
         return code
 
     def execute(self, command: str, *args: str) -> int:
-        """
+        r"""
         Execute the ALM Gateway command.
 
         Parameters
         ----------
         command : str
             Input command, must be one of settings, manage, locate, import or export.
-        *args : str
+        \*args : str
             Parameters of the command
 
         Returns

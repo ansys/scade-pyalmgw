@@ -69,12 +69,12 @@ def read_json(path: Path) -> Any:
 
 
 def write_json(object_: object, path: Path) -> bool:
-    """
+    r"""
     Write an object to a ``json`` file.
 
     Parameters
     ----------
-    object_ : object
+    object\_ : object
         object to serialize to json.
     path : Path
         Path of the output file.

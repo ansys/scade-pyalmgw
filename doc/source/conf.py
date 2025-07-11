@@ -54,7 +54,6 @@ suppress_warnings = ['autoapi.python_import_resolution']
 
 # Sphinx extensions
 extensions = [
-    'numpydoc',
     'sphinx.ext.intersphinx',
     'sphinx_copybutton',
     'sphinx_design',

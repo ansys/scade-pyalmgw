@@ -1,0 +1,135 @@
+
+
+
+
+
+
+:class:`DisplayApp`
+===================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.DisplayApp(project: scade.model.project.stdproject.Project)
+
+   
+   Top-level class for SCADE Display models.
+
+   A SCADE Display model does not have a "root" class, that is required
+   for defining an export schema.
+
+   This class gives access to the specifications and reference objects
+   contained in a project. It also caches in the loaded instances the properties
+   as new attributes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: DisplayApp
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~cache_properties`
+            - Add the attributes owner, file and qualified_name to the model elements.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~files`
+            - 
+          * - :py:attr:`~name`
+            - 
+          * - :py:attr:`~owner`
+            - 
+          * - :py:attr:`~qualified_name`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import DisplayApp
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: files
+   :value: []
+
+
+.. py:attribute:: name
+
+.. py:attribute:: owner
+   :value: None
+
+
+.. py:attribute:: qualified_name
+   :value: ''
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: cache_properties(file, owner, item, link='')
+
+   
+   Add the attributes owner, file and qualified_name to the model elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

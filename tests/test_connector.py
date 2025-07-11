@@ -89,7 +89,7 @@ class TestExecuteConnector(cnt.Connector):
 def test_execute_settings():
     code = 9
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('settings', 5)
+    return_code = connector.execute('settings', '5')
     assert connector.settings
     assert connector.pid == 5
     assert return_code == code
@@ -107,7 +107,7 @@ def test_execute_import(file, code, trace):
     if trace_file.exists():
         # missing_ok not available with Python 3.7
         trace_file.unlink()
-    return_code = connector.execute('import', str(req_file), 1)
+    return_code = connector.execute('import', str(req_file), '1')
     utils.traceon = save_trace
     assert connector.import_
     assert return_code == code
@@ -132,7 +132,7 @@ def test_execute_export(file, trace):
     if trace_file.exists():
         # missing_ok not available with Python 3.7
         trace_file.unlink()
-    return_code = connector.execute('export', str(links_file), 2)
+    return_code = connector.execute('export', str(links_file), '2')
     utils.traceon = save_trace
     assert connector.export
     assert connector.pid == 2
@@ -148,7 +148,7 @@ def test_execute_export(file, trace):
 def test_execute_manage():
     code = 32
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('manage', 3)
+    return_code = connector.execute('manage', '3')
     assert connector.manage
     assert connector.pid == 3
     assert return_code == code
@@ -158,7 +158,7 @@ def test_execute_locate():
     code = 46
     req = 'REQ_081'
     connector = TestExecuteConnector(code, 'ut', None)
-    return_code = connector.execute('locate', req, 4)
+    return_code = connector.execute('locate', req, '4')
     assert connector.locate
     assert connector.req == req
     assert connector.pid == 4
@@ -167,7 +167,7 @@ def test_execute_locate():
 
 def test_execute_robustness():
     connector = TestExecuteConnector(0, 'ut', None)
-    return_code = connector.execute('unknown', 'a', 'b', 'c', 9)
+    return_code = connector.execute('unknown', 'a', 'b', 'c', '9')
     assert connector.pid == 0
     assert return_code == -1
 

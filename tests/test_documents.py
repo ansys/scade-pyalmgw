@@ -152,7 +152,12 @@ def test_bind():
     assert all((_.requirement is None for _ in project.traceability_links))
     unresolved = project.bind()
     assert not unresolved
-    assert all((_.requirement.id == _.target for _ in project.traceability_links))
+    assert all(
+        (
+            _.requirement is not None and _.requirement.id == _.target
+            for _ in project.traceability_links
+        )
+    )
     # add a link to an unknown requirement
     t1 = doc.TraceabilityLink(project, None, source='!ed/1', target='<unknown>')
     unresolved = project.bind()

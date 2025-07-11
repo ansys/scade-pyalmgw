@@ -28,7 +28,7 @@ of a Requirements Document.
 """
 
 from pathlib import Path
-from typing import Any, Dict, Generator, List, Optional
+from typing import Any, Dict, Generator, List, Optional, Sequence
 
 from lxml import etree
 
@@ -101,7 +101,7 @@ class ReqObject:
         return {}
 
     @property
-    def children(self) -> Dict[str, List[List['ReqObject']]]:
+    def children(self) -> Dict[str, List[Sequence['ReqObject']]]:
         """
         Return the contained elements to be serialized as a dictionary.
 
@@ -180,7 +180,7 @@ class Container(Element):
         self.requirements: List['Requirement'] = []
 
     @property
-    def children(self) -> Dict[str, List[List[ReqObject]]]:
+    def children(self) -> Dict[str, List[Sequence[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('children', []).extend([self.sections, self.requirements])
@@ -379,7 +379,7 @@ class ReqProject(Element):
         return unresolved
 
     @property
-    def children(self) -> Dict[str, List[List[ReqObject]]]:
+    def children(self) -> Dict[str, List[Sequence[ReqObject]]]:
         """Return the contained elements to be serialized as a dictionary."""
         children_ = super().children
         children_.setdefault('traceabilityLinks', []).append(self.traceability_links)

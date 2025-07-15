@@ -40,7 +40,7 @@ from argparse import ArgumentParser
 from base64 import b64encode
 from pathlib import Path
 from re import compile, sub
-import subprocess
+import subprocess  # nosec  # used to call SCADE Display command line tools
 import sys
 from typing import Any, Dict, List, Optional
 
@@ -1123,7 +1123,7 @@ class DisplayLLRS(LLRS):
         ]
         try:
             traceln(' '.join(cmd))
-            out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+            out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)  # nosec  # inputs checked
             out = out.decode('utf-8')
             traceln(out)
         except subprocess.CalledProcessError as e:

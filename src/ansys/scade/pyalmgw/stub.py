@@ -58,7 +58,6 @@ class StubProject(ReqProject):
         requirements = {req.id: req for doc in self.documents for req in doc.iter_requirements()}
         # cache existing links
         links = {f'{link.source}{link.target}': link for link in self.traceability_links}
-        # assert isinstance(traceLinks, etree.Element)
         for delta in deltas:
             oid = delta['source']['oid']
             req = delta['target']['req_id']
@@ -104,7 +103,8 @@ class StubConnector(Connector):
         Path
             Path of the requirements file.
         """
-        assert self.project
+        # self.project must have been set in main()
+        assert self.project is not None  # nosec B101  # addresses linter
         local_stub = Path(self.project.pathname).with_suffix('.almgw.stub.xml')
         if not local_stub.exists():
             print('initializing stub file:', local_stub)

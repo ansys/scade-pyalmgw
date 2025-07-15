@@ -152,8 +152,6 @@ class LLRExport:
         dict
             Surrogate model.
         """
-        assert self.export_classes
-
         # main export class
         main = self.export_classes[0]
 
@@ -194,7 +192,7 @@ class LLRExport:
         # give SCADE Test the priority if mixed projects Test/Suite
         if 'QTE' in products:
             llrs.append(QteLLRS(self, test.get_roots()[0]))
-        if 'SC' in products:
+        if 'SC' in products or not products:
             llrs.append(ScadeLLRS(self, suite.get_roots()[0].model))
         if 'SYSTEM' in products:
             llrs.append(SystemLLRS(self, system.get_roots()[0]))
@@ -406,7 +404,9 @@ class LLRS(metaclass=ABCMeta):
                     # deprecated
                     if class_ is not None and self.get_item_class(child) != class_:
                         continue
-                    if filter is not None and not eval(filter):
+                    # filter is a Python expression specified in the configuration file,
+                    # which is an input of this tool
+                    if filter is not None and not eval(filter):  # nosec B307
                         continue
                     self.dump_item(subelements, child, kind, new_parent_oid)
 
@@ -649,7 +649,7 @@ class LLRS(metaclass=ABCMeta):
             if len(subelements) != 0:
                 container.append(section)
         else:
-            assert isllr
+            # assert isllr
             if len(children) != 0:
                 element['elements'] = children
 

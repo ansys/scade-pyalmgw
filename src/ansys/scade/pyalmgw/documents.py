@@ -327,7 +327,7 @@ class ReqDocument(Container):
     def path(self) -> Path:
         """Return the path of the document."""
         # semantic of base class' identifier
-        assert isinstance(self.owner, ReqProject)
+        assert isinstance(self.owner, ReqProject)  # nosec B101  # addresses linter
         return (
             (self.owner.path.parent / self.identifier) if self.owner.path else Path(self.identifier)
         )
@@ -336,7 +336,7 @@ class ReqDocument(Container):
     def path(self, path: Path):
         """Set the path of the document."""
         # semantic of base class' identifier
-        assert isinstance(self.owner, ReqProject)
+        assert isinstance(self.owner, ReqProject)  # nosec B101  # addresses linter
         if self.owner.path:
             try:
                 path = path.relative_to(self.owner.path.parent)

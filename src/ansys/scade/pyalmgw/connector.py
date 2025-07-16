@@ -56,7 +56,7 @@ class Connector(metaclass=ABCMeta):
     # llrs
     def get_llrs_file(self) -> Path:
         """Return the default path of the file to contain the exported LLRS."""
-        assert self.project
+        assert self.project is not None  # nosec B101  # addresses linter
         return Path(self.project.pathname).with_suffix('.' + self.id + '.llrs')
 
     def get_llr_schema(self) -> Path:
@@ -67,7 +67,7 @@ class Connector(metaclass=ABCMeta):
         a tool property ``@ALMGW:LLRSCHEMA``. If the property is not defined, the
         method returns a default schema.
         """
-        assert self.project
+        assert self.project is not None  # nosec B101  # addresses linter
         file = self.project.get_scalar_tool_prop_def(
             pyalmgw.TOOL, pyalmgw.LLRSCHEMA, pyalmgw.LLRSCHEMA_DEFAULT, None
         )
@@ -86,7 +86,7 @@ class Connector(metaclass=ABCMeta):
 
         The schema depends on the project's nature: SCADE Suite, Test, Display or Architect.
         """
-        assert self.project
+        assert self.project is not None  # nosec B101  # addresses linter
         products = self.project.get_tool_prop_def('STUDIO', 'PRODUCT', [], None)
         # give SCADE Test the priority if mixed projects Test/Suite
         name = ''
@@ -108,12 +108,11 @@ class Connector(metaclass=ABCMeta):
         By default, the information is expected to be persisted in the project as
         a tool property ``@ALMGW:DIAGRAMS`` (default: ``false``).
         """
-        assert self.project
+        assert self.project is not None  # nosec B101  # addresses linter
         return self.project.get_bool_tool_prop_def('ALMGW', 'DIAGRAMS', False, None)
 
     def export_llrs(self):
         """Generate the surrogate models."""
-        assert self.project
         # apply the script to the project
         pathname = self.get_llrs_file()
         schema = self.get_llr_schema()
@@ -329,7 +328,7 @@ class Connector(metaclass=ABCMeta):
         path = sys.argv[2]
         args = sys.argv[3:]
 
-        assert declare_project
+        assert declare_project  # nosec B101  # declare_project must be defined on Windows
         declare_project(path)
         self.project = get_projects()[0]
 

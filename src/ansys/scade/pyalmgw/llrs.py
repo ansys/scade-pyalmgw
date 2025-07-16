@@ -40,9 +40,9 @@ from argparse import ArgumentParser
 from base64 import b64encode
 from pathlib import Path
 from re import compile, sub
-import subprocess
+import subprocess  # nosec  # used to call SCADE Display command line tools
 import sys
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 # shall modify sys.path to access SCACE APIs
 from ansys.scade.apitools import declare_project
@@ -64,7 +64,8 @@ from ansys.scade.pyalmgw.utils import read_json, traceln, write_json
 script_dir = Path(__file__).parent
 
 if __name__ != '__main__':  # pragma: no cover
-    import scade.model.architect as system
+    # scade.model.architect is a CPython module defined dynamically
+    import scade.model.architect as system  # type: ignore
 
 # -----------------------------------------------------------------------------
 # llrs.py
@@ -151,8 +152,6 @@ class LLRExport:
         dict
             Surrogate model.
         """
-        assert self.export_classes
-
         # main export class
         main = self.export_classes[0]
 
@@ -405,7 +404,9 @@ class LLRS(metaclass=ABCMeta):
                     # deprecated
                     if class_ is not None and self.get_item_class(child) != class_:
                         continue
-                    if filter is not None and not eval(filter):
+                    # filter is a Python expression specified in the configuration file,
+                    # which is an input of this tool
+                    if filter is not None and not eval(filter):  # nosec B307
                         continue
                     self.dump_item(subelements, child, kind, new_parent_oid)
 
@@ -581,7 +582,7 @@ class LLRS(metaclass=ABCMeta):
 
         if isllr:
             oid = self.get_item_oid(item)
-            element = {
+            element: Dict[str, Any] = {
                 'oid': oid,
                 'pathname': self.get_item_pathname(item),
                 'name': self.get_item_name(item),
@@ -648,7 +649,7 @@ class LLRS(metaclass=ABCMeta):
             if len(subelements) != 0:
                 container.append(section)
         else:
-            assert isllr
+            # assert isllr
             if len(children) != 0:
                 element['elements'] = children
 
@@ -814,7 +815,8 @@ class ScadeLLRS(AnnotatedLLRS):
         # name may contain illegal characters (equation sets)
         name = sub(r'[*"/\\<>:|?]', '_', item.name)
         path = (path / (name + '.png')).as_posix()
-        scade.print(item, path, 'png')
+        # scade is a CPython module defined dynamically
+        scade.print(item, path, 'png')  # type: ignore
         return path
 
 
@@ -908,13 +910,15 @@ class SystemLLRS(AnnotatedLLRS):
 
     def get_item_image(self, item: Any) -> Optional[str]:
         """Implement ``get_item_image``."""
-        if not isinstance(item, scade.model.architect.Diagram):
+        # scade.model.architect is a CPython module defined dynamically
+        if not isinstance(item, scade.model.architect.Diagram):  # type: ignore
             return None
         # name may contain illegal characters?
         name = sub(r'[*"/\\<>:|?]', '_', item.name)
         path = Path(self.llr_export.project.pathname).parent / 'llr_img' / f'{name}.png'
         path.parent.mkdir(exist_ok=True)
-        scade.print(item, str(path), 'png')
+        # scade is a CPython module defined dynamically
+        scade.print(item, str(path), 'png')  # type: ignore
         return path.as_posix()
 
     def cache_ids(self, project: std.Project):
@@ -957,15 +961,20 @@ class DisplayApp:
     for defining an export schema.
 
     This class gives access to the specifications and reference objects
-    contained in a project. It also caches in the loaded instances the properties
-    as new attributes.
+    contained in a project.
+
+    It also caches in the loaded instances the properties as new attributes,
+    prefixed by ``llr_``, except ``name`` for specifications and reference
+    objects. These extra attributes are accessed with ``setattr`` and
+    ``getattr`` functions: more verbosity against linter errors.
     """
 
     def __init__(self, project: std.Project):
         self.name = Path(project.pathname).stem
-        self.qualified_name = ''
+        self.llr_owner = None
+        self.llr_file = None
         self.files = []
-        self.owner = None
+        self.llr_qualified_name = ''
         for file_ref in project.file_refs:
             path = Path(file_ref.pathname)
             pathname = path.as_posix()
@@ -975,31 +984,34 @@ class DisplayApp:
                 file = sdy.load_ogfx(pathname)
             else:
                 continue
-            # create new attributes
-            file.pathname = pathname
-            file.name = path.name
+            # create new attributes for specifications and reference objects
+            setattr(file, 'llr_pathname', pathname)
+            # use name instead of llr_name to be consistent with
+            # other SCADE Display graphical objects
+            setattr(file, 'name', path.name)
             self.files.append(file)
+            # create new attributes for contained elements
             for file in self.files:
                 self.cache_properties(file, self, file)
 
     def cache_properties(self, file, owner, item, link=''):
-        """Add the attributes owner, file and qualified_name to the model elements."""
-        item.owner = owner
-        item.file = file
-        item.qualified_name = (
-            item.name
-            if owner.qualified_name == ''
-            else owner.qualified_name + '/' + link + item.name
-        )
+        """Add the attributes llr_owner, llr_file and llr_qualified_name to the model elements."""
+        setattr(item, 'llr_owner', owner)
+        setattr(item, 'llr_file', file)
+        owner_qname = getattr(owner, 'llr_qualified_name')
+        qname = item.name if owner_qname == '' else f'{owner_qname}/{link}{item.name}'
+        setattr(item, 'llr_qualified_name', qname)
         if isinstance(item, sdy.Specification):
-            item.qualified_name = ''
+            # reset the qualifed name
+            setattr(item, 'llr_qualified_name', '')
             for layer in item.layers:
                 self.cache_properties(file, item, layer)
         elif isinstance(item, sdy.AContainer):
             for child in item.children:
                 self.cache_properties(file, item, child)
         elif isinstance(item, sdy.ReferenceObject):
-            item.qualified_name = ''
+            # reset the qualifed name
+            setattr(item, 'llr_qualified_name', '')
             self.cache_properties(file, item, item.children)
         if (
             isinstance(item, sdy.Layer)
@@ -1009,7 +1021,7 @@ class DisplayApp:
             declaration = item.declaration
             for role in ['input', 'output', 'constant', 'local', 'local_constant', 'probe']:
                 link = role + '/'
-                for child in declaration.__dict__[role]:
+                for child in getattr(declaration, role):
                     self.cache_properties(file, item, child, link)
 
 
@@ -1040,7 +1052,7 @@ class DisplayLLRS(LLRS):
 
     def get_item_pathname(self, item: Any) -> str:
         """Implement ``get_item_pathname``."""
-        return item.qualified_name
+        return getattr(item, 'llr_qualified_name')
 
     def get_item_class(self, item: Any) -> str:
         """Implement ``get_item_class``."""
@@ -1048,7 +1060,7 @@ class DisplayLLRS(LLRS):
 
     def get_item_links(self, item: Any, role: str, sort: bool) -> List[Any]:
         """Implement ``get_item_links``."""
-        items = item.__dict__[role]
+        items = getattr(item, role, None)
         if items is None:
             return []
         if not isinstance(items, list):
@@ -1061,7 +1073,7 @@ class DisplayLLRS(LLRS):
         """Implement ``get_item_oid``."""
         # prefix = self.prefixes[item.file.pathname].replace(' ', '%20')
         if isinstance(item, sdy.Specification):
-            return item.name
+            return getattr(item, 'name')
         else:
             try:
                 # prefix = Path(item.file.pathname).name
@@ -1085,7 +1097,7 @@ class DisplayLLRS(LLRS):
         if not isinstance(item, sdy.AContainer):
             return None
         # make sure the images are generated
-        self.export_images(item.file)
+        self.export_images(getattr(item, 'llr_file'))
         path = Path(self.img_dir) / (self.get_item_oid(item) + '.bmp')
         return path.as_posix() if path.exists() else None
 
@@ -1105,13 +1117,13 @@ class DisplayLLRS(LLRS):
             self.llr_export.project.pathname,
             '-source',
             # spec.pathname,
-            Path(spec.pathname).name,
+            Path(getattr(spec, 'llr_pathname')).name,
             '-outdir',
             str(self.img_dir),
         ]
         try:
             traceln(' '.join(cmd))
-            out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+            out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)  # nosec  # inputs checked
             out = out.decode('utf-8')
             traceln(out)
         except subprocess.CalledProcessError as e:
@@ -1213,8 +1225,10 @@ def main(file, *cmd_line, version=LLRS.V194) -> int:
 
 if __name__ == '__main__':  # pragma: no cover
     # usage python.exe script <project> <file> <schema> <option>*
+    assert declare_project  # nosec B101  # declare_project must be defined on Windows
     declare_project(sys.argv[1])
-    import scade.model.architect as system
+    # scade.model.architect is a CPython module defined dynamically
+    import scade.model.architect as system  # type: ignore
 
     code = main(sys.argv[2], '-s', *sys.argv[3:])
     if code == 0:

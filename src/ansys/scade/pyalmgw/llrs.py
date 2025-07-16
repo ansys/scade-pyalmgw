@@ -192,7 +192,7 @@ class LLRExport:
         # give SCADE Test the priority if mixed projects Test/Suite
         if 'QTE' in products:
             llrs.append(QteLLRS(self, test.get_roots()[0]))
-        if 'SC' in products or not products:
+        if 'SC' in products:
             llrs.append(ScadeLLRS(self, suite.get_roots()[0].model))
         if 'SYSTEM' in products:
             llrs.append(SystemLLRS(self, system.get_roots()[0]))
@@ -1117,7 +1117,7 @@ class DisplayLLRS(LLRS):
             self.llr_export.project.pathname,
             '-source',
             # spec.pathname,
-            Path(getattr(spec, 'llr_pathname').name),
+            Path(getattr(spec, 'llr_pathname')).name,
             '-outdir',
             str(self.img_dir),
         ]

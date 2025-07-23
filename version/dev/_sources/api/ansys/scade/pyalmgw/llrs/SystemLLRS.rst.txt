@@ -1,0 +1,134 @@
+
+
+
+
+
+
+:class:`SystemLLRS`
+===================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.SystemLLRS(llr_export: LLRExport, root)
+
+   Bases: :py:obj:`AnnotatedLLRS`
+
+
+   LLRS implementation for SCADE Architect.
+
+
+
+.. py:currentmodule:: SystemLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~cache_ids`
+            - Cache all the ids defined in a file.
+          * - :py:attr:`~get_item_image`
+            - Implement ``get_item_image``.
+          * - :py:attr:`~get_item_name`
+            - Implement ``get_item_name``.
+          * - :py:attr:`~get_item_oid`
+            - Implement ``get_item_oid``.
+          * - :py:attr:`~get_item_pathname`
+            - Implement ``get_item_pathname``.
+          * - :py:attr:`~get_model_name`
+            - Implement ``get_model_name``.
+          * - :py:attr:`~get_model_oid`
+            - Implement ``get_model_oid``.
+          * - :py:attr:`~get_note_value`
+            - Implement ``get_note_value``.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ids`
+            - 
+          * - :py:attr:`~prefixes`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import SystemLLRS
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ids
+
+.. py:attribute:: prefixes
+
+
+
+Method detail
+-------------
+
+.. py:method:: cache_ids(project: scade.model.project.stdproject.Project)
+
+   Cache all the ids defined in a file.
+
+   It is required to know the resource file where an id is defined
+   to build the URL.
+
+
+.. py:method:: get_item_image(item: Any) -> Optional[str]
+
+   Implement ``get_item_image``.
+
+
+.. py:method:: get_item_name(item: Any) -> str
+
+   Implement ``get_item_name``.
+
+
+.. py:method:: get_item_oid(item: Any) -> str
+
+   Implement ``get_item_oid``.
+
+
+.. py:method:: get_item_pathname(item: Any) -> str
+
+   Implement ``get_item_pathname``.
+
+
+.. py:method:: get_model_name(model: Any) -> str
+
+   Implement ``get_model_name``.
+
+
+.. py:method:: get_model_oid(model: Any) -> str
+
+   Implement ``get_model_oid``.
+
+
+.. py:method:: get_note_value(note, attribute)
+
+   Implement ``get_note_value``.
+
+
+
+
+

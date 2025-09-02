@@ -1,0 +1,105 @@
+
+
+
+
+
+
+The ``utils.py`` module
+=======================
+
+.. py:module:: ansys.scade.pyalmgw.utils
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: utils
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.utils.read_json`
+            - Load a ``json`` file.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.utils.traceln`
+            - Log test on the standard output.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.utils.write_json`
+            - Write an object to a ``json`` file.
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~traceon`
+            - 
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-function_variant"></span> read_json</api/ansys/scade/pyalmgw/utils/read_json>
+    <span class="nf nf-md-function_variant"></span> traceln</api/ansys/scade/pyalmgw/utils/traceln>
+    <span class="nf nf-md-function_variant"></span> write_json</api/ansys/scade/pyalmgw/utils/write_json>
+
+
+
+
+
+
+Description
+-----------
+
+Adds logs.
+
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: traceon
+   :value: False
+
+
+
+

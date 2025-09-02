@@ -1,0 +1,14 @@
+ansys.scade.pyalmgw.utils.write_json
+====================================
+
+.. py:function:: ansys.scade.pyalmgw.utils.write_json(object_: object, path: pathlib.Path) -> bool
+
+   Write an object to a ``json`` file.
+
+   Parameters
+   ----------
+   object\_ : object
+       object to serialize to json.
+   path : Path
+       Path of the output file.
+

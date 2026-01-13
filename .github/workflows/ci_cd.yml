@@ -83,11 +83,11 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        scade-version: ['24.2']
+        scade-version: ['25.2']
       fail-fast: false
     steps:
       - name: "Install Git and clone project"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - uses: ansys/scade-actions/scade-tests-pytest@v2
         with:
@@ -131,13 +131,13 @@ jobs:
       contents: write
     steps:
       - name: "Download the library artifacts from build-library step"
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: ${{ env.LIBRARY_NAME }}-artifacts
           path: ${{ env.LIBRARY_NAME }}-artifacts
 
       - name: "Upload artifacts to PyPI using trusted publisher"
-        uses: pypa/gh-action-pypi-publish@v1.12.4
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           repository-url: "https://upload.pypi.org/legacy/"
           print-hash: true

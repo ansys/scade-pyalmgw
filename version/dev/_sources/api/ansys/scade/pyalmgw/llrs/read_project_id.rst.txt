@@ -1,0 +1,7 @@
+ansys.scade.pyalmgw.llrs.read_project_id
+========================================
+
+.. py:function:: ansys.scade.pyalmgw.llrs.read_project_id(project: scade.model.project.stdproject.Project) -> Optional[str]
+
+   Return the ALM Gateway ID of a project.
+

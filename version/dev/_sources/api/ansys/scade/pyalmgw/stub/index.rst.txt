@@ -1,0 +1,125 @@
+
+
+
+
+
+
+The ``stub.py`` module
+======================
+
+.. py:module:: ansys.scade.pyalmgw.stub
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: stub
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.stub.StubConnector`
+            - Stubs the ``Connector`` class for unit testing and example.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.stub.StubProject`
+            - Stubs the ``ReqProject`` class for unit testing and example.
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.stub.main`
+            - Package integration test entry point.
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~code`
+            - 
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> StubConnector</api/ansys/scade/pyalmgw/stub/StubConnector>
+    <span class="nf nf-cod-symbol_class"></span> StubProject</api/ansys/scade/pyalmgw/stub/StubProject>
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-function_variant"></span> main</api/ansys/scade/pyalmgw/stub/main>
+
+
+
+
+
+
+Description
+-----------
+
+Integration test.
+
+This entry point can be registered to Ansys SCADE ALM Gateway to exercise
+the commands and validate the format of the exchanged files.
+
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: code
+   :value: -1
+
+
+
+

@@ -1,0 +1,213 @@
+
+
+
+
+
+
+:class:`Container`
+==================
+
+.. py:class:: ansys.scade.pyalmgw.documents.Container(*args, **kwargs)
+
+   Bases: :py:obj:`Element`
+
+
+   
+   Base class for ``ReqDocument``, ``Section``, and ``Requirement`` classes.
+
+   Container of hierarchical elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Container
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_empty`
+            - Return whether a container does not contain requirements.
+          * - :py:attr:`~iter_requirements`
+            - Iterate through the contained requirements.
+          * - :py:attr:`~parse`
+            - Parse the current object from an XML element.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~children`
+            - Return the contained elements to be serialized as a dictionary.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~requirements`
+            - 
+          * - :py:attr:`~sections`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import Container
+
+Property detail
+---------------
+
+.. py:property:: children
+   :type: Dict[str, List[List[ReqObject]]]
+
+
+   
+   Return the contained elements to be serialized as a dictionary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: requirements
+   :type:  List[Requirement]
+   :value: []
+
+
+.. py:attribute:: sections
+   :type:  List[Section]
+   :value: []
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: is_empty()
+
+   
+   Return whether a container does not contain requirements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: iter_requirements()
+
+   
+   Iterate through the contained requirements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse(tree)
+
+   
+   Parse the current object from an XML element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

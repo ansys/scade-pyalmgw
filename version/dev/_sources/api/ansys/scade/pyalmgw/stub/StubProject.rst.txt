@@ -1,0 +1,70 @@
+
+
+
+
+
+
+:class:`StubProject`
+====================
+
+.. py:class:: ansys.scade.pyalmgw.stub.StubProject(path: Optional[pathlib.Path] = None, **kwargs)
+
+   Bases: :py:obj:`ansys.scade.pyalmgw.documents.ReqProject`
+
+
+   Stubs the ``ReqProject`` class for unit testing and example.
+
+
+
+.. py:currentmodule:: StubProject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~merge_links`
+            - Merge the traceability deltas from a cache file (ALMGT).
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.stub import StubProject
+
+
+
+Method detail
+-------------
+
+.. py:method:: merge_links(file: pathlib.Path)
+
+   Merge the traceability deltas from a cache file (ALMGT).
+
+   The links are either created or deleted.
+
+   Parameters
+   ----------
+   file : Path
+       Input ALMGT file.
+
+
+
+
+

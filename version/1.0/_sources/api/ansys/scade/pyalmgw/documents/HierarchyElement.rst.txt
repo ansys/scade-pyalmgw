@@ -1,0 +1,152 @@
+
+
+
+
+
+
+:class:`HierarchyElement`
+=========================
+
+.. py:class:: ansys.scade.pyalmgw.documents.HierarchyElement(owner, identifier = '', text = '', description = '')
+
+   Bases: :py:obj:`Container`
+
+
+   
+   Base class for ``Section`` and ``Requirement`` classes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: HierarchyElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~parse`
+            - Parse the current object from an XML element.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~attributes`
+            - Return the attributes to be serialized as a dictionary.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~description`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import HierarchyElement
+
+Property detail
+---------------
+
+.. py:property:: attributes
+   :type: Dict[str, str]
+
+
+   
+   Return the attributes to be serialized as a dictionary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: description
+
+
+
+Method detail
+-------------
+
+.. py:method:: parse(tree)
+
+   
+   Parse the current object from an XML element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

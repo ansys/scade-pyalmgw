@@ -1,0 +1,149 @@
+
+
+
+
+
+
+:class:`StdLLRS`
+================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.StdLLRS(llr_export, kind, root)
+
+   Bases: :py:obj:`LLRS`
+
+
+   
+   Base implementation class for models edited inside SCADE Studio IDE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StdLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_item_attribute`
+            - Implement ``get_item_attribute``.
+          * - :py:attr:`~get_item_class`
+            - Implement ``get_item_class``.
+          * - :py:attr:`~get_item_links`
+            - Implement ``get_item_links``.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import StdLLRS
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_item_attribute(item, name)
+
+   
+   Implement ``get_item_attribute``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_class(item)
+
+   
+   Implement ``get_item_class``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_links(item, role, sort)
+
+   
+   Implement ``get_item_links``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

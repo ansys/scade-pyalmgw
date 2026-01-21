@@ -1,0 +1,376 @@
+
+
+
+
+
+
+:class:`DisplayLLRS`
+====================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.DisplayLLRS(llr_export: LLRExport)
+
+   Bases: :py:obj:`LLRS`
+
+
+   
+   LLRS implementation for SCADE Display.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: DisplayLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~export_images`
+            - Generate the all the images of a specification.
+          * - :py:attr:`~get_item_attribute`
+            - Implement ``get_item_attribute``.
+          * - :py:attr:`~get_item_attributes`
+            - Implement ``get_item_attributes``.
+          * - :py:attr:`~get_item_class`
+            - Implement ``get_item_class``.
+          * - :py:attr:`~get_item_image`
+            - Implement ``get_item_image``.
+          * - :py:attr:`~get_item_links`
+            - Implement ``get_item_links``.
+          * - :py:attr:`~get_item_name`
+            - Implement ``get_item_name``.
+          * - :py:attr:`~get_item_oid`
+            - Implement ``get_item_oid``.
+          * - :py:attr:`~get_item_pathname`
+            - Implement ``get_item_pathname``.
+          * - :py:attr:`~get_model_name`
+            - Implement ``get_model_name``.
+          * - :py:attr:`~get_model_oid`
+            - Implement ``get_model_oid``.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~app`
+            - 
+          * - :py:attr:`~generated_specs`
+            - 
+          * - :py:attr:`~img_dir`
+            - 
+          * - :py:attr:`~sdyexe`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import DisplayLLRS
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: app
+
+.. py:attribute:: generated_specs
+
+.. py:attribute:: img_dir
+
+.. py:attribute:: sdyexe
+
+
+
+Method detail
+-------------
+
+.. py:method:: export_images(spec: scade.model.display.Specification)
+
+   
+   Generate the all the images of a specification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_attribute(item: Any, name: str) -> str
+
+   
+   Implement ``get_item_attribute``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_attributes(item: Any) -> list
+
+   
+   Implement ``get_item_attributes``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_class(item: Any) -> str
+
+   
+   Implement ``get_item_class``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_image(item: Any) -> Optional[str]
+
+   
+   Implement ``get_item_image``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_links(item: Any, role: str, sort: bool) -> List[Any]
+
+   
+   Implement ``get_item_links``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_name(item: Any) -> str
+
+   
+   Implement ``get_item_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_oid(item: Any) -> str
+
+   
+   Implement ``get_item_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_pathname(item: Any) -> str
+
+   
+   Implement ``get_item_pathname``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_name(model: Any) -> str
+
+   
+   Implement ``get_model_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_oid(model: Any) -> str
+
+   
+   Implement ``get_model_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

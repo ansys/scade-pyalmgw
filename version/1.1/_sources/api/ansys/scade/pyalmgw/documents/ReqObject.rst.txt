@@ -1,0 +1,231 @@
+
+
+
+
+
+
+:class:`ReqObject`
+==================
+
+.. py:class:: ansys.scade.pyalmgw.documents.ReqObject(owner: Optional[ReqObject])
+
+   
+   Top level class for Requirements Document.
+
+   Defines the interface for XML serialization and parsing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ReqObject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~parse`
+            - Parse the current object from an XML element.
+          * - :py:attr:`~serialize`
+            - Add the element to the XML DOM.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~attributes`
+            - Return the attributes to be serialized as a dictionary.
+          * - :py:attr:`~children`
+            - Return the contained elements to be serialized as a dictionary.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ns`
+            - 
+          * - :py:attr:`~owner`
+            - 
+          * - :py:attr:`~scade_req_ns`
+            - 
+          * - :py:attr:`~xml_tag`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import ReqObject
+
+Property detail
+---------------
+
+.. py:property:: attributes
+   :type: Dict[str, str]
+
+
+   
+   Return the attributes to be serialized as a dictionary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: children
+   :type: Dict[str, List[List[ReqObject]]]
+
+
+   
+   Return the contained elements to be serialized as a dictionary.
+
+   The entries are indexed by their tag, and contain the lists of child elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ns
+
+.. py:attribute:: owner
+
+.. py:attribute:: scade_req_ns
+   :value: 'http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1'
+
+
+.. py:attribute:: xml_tag
+   :value: ''
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: parse(elem: Any)
+
+   
+   Parse the current object from an XML element.
+
+
+   :Parameters:
+
+       **elem** : :obj:`Any`
+           XML element to parse.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: serialize(parent=None) -> Any
+
+   
+   Add the element to the XML DOM.
+
+
+   :Parameters:
+
+       **parent** : :obj:`Any`
+           Parent element or None if the element to create is the root element.
+
+
+
+   :Returns:
+
+       :obj:`Any`
+           Corresponding XML element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

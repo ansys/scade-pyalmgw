@@ -1,0 +1,122 @@
+
+
+
+
+
+
+:class:`StubConnector`
+======================
+
+.. py:class:: ansys.scade.pyalmgw.stub.StubConnector(id: str, project: Optional[scade.model.project.stdproject.Project] = None)
+
+   Bases: :py:obj:`ansys.scade.pyalmgw.connector.Connector`
+
+
+   Stubs the ``Connector`` class for unit testing and example.
+
+
+
+.. py:currentmodule:: StubConnector
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_stub_file`
+            - Return a stub requirements file for ALM Gateway.
+          * - :py:attr:`~on_export`
+            - Export traceability links and Contributing Elements (surrogate model).
+          * - :py:attr:`~on_import`
+            - Import requirements and traceability links to ALM Gateway.
+          * - :py:attr:`~on_locate`
+            - Stub the command ``locate``.
+          * - :py:attr:`~on_manage`
+            - Stub the command ``manage``.
+          * - :py:attr:`~on_settings`
+            - Stub the command ``settings``.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.stub import StubConnector
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_stub_file() -> pathlib.Path
+
+   Return a stub requirements file for ALM Gateway.
+
+   The function makes a local copy of a resource file
+   so that it can be modified by the ALMGW commands.
+
+   Returns
+   -------
+   Path
+       Path of the requirements file.
+
+
+.. py:method:: on_export(links: pathlib.Path, pid: int) -> int
+
+   Export traceability links and Contributing Elements (surrogate model).
+
+   Parameters
+   ----------
+   links : Path
+       Path of a JSON file that contains the links to add and remove.
+   pid : int
+       SCADE product process ID.
+
+
+.. py:method:: on_import(file: pathlib.Path, pid: int) -> int
+
+   Import requirements and traceability links to ALM Gateway.
+
+   The function copies the stub file to the provided path.
+
+   Parameters
+   ----------
+   path : Path
+       Absolute path where the XML requirements file is saved.
+   pid : int
+       SCADE product process ID.
+
+
+.. py:method:: on_locate(req: str, pid: int) -> int
+
+   Stub the command ``locate``.
+
+
+.. py:method:: on_manage(pid: int) -> int
+
+   Stub the command ``manage``.
+
+
+.. py:method:: on_settings(pid: int) -> int
+
+   Stub the command ``settings``.
+
+
+
+
+

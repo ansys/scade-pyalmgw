@@ -1,0 +1,17 @@
+ansys.scade.pyalmgw.utils.read_json
+===================================
+
+.. py:function:: ansys.scade.pyalmgw.utils.read_json(path: pathlib.Path) -> Any
+
+   Load a ``json`` file.
+
+   Parameters
+   ----------
+   path : Path
+       Path of the input file.
+
+   Returns
+   -------
+   object
+       The content of the file.
+

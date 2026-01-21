@@ -1,0 +1,2655 @@
+[
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#the-llrspy-module",
+        "title": "The llrs.py module",
+        "section": "The llrs.py module",
+        "text": "The llrs.py module\nllrs.py"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#summary",
+        "title": "The llrs.py module > Summary",
+        "section": "Summary",
+        "text": "AnnotatedLLRS\nBase implementation class for models that support annotations.\nDisplayApp\nTop-level class for SCADE Display models.\nDisplayLLRS\nLLRS implementation for SCADE Display.\nLLRExport\nEntry point for exporting the surrogate model.\nLLRS\nBase class for creating a surrogate model for a given product.\nQteLLRS\nLLRS implementation for SCADE Test.\nScadeLLRS\nLLRS implementation for SCADE Suite.\nStdLLRS\nBase implementation class for models edited inside SCADE Studio IDE.\nSystemLLRS\nLLRS implementation for SCADE Architect.\nPathError\nException for erroneous paths in schemas.\nget_export_class\nCreate an instance of LLRExport for the input project.\nmain\nCreate a surrogate model to the given output file.\nread_project_id\nReturn the ALM Gateway ID of a project.\nchild\ncode\nscript_dir\nSummary\nAnnotatedLLRS\nDisplayApp\nDisplayLLRS\nLLRExport\nLLRS\nQteLLRS\nScadeLLRS\nStdLLRS\nSystemLLRS\nPathError\nget_export_class\nLLRExport\nmain\nread_project_id\nchild\ncode\nscript_dir"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#description",
+        "title": "The llrs.py module > Description",
+        "section": "Description",
+        "text": "Generic tool for exporting the surrogate model to an ALM tool.\nThis tool uses a json schema to find the contributing elements of a model,\nas well the document structure.\nRefer to Model Export Customization in appendix H of the SCADE LifeCycle User Manual\nin the SCADE documentation for a complete reference of the json output file.\nThe term LLR used in this tool comes from its initial version for\nSCADE Suite. It should be read as Contributing Element for traceability.\nDescription\nLLR"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#module-detail",
+        "title": "The llrs.py module > Module detail",
+        "section": "Module detail",
+        "text": "Module detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#llrs.child",
+        "title": "The llrs.py module > Module detail > child",
+        "section": "Module detail > child",
+        "text": "child = None\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#llrs.code",
+        "title": "The llrs.py module > Module detail > code",
+        "section": "Module detail > code",
+        "text": "code\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/index",
+        "href": "api/ansys/scade/pyalmgw/llrs/index.html#llrs.script_dir",
+        "title": "The llrs.py module > Module detail > script_dir",
+        "section": "Module detail > script_dir",
+        "text": "script_dir\n\n"
+    },
+    {
+        "objectID": "usage/implementation",
+        "href": "usage/implementation.html#implementation",
+        "title": "Implementation",
+        "section": "Implementation",
+        "text": "Create a Python package with a class that derives from Connector\nand implement the 5 abstract methods corresponding to ALM Gateway commands.\nThis documentation focuses on the import and export commands.\nImplementation\nConnector"
+    },
+    {
+        "objectID": "usage/implementation",
+        "href": "usage/implementation.html#import",
+        "title": "Implementation > Import",
+        "section": "Import",
+        "text": "The connector should provide the requirements and stored traceability links as an XML intermediate file,\nwhich format is specified in ansys/scade/pyalmgw/res/schema.xsd.\nThe module ansys.scade.pyalmgw.documents provides classes to create this file.\nThe following piece of code demonstrates the creation of a project with one document and a few elements:\nImport\nansys/scade/pyalmgw/res/schema.xsd\nansys.scade.pyalmgw.documents"
+    },
+    {
+        "objectID": "usage/implementation",
+        "href": "usage/implementation.html#export",
+        "title": "Implementation > Export",
+        "section": "Export",
+        "text": "The connector should integrate the traceability changes provided as an intermediate json file.\nThe format of this file is not documented yet, you can replicate the following piece of code\nand add your semantic actions:\nTo export the surrogate model, create a dictionary using LLRExport:\nExport\nLLRExport"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#traceabilitylink",
+        "title": "TraceabilityLink",
+        "section": "TraceabilityLink",
+        "text": "Bases: ReqObject\nImplements the TraceabilityLinkEntity complex type.\nowner (ReqProject)\nrequirement (Optional[Requirement])\nsource (str)\ntarget (str)\nTraceabilityLink\nTraceabilityLink\nReqObject\nTraceabilityLinkEntity"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#ansys.scade.pyalmgw.documents.TraceabilityLink",
+        "title": "TraceabilityLink > TraceabilityLink > TraceabilityLink",
+        "section": "TraceabilityLink > TraceabilityLink",
+        "text": "class ansys.scade.pyalmgw.documents.TraceabilityLink(owner, requirement=None, source='', target='')\n\nBases: ReqObject\n\nImplements the TraceabilityLinkEntity complex type.\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (ReqProject)\n\nrequirement (Optional[Requirement])\n\nsource (str)\n\ntarget (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#overview",
+        "title": "TraceabilityLink > Overview",
+        "section": "Overview",
+        "text": "parse\nParse the current object from an XML element.\nattributes\nReturn the attributes to be serialized as a dictionary.\nrequirement\nsource\ntarget\nxml_tag\nOverview\nparse\nattributes\nrequirement\nsource\ntarget\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#import-detail",
+        "title": "TraceabilityLink > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#property-detail",
+        "title": "TraceabilityLink > Property detail",
+        "section": "Property detail",
+        "text": "Return the attributes to be serialized as a dictionary.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.attributes",
+        "title": "TraceabilityLink > Property detail > attributes",
+        "section": "Property detail > attributes",
+        "text": "property attributes: Dict[str, str]\n\nReturn the attributes to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#attribute-detail",
+        "title": "TraceabilityLink > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.requirement",
+        "title": "TraceabilityLink > Attribute detail > requirement",
+        "section": "Attribute detail > requirement",
+        "text": "requirement\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.source",
+        "title": "TraceabilityLink > Attribute detail > source",
+        "section": "Attribute detail > source",
+        "text": "source\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.target",
+        "title": "TraceabilityLink > Attribute detail > target",
+        "section": "Attribute detail > target",
+        "text": "target\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.xml_tag",
+        "title": "TraceabilityLink > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = 'TraceabilityLink'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#method-detail",
+        "title": "TraceabilityLink > Method detail",
+        "section": "Method detail",
+        "text": "Parse the current object from an XML element.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/TraceabilityLink",
+        "href": "api/ansys/scade/pyalmgw/documents/TraceabilityLink.html#TraceabilityLink.parse",
+        "title": "TraceabilityLink > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(elem)\n\nParse the current object from an XML element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/index",
+        "href": "api/ansys/scade/pyalmgw/documents/index.html#the-documentspy-module",
+        "title": "The documents.py module",
+        "section": "The documents.py module",
+        "text": "The documents.py module\ndocuments.py"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/index",
+        "href": "api/ansys/scade/pyalmgw/documents/index.html#summary",
+        "title": "The documents.py module > Summary",
+        "section": "Summary",
+        "text": "Container\nBase class for ReqDocument, Section, and Requirement classes.\nElement\nBase class for ReqProject and Container classes.\nHierarchyElement\nBase class for Section and Requirement classes.\nReqDocument\nImplements the Document complex type.\nReqObject\nTop level class for Requirements Document.\nReqProject\nProvides an implementation of a Requirement File.\nRequirement\nImplements the Requirement complex type.\nSection\nImplements the Section complex type.\nTraceabilityLink\nImplements the TraceabilityLinkEntity complex type.\nSummary\nContainer\nReqDocument\nSection\nRequirement\nElement\nReqProject\nContainer\nHierarchyElement\nSection\nRequirement\nReqDocument\nDocument\nReqObject\nReqProject\nRequirement\nRequirement\nSection\nSection\nTraceabilityLink\nTraceabilityLinkEntity"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/index",
+        "href": "api/ansys/scade/pyalmgw/documents/index.html#description",
+        "title": "The documents.py module > Description",
+        "section": "Description",
+        "text": "Provides means to create a Requirements Document for ALM Gateway.\nThe classes defined by the module correspond to the XML schema\nof a Requirements Document.\nDescription"
+    },
+    {
+        "objectID": "usage/registration",
+        "href": "usage/registration.html#registration",
+        "title": "Registration",
+        "section": "Registration",
+        "text": "Registration"
+    },
+    {
+        "objectID": "usage/registration",
+        "href": "usage/registration.html#executable",
+        "title": "Registration > Executable",
+        "section": "Executable",
+        "text": "Ansys SCADE ALM Gateway requires an executable for the interface.\nCreate a main function as follows to instantiate you connector class,\nfor example in __init__.py:\nAnd register this function as a script entry, for example in pyproject.toml:\nThe installation of the package with pip produces my_connector.exe in the Python environment’s Scripts directory.\nExecutable\nmain\n__init__.py\npyproject.toml\npip\nmy_connector.exe\nScripts"
+    },
+    {
+        "objectID": "usage/registration",
+        "href": "usage/registration.html#registration-for-scade-lifecycle-alm-gateway-2025-r1-and-greater",
+        "title": "Registration > Registration for SCADE LifeCycle ALM Gateway 2025 R1 and greater",
+        "section": "Registration for SCADE LifeCycle ALM Gateway 2025 R1 and greater",
+        "text": "Create a function to retrieve the name of your connector and its executable path,\nfor example in __init__.py:\nAnd add an entry point, for example in pyproject.toml:\nOnce installed, the package is available for any installed version of SCADE LifeCycle ALM Gateway 2025 R1 or greater.\nRegistration for SCADE LifeCycle ALM Gateway 2025 R1 and greater\n__init__.py\npyproject.toml"
+    },
+    {
+        "objectID": "usage/registration",
+        "href": "usage/registration.html#manual-registration-for-scade-lifecycle-alm-gateway",
+        "title": "Registration > Manual registration for SCADE LifeCycle ALM Gateway",
+        "section": "Manual registration for SCADE LifeCycle ALM Gateway",
+        "text": "This registration mode is an alternative that applies to any version of SCADE LifeCycle ALM Gateway.\nOnce the package is installed, create a file called my_connector.properties in\nC:\\Program Files\\ANSYS Inc\\<version>\\SCADE\\SCADE LifeCycle\\ALM Gateway\\external,\nwith the following content:\nNote the usage of forward slash in the path.\nFor example, if you have installed the package with the option --user\nand want to have it available for SCADE LifeCycle ALM Gateway 2024 R2, create the file\nC:\\Program Files\\ANSYS Inc\\v422\\SCADE\\SCADE LifeCycle\\ALM Gateway\\external\\my_connector.properties\nwith the following content:\nWhere C:/Users/mylogin/AppData/Roaming corresponds to %APPDATA%.\nManual registration for SCADE LifeCycle ALM Gateway\nmy_connector.properties\nC:\\Program Files\\ANSYS Inc\\<version>\\SCADE\\SCADE LifeCycle\\ALM Gateway\\external\n--user\nC:\\Program Files\\ANSYS Inc\\v422\\SCADE\\SCADE LifeCycle\\ALM Gateway\\external\\my_connector.properties\nC:/Users/mylogin/AppData/Roaming\n%APPDATA%"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#llrs",
+        "title": "LLRS",
+        "section": "LLRS",
+        "text": "Base class for creating a surrogate model for a given product.\nllr_export (LLRExport)\nLLRS\nLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#ansys.scade.pyalmgw.llrs.LLRS",
+        "title": "LLRS > LLRS > LLRS",
+        "section": "LLRS > LLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.LLRS(llr_export, kind, root)\n\nBase class for creating a surrogate model for a given product.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#overview",
+        "title": "LLRS > Overview",
+        "section": "Overview",
+        "text": "get_item_attribute\nReturn the value of an attribute of a model element.\nget_item_attributes\nReturn the built-in attributes of a model element.\nget_item_class\nReturn the class name of a model element.\nget_item_links\nReturn the elements linked to a model element for a given association.\nget_item_name\nReturn the name of a model element.\nget_item_oid\nReturn the oid of a model element.\nget_item_pathname\nReturn the path of a model element.\nget_model_name\nReturn the name of a model.\nget_model_oid\nReturn the oid of a model.\ndecompose_role\nParse a role expressions and return the role name and the list of classes.\ndump_children\nDump the child elements as a tree.\ndump_item\nAdd an entry for a model element.\ndump_siblings\nDump the child elements as a list.\ndump_sub_elements\nDump the children of a model element to a list.\nget_attribute\nReturn the attribute value of a model element.\nget_item_image\nGenerate the image of a model element and return its path when applicable or None.\nget_links\nReturn the linked elements of a model element for a given path.\nget_url\nReturn the URL corresponding to an oid.\nnew_section\nCreate a Section entry.\nV194\nVCUSTOM\nkind\nllr_export\nre_path\nroot\nversion\nOverview\nget_item_attribute\nget_item_attributes\nget_item_class\nget_item_links\nget_item_name\nget_item_oid\nget_item_pathname\nget_model_name\nget_model_oid\ndecompose_role\ndump_children\ndump_item\ndump_siblings\ndump_sub_elements\nget_attribute\nget_item_image\nget_links\nget_url\nnew_section\nV194\nVCUSTOM\nkind\nllr_export\nre_path\nroot\nversion"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#import-detail",
+        "title": "LLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#attribute-detail",
+        "title": "LLRS > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.V194",
+        "title": "LLRS > Attribute detail > V194",
+        "section": "Attribute detail > V194",
+        "text": "V194 = 4\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.VCUSTOM",
+        "title": "LLRS > Attribute detail > VCUSTOM",
+        "section": "Attribute detail > VCUSTOM",
+        "text": "VCUSTOM = 0\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.kind",
+        "title": "LLRS > Attribute detail > kind",
+        "section": "Attribute detail > kind",
+        "text": "kind\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.llr_export",
+        "title": "LLRS > Attribute detail > llr_export",
+        "section": "Attribute detail > llr_export",
+        "text": "llr_export\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.re_path",
+        "title": "LLRS > Attribute detail > re_path",
+        "section": "Attribute detail > re_path",
+        "text": "re_path\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.root",
+        "title": "LLRS > Attribute detail > root",
+        "section": "Attribute detail > root",
+        "text": "root\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.version",
+        "title": "LLRS > Attribute detail > version",
+        "section": "Attribute detail > version",
+        "text": "version\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#method-detail",
+        "title": "LLRS > Method detail",
+        "section": "Method detail",
+        "text": "Parse a role expressions and return the role name and the list of classes.\nThe syntax of a role expression is <role> [ '{' <class> [ ',' <class> ]* '}' ].\nDump the child elements as a tree.\nAdd an entry for a model element.\nList to add the element to.\nInput model element.\nKind of the model element, that overrides the default if not empty.\nOid of the element’s parent.\nDump the child elements as a list.\nDump the children of a model element to a list.\nList to add the child elements to.\nInput model element.\nName of the model element’ class.\nWhether the child elements are in the same list or in a sub-tree.\nOid of the parent item.\nReturn the attribute value of a model element.\nInput model element.\nPath of the attribute.\nThe value of the attribute or None if an error occurs.\nReturn the value of an attribute of a model element.\nInput model element.\nName of the attribute to consider in the meta-model.\nAttribute value.\nReturn the built-in attributes of a model element.\nThis applies to annotatable elements: the list contains\nthe annotation values tagged as LLR_PROP.\nReturn the class name of a model element.\nGenerate the image of a model element and return its path when applicable or None.\nReturn the elements linked to a model element for a given association.\nInput model element.\nName of the association end to consider in the meta-model.\nWhether the output collection should be sorted.\nList of linked elements.\nReturn the name of a model element.\nReturn the oid of a model element.\nReturn the path of a model element.\nReturn the linked elements of a model element for a given path.\nInput model element.\nDot-separated list of association ends of the meta-model.\nWhether the list should be sorted.\nList of linked elements.\nReturn the name of a model.\nReturn the oid of a model.\nReturn the URL corresponding to an oid.\nThe default implementation uses the generic one.\nCreate a Section entry.\nTitle of the section.\nList of contained elements.\nOid of the section.\nMethod detail\n<role> [ '{' <class> [ ',' <class> ]* '}' ]\nList\nAny\nAny\npython:str\npython:str\nList\nAny\nAny\npython:str\npython:str\nAny\npython:str\nAny\nAny\npython:str\nAny\nLLR_PROP\nAny\npython:str\nList\nAny\nAny\npython:str\nList\nAny\npython:str\nList\nAny\npython:str\npython:dict"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.decompose_role",
+        "title": "LLRS > Method detail > decompose_role",
+        "section": "Method detail > decompose_role",
+        "text": "decompose_role(item, role_expression)\n\nParse a role expressions and return the role name and the list of classes.\n\nThe syntax of a role expression is <role> [ '{' <class> [ ',' <class> ]* '}' ].\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.dump_children",
+        "title": "LLRS > Method detail > dump_children",
+        "section": "Method detail > dump_children",
+        "text": "dump_children(container, item, cls, parent_oid)\n\nDump the child elements as a tree.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.dump_item",
+        "title": "LLRS > Method detail > dump_item",
+        "section": "Method detail > dump_item",
+        "text": "dump_item(container, item, kind, parent_oid)\n\nAdd an entry for a model element.\n\nParameters\n\ncontainer\n\nList[Any]\n\nList to add the element to.\n\nitem\n\nAny\n\nInput model element.\n\nkind\n\npython:str\n\nKind of the model element, that overrides the default if not empty.\n\nparent_oid\n\npython:str\n\nOid of the element’s parent.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.dump_siblings",
+        "title": "LLRS > Method detail > dump_siblings",
+        "section": "Method detail > dump_siblings",
+        "text": "dump_siblings(container, item, cls, parent_oid)\n\nDump the child elements as a list.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.dump_sub_elements",
+        "title": "LLRS > Method detail > dump_sub_elements",
+        "section": "Method detail > dump_sub_elements",
+        "text": "dump_sub_elements(container, item, cls, flatten, parent_oid)\n\nDump the children of a model element to a list.\n\nParameters\n\ncontainer\n\nList[Any]\n\nList to add the child elements to.\n\nitem\n\nAny\n\nInput model element.\n\ncls\n\npython:str\n\nName of the model element’ class.\n\nflatten\n\nWhether the child elements are in the same list or in a sub-tree.\n\nparent_oid\n\npython:str\n\nOid of the parent item.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_attribute",
+        "title": "LLRS > Method detail > get_attribute",
+        "section": "Method detail > get_attribute",
+        "text": "get_attribute(item, path)\n\nReturn the attribute value of a model element.\n\nParameters\n\nitem\n\nAny\n\nInput model element.\n\npath\n\npython:str\n\nPath of the attribute.\n\nReturns\n\nAny\n\nThe value of the attribute or None if an error occurs.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_attribute",
+        "title": "LLRS > Method detail > get_item_attribute",
+        "section": "Method detail > get_item_attribute",
+        "text": "abstract get_item_attribute(item, name)\n\nReturn the value of an attribute of a model element.\n\nParameters\n\nitem\n\nAny\n\nInput model element.\n\nname\n\npython:str\n\nName of the attribute to consider in the meta-model.\n\nReturns\n\nAny\n\nAttribute value.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_attributes",
+        "title": "LLRS > Method detail > get_item_attributes",
+        "section": "Method detail > get_item_attributes",
+        "text": "abstract get_item_attributes(item)\n\nReturn the built-in attributes of a model element.\n\nThis applies to annotatable elements: the list contains\nthe annotation values tagged as LLR_PROP.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_class",
+        "title": "LLRS > Method detail > get_item_class",
+        "section": "Method detail > get_item_class",
+        "text": "abstract get_item_class(item)\n\nReturn the class name of a model element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_image",
+        "title": "LLRS > Method detail > get_item_image",
+        "section": "Method detail > get_item_image",
+        "text": "get_item_image(item)\n\nGenerate the image of a model element and return its path when applicable or None.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_links",
+        "title": "LLRS > Method detail > get_item_links",
+        "section": "Method detail > get_item_links",
+        "text": "abstract get_item_links(item, role, sort)\n\nReturn the elements linked to a model element for a given association.\n\nParameters\n\nitem\n\nAny\n\nInput model element.\n\nrole\n\npython:str\n\nName of the association end to consider in the meta-model.\n\nsort\n\nbool\n\nWhether the output collection should be sorted.\n\nReturns\n\nList[Any]\n\nList of linked elements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_name",
+        "title": "LLRS > Method detail > get_item_name",
+        "section": "Method detail > get_item_name",
+        "text": "abstract get_item_name(item)\n\nReturn the name of a model element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_oid",
+        "title": "LLRS > Method detail > get_item_oid",
+        "section": "Method detail > get_item_oid",
+        "text": "abstract get_item_oid(item)\n\nReturn the oid of a model element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_item_pathname",
+        "title": "LLRS > Method detail > get_item_pathname",
+        "section": "Method detail > get_item_pathname",
+        "text": "abstract get_item_pathname(item)\n\nReturn the path of a model element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_links",
+        "title": "LLRS > Method detail > get_links",
+        "section": "Method detail > get_links",
+        "text": "get_links(item, path, sort)\n\nReturn the linked elements of a model element for a given path.\n\nParameters\n\nitem\n\nAny\n\nInput model element.\n\npath\n\npython:str\n\nDot-separated list of association ends of the meta-model.\n\nsort\n\nbool\n\nWhether the list should be sorted.\n\nReturns\n\nList[Any]\n\nList of linked elements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_model_name",
+        "title": "LLRS > Method detail > get_model_name",
+        "section": "Method detail > get_model_name",
+        "text": "abstract get_model_name(model)\n\nReturn the name of a model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_model_oid",
+        "title": "LLRS > Method detail > get_model_oid",
+        "section": "Method detail > get_model_oid",
+        "text": "abstract get_model_oid(model)\n\nReturn the oid of a model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.get_url",
+        "title": "LLRS > Method detail > get_url",
+        "section": "Method detail > get_url",
+        "text": "get_url(oid)\n\nReturn the URL corresponding to an oid.\n\nThe default implementation uses the generic one.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRS.html#LLRS.new_section",
+        "title": "LLRS > Method detail > new_section",
+        "section": "Method detail > new_section",
+        "text": "new_section(name, elements, oid)\n\nCreate a Section entry.\n\nParameters\n\nname\n\npython:str\n\nTitle of the section.\n\nelements\n\nList[Any]\n\nList of contained elements.\n\noid\n\npython:str\n\nOid of the section.\n\nReturns\n\npython:dict\n\n\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/traceln",
+        "href": "api/ansys/scade/pyalmgw/utils/traceln.html#ansysscadepyalmgwutilstraceln",
+        "title": "ansys.scade.pyalmgw.utils.traceln",
+        "section": "ansys.scade.pyalmgw.utils.traceln",
+        "text": "Log test on the standard output.\nText to log.\ntext (str)\nansys.scade.pyalmgw.utils.traceln\npython:str"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/traceln",
+        "href": "api/ansys/scade/pyalmgw/utils/traceln.html#ansys.scade.pyalmgw.utils.traceln",
+        "title": "ansys.scade.pyalmgw.utils.traceln > ansys.scade.pyalmgw.utils.traceln > traceln",
+        "section": "ansys.scade.pyalmgw.utils.traceln > traceln",
+        "text": "ansys.scade.pyalmgw.utils.traceln(text)\n\nLog test on the standard output.\n\nParameters\n\ntext\n\npython:str\n\nText to log.\n\nParameters\n\ntext (str)\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#reqdocument",
+        "title": "ReqDocument",
+        "section": "ReqDocument",
+        "text": "Bases: Container\nImplements the Document complex type.\nPersistence.\nfile maps to identifier.\nFor example C:\\Program Files\\ANSYS Inc\\examples\\CruiseControl\\CruiseControl.docx.\nfile.name maps to text.\nFor example CruiseControl.docx.\nowner (ReqProject)\nfile (str)\nname (str)\nReqDocument\nReqDocument\nContainer\nDocument\nfile\nidentifier\nC:\\Program Files\\ANSYS Inc\\examples\\CruiseControl\\CruiseControl.docx\nfile.name\ntext\nCruiseControl.docx"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#ansys.scade.pyalmgw.documents.ReqDocument",
+        "title": "ReqDocument > ReqDocument > ReqDocument",
+        "section": "ReqDocument > ReqDocument",
+        "text": "class ansys.scade.pyalmgw.documents.ReqDocument(owner, file='', name='')\n\nBases: Container\n\nImplements the Document complex type.\n\nPersistence.\n\nfile maps to identifier.\n\nFor example C:\\Program Files\\ANSYS Inc\\examples\\CruiseControl\\CruiseControl.docx.\n\nfile.name maps to text.\n\nFor example CruiseControl.docx.\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (ReqProject)\n\nfile (str)\n\nname (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#overview",
+        "title": "ReqDocument > Overview",
+        "section": "Overview",
+        "text": "depth\nReturn the maximum depth of a section.\npath\nReturn the path of the document.\nxml_tag\nOverview\ndepth\npath\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#import-detail",
+        "title": "ReqDocument > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#property-detail",
+        "title": "ReqDocument > Property detail",
+        "section": "Property detail",
+        "text": "Return the maximum depth of a section.\nReturn the path of the document.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#ReqDocument.depth",
+        "title": "ReqDocument > Property detail > depth",
+        "section": "Property detail > depth",
+        "text": "property depth: int\n\nReturn the maximum depth of a section.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#ReqDocument.path",
+        "title": "ReqDocument > Property detail > path",
+        "section": "Property detail > path",
+        "text": "property path: pathlib.Path\n\nReturn the path of the document.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#attribute-detail",
+        "title": "ReqDocument > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqDocument",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqDocument.html#ReqDocument.xml_tag",
+        "title": "ReqDocument > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = 'Document'\n\n"
+    },
+    {
+        "objectID": "getting_started/index",
+        "href": "getting_started/index.html#getting-started",
+        "title": "Getting started",
+        "section": "Getting started",
+        "text": "To use Ansys SCADE ALM Gateway Python Toolbox, you must have a valid license for Ansys SCADE.\nFor information on getting a licensed copy, see the\nAnsys SCADE Suite\npage on the Ansys website.\nGetting started"
+    },
+    {
+        "objectID": "getting_started/index",
+        "href": "getting_started/index.html#requirements",
+        "title": "Getting started > Requirements",
+        "section": "Requirements",
+        "text": "The ansys-scade-pyalmgw package supports only the versions of Python delivered with\nAnsys SCADE, starting from 2021 R2:\n2021 R2 through 2023 R1: Python 3.7\n2023 R2 and later: Python 3.10\nRequirements\nansys-scade-pyalmgw"
+    },
+    {
+        "objectID": "getting_started/index",
+        "href": "getting_started/index.html#install-in-user-mode",
+        "title": "Getting started > Install in user mode",
+        "section": "Install in user mode",
+        "text": "The following steps are for installing Ansys SCADE ALM Gateway Python Toolbox in user mode. If you want to\ncontribute to Ansys SCADE ALM Gateway Python Toolbox, see contribute_scade_pyalmgw for the steps\nfor installing in developer mode.\nBefore installing Ansys SCADE ALM Gateway Python Toolbox in user mode, run this command to ensure that\nyou have the latest version of pip:\nInstall Ansys SCADE ALM Gateway Python Toolbox with this command:\nFor Ansys SCADE releases 2024 R2 and below, complete the installation with\nthis command:\nThis additional step is not required when installing the package with\nAnsys SCADE Extension Manager.\nInstall in user mode"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#stdllrs",
+        "title": "StdLLRS",
+        "section": "StdLLRS",
+        "text": "Bases: LLRS\nBase implementation class for models edited inside SCADE Studio IDE.\nllr_export (LLRExport)\nStdLLRS\nStdLLRS\nLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#ansys.scade.pyalmgw.llrs.StdLLRS",
+        "title": "StdLLRS > StdLLRS > StdLLRS",
+        "section": "StdLLRS > StdLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.StdLLRS(llr_export, kind, root)\n\nBases: LLRS\n\nBase implementation class for models edited inside SCADE Studio IDE.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#overview",
+        "title": "StdLLRS > Overview",
+        "section": "Overview",
+        "text": "get_item_attribute\nImplement get_item_attribute.\nget_item_class\nImplement get_item_class.\nget_item_links\nImplement get_item_links.\nOverview\nget_item_attribute\nget_item_attribute\nget_item_class\nget_item_class\nget_item_links\nget_item_links"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#import-detail",
+        "title": "StdLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#method-detail",
+        "title": "StdLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Implement get_item_attribute.\nImplement get_item_class.\nImplement get_item_links.\nMethod detail\nget_item_attribute\nget_item_class\nget_item_links"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#StdLLRS.get_item_attribute",
+        "title": "StdLLRS > Method detail > get_item_attribute",
+        "section": "Method detail > get_item_attribute",
+        "text": "get_item_attribute(item, name)\n\nImplement get_item_attribute.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#StdLLRS.get_item_class",
+        "title": "StdLLRS > Method detail > get_item_class",
+        "section": "Method detail > get_item_class",
+        "text": "get_item_class(item)\n\nImplement get_item_class.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/StdLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/StdLLRS.html#StdLLRS.get_item_links",
+        "title": "StdLLRS > Method detail > get_item_links",
+        "section": "Method detail > get_item_links",
+        "text": "get_item_links(item, role, sort)\n\nImplement get_item_links.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#displayllrs",
+        "title": "DisplayLLRS",
+        "section": "DisplayLLRS",
+        "text": "Bases: LLRS\nLLRS implementation for SCADE Display.\nllr_export (LLRExport)\nDisplayLLRS\nDisplayLLRS\nLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#ansys.scade.pyalmgw.llrs.DisplayLLRS",
+        "title": "DisplayLLRS > DisplayLLRS > DisplayLLRS",
+        "section": "DisplayLLRS > DisplayLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.DisplayLLRS(llr_export)\n\nBases: LLRS\n\nLLRS implementation for SCADE Display.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#overview",
+        "title": "DisplayLLRS > Overview",
+        "section": "Overview",
+        "text": "export_images\nGenerate the all the images of a specification.\nget_item_attribute\nImplement get_item_attribute.\nget_item_attributes\nImplement get_item_attributes.\nget_item_class\nImplement get_item_class.\nget_item_image\nImplement get_item_image.\nget_item_links\nImplement get_item_links.\nget_item_name\nImplement get_item_name.\nget_item_oid\nImplement get_item_oid.\nget_item_pathname\nImplement get_item_pathname.\nget_model_name\nImplement get_model_name.\nget_model_oid\nImplement get_model_oid.\napp\ngenerated_specs\nimg_dir\nsdyexe\nOverview\nexport_images\nget_item_attribute\nget_item_attribute\nget_item_attributes\nget_item_attributes\nget_item_class\nget_item_class\nget_item_image\nget_item_image\nget_item_links\nget_item_links\nget_item_name\nget_item_name\nget_item_oid\nget_item_oid\nget_item_pathname\nget_item_pathname\nget_model_name\nget_model_name\nget_model_oid\nget_model_oid\napp\ngenerated_specs\nimg_dir\nsdyexe"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#import-detail",
+        "title": "DisplayLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#attribute-detail",
+        "title": "DisplayLLRS > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.app",
+        "title": "DisplayLLRS > Attribute detail > app",
+        "section": "Attribute detail > app",
+        "text": "app\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.generated_specs",
+        "title": "DisplayLLRS > Attribute detail > generated_specs",
+        "section": "Attribute detail > generated_specs",
+        "text": "generated_specs\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.img_dir",
+        "title": "DisplayLLRS > Attribute detail > img_dir",
+        "section": "Attribute detail > img_dir",
+        "text": "img_dir\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.sdyexe",
+        "title": "DisplayLLRS > Attribute detail > sdyexe",
+        "section": "Attribute detail > sdyexe",
+        "text": "sdyexe\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#method-detail",
+        "title": "DisplayLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Generate the all the images of a specification.\nImplement get_item_attribute.\nImplement get_item_attributes.\nImplement get_item_class.\nImplement get_item_image.\nImplement get_item_links.\nImplement get_item_name.\nImplement get_item_oid.\nImplement get_item_pathname.\nImplement get_model_name.\nImplement get_model_oid.\nMethod detail\nget_item_attribute\nget_item_attributes\nget_item_class\nget_item_image\nget_item_links\nget_item_name\nget_item_oid\nget_item_pathname\nget_model_name\nget_model_oid"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.export_images",
+        "title": "DisplayLLRS > Method detail > export_images",
+        "section": "Method detail > export_images",
+        "text": "export_images(spec)\n\nGenerate the all the images of a specification.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_attribute",
+        "title": "DisplayLLRS > Method detail > get_item_attribute",
+        "section": "Method detail > get_item_attribute",
+        "text": "get_item_attribute(item, name)\n\nImplement get_item_attribute.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_attributes",
+        "title": "DisplayLLRS > Method detail > get_item_attributes",
+        "section": "Method detail > get_item_attributes",
+        "text": "get_item_attributes(item)\n\nImplement get_item_attributes.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_class",
+        "title": "DisplayLLRS > Method detail > get_item_class",
+        "section": "Method detail > get_item_class",
+        "text": "get_item_class(item)\n\nImplement get_item_class.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_image",
+        "title": "DisplayLLRS > Method detail > get_item_image",
+        "section": "Method detail > get_item_image",
+        "text": "get_item_image(item)\n\nImplement get_item_image.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_links",
+        "title": "DisplayLLRS > Method detail > get_item_links",
+        "section": "Method detail > get_item_links",
+        "text": "get_item_links(item, role, sort)\n\nImplement get_item_links.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_name",
+        "title": "DisplayLLRS > Method detail > get_item_name",
+        "section": "Method detail > get_item_name",
+        "text": "get_item_name(item)\n\nImplement get_item_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_oid",
+        "title": "DisplayLLRS > Method detail > get_item_oid",
+        "section": "Method detail > get_item_oid",
+        "text": "get_item_oid(item)\n\nImplement get_item_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_item_pathname",
+        "title": "DisplayLLRS > Method detail > get_item_pathname",
+        "section": "Method detail > get_item_pathname",
+        "text": "get_item_pathname(item)\n\nImplement get_item_pathname.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_model_name",
+        "title": "DisplayLLRS > Method detail > get_model_name",
+        "section": "Method detail > get_model_name",
+        "text": "get_model_name(model)\n\nImplement get_model_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayLLRS.html#DisplayLLRS.get_model_oid",
+        "title": "DisplayLLRS > Method detail > get_model_oid",
+        "section": "Method detail > get_model_oid",
+        "text": "get_model_oid(model)\n\nImplement get_model_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#container",
+        "title": "Container",
+        "section": "Container",
+        "text": "Bases: Element\nBase class for ReqDocument, Section, and Requirement classes.\nContainer of hierarchical elements.\nContainer\nContainer\nElement\nReqDocument\nSection\nRequirement"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#ansys.scade.pyalmgw.documents.Container",
+        "title": "Container > Container > Container",
+        "section": "Container > Container",
+        "text": "class ansys.scade.pyalmgw.documents.Container(*args, **kwargs)\n\nBases: Element\n\nBase class for ReqDocument, Section, and Requirement classes.\n\nContainer of hierarchical elements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#overview",
+        "title": "Container > Overview",
+        "section": "Overview",
+        "text": "is_empty\nReturn whether a container does not contain requirements.\niter_requirements\nIterate through the contained requirements.\nparse\nParse the current object from an XML element.\nchildren\nReturn the contained elements to be serialized as a dictionary.\nrequirements\nsections\nOverview\nis_empty\niter_requirements\nparse\nchildren\nrequirements\nsections"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#import-detail",
+        "title": "Container > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#property-detail",
+        "title": "Container > Property detail",
+        "section": "Property detail",
+        "text": "Return the contained elements to be serialized as a dictionary.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.children",
+        "title": "Container > Property detail > children",
+        "section": "Property detail > children",
+        "text": "property children: Dict[str, List[List[ReqObject]]]\n\nReturn the contained elements to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#attribute-detail",
+        "title": "Container > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.requirements",
+        "title": "Container > Attribute detail > requirements",
+        "section": "Attribute detail > requirements",
+        "text": "requirements: List[Requirement] = []\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.sections",
+        "title": "Container > Attribute detail > sections",
+        "section": "Attribute detail > sections",
+        "text": "sections: List[Section] = []\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#method-detail",
+        "title": "Container > Method detail",
+        "section": "Method detail",
+        "text": "Return whether a container does not contain requirements.\nIterate through the contained requirements.\nParse the current object from an XML element.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.is_empty",
+        "title": "Container > Method detail > is_empty",
+        "section": "Method detail > is_empty",
+        "text": "is_empty()\n\nReturn whether a container does not contain requirements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.iter_requirements",
+        "title": "Container > Method detail > iter_requirements",
+        "section": "Method detail > iter_requirements",
+        "text": "iter_requirements()\n\nIterate through the contained requirements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Container",
+        "href": "api/ansys/scade/pyalmgw/documents/Container.html#Container.parse",
+        "title": "Container > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(tree)\n\nParse the current object from an XML element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "changelog",
+        "href": "changelog.html#release-notes",
+        "title": "Release notes",
+        "section": "Release notes",
+        "text": "This document contains the release notes for the project.\nRelease notes"
+    },
+    {
+        "objectID": "changelog",
+        "href": "changelog.html#100---2024-11-28",
+        "title": "Release notes > 1.0.0 - 2024-11-28",
+        "section": "1.0.0 - 2024-11-28",
+        "text": "1.0.0 - 2024-11-28"
+    },
+    {
+        "objectID": "changelog",
+        "href": "changelog.html#added",
+        "title": "Release notes > Added",
+        "section": "Added",
+        "text": "feat: Migration to GitHub #1\nfeat: Tune the implementation #5\nAdded"
+    },
+    {
+        "objectID": "changelog",
+        "href": "changelog.html#dependencies",
+        "title": "Release notes > Dependencies",
+        "section": "Dependencies",
+        "text": "build(deps): Bump the dependencies group with 6 updates #3\nDependencies"
+    },
+    {
+        "objectID": "changelog",
+        "href": "changelog.html#maintenance",
+        "title": "Release notes > Maintenance",
+        "section": "Maintenance",
+        "text": "ci: Restore doc-style action #4\nMaintenance"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#patherror",
+        "title": "PathError",
+        "section": "PathError",
+        "text": "Bases: BaseException\nException for erroneous paths in schemas.\nInitialize self.  See help(type(self)) for accurate signature.\nPathError\nPathError\nBaseException"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#ansys.scade.pyalmgw.llrs.PathError",
+        "title": "PathError > PathError > PathError",
+        "section": "PathError > PathError",
+        "text": "exception ansys.scade.pyalmgw.llrs.PathError(path, message, **kwargs)\n\nBases: BaseException\n\nException for erroneous paths in schemas.\n\nInitialize self.  See help(type(self)) for accurate signature.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#overview",
+        "title": "PathError > Overview",
+        "section": "Overview",
+        "text": "message\npath\n__str__\nReturn the string representation of the exception.\nOverview\nmessage\npath\n__str__"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#import-detail",
+        "title": "PathError > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#attribute-detail",
+        "title": "PathError > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#PathError.message",
+        "title": "PathError > Attribute detail > message",
+        "section": "Attribute detail > message",
+        "text": "message\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#PathError.path",
+        "title": "PathError > Attribute detail > path",
+        "section": "Attribute detail > path",
+        "text": "path\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#method-detail",
+        "title": "PathError > Method detail",
+        "section": "Method detail",
+        "text": "Return the string representation of the exception.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/PathError",
+        "href": "api/ansys/scade/pyalmgw/llrs/PathError.html#PathError.__str__",
+        "title": "PathError > Method detail > __str__",
+        "section": "Method detail > __str__",
+        "text": "__str__()\n\nReturn the string representation of the exception.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#section",
+        "title": "Section",
+        "section": "Section",
+        "text": "Bases: HierarchyElement\nImplements the Section complex type.\nLevel of the a document hierarchy.\nPersistence:\nnumber maps to identifier. For example 1, 2.3.4…\ntitle maps to text. For example 1, 2.3.4…\nowner (Container)\nnumber (str)\ntitle (str)\ndescription (str)\nSection\nSection\nHierarchyElement\nSection\nnumber\nidentifier\n1\n2.3.4\ntitle\ntext\n1\n2.3.4"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#ansys.scade.pyalmgw.documents.Section",
+        "title": "Section > Section > Section",
+        "section": "Section > Section",
+        "text": "class ansys.scade.pyalmgw.documents.Section(owner, number='', title='', description='')\n\nBases: HierarchyElement\n\nImplements the Section complex type.\n\nLevel of the a document hierarchy.\n\nPersistence:\n\nnumber maps to identifier. For example 1, 2.3.4…\n\ntitle maps to text. For example 1, 2.3.4…\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (Container)\n\nnumber (str)\n\ntitle (str)\n\ndescription (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#overview",
+        "title": "Section > Overview",
+        "section": "Overview",
+        "text": "depth\nReturn the maximum depth of a section.\nlevel\nReturn the level of a section, defined as its number of owners.\nnumber\nReturn the section number.\ntitle\nReturn the section title.\nxml_tag\nOverview\ndepth\nlevel\nnumber\ntitle\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#import-detail",
+        "title": "Section > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#property-detail",
+        "title": "Section > Property detail",
+        "section": "Property detail",
+        "text": "Return the maximum depth of a section.\nReturn the level of a section, defined as its number of owners.\nReturn the section number.\nReturn the section title.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#Section.depth",
+        "title": "Section > Property detail > depth",
+        "section": "Property detail > depth",
+        "text": "property depth: int\n\nReturn the maximum depth of a section.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#Section.level",
+        "title": "Section > Property detail > level",
+        "section": "Property detail > level",
+        "text": "property level: int\n\nReturn the level of a section, defined as its number of owners.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#Section.number",
+        "title": "Section > Property detail > number",
+        "section": "Property detail > number",
+        "text": "property number: str\n\nReturn the section number.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#Section.title",
+        "title": "Section > Property detail > title",
+        "section": "Property detail > title",
+        "text": "property title: str\n\nReturn the section title.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#attribute-detail",
+        "title": "Section > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Section",
+        "href": "api/ansys/scade/pyalmgw/documents/Section.html#Section.xml_tag",
+        "title": "Section > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = 'Section'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#reqproject",
+        "title": "ReqProject",
+        "section": "ReqProject",
+        "text": "Bases: Element\nProvides an implementation of a Requirement File.\npath (Optional[pathlib.Path])\nReqProject\nReqProject\nElement"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ansys.scade.pyalmgw.documents.ReqProject",
+        "title": "ReqProject > ReqProject > ReqProject",
+        "section": "ReqProject > ReqProject",
+        "text": "class ansys.scade.pyalmgw.documents.ReqProject(path=None, **kwargs)\n\nBases: Element\n\nProvides an implementation of a Requirement File.\n\n!! processed by numpydoc !!\n\nParameters\n\npath (Optional[pathlib.Path])"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#overview",
+        "title": "ReqProject > Overview",
+        "section": "Overview",
+        "text": "bind\nBind the traceability links.\nparse\nBuild the project structure from a Requirements Document XML file.\nread\nBuild the project structure from a Requirements Document XMl file.\nwrite\nSerialize the project to a Requirements Document XMl file.\nchildren\nReturn the contained elements to be serialized as a dictionary.\ndepth\nReturn the maximum depth of a section.\ndocuments\npath\ntraceability_links\nxml_tag\nOverview\nbind\nparse\nread\nwrite\nchildren\ndepth\ndocuments\npath\ntraceability_links\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#import-detail",
+        "title": "ReqProject > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#property-detail",
+        "title": "ReqProject > Property detail",
+        "section": "Property detail",
+        "text": "Return the contained elements to be serialized as a dictionary.\nReturn the maximum depth of a section.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.children",
+        "title": "ReqProject > Property detail > children",
+        "section": "Property detail > children",
+        "text": "property children: Dict[str, List[List[ReqObject]]]\n\nReturn the contained elements to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.depth",
+        "title": "ReqProject > Property detail > depth",
+        "section": "Property detail > depth",
+        "text": "property depth: int\n\nReturn the maximum depth of a section.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#attribute-detail",
+        "title": "ReqProject > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.documents",
+        "title": "ReqProject > Attribute detail > documents",
+        "section": "Attribute detail > documents",
+        "text": "documents: List[ReqDocument] = []\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.path",
+        "title": "ReqProject > Attribute detail > path",
+        "section": "Attribute detail > path",
+        "text": "path\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.traceability_links",
+        "title": "ReqProject > Attribute detail > traceability_links",
+        "section": "Attribute detail > traceability_links",
+        "text": "traceability_links: List[TraceabilityLink] = []\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.xml_tag",
+        "title": "ReqProject > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = 'ReqProject'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#method-detail",
+        "title": "ReqProject > Method detail",
+        "section": "Method detail",
+        "text": "Bind the traceability links.\nTraceability links that can’t be resolved.\nBuild the project structure from a Requirements Document XML file.\nRoot element of the XML DOM.\nBuild the project structure from a Requirements Document XMl file.\nSerialize the project to a Requirements Document XMl file.\nPath of the output file. Whene none, the file is saved to\ncurrent path of the project.\nMethod detail\nList\nTraceabilityLink\nAny\nPath"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.bind",
+        "title": "ReqProject > Method detail > bind",
+        "section": "Method detail > bind",
+        "text": "bind()\n\nBind the traceability links.\n\nReturns\n\nList[TraceabilityLink]\n\nTraceability links that can’t be resolved.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.parse",
+        "title": "ReqProject > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(root)\n\nBuild the project structure from a Requirements Document XML file.\n\nParameters\n\nroot\n\nAny\n\nRoot element of the XML DOM.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.read",
+        "title": "ReqProject > Method detail > read",
+        "section": "Method detail > read",
+        "text": "read()\n\nBuild the project structure from a Requirements Document XMl file.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqProject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqProject.html#ReqProject.write",
+        "title": "ReqProject > Method detail > write",
+        "section": "Method detail > write",
+        "text": "write(path=None)\n\nSerialize the project to a Requirements Document XMl file.\n\nParameters\n\npath\n\nPath\n\nPath of the output file. Whene none, the file is saved to\ncurrent path of the project.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#connector",
+        "title": "Connector",
+        "section": "Connector",
+        "text": "Top-level class for an external ALM Gateway connector.\nid (str)\nproject (Optional[scade.model.project.stdproject.Project])\nConnector\nConnector"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#ansys.scade.pyalmgw.connector.Connector",
+        "title": "Connector > Connector > Connector",
+        "section": "Connector > Connector",
+        "text": "class ansys.scade.pyalmgw.connector.Connector(id, project=None)\n\nTop-level class for an external ALM Gateway connector.\n\n!! processed by numpydoc !!\n\nParameters\n\nid (str)\n\nproject (Optional[scade.model.project.stdproject.Project])"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#overview",
+        "title": "Connector > Overview",
+        "section": "Overview",
+        "text": "on_export\nProcess the export command.\non_import\nProcess the import command.\non_locate\nProcess the locate command.\non_manage\nProcess the manage command.\non_settings\nProcess the settings command.\nexecute\nExecute the ALM Gateway command.\nexport_llrs\nGenerate the surrogate models.\nget_export_class\nReturn an instance of LLRExport.\nget_llr_default_schema\nReturn a default schema to be used for exporting the surrogate model.\nget_llr_diagrams\nReturn whether the surrogfate model should include images: diagrams or panels for example.\nget_llr_schema\nReturn the schema to be used for exporting the LLRS.\nget_llrs_file\nReturn the default path of the file to contain the exported LLRS.\nmain\nPackage entry point.\nid\nproject\nOverview\non_export\nexport\non_import\nimport\non_locate\nlocate\non_manage\nmanage\non_settings\nsettings\nexecute\nexport_llrs\nget_export_class\nget_llr_default_schema\nget_llr_diagrams\nget_llr_schema\nget_llrs_file\nmain\nid\nproject"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#import-detail",
+        "title": "Connector > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#attribute-detail",
+        "title": "Connector > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.id",
+        "title": "Connector > Attribute detail > id",
+        "section": "Attribute detail > id",
+        "text": "id\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.project",
+        "title": "Connector > Attribute detail > project",
+        "section": "Attribute detail > project",
+        "text": "project\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#method-detail",
+        "title": "Connector > Method detail",
+        "section": "Method detail",
+        "text": "Execute the ALM Gateway command.\nInput command, must be one of settings, manage, locate, import or export.\nParameters of the command\nReturn code of the executed command.\nGenerate the surrogate models.\nReturn an instance of LLRExport.\nReturn a default schema to be used for exporting the surrogate model.\nThe schema depends on the project’s nature: SCADE Suite, Test, Display or Architect.\nReturn whether the surrogfate model should include images: diagrams or panels for example.\nBy default, the information is expected to be persisted in the project as\na tool property @ALMGW:DIAGRAMS (default: false).\nReturn the schema to be used for exporting the LLRS.\nBy default, the information is expected to be persisted in the project as\na tool property @ALMGW:LLRSCHEMA. If the property is not defined, the\nmethod returns a default schema.\nReturn the default path of the file to contain the exported LLRS.\nPackage entry point.\nProcess the export command.\nProcess the import command.\nProcess the locate command.\nProcess the manage command.\nProcess the settings command.\nMethod detail\npython:str\npython:str\npython:int\n@ALMGW:DIAGRAMS\nfalse\n@ALMGW:LLRSCHEMA\nexport\nimport\nlocate\nmanage\nsettings"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.execute",
+        "title": "Connector > Method detail > execute",
+        "section": "Method detail > execute",
+        "text": "execute(command, *args)\n\nExecute the ALM Gateway command.\n\nParameters\n\ncommand\n\npython:str\n\nInput command, must be one of settings, manage, locate, import or export.\n\n*args\n\npython:str\n\nParameters of the command\n\nReturns\n\npython:int\n\nReturn code of the executed command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.export_llrs",
+        "title": "Connector > Method detail > export_llrs",
+        "section": "Method detail > export_llrs",
+        "text": "export_llrs()\n\nGenerate the surrogate models.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.get_export_class",
+        "title": "Connector > Method detail > get_export_class",
+        "section": "Method detail > get_export_class",
+        "text": "get_export_class()\n\nReturn an instance of LLRExport.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.get_llr_default_schema",
+        "title": "Connector > Method detail > get_llr_default_schema",
+        "section": "Method detail > get_llr_default_schema",
+        "text": "get_llr_default_schema()\n\nReturn a default schema to be used for exporting the surrogate model.\n\nThe schema depends on the project’s nature: SCADE Suite, Test, Display or Architect.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.get_llr_diagrams",
+        "title": "Connector > Method detail > get_llr_diagrams",
+        "section": "Method detail > get_llr_diagrams",
+        "text": "get_llr_diagrams()\n\nReturn whether the surrogfate model should include images: diagrams or panels for example.\n\nBy default, the information is expected to be persisted in the project as\na tool property @ALMGW:DIAGRAMS (default: false).\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.get_llr_schema",
+        "title": "Connector > Method detail > get_llr_schema",
+        "section": "Method detail > get_llr_schema",
+        "text": "get_llr_schema()\n\nReturn the schema to be used for exporting the LLRS.\n\nBy default, the information is expected to be persisted in the project as\na tool property @ALMGW:LLRSCHEMA. If the property is not defined, the\nmethod returns a default schema.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.get_llrs_file",
+        "title": "Connector > Method detail > get_llrs_file",
+        "section": "Method detail > get_llrs_file",
+        "text": "get_llrs_file()\n\nReturn the default path of the file to contain the exported LLRS.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.main",
+        "title": "Connector > Method detail > main",
+        "section": "Method detail > main",
+        "text": "main()\n\nPackage entry point.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.on_export",
+        "title": "Connector > Method detail > on_export",
+        "section": "Method detail > on_export",
+        "text": "abstract on_export(links, pid)\n\nProcess the export command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.on_import",
+        "title": "Connector > Method detail > on_import",
+        "section": "Method detail > on_import",
+        "text": "abstract on_import(file, pid)\n\nProcess the import command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.on_locate",
+        "title": "Connector > Method detail > on_locate",
+        "section": "Method detail > on_locate",
+        "text": "abstract on_locate(req, pid)\n\nProcess the locate command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.on_manage",
+        "title": "Connector > Method detail > on_manage",
+        "section": "Method detail > on_manage",
+        "text": "abstract on_manage(pid)\n\nProcess the manage command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/Connector",
+        "href": "api/ansys/scade/pyalmgw/connector/Connector.html#Connector.on_settings",
+        "title": "Connector > Method detail > on_settings",
+        "section": "Method detail > on_settings",
+        "text": "abstract on_settings(pid)\n\nProcess the settings command.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/index",
+        "href": "api/ansys/scade/pyalmgw/connector/index.html#the-connectorpy-module",
+        "title": "The connector.py module",
+        "section": "The connector.py module",
+        "text": "The connector.py module\nconnector.py"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/index",
+        "href": "api/ansys/scade/pyalmgw/connector/index.html#summary",
+        "title": "The connector.py module > Summary",
+        "section": "Summary",
+        "text": "Connector\nTop-level class for an external ALM Gateway connector.\nSummary\nConnector"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/connector/index",
+        "href": "api/ansys/scade/pyalmgw/connector/index.html#description",
+        "title": "The connector.py module > Description",
+        "section": "Description",
+        "text": "SCADE LifeCycle ALM Gateway Python interface for external connectors.\nNew connectors must derive the Connector class and implement the abstract methods.\nThe other methods can be also overridden to provide alternative implementations.\nDescription\nConnector"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/read_json",
+        "href": "api/ansys/scade/pyalmgw/utils/read_json.html#ansysscadepyalmgwutilsread_json",
+        "title": "ansys.scade.pyalmgw.utils.read_json",
+        "section": "ansys.scade.pyalmgw.utils.read_json",
+        "text": "Load a json file.\nPath of the input file.\nThe content of the file.\npath (pathlib.Path)\nAny\nansys.scade.pyalmgw.utils.read_json\njson\nPath\nobject"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/read_json",
+        "href": "api/ansys/scade/pyalmgw/utils/read_json.html#ansys.scade.pyalmgw.utils.read_json",
+        "title": "ansys.scade.pyalmgw.utils.read_json > ansys.scade.pyalmgw.utils.read_json > read_json",
+        "section": "ansys.scade.pyalmgw.utils.read_json > read_json",
+        "text": "ansys.scade.pyalmgw.utils.read_json(path)\n\nLoad a json file.\n\nParameters\n\npath\n\nPath\n\nPath of the input file.\n\nReturns\n\nobject\n\nThe content of the file.\n\nParameters\n\npath (pathlib.Path)\n\nReturn type\n\nAny\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#scadellrs",
+        "title": "ScadeLLRS",
+        "section": "ScadeLLRS",
+        "text": "Bases: AnnotatedLLRS\nLLRS implementation for SCADE Suite.\nllr_export (LLRExport)\nScadeLLRS\nScadeLLRS\nAnnotatedLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ansys.scade.pyalmgw.llrs.ScadeLLRS",
+        "title": "ScadeLLRS > ScadeLLRS > ScadeLLRS",
+        "section": "ScadeLLRS > ScadeLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.ScadeLLRS(llr_export, root)\n\nBases: AnnotatedLLRS\n\nLLRS implementation for SCADE Suite.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#overview",
+        "title": "ScadeLLRS > Overview",
+        "section": "Overview",
+        "text": "get_item_image\nImplement get_item_image.\nget_item_name\nImplement get_item_name.\nget_item_oid\nImplement get_item_oid.\nget_item_pathname\nImplement get_item_pathname.\nget_model_name\nImplement get_model_name.\nget_model_oid\nImplement get_model_oid.\nget_note_value\nImplement get_note_value.\nOverview\nget_item_image\nget_item_image\nget_item_name\nget_item_name\nget_item_oid\nget_item_oid\nget_item_pathname\nget_item_pathname\nget_model_name\nget_model_name\nget_model_oid\nget_model_oid\nget_note_value\nget_note_value"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#import-detail",
+        "title": "ScadeLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#method-detail",
+        "title": "ScadeLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Implement get_item_image.\nImplement get_item_name.\nImplement get_item_oid.\nImplement get_item_pathname.\nImplement get_model_name.\nImplement get_model_oid.\nImplement get_note_value.\nMethod detail\nget_item_image\nget_item_name\nget_item_oid\nget_item_pathname\nget_model_name\nget_model_oid\nget_note_value"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_item_image",
+        "title": "ScadeLLRS > Method detail > get_item_image",
+        "section": "Method detail > get_item_image",
+        "text": "get_item_image(item)\n\nImplement get_item_image.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_item_name",
+        "title": "ScadeLLRS > Method detail > get_item_name",
+        "section": "Method detail > get_item_name",
+        "text": "get_item_name(item)\n\nImplement get_item_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_item_oid",
+        "title": "ScadeLLRS > Method detail > get_item_oid",
+        "section": "Method detail > get_item_oid",
+        "text": "get_item_oid(item)\n\nImplement get_item_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_item_pathname",
+        "title": "ScadeLLRS > Method detail > get_item_pathname",
+        "section": "Method detail > get_item_pathname",
+        "text": "get_item_pathname(item)\n\nImplement get_item_pathname.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_model_name",
+        "title": "ScadeLLRS > Method detail > get_model_name",
+        "section": "Method detail > get_model_name",
+        "text": "get_model_name(model)\n\nImplement get_model_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_model_oid",
+        "title": "ScadeLLRS > Method detail > get_model_oid",
+        "section": "Method detail > get_model_oid",
+        "text": "get_model_oid(model)\n\nImplement get_model_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/ScadeLLRS.html#ScadeLLRS.get_note_value",
+        "title": "ScadeLLRS > Method detail > get_note_value",
+        "section": "Method detail > get_note_value",
+        "text": "get_note_value(note, attribute)\n\nImplement get_note_value.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#stubconnector",
+        "title": "StubConnector",
+        "section": "StubConnector",
+        "text": "Bases: ansys.scade.pyalmgw.connector.Connector\nStubs the Connector class for unit testing and example.\nid (str)\nproject (Optional[scade.model.project.stdproject.Project])\nStubConnector\nStubConnector\nansys.scade.pyalmgw.connector.Connector\nConnector"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#ansys.scade.pyalmgw.stub.StubConnector",
+        "title": "StubConnector > StubConnector > StubConnector",
+        "section": "StubConnector > StubConnector",
+        "text": "class ansys.scade.pyalmgw.stub.StubConnector(id, project=None)\n\nBases: ansys.scade.pyalmgw.connector.Connector\n\nStubs the Connector class for unit testing and example.\n\n!! processed by numpydoc !!\n\nParameters\n\nid (str)\n\nproject (Optional[scade.model.project.stdproject.Project])"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#overview",
+        "title": "StubConnector > Overview",
+        "section": "Overview",
+        "text": "get_stub_file\nReturn a stub requirements file for ALM Gateway.\non_export\nExport traceability links and Contributing Elements (surrogate model).\non_import\nImport requirements and traceability links to ALM Gateway.\non_locate\nStub the command locate.\non_manage\nStub the command manage.\non_settings\nStub the command settings.\nOverview\nget_stub_file\non_export\non_import\non_locate\nlocate\non_manage\nmanage\non_settings\nsettings"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#import-detail",
+        "title": "StubConnector > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#method-detail",
+        "title": "StubConnector > Method detail",
+        "section": "Method detail",
+        "text": "Return a stub requirements file for ALM Gateway.\nThe function makes a local copy of a resource file\nso that it can be modified by the ALMGW commands.\nPath of the requirements file.\nExport traceability links and Contributing Elements (surrogate model).\nPath of a JSON file that contains the links to add and remove.\nSCADE product process ID.\nImport requirements and traceability links to ALM Gateway.\nThe functions copies the stub file to the provided path.\nAbsolute path where the XML requirements file is saved.\nSCADE product process ID.\nStub the command locate.\nStub the command manage.\nStub the command settings.\nMethod detail\nPath\nPath\npython:int\nPath\npython:int\nlocate\nmanage\nsettings"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.get_stub_file",
+        "title": "StubConnector > Method detail > get_stub_file",
+        "section": "Method detail > get_stub_file",
+        "text": "get_stub_file()\n\nReturn a stub requirements file for ALM Gateway.\n\nThe function makes a local copy of a resource file\nso that it can be modified by the ALMGW commands.\n\nReturns\n\nPath\n\nPath of the requirements file.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.on_export",
+        "title": "StubConnector > Method detail > on_export",
+        "section": "Method detail > on_export",
+        "text": "on_export(links, pid)\n\nExport traceability links and Contributing Elements (surrogate model).\n\nParameters\n\nlinks\n\nPath\n\nPath of a JSON file that contains the links to add and remove.\n\npid\n\npython:int\n\nSCADE product process ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.on_import",
+        "title": "StubConnector > Method detail > on_import",
+        "section": "Method detail > on_import",
+        "text": "on_import(file, pid)\n\nImport requirements and traceability links to ALM Gateway.\n\nThe functions copies the stub file to the provided path.\n\nParameters\n\npath\n\nPath\n\nAbsolute path where the XML requirements file is saved.\n\npid\n\npython:int\n\nSCADE product process ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.on_locate",
+        "title": "StubConnector > Method detail > on_locate",
+        "section": "Method detail > on_locate",
+        "text": "on_locate(req, pid)\n\nStub the command locate.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.on_manage",
+        "title": "StubConnector > Method detail > on_manage",
+        "section": "Method detail > on_manage",
+        "text": "on_manage(pid)\n\nStub the command manage.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubConnector",
+        "href": "api/ansys/scade/pyalmgw/stub/StubConnector.html#StubConnector.on_settings",
+        "title": "StubConnector > Method detail > on_settings",
+        "section": "Method detail > on_settings",
+        "text": "on_settings(pid)\n\nStub the command settings.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#stubproject",
+        "title": "StubProject",
+        "section": "StubProject",
+        "text": "Bases: ansys.scade.pyalmgw.documents.ReqProject\nStubs the ReqProject class for unit testing and example.\npath (Optional[pathlib.Path])\nStubProject\nStubProject\nansys.scade.pyalmgw.documents.ReqProject\nReqProject"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#ansys.scade.pyalmgw.stub.StubProject",
+        "title": "StubProject > StubProject > StubProject",
+        "section": "StubProject > StubProject",
+        "text": "class ansys.scade.pyalmgw.stub.StubProject(path=None, **kwargs)\n\nBases: ansys.scade.pyalmgw.documents.ReqProject\n\nStubs the ReqProject class for unit testing and example.\n\n!! processed by numpydoc !!\n\nParameters\n\npath (Optional[pathlib.Path])"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#overview",
+        "title": "StubProject > Overview",
+        "section": "Overview",
+        "text": "merge_links\nMerge the traceability deltas from a the cache file (ALMGT).\nOverview\nmerge_links"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#import-detail",
+        "title": "StubProject > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#method-detail",
+        "title": "StubProject > Method detail",
+        "section": "Method detail",
+        "text": "Merge the traceability deltas from a the cache file (ALMGT).\nThe links are either created or deleted.\nInput ALMGT file.\nMethod detail\nPath"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/StubProject",
+        "href": "api/ansys/scade/pyalmgw/stub/StubProject.html#StubProject.merge_links",
+        "title": "StubProject > Method detail > merge_links",
+        "section": "Method detail > merge_links",
+        "text": "merge_links(file)\n\nMerge the traceability deltas from a the cache file (ALMGT).\n\nThe links are either created or deleted.\n\nParameters\n\nfile\n\nPath\n\nInput ALMGT file.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/main",
+        "href": "api/ansys/scade/pyalmgw/llrs/main.html#ansysscadepyalmgwllrsmain",
+        "title": "ansys.scade.pyalmgw.llrs.main",
+        "section": "ansys.scade.pyalmgw.llrs.main",
+        "text": "Create a surrogate model to the given output file.\nThis script is launched by SCADE ALM Gateway as follows:\nscade.exe -script <project> <install path>/llrs.py \"main(r'<file>' [, <arg>]*)\"\nint\nansys.scade.pyalmgw.llrs.main\nscade.exe -script <project> <install path>/llrs.py \"main(r'<file>' [, <arg>]*)\""
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/main",
+        "href": "api/ansys/scade/pyalmgw/llrs/main.html#ansys.scade.pyalmgw.llrs.main",
+        "title": "ansys.scade.pyalmgw.llrs.main > ansys.scade.pyalmgw.llrs.main > main",
+        "section": "ansys.scade.pyalmgw.llrs.main > main",
+        "text": "ansys.scade.pyalmgw.llrs.main(file, *cmd_line, version=LLRS.V194)\n\nCreate a surrogate model to the given output file.\n\nThis script is launched by SCADE ALM Gateway as follows:\n\nscade.exe -script <project> <install path>/llrs.py \"main(r'<file>' [, <arg>]*)\"\n\n!! processed by numpydoc !!\n\nReturn type\n\nint"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#hierarchyelement",
+        "title": "HierarchyElement",
+        "section": "HierarchyElement",
+        "text": "Bases: Container\nBase class for Section and Requirement classes.\nidentifier (str)\ntext (str)\ndescription (str)\nHierarchyElement\nHierarchyElement\nContainer\nSection\nRequirement"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#ansys.scade.pyalmgw.documents.HierarchyElement",
+        "title": "HierarchyElement > HierarchyElement > HierarchyElement",
+        "section": "HierarchyElement > HierarchyElement",
+        "text": "class ansys.scade.pyalmgw.documents.HierarchyElement(owner, identifier='', text='', description='')\n\nBases: Container\n\nBase class for Section and Requirement classes.\n\n!! processed by numpydoc !!\n\nParameters\n\nidentifier (str)\n\ntext (str)\n\ndescription (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#overview",
+        "title": "HierarchyElement > Overview",
+        "section": "Overview",
+        "text": "parse\nParse the current object from an XML element.\nattributes\nReturn the attributes to be serialized as a dictionary.\ndescription\nOverview\nparse\nattributes\ndescription"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#import-detail",
+        "title": "HierarchyElement > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#property-detail",
+        "title": "HierarchyElement > Property detail",
+        "section": "Property detail",
+        "text": "Return the attributes to be serialized as a dictionary.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#HierarchyElement.attributes",
+        "title": "HierarchyElement > Property detail > attributes",
+        "section": "Property detail > attributes",
+        "text": "property attributes: Dict[str, str]\n\nReturn the attributes to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#attribute-detail",
+        "title": "HierarchyElement > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#HierarchyElement.description",
+        "title": "HierarchyElement > Attribute detail > description",
+        "section": "Attribute detail > description",
+        "text": "description\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#method-detail",
+        "title": "HierarchyElement > Method detail",
+        "section": "Method detail",
+        "text": "Parse the current object from an XML element.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/HierarchyElement",
+        "href": "api/ansys/scade/pyalmgw/documents/HierarchyElement.html#HierarchyElement.parse",
+        "title": "HierarchyElement > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(tree)\n\nParse the current object from an XML element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#annotatedllrs",
+        "title": "AnnotatedLLRS",
+        "section": "AnnotatedLLRS",
+        "text": "Bases: StdLLRS\nBase implementation class for models that support annotations.\nllr_export (LLRExport)\nAnnotatedLLRS\nAnnotatedLLRS\nStdLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#ansys.scade.pyalmgw.llrs.AnnotatedLLRS",
+        "title": "AnnotatedLLRS > AnnotatedLLRS > AnnotatedLLRS",
+        "section": "AnnotatedLLRS > AnnotatedLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.AnnotatedLLRS(llr_export, kind, root, note_types)\n\nBases: StdLLRS\n\nBase implementation class for models that support annotations.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#overview",
+        "title": "AnnotatedLLRS > Overview",
+        "section": "Overview",
+        "text": "get_note_value\nReturn the value of a note attribute.\ngather_llr_fields\nCache the annotation fields tagged as LLR_PROP.\nget_item_attributes\nImplement get_item_attributes.\nllr_fields\nnote_types\nOverview\nget_note_value\ngather_llr_fields\nLLR_PROP\nget_item_attributes\nget_item_attributes\nllr_fields\nnote_types"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#import-detail",
+        "title": "AnnotatedLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#attribute-detail",
+        "title": "AnnotatedLLRS > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#AnnotatedLLRS.llr_fields",
+        "title": "AnnotatedLLRS > Attribute detail > llr_fields",
+        "section": "Attribute detail > llr_fields",
+        "text": "llr_fields\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#AnnotatedLLRS.note_types",
+        "title": "AnnotatedLLRS > Attribute detail > note_types",
+        "section": "Attribute detail > note_types",
+        "text": "note_types\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#method-detail",
+        "title": "AnnotatedLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Cache the annotation fields tagged as LLR_PROP.\nImplement get_item_attributes.\nReturn the value of a note attribute.\nInput note.\nName of the attribute.\nValue of the attribute.\nMethod detail\nLLR_PROP\nget_item_attributes\nann.AnnNote\npython:str\npython:str"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#AnnotatedLLRS.gather_llr_fields",
+        "title": "AnnotatedLLRS > Method detail > gather_llr_fields",
+        "section": "Method detail > gather_llr_fields",
+        "text": "gather_llr_fields()\n\nCache the annotation fields tagged as LLR_PROP.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#AnnotatedLLRS.get_item_attributes",
+        "title": "AnnotatedLLRS > Method detail > get_item_attributes",
+        "section": "Method detail > get_item_attributes",
+        "text": "get_item_attributes(item)\n\nImplement get_item_attributes.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS.html#AnnotatedLLRS.get_note_value",
+        "title": "AnnotatedLLRS > Method detail > get_note_value",
+        "section": "Method detail > get_note_value",
+        "text": "abstract get_note_value(note, attribute)\n\nReturn the value of a note attribute.\n\nParameters\n\nnote\n\nann.AnnNote\n\nInput note.\n\nattribute\n\npython:str\n\nName of the attribute.\n\nReturns\n\npython:str\n\nValue of the attribute.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#the-ansysscadepyalmgw-library",
+        "title": "The ansys.scade.pyalmgw library",
+        "section": "The ansys.scade.pyalmgw library",
+        "text": "The ansys.scade.pyalmgw library\nansys.scade.pyalmgw"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#summary",
+        "title": "The ansys.scade.pyalmgw library > Summary",
+        "section": "Summary",
+        "text": "connector\nSCADE LifeCycle ALM Gateway Python interface for external connectors.\ndocuments\nProvides means to create a Requirements Document for ALM Gateway.\nllrs\nGeneric tool for exporting the surrogate model to an ALM tool.\nstub\nIntegration test.\nutils\nAdds logs.\n__version__\nLLRSCHEMA\nLLRSCHEMA_DEFAULT\nTOOL\nSummary\nconnector\ndocuments\nllrs\nstub\nutils\n__version__\nLLRSCHEMA\nLLRSCHEMA_DEFAULT\nTOOL"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#description",
+        "title": "The ansys.scade.pyalmgw library > Description",
+        "section": "Description",
+        "text": "Ansys SCADE ALM Gateway Python Toolbox.\nDescription"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#module-detail",
+        "title": "The ansys.scade.pyalmgw library > Module detail",
+        "section": "Module detail",
+        "text": "Module detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#pyalmgw.LLRSCHEMA",
+        "title": "The ansys.scade.pyalmgw library > Module detail > LLRSCHEMA",
+        "section": "Module detail > LLRSCHEMA",
+        "text": "LLRSCHEMA = 'LLRSCHEMA'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#pyalmgw.LLRSCHEMA_DEFAULT",
+        "title": "The ansys.scade.pyalmgw library > Module detail > LLRSCHEMA_DEFAULT",
+        "section": "Module detail > LLRSCHEMA_DEFAULT",
+        "text": "LLRSCHEMA_DEFAULT = ''\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#pyalmgw.TOOL",
+        "title": "The ansys.scade.pyalmgw library > Module detail > TOOL",
+        "section": "Module detail > TOOL",
+        "text": "TOOL = 'ALMGW'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/index",
+        "href": "api/ansys/scade/pyalmgw/index.html#pyalmgw.__version__",
+        "title": "The ansys.scade.pyalmgw library > Module detail > __version__",
+        "section": "Module detail > __version__",
+        "text": "__version__\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/index",
+        "href": "api/ansys/scade/pyalmgw/stub/index.html#the-stubpy-module",
+        "title": "The stub.py module",
+        "section": "The stub.py module",
+        "text": "The stub.py module\nstub.py"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/index",
+        "href": "api/ansys/scade/pyalmgw/stub/index.html#summary",
+        "title": "The stub.py module > Summary",
+        "section": "Summary",
+        "text": "StubConnector\nStubs the Connector class for unit testing and example.\nStubProject\nStubs the ReqProject class for unit testing and example.\nmain\nPackage integration test entry point.\ncode\nSummary\nStubConnector\nConnector\nStubProject\nReqProject\nmain\ncode"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/index",
+        "href": "api/ansys/scade/pyalmgw/stub/index.html#description",
+        "title": "The stub.py module > Description",
+        "section": "Description",
+        "text": "Integration test.\nThis entry point can be registered to Ansys SCADE ALM Gateway to exercise\nthe commands and validate the format of the exchanged files.\nDescription"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/index",
+        "href": "api/ansys/scade/pyalmgw/stub/index.html#module-detail",
+        "title": "The stub.py module > Module detail",
+        "section": "Module detail",
+        "text": "Module detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/index",
+        "href": "api/ansys/scade/pyalmgw/stub/index.html#stub.code",
+        "title": "The stub.py module > Module detail > code",
+        "section": "Module detail > code",
+        "text": "code\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#displayapp",
+        "title": "DisplayApp",
+        "section": "DisplayApp",
+        "text": "Top-level class for SCADE Display models.\nA SCADE Display model does not have a “root” class, that is required\nfor defining an export schema.\nThis class gives access to the sepeicifations and reference objects\ncontained in a project. It also cache in the loaded instances the properties\nas new attributes.\nproject (scade.model.project.stdproject.Project)\nDisplayApp\nDisplayApp"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#ansys.scade.pyalmgw.llrs.DisplayApp",
+        "title": "DisplayApp > DisplayApp > DisplayApp",
+        "section": "DisplayApp > DisplayApp",
+        "text": "class ansys.scade.pyalmgw.llrs.DisplayApp(project)\n\nTop-level class for SCADE Display models.\n\nA SCADE Display model does not have a “root” class, that is required\nfor defining an export schema.\n\nThis class gives access to the sepeicifations and reference objects\ncontained in a project. It also cache in the loaded instances the properties\nas new attributes.\n\n!! processed by numpydoc !!\n\nParameters\n\nproject (scade.model.project.stdproject.Project)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#overview",
+        "title": "DisplayApp > Overview",
+        "section": "Overview",
+        "text": "cache_properties\nAdd the attributes owner, file and qualified_name to the model elements.\nfiles\nname\nowner\nqualified_name\nOverview\ncache_properties\nfiles\nname\nowner\nqualified_name"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#import-detail",
+        "title": "DisplayApp > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#attribute-detail",
+        "title": "DisplayApp > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#DisplayApp.files",
+        "title": "DisplayApp > Attribute detail > files",
+        "section": "Attribute detail > files",
+        "text": "files = []\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#DisplayApp.name",
+        "title": "DisplayApp > Attribute detail > name",
+        "section": "Attribute detail > name",
+        "text": "name\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#DisplayApp.owner",
+        "title": "DisplayApp > Attribute detail > owner",
+        "section": "Attribute detail > owner",
+        "text": "owner = None\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#DisplayApp.qualified_name",
+        "title": "DisplayApp > Attribute detail > qualified_name",
+        "section": "Attribute detail > qualified_name",
+        "text": "qualified_name = ''\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#method-detail",
+        "title": "DisplayApp > Method detail",
+        "section": "Method detail",
+        "text": "Add the attributes owner, file and qualified_name to the model elements.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/DisplayApp",
+        "href": "api/ansys/scade/pyalmgw/llrs/DisplayApp.html#DisplayApp.cache_properties",
+        "title": "DisplayApp > Method detail > cache_properties",
+        "section": "Method detail > cache_properties",
+        "text": "cache_properties(file, owner, item, link='')\n\nAdd the attributes owner, file and qualified_name to the model elements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "usage/index",
+        "href": "usage/index.html#usage",
+        "title": "Usage",
+        "section": "Usage",
+        "text": "Usage"
+    },
+    {
+        "objectID": "usage/index",
+        "href": "usage/index.html#external-connector",
+        "title": "Usage > External connector",
+        "section": "External connector",
+        "text": "Ansys SCADE LifeCycle ALM Gateway integrates an external connector to an ALM tool using a command line interface.\nThe connector executable should implement 5 commands:\nsettings: Allow the end-user to specify options to use the connector.\nThese settings are usually stored in the project file (ETP).\nimport: Import the requirements and traceability data from the ALM tool. The connector should deliver\nthese data in an intermediate XML file.\nexport: Export the surrogate model and the updated traceability data to the ALM tool. The connector should\nread the traceability updates from an intermediate json file.\nmanage: Open the ALM tool user interface.\nlocate: Open the ALM tool user interface and display the specified requirement.\nYou may refer to the following examples:\nStub: used for unit testing.\nExternal connector\nsettings\nimport\nexport\nmanage\nlocate\nStub"
+    },
+    {
+        "objectID": "usage/index",
+        "href": "usage/index.html#customized-export",
+        "title": "Usage > Customized export",
+        "section": "Customized export",
+        "text": "The script ansys/scade/pyalmgw/llrs.py can be used as a customization script for exporting\nthe surrogate model. The script is generic and is parametrized by a json configuration file, called export schema,\nthat describes the model elements to export as well as an optional documentation structure.\nThe script accepts the following parameters:\n-s <schema>, --schema <schema>: path to the export schema, that can be relative to the project.\n-i, --images (default false): whether to add graphical images, for example for diagrams, equation sets, or panels.\n-e, --empty <value> (default ''): placeholder value for empty attribute values. This is required for some target ALM tools,\nsuch as DOORS, for SCADE releases up to 2025 R1.\nRefer to the SCADE LifeCycle ALM Gateway user documentation for details to register an\nexport customization script.\nCustomized export\nansys/scade/pyalmgw/llrs.py\n-s <schema>\n--schema <schema>\n-i\n--images\nfalse\n-e\n--empty <value>\n''"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#element",
+        "title": "Element",
+        "section": "Element",
+        "text": "Bases: ReqObject\nBase class for ReqProject and Container classes.\nowner (Optional[Element])\nidentifier (str)\ntext (str)\nElement\nElement\nReqObject\nReqProject\nContainer"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#ansys.scade.pyalmgw.documents.Element",
+        "title": "Element > Element > Element",
+        "section": "Element > Element",
+        "text": "class ansys.scade.pyalmgw.documents.Element(owner, identifier='', text='')\n\nBases: ReqObject\n\nBase class for ReqProject and Container classes.\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (Optional[Element])\n\nidentifier (str)\n\ntext (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#overview",
+        "title": "Element > Overview",
+        "section": "Overview",
+        "text": "parse\nParse the current object from an XML element.\nattributes\nReturn the attributes to be serialized as a dictionary.\nidentifier\ntext\nOverview\nparse\nattributes\nidentifier\ntext"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#import-detail",
+        "title": "Element > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#property-detail",
+        "title": "Element > Property detail",
+        "section": "Property detail",
+        "text": "Return the attributes to be serialized as a dictionary.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#Element.attributes",
+        "title": "Element > Property detail > attributes",
+        "section": "Property detail > attributes",
+        "text": "property attributes: Dict[str, str]\n\nReturn the attributes to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#attribute-detail",
+        "title": "Element > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#Element.identifier",
+        "title": "Element > Attribute detail > identifier",
+        "section": "Attribute detail > identifier",
+        "text": "identifier\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#Element.text",
+        "title": "Element > Attribute detail > text",
+        "section": "Attribute detail > text",
+        "text": "text\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#method-detail",
+        "title": "Element > Method detail",
+        "section": "Method detail",
+        "text": "Parse the current object from an XML element.\nMethod detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Element",
+        "href": "api/ansys/scade/pyalmgw/documents/Element.html#Element.parse",
+        "title": "Element > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(elem)\n\nParse the current object from an XML element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#ansys-scade-alm-gateway-python-toolbox",
+        "title": "Ansys SCADE ALM Gateway Python Toolbox",
+        "section": "Ansys SCADE ALM Gateway Python Toolbox",
+        "text": "Ansys SCADE ALM Gateway Python Toolbox provides a high level interface to the\nAnsys SCADE LifeCycle customization APIs:\nConnection to a new ALM tool\nCustomization of the export of the surrogate model\nAnsys SCADE ALM Gateway Python Toolbox"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#contents",
+        "title": "Ansys SCADE ALM Gateway Python Toolbox > Contents",
+        "section": "Contents",
+        "text": "Contents"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#indices-and-tables",
+        "title": "Ansys SCADE ALM Gateway Python Toolbox > Indices and tables",
+        "section": "Indices and tables",
+        "text": "genindex\nmodindex\nsearch\nIndices and tables"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/main",
+        "href": "api/ansys/scade/pyalmgw/stub/main.html#ansysscadepyalmgwstubmain",
+        "title": "ansys.scade.pyalmgw.stub.main",
+        "section": "ansys.scade.pyalmgw.stub.main",
+        "text": "Package integration test entry point.\nansys.scade.pyalmgw.stub.main"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/stub/main",
+        "href": "api/ansys/scade/pyalmgw/stub/main.html#ansys.scade.pyalmgw.stub.main",
+        "title": "ansys.scade.pyalmgw.stub.main > ansys.scade.pyalmgw.stub.main > main",
+        "section": "ansys.scade.pyalmgw.stub.main > main",
+        "text": "ansys.scade.pyalmgw.stub.main()\n\nPackage integration test entry point.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#traceable-elements-export-schema",
+        "title": "Traceable Elements Export Schema",
+        "section": "Traceable Elements Export Schema",
+        "text": "Traceable Elements Export Schema"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#purpose",
+        "title": "Traceable Elements Export Schema > Purpose",
+        "section": "Purpose",
+        "text": "This customizable export schema, detailed below, defines the hierarchy of the document and the model items to be considered as traceable elements.\nIt is used to produce surrogate models for ALM tools.\nThe schema is a list of descriptions for all classes of the considered meta-model: suite, testenv, display, etc.\nImportant notice: The term ``LLR`` used in this document designates a model element to be exported to an external ALM tool.\nThese elements are not only ``Scade`` model elements but any element from the various ANSYS SCADE tools:\n``SCADE Suite``, ``SCADE Display``, ``SCADE Architect``, ``SCADE Test``.\nPurpose\nsuite\ntestenv\ndisplay"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#class-attributes",
+        "title": "Traceable Elements Export Schema > Class attributes",
+        "section": "Class attributes",
+        "text": "Each class description has the following attributes:\nparent (default null): Name of the parent class. For example, the parent class of Operator is DataDef.\nisllr (default false): true when the instances of the class are considered as requirements, false otherwise.\nFor example, isllr can be set to false for a package and true for a state.\nfolder (default null): Name of the section to be created for each instance of the class, empty otherwise.\nWhen a section is created, its name is <section> <instance name> or <instance name> if <section> is an empty string.\nThis is used to manage the hierarchy of the document and avoid having LLRs with child LLRs.\nExample 1:\nEach instance of Package leads to a new section in the document called Package <package name>.\nThe instance itself is not a LLR.\nExample 2:\nThe class Operator inherits from DataDef. Each instance of Operator introduces a\nOperator <operator name> section, that contains a LLR for the operator and additional items if any,\nlike interface, diagrams, etc. If folder were left empty, the additional items would be children of the LLR itself,\nleading to potential awkward title numbering when exporting to DOORS for example.\nExample 3:\nEach transition is a LLR but does not introduce a section. This is particularly useful for leaf items.\nNotes:\nThe classes not mentioned in the export schema have the implicit following definition:\nThe fields isllr and folder are ignored for abstract classes.\nRefer to the Composition and Inheritance class diagrams of the from the documentation\nof the meta-models to customize the export schema:\nCommon Help Resources/SCADE Products API Resources/SCADE API Reference Cards sections.\nClass attributes\nparent\nnull\nOperator\nDataDef\nisllr\nfalse\ntrue\nfalse\nisllr\nfalse\ntrue\nfolder\nnull\n<section> <instance name>\n<instance name>\n<section>\nPackage\nPackage <package name>\nOperator\nDataDef\nOperator\nOperator <operator name>\nfolder\nisllr\nfolder"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#class-properties",
+        "title": "Traceable Elements Export Schema > Class properties",
+        "section": "Class properties",
+        "text": "Each class can have implicit properties through the annotation system, cf. the dedicated section of this document.\nIt is also possible to define new attributes by querying the model. This tool only accepts scalar values.\nThe properties of a class are described in the list properties. Each property element has the following attributes:\nname: Name of the property to be created. It is possible to declare associations by adding a prefix to the name:\n#name: The value is the OID of the entity accessed by the path or empty if the entity is optional.\n@name: The value is the path of the entity accessed by the path or empty if the entity is optional.\npath: Path of the attribute in the model. It is possible to use roles thanks to a dotted notation provided there aren’t any collections.\nPrefixes allows declaring references that can be bound in the ALM tool.\nFor example, a DXL script can search for all properties starting by the prefix and create an internal link to ease the navigation.\nExample 1:\nEach instance of LocalVariable leads to a new requirement in the document with\nan additional property Type containing the name of the type.\nExample 2:\nEach instance of LocalVariable leads to a new requirement in the document\nwith an additional property #Type containing the OID of the type.\nExample 3:\nEach instance of LocalVariable leads to a new requirement in the document\nwith an additional property #Type containing the static path of the type.\nClass properties\nproperties\nname\n#name\n@name\npath\nLocalVariable\nType\nLocalVariable\n#Type\nLocalVariable\n#Type"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#class-content",
+        "title": "Traceable Elements Export Schema > Class content",
+        "section": "Class content",
+        "text": "The structure of a class is described in the list structure. Each structure element has the following attributes:\nfolder (default null): Name of the folder to be created for this collection, empty otherwise. No folders are created for empty collections.\nflags (default []): List of options:\nsibling: The items of the collection shall be declared as sibling items instead of child items.\nsort: The collection shall be sorted by alphabetical order.\nWhen used with the option sibling, there is only a partial order.\ncontent (default null): List of associations to be traversed to gather new items\nrole: Name of the role to be traversed. It is possible to chain several roles using a dotted notation.\nEach role name can be suffixed with a list of class names, enclosed by {}, to filter the result.\nkind (default null): Kind of the child item, otherwise:\nAn empty string evaluates to the value of role.\nA null value evaluates to the name of the class of the child item.\nfilter (default null): A Python expression where child designates the item.\nWhen not empty, child items for which the expression evaluates to False are filtered.\nDEPRECATED: ``class`` (default ``null``): Class of the child item, otherwise empty.\nWhen not empty, the child items that are not instances of the specified class are filtered.\nExample 1:\nEach instance of Package defines several folders called \"Constants\", \"Sensors\", etc.\nThe instances of NamedType are declared as \"type\".\nThe sub-packages are direct children of the folder \"Package\". All the collections are sorted alphabetically.\nExample 2:\nEach instance of Operator defines a section called \"Interface\" that gathers three collections:\ninputs, hidden inputs and outputs. Hidden inputs are declared as \"input\".\nExample 3:\nEach instance of Transition is a LLR. Their children, for example forked transitions,\nare added as sibling items, avoiding numbering issues or extra complexity.\nExample 4:\nIn the SCADE Test meta-model, there is only one association to access both sub-folders and records of a folder or a procedure.\nIn this example, the association \"testElement\" is traversed twice and filtered:\nThe first iteration retrieves only the folders while the second one retrieves the records.\nClass content\nstructure\nfolder\nnull\nflags\n[]\nsibling\nsort\nsibling\ncontent\nnull\nrole\n{}\nkind\nnull\nrole\nfilter\nnull\nchild\nFalse\nPackage\n\"Constants\"\n\"Sensors\"\nNamedType\n\"type\"\n\"Package\"\nOperator\n\"Interface\"\n\"input\"\nTransition\n\"testElement\""
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#annotations",
+        "title": "Traceable Elements Export Schema > Annotations",
+        "section": "Annotations",
+        "text": "The annotation values eligible for export, as LLR attributes, have to be annotated in the schema with the property LLR_PROP.\nThe value of this property is the name of the attribute in the export file.\nExample:\nThe note type DiagramNature defines a standard enumeration attribute.\nThe presence of the new property LLR_PROP allows the values to be exported to an attribute named Nature.\nThere is no limit to the amount of attributes to be exported.\nAnnotations\nLLR_PROP\nDiagramNature\nLLR_PROP\nNature"
+    },
+    {
+        "objectID": "usage/schema",
+        "href": "usage/schema.html#complete-example",
+        "title": "Traceable Elements Export Schema > Complete example",
+        "section": "Complete example",
+        "text": "The following schema allows exporting all the equation sets and textual diagrams per operator:\nComplete example"
+    },
+    {
+        "objectID": "api/index",
+        "href": "api/index.html#api-reference",
+        "title": "API reference",
+        "section": "API reference",
+        "text": "This section describes ansys-scade-pyalmgw endpoints, their capabilities, and how\nto interact with them programmatically.\nAPI reference"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#llrexport",
+        "title": "LLRExport",
+        "section": "LLRExport",
+        "text": "Entry point for exporting the surrogate model.\nLLRExport\nLLRExport"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#ansys.scade.pyalmgw.llrs.LLRExport",
+        "title": "LLRExport > LLRExport > LLRExport",
+        "section": "LLRExport > LLRExport",
+        "text": "class ansys.scade.pyalmgw.llrs.LLRExport(project)\n\nEntry point for exporting the surrogate model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#overview",
+        "title": "LLRExport > Overview",
+        "section": "Overview",
+        "text": "dump_model\nGenerate the surrogate model as a dictionary.\nget_export_classes\nReturn the export classes applicable to a project.\nget_url\nReturn the URL corresponding to an oid.\nread_schema\nParse the input configuration schema.\nwrite\nWrite the dictionary to a file.\nclasses\ndiagrams\nexport_classes\nproject\nproject_id\nroots\nschema\nversion\nOverview\ndump_model\nget_export_classes\nget_url\nread_schema\nwrite\nclasses\ndiagrams\nexport_classes\nproject\nproject_id\nroots\nschema\nversion"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#import-detail",
+        "title": "LLRExport > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#attribute-detail",
+        "title": "LLRExport > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.classes",
+        "title": "LLRExport > Attribute detail > classes",
+        "section": "Attribute detail > classes",
+        "text": "classes\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.diagrams",
+        "title": "LLRExport > Attribute detail > diagrams",
+        "section": "Attribute detail > diagrams",
+        "text": "diagrams = False\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.export_classes",
+        "title": "LLRExport > Attribute detail > export_classes",
+        "section": "Attribute detail > export_classes",
+        "text": "export_classes\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.project",
+        "title": "LLRExport > Attribute detail > project",
+        "section": "Attribute detail > project",
+        "text": "project\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.project_id",
+        "title": "LLRExport > Attribute detail > project_id",
+        "section": "Attribute detail > project_id",
+        "text": "project_id\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.roots",
+        "title": "LLRExport > Attribute detail > roots",
+        "section": "Attribute detail > roots",
+        "text": "roots\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.schema",
+        "title": "LLRExport > Attribute detail > schema",
+        "section": "Attribute detail > schema",
+        "text": "schema = None\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.version",
+        "title": "LLRExport > Attribute detail > version",
+        "section": "Attribute detail > version",
+        "text": "version\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#method-detail",
+        "title": "LLRExport > Method detail",
+        "section": "Method detail",
+        "text": "Generate the surrogate model as a dictionary.\nWhether the images should be generated, for applicable elements.\nTarget version of the surrogate model.\n0 (LLRS.VCUSTOM): Default format + icons + urls. Applies to custom connectors.\n4 (LLRS.V194): Default format for ALM Gateway interface.\nValue to use when the value of an attribute is empty. This is required for\nsome target ALM tools, such as DOORS for SCADE releases up to 2025 R1.\nSurrogate model.\nReturn the export classes applicable to a project.\nReturn the URL corresponding to an oid.\nParse the input configuration schema.\nWrite the dictionary to a file.\nMethod detail\npython:int\npython:str\npython:dict"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.dump_model",
+        "title": "LLRExport > Method detail > dump_model",
+        "section": "Method detail > dump_model",
+        "text": "dump_model(diagrams=False, version=0, empty='')\n\nGenerate the surrogate model as a dictionary.\n\nParameters\n\ndiagrams\n\nbool\n\nWhether the images should be generated, for applicable elements.\n\nversion\n\npython:int\n\nTarget version of the surrogate model.\n\n0 (LLRS.VCUSTOM): Default format + icons + urls. Applies to custom connectors.\n\n4 (LLRS.V194): Default format for ALM Gateway interface.\n\nempty\n\npython:str\n\nValue to use when the value of an attribute is empty. This is required for\nsome target ALM tools, such as DOORS for SCADE releases up to 2025 R1.\n\nReturns\n\npython:dict\n\nSurrogate model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.get_export_classes",
+        "title": "LLRExport > Method detail > get_export_classes",
+        "section": "Method detail > get_export_classes",
+        "text": "get_export_classes(project)\n\nReturn the export classes applicable to a project.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.get_url",
+        "title": "LLRExport > Method detail > get_url",
+        "section": "Method detail > get_url",
+        "text": "get_url(oid)\n\nReturn the URL corresponding to an oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.read_schema",
+        "title": "LLRExport > Method detail > read_schema",
+        "section": "Method detail > read_schema",
+        "text": "read_schema(path)\n\nParse the input configuration schema.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/LLRExport",
+        "href": "api/ansys/scade/pyalmgw/llrs/LLRExport.html#LLRExport.write",
+        "title": "LLRExport > Method detail > write",
+        "section": "Method detail > write",
+        "text": "write(llrs, path)\n\nWrite the dictionary to a file.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/get_export_class",
+        "href": "api/ansys/scade/pyalmgw/llrs/get_export_class.html#ansysscadepyalmgwllrsget_export_class",
+        "title": "ansys.scade.pyalmgw.llrs.get_export_class",
+        "section": "ansys.scade.pyalmgw.llrs.get_export_class",
+        "text": "Create an instance of LLRExport for the input project.\nThe function returns None when the project is not suitable for creating a surrogate model.\nproject (scade.model.project.stdproject.Project)\nOptional[LLRExport]\nansys.scade.pyalmgw.llrs.get_export_class\nLLRExport\nNone"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/get_export_class",
+        "href": "api/ansys/scade/pyalmgw/llrs/get_export_class.html#ansys.scade.pyalmgw.llrs.get_export_class",
+        "title": "ansys.scade.pyalmgw.llrs.get_export_class > ansys.scade.pyalmgw.llrs.get_export_class > get_export_class",
+        "section": "ansys.scade.pyalmgw.llrs.get_export_class > get_export_class",
+        "text": "ansys.scade.pyalmgw.llrs.get_export_class(project)\n\nCreate an instance of LLRExport for the input project.\n\nThe function returns None when the project is not suitable for creating a surrogate model.\n\n!! processed by numpydoc !!\n\nParameters\n\nproject (scade.model.project.stdproject.Project)\n\nReturn type\n\nOptional[LLRExport]"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#systemllrs",
+        "title": "SystemLLRS",
+        "section": "SystemLLRS",
+        "text": "Bases: AnnotatedLLRS\nLLRS implementation for SCADE Architect.\nllr_export (LLRExport)\nSystemLLRS\nSystemLLRS\nAnnotatedLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#ansys.scade.pyalmgw.llrs.SystemLLRS",
+        "title": "SystemLLRS > SystemLLRS > SystemLLRS",
+        "section": "SystemLLRS > SystemLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.SystemLLRS(llr_export, root)\n\nBases: AnnotatedLLRS\n\nLLRS implementation for SCADE Architect.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#overview",
+        "title": "SystemLLRS > Overview",
+        "section": "Overview",
+        "text": "cache_ids\nCache all the ids defined in a file.\nget_item_image\nImplement get_item_image.\nget_item_name\nImplement get_item_name.\nget_item_oid\nImplement get_item_oid.\nget_item_pathname\nImplement get_item_pathname.\nget_model_name\nImplement get_model_name.\nget_model_oid\nImplement get_model_oid.\nget_note_value\nImplement get_note_value.\nids\nprefixes\nOverview\ncache_ids\nget_item_image\nget_item_image\nget_item_name\nget_item_name\nget_item_oid\nget_item_oid\nget_item_pathname\nget_item_pathname\nget_model_name\nget_model_name\nget_model_oid\nget_model_oid\nget_note_value\nget_note_value\nids\nprefixes"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#import-detail",
+        "title": "SystemLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#attribute-detail",
+        "title": "SystemLLRS > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.ids",
+        "title": "SystemLLRS > Attribute detail > ids",
+        "section": "Attribute detail > ids",
+        "text": "ids\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.prefixes",
+        "title": "SystemLLRS > Attribute detail > prefixes",
+        "section": "Attribute detail > prefixes",
+        "text": "prefixes\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#method-detail",
+        "title": "SystemLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Cache all the ids defined in a file.\nIt is required to know the resource file where is defined an id\nto build the URL.\nImplement get_item_image.\nImplement get_item_name.\nImplement get_item_oid.\nImplement get_item_pathname.\nImplement get_model_name.\nImplement get_model_oid.\nImplement get_note_value.\nMethod detail\nget_item_image\nget_item_name\nget_item_oid\nget_item_pathname\nget_model_name\nget_model_oid\nget_note_value"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.cache_ids",
+        "title": "SystemLLRS > Method detail > cache_ids",
+        "section": "Method detail > cache_ids",
+        "text": "cache_ids(project)\n\nCache all the ids defined in a file.\n\nIt is required to know the resource file where is defined an id\nto build the URL.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_item_image",
+        "title": "SystemLLRS > Method detail > get_item_image",
+        "section": "Method detail > get_item_image",
+        "text": "get_item_image(item)\n\nImplement get_item_image.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_item_name",
+        "title": "SystemLLRS > Method detail > get_item_name",
+        "section": "Method detail > get_item_name",
+        "text": "get_item_name(item)\n\nImplement get_item_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_item_oid",
+        "title": "SystemLLRS > Method detail > get_item_oid",
+        "section": "Method detail > get_item_oid",
+        "text": "get_item_oid(item)\n\nImplement get_item_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_item_pathname",
+        "title": "SystemLLRS > Method detail > get_item_pathname",
+        "section": "Method detail > get_item_pathname",
+        "text": "get_item_pathname(item)\n\nImplement get_item_pathname.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_model_name",
+        "title": "SystemLLRS > Method detail > get_model_name",
+        "section": "Method detail > get_model_name",
+        "text": "get_model_name(model)\n\nImplement get_model_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_model_oid",
+        "title": "SystemLLRS > Method detail > get_model_oid",
+        "section": "Method detail > get_model_oid",
+        "text": "get_model_oid(model)\n\nImplement get_model_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/SystemLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/SystemLLRS.html#SystemLLRS.get_note_value",
+        "title": "SystemLLRS > Method detail > get_note_value",
+        "section": "Method detail > get_note_value",
+        "text": "get_note_value(note, attribute)\n\nImplement get_note_value.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#qtellrs",
+        "title": "QteLLRS",
+        "section": "QteLLRS",
+        "text": "Bases: StdLLRS\nLLRS implementation for SCADE Test.\nllr_export (LLRExport)\nQteLLRS\nQteLLRS\nStdLLRS"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#ansys.scade.pyalmgw.llrs.QteLLRS",
+        "title": "QteLLRS > QteLLRS > QteLLRS",
+        "section": "QteLLRS > QteLLRS",
+        "text": "class ansys.scade.pyalmgw.llrs.QteLLRS(llr_export, root)\n\nBases: StdLLRS\n\nLLRS implementation for SCADE Test.\n\n!! processed by numpydoc !!\n\nParameters\n\nllr_export (LLRExport)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#overview",
+        "title": "QteLLRS > Overview",
+        "section": "Overview",
+        "text": "get_item_attributes\nImplement get_item_attributes.\nget_item_name\nImplement get_item_name.\nget_item_oid\nImplement get_item_oid.\nget_item_pathname\nImplement get_item_pathname.\nget_model_name\nImplement get_model_name.\nget_model_oid\nImplement get_model_oid.\nOverview\nget_item_attributes\nget_item_attributes\nget_item_name\nget_item_name\nget_item_oid\nget_item_oid\nget_item_pathname\nget_item_pathname\nget_model_name\nget_model_name\nget_model_oid\nget_model_oid"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#import-detail",
+        "title": "QteLLRS > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#method-detail",
+        "title": "QteLLRS > Method detail",
+        "section": "Method detail",
+        "text": "Implement get_item_attributes.\nImplement get_item_name.\nImplement get_item_oid.\nImplement get_item_pathname.\nImplement get_model_name.\nImplement get_model_oid.\nMethod detail\nget_item_attributes\nget_item_name\nget_item_oid\nget_item_pathname\nget_model_name\nget_model_oid"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_item_attributes",
+        "title": "QteLLRS > Method detail > get_item_attributes",
+        "section": "Method detail > get_item_attributes",
+        "text": "get_item_attributes(item)\n\nImplement get_item_attributes.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_item_name",
+        "title": "QteLLRS > Method detail > get_item_name",
+        "section": "Method detail > get_item_name",
+        "text": "get_item_name(item)\n\nImplement get_item_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_item_oid",
+        "title": "QteLLRS > Method detail > get_item_oid",
+        "section": "Method detail > get_item_oid",
+        "text": "get_item_oid(item)\n\nImplement get_item_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_item_pathname",
+        "title": "QteLLRS > Method detail > get_item_pathname",
+        "section": "Method detail > get_item_pathname",
+        "text": "get_item_pathname(item)\n\nImplement get_item_pathname.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_model_name",
+        "title": "QteLLRS > Method detail > get_model_name",
+        "section": "Method detail > get_model_name",
+        "text": "get_model_name(model)\n\nImplement get_model_name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/QteLLRS",
+        "href": "api/ansys/scade/pyalmgw/llrs/QteLLRS.html#QteLLRS.get_model_oid",
+        "title": "QteLLRS > Method detail > get_model_oid",
+        "section": "Method detail > get_model_oid",
+        "text": "get_model_oid(model)\n\nImplement get_model_oid.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/write_json",
+        "href": "api/ansys/scade/pyalmgw/utils/write_json.html#ansysscadepyalmgwutilswrite_json",
+        "title": "ansys.scade.pyalmgw.utils.write_json",
+        "section": "ansys.scade.pyalmgw.utils.write_json",
+        "text": "Write an object to a json file.\nobject to serialize to json.\nPath of the output file.\nobject_ (object)\npath (pathlib.Path)\nbool\nansys.scade.pyalmgw.utils.write_json\njson\nobject\nPath"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/write_json",
+        "href": "api/ansys/scade/pyalmgw/utils/write_json.html#ansys.scade.pyalmgw.utils.write_json",
+        "title": "ansys.scade.pyalmgw.utils.write_json > ansys.scade.pyalmgw.utils.write_json > write_json",
+        "section": "ansys.scade.pyalmgw.utils.write_json > write_json",
+        "text": "ansys.scade.pyalmgw.utils.write_json(object_, path)\n\nWrite an object to a json file.\n\nParameters\n\nobject_\n\nobject\n\nobject to serialize to json.\n\npath\n\nPath\n\nPath of the output file.\n\nParameters\n\nobject_ (object)\n\npath (pathlib.Path)\n\nReturn type\n\nbool\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#reqobject",
+        "title": "ReqObject",
+        "section": "ReqObject",
+        "text": "Top level class for Requirements Document.\nDefines the interface for XML serialization and parsing.\nowner (Optional[ReqObject])\nReqObject\nReqObject"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ansys.scade.pyalmgw.documents.ReqObject",
+        "title": "ReqObject > ReqObject > ReqObject",
+        "section": "ReqObject > ReqObject",
+        "text": "class ansys.scade.pyalmgw.documents.ReqObject(owner)\n\nTop level class for Requirements Document.\n\nDefines the interface for XML serialization and parsing.\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (Optional[ReqObject])"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#overview",
+        "title": "ReqObject > Overview",
+        "section": "Overview",
+        "text": "parse\nParse the current object from an XML element.\nserialize\nAdd the element to the XML DOM.\nattributes\nReturn the attributes to be serialized as a dictionary.\nchildren\nReturn the contained elements to be serialized as a dictionary.\nns\nowner\nscade_req_ns\nxml_tag\nOverview\nparse\nserialize\nattributes\nchildren\nns\nowner\nscade_req_ns\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#import-detail",
+        "title": "ReqObject > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#property-detail",
+        "title": "ReqObject > Property detail",
+        "section": "Property detail",
+        "text": "Return the attributes to be serialized as a dictionary.\nReturn the contained elements to be serialized as a dictionary.\nThe entries are indexed by their tag, and contain the lists of child elements.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.attributes",
+        "title": "ReqObject > Property detail > attributes",
+        "section": "Property detail > attributes",
+        "text": "property attributes: Dict[str, str]\n\nReturn the attributes to be serialized as a dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.children",
+        "title": "ReqObject > Property detail > children",
+        "section": "Property detail > children",
+        "text": "property children: Dict[str, List[List[ReqObject]]]\n\nReturn the contained elements to be serialized as a dictionary.\n\nThe entries are indexed by their tag, and contain the lists of child elements.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#attribute-detail",
+        "title": "ReqObject > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.ns",
+        "title": "ReqObject > Attribute detail > ns",
+        "section": "Attribute detail > ns",
+        "text": "ns\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.owner",
+        "title": "ReqObject > Attribute detail > owner",
+        "section": "Attribute detail > owner",
+        "text": "owner\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.scade_req_ns",
+        "title": "ReqObject > Attribute detail > scade_req_ns",
+        "section": "Attribute detail > scade_req_ns",
+        "text": "scade_req_ns = 'http://www.esterel-technologies.com/scade/lifecycle/almgateway/scade_req/1'\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.xml_tag",
+        "title": "ReqObject > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = ''\n\n"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#method-detail",
+        "title": "ReqObject > Method detail",
+        "section": "Method detail",
+        "text": "Parse the current object from an XML element.\nXML element to parse.\nAdd the element to the XML DOM.\nParent element or None if the element to create is the root element.\nCorresponding XML element.\nMethod detail\nAny\nAny\nAny"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.parse",
+        "title": "ReqObject > Method detail > parse",
+        "section": "Method detail > parse",
+        "text": "parse(elem)\n\nParse the current object from an XML element.\n\nParameters\n\nelem\n\nAny\n\nXML element to parse.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/ReqObject",
+        "href": "api/ansys/scade/pyalmgw/documents/ReqObject.html#ReqObject.serialize",
+        "title": "ReqObject > Method detail > serialize",
+        "section": "Method detail > serialize",
+        "text": "serialize(parent=None)\n\nAdd the element to the XML DOM.\n\nParameters\n\nparent\n\nAny\n\nParent element or None if the element to create is the root element.\n\nReturns\n\nAny\n\nCorresponding XML element.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/read_project_id",
+        "href": "api/ansys/scade/pyalmgw/llrs/read_project_id.html#ansysscadepyalmgwllrsread_project_id",
+        "title": "ansys.scade.pyalmgw.llrs.read_project_id",
+        "section": "ansys.scade.pyalmgw.llrs.read_project_id",
+        "text": "Return the ALM Gateway ID of a project.\nproject (scade.model.project.stdproject.Project)\nOptional[str]\nansys.scade.pyalmgw.llrs.read_project_id"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/llrs/read_project_id",
+        "href": "api/ansys/scade/pyalmgw/llrs/read_project_id.html#ansys.scade.pyalmgw.llrs.read_project_id",
+        "title": "ansys.scade.pyalmgw.llrs.read_project_id > ansys.scade.pyalmgw.llrs.read_project_id > read_project_id",
+        "section": "ansys.scade.pyalmgw.llrs.read_project_id > read_project_id",
+        "text": "ansys.scade.pyalmgw.llrs.read_project_id(project)\n\nReturn the ALM Gateway ID of a project.\n\n!! processed by numpydoc !!\n\nParameters\n\nproject (scade.model.project.stdproject.Project)\n\nReturn type\n\nOptional[str]"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#requirement",
+        "title": "Requirement",
+        "section": "Requirement",
+        "text": "Bases: HierarchyElement\nImplements the Requirement complex type.\nowner (Container)\nid (str)\nRequirement\nRequirement\nHierarchyElement\nRequirement"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#ansys.scade.pyalmgw.documents.Requirement",
+        "title": "Requirement > Requirement > Requirement",
+        "section": "Requirement > Requirement",
+        "text": "class ansys.scade.pyalmgw.documents.Requirement(owner, id='', *args, **kwargs)\n\nBases: HierarchyElement\n\nImplements the Requirement complex type.\n\n!! processed by numpydoc !!\n\nParameters\n\nowner (Container)\n\nid (str)"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#overview",
+        "title": "Requirement > Overview",
+        "section": "Overview",
+        "text": "id\nReturn the ID of a requirement.\nxml_tag\nOverview\nid\nxml_tag"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#import-detail",
+        "title": "Requirement > Import detail",
+        "section": "Import detail",
+        "text": "Import detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#property-detail",
+        "title": "Requirement > Property detail",
+        "section": "Property detail",
+        "text": "Return the ID of a requirement.\nProperty detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#Requirement.id",
+        "title": "Requirement > Property detail > id",
+        "section": "Property detail > id",
+        "text": "property id: str\n\nReturn the ID of a requirement.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#attribute-detail",
+        "title": "Requirement > Attribute detail",
+        "section": "Attribute detail",
+        "text": "Attribute detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/documents/Requirement",
+        "href": "api/ansys/scade/pyalmgw/documents/Requirement.html#Requirement.xml_tag",
+        "title": "Requirement > Attribute detail > xml_tag",
+        "section": "Attribute detail > xml_tag",
+        "text": "xml_tag = 'Requirement'\n\n"
+    },
+    {
+        "objectID": "usage/tutorial",
+        "href": "usage/tutorial.html#tutorial",
+        "title": "Tutorial",
+        "section": "Tutorial",
+        "text": "Tutorial"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/index",
+        "href": "api/ansys/scade/pyalmgw/utils/index.html#the-utilspy-module",
+        "title": "The utils.py module",
+        "section": "The utils.py module",
+        "text": "The utils.py module\nutils.py"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/index",
+        "href": "api/ansys/scade/pyalmgw/utils/index.html#summary",
+        "title": "The utils.py module > Summary",
+        "section": "Summary",
+        "text": "read_json\nLoad a json file.\ntraceln\nLog test on the standard output.\nwrite_json\nWrite an object to a json file.\ntraceon\nSummary\nread_json\njson\ntraceln\nwrite_json\njson\ntraceon"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/index",
+        "href": "api/ansys/scade/pyalmgw/utils/index.html#description",
+        "title": "The utils.py module > Description",
+        "section": "Description",
+        "text": "Adds logs.\nDescription"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/index",
+        "href": "api/ansys/scade/pyalmgw/utils/index.html#module-detail",
+        "title": "The utils.py module > Module detail",
+        "section": "Module detail",
+        "text": "Module detail"
+    },
+    {
+        "objectID": "api/ansys/scade/pyalmgw/utils/index",
+        "href": "api/ansys/scade/pyalmgw/utils/index.html#utils.traceon",
+        "title": "The utils.py module > Module detail > traceon",
+        "section": "Module detail > traceon",
+        "text": "traceon = False\n\n"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#contribute",
+        "title": "Contribute",
+        "section": "Contribute",
+        "text": "Overall guidance on contributing to a PyAnsys library appears in\nContributing\nin the PyAnsys developer’s guide. Ensure that you are thoroughly familiar\nwith this guide before attempting to contribute to Ansys SCADE ALM Gateway Python Toolbox.\nThe following contribution information is specific to Ansys SCADE ALM Gateway Python Toolbox.\nContribute"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#install-in-developer-mode",
+        "title": "Contribute > Install in developer mode",
+        "section": "Install in developer mode",
+        "text": "Installing Ansys SCADE ALM Gateway Python Toolbox in developer mode allows you to modify the\nsource and enhance it.\nClone the ansys-scade-pyalmgw repository:\nAccess the scade-pyalmgw directory where the repository has been cloned:\nCreate a clean Python 3.10 environment and activate it:\nYou should use the interpreter delivered with Ansys SCADE. For example,\nC:\\Program Files\\ANSYS Inc\\v241\\SCADE\\contrib\\Python310\\python.exe.\nMake sure that you have the latest required build system, documentation, testing,\nand CI tools:\nInstall the project in editable mode:\nUse tox to verify your development installation:\nInstall in developer mode\nansys-scade-pyalmgw\nscade-pyalmgw\nC:\\Program Files\\ANSYS Inc\\v241\\SCADE\\contrib\\Python310\\python.exe"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#test",
+        "title": "Contribute > Test",
+        "section": "Test",
+        "text": "Ansys SCADE ALM Gateway Python Toolbox uses tox for testing. This tool allows you to\nautomate common development tasks (similar to Makefile), but it is oriented\ntowards Python development.\nTest\nMakefile"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#use-tox",
+        "title": "Contribute > Use tox",
+        "section": "Use tox",
+        "text": "While Makefile has rules, tox has environments. In fact, tox creates its\nown virtual environment so that anything being tested is isolated from the project\nto guarantee the project’s integrity.\nThe following tox commands are provided:\ntox -e style: Checks for coding style quality.\ntox -e py: Checks for unit tests.\ntox -e py-coverage: Checks for unit testing and code coverage.\ntox -e doc: Checks for the documentation-building process.\nUse tox\ntox\nMakefile\ntox\ntox\ntox\ntox -e style\ntox -e py\ntox -e py-coverage\ntox -e doc"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#use-raw-testing",
+        "title": "Contribute > Use raw testing",
+        "section": "Use raw testing",
+        "text": "If required, from the command line, you can call style commands like\nblack, isort, and flake8. You can also call unit testing commands like pytest.\nHowever, running these commands does not guarantee that your project is being tested in an\nisolated environment, which is the reason why tools like tox exist.\nUse raw testing\ntox"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#use-pre-commit",
+        "title": "Contribute > Use pre-commit",
+        "section": "Use pre-commit",
+        "text": "Ansys SCADE ALM Gateway Python Toolbox follows the PEP8 standard as outlined in\nPEP 8 in\nthe PyAnsys developer’s guide and implements style checking using\npre-commit.\nTo ensure your code meets minimum code styling standards, run these commands:\nYou can also install this as a pre-commit hook by running this command:\nThis way, it’s not possible for you to push code that fails the style checks:\nUse pre-commit\npre-commit"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#build-documentation",
+        "title": "Contribute > Build documentation",
+        "section": "Build documentation",
+        "text": "For building documentation, you can run the usual rules provided in the\nSphinx make file. Here are some examples:\nHowever, the recommended way of checking documentation integrity is to use\ntox:\nBuild documentation\nmake\ntox"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#distribute",
+        "title": "Contribute > Distribute",
+        "section": "Distribute",
+        "text": "If you would like to create either source or wheel files, start by installing\nthe building requirements and then executing the build module:\nDistribute"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#post-issues",
+        "title": "Contribute > Post issues",
+        "section": "Post issues",
+        "text": "Use the Ansys SCADE ALM Gateway Python Toolbox Issues\npage to submit questions, report bugs, and request new features. When possible, use\nthese templates:\nBug, problem, error: For filing a bug report\nDocumentation error: For requesting modifications to the documentation\nAdding an example: For proposing a new example\nNew feature: For requesting enhancements to the code\nIf your issue does not fit into one of these template categories, click\nthe link for opening a blank issue.\nTo reach the project support team, email pyansys.core@ansys.com.\nPost issues"
+    }
+]

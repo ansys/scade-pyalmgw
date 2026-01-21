@@ -1,0 +1,29 @@
+ansys.scade.pyalmgw.utils.traceln
+=================================
+
+.. py:function:: ansys.scade.pyalmgw.utils.traceln(text: str)
+
+   
+   Log test on the standard output.
+
+
+   :Parameters:
+
+       **text** : :class:`python:str`
+           Text to log.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!

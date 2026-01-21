@@ -1,0 +1,295 @@
+
+
+
+
+
+
+:class:`SystemLLRS`
+===================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.SystemLLRS(llr_export, root)
+
+   Bases: :py:obj:`AnnotatedLLRS`
+
+
+   
+   LLRS implementation for SCADE Architect.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SystemLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~cache_ids`
+            - Cache all the ids defined in a file.
+          * - :py:attr:`~get_item_image`
+            - Implement ``get_item_image``.
+          * - :py:attr:`~get_item_name`
+            - Implement ``get_item_name``.
+          * - :py:attr:`~get_item_oid`
+            - Implement ``get_item_oid``.
+          * - :py:attr:`~get_item_pathname`
+            - Implement ``get_item_pathname``.
+          * - :py:attr:`~get_model_name`
+            - Implement ``get_model_name``.
+          * - :py:attr:`~get_model_oid`
+            - Implement ``get_model_oid``.
+          * - :py:attr:`~get_note_value`
+            - Implement ``get_note_value``.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ids`
+            - 
+          * - :py:attr:`~prefixes`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import SystemLLRS
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ids
+
+.. py:attribute:: prefixes
+
+
+
+Method detail
+-------------
+
+.. py:method:: cache_ids(project)
+
+   
+   Cache all the ids defined in a file.
+
+   It is required to know the resource file where is defined an id
+   to build the URL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_image(item)
+
+   
+   Implement ``get_item_image``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_name(item)
+
+   
+   Implement ``get_item_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_oid(item)
+
+   
+   Implement ``get_item_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_pathname(item)
+
+   
+   Implement ``get_item_pathname``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_name(model)
+
+   
+   Implement ``get_model_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_oid(model)
+
+   
+   Implement ``get_model_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_note_value(note, attribute)
+
+   
+   Implement ``get_note_value``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

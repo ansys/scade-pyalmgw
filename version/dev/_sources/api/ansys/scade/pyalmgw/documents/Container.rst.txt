@@ -1,0 +1,124 @@
+
+
+
+
+
+
+:class:`Container`
+==================
+
+.. py:class:: ansys.scade.pyalmgw.documents.Container(*args, **kwargs)
+
+   Bases: :py:obj:`Element`
+
+
+   Base class for ``ReqDocument``, ``Section``, and ``Requirement`` classes.
+
+   Container of hierarchical elements.
+
+
+
+.. py:currentmodule:: Container
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_empty`
+            - Return whether a container does not contain requirements.
+          * - :py:attr:`~iter_requirements`
+            - Iterate through the contained requirements.
+          * - :py:attr:`~parse`
+            - Parse the current object from an XML element.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~children`
+            - Return the contained elements to be serialized as a dictionary.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~requirements`
+            - 
+          * - :py:attr:`~sections`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import Container
+
+Property detail
+---------------
+
+.. py:property:: children
+   :type: Dict[str, List[Sequence[ReqObject]]]
+
+
+   Return the contained elements to be serialized as a dictionary.
+
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: requirements
+   :type:  List[Requirement]
+   :value: []
+
+
+.. py:attribute:: sections
+   :type:  List[Section]
+   :value: []
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: is_empty() -> bool
+
+   Return whether a container does not contain requirements.
+
+
+.. py:method:: iter_requirements() -> Generator[Requirement, Any, Any]
+
+   Iterate through the contained requirements.
+
+
+.. py:method:: parse(tree: Any)
+
+   Parse the current object from an XML element.
+
+
+
+
+

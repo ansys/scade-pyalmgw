@@ -1,0 +1,110 @@
+
+
+
+
+
+
+:class:`DisplayApp`
+===================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.DisplayApp(project: scade.model.project.stdproject.Project)
+
+   Top-level class for SCADE Display models.
+
+   A SCADE Display model does not have a "root" class, that is required
+   for defining an export schema.
+
+   This class gives access to the specifications and reference objects
+   contained in a project.
+
+   It also caches in the loaded instances the properties as new attributes,
+   prefixed by ``llr_``, except ``name`` for specifications and reference
+   objects. These extra attributes are accessed with ``setattr`` and
+   ``getattr`` functions: more verbosity against linter errors.
+
+
+
+.. py:currentmodule:: DisplayApp
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~cache_properties`
+            - Add the attributes llr_owner, llr_file and llr_qualified_name to the model elements.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~files`
+            - 
+          * - :py:attr:`~llr_file`
+            - 
+          * - :py:attr:`~llr_owner`
+            - 
+          * - :py:attr:`~llr_qualified_name`
+            - 
+          * - :py:attr:`~name`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import DisplayApp
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: files
+   :value: []
+
+
+.. py:attribute:: llr_file
+   :value: None
+
+
+.. py:attribute:: llr_owner
+   :value: None
+
+
+.. py:attribute:: llr_qualified_name
+   :value: ''
+
+
+.. py:attribute:: name
+
+
+
+Method detail
+-------------
+
+.. py:method:: cache_properties(file, owner, item, link='')
+
+   Add the attributes llr_owner, llr_file and llr_qualified_name to the model elements.
+
+
+
+
+

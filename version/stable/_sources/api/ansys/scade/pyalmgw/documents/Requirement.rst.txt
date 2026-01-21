@@ -1,0 +1,118 @@
+
+
+
+
+
+
+:class:`Requirement`
+====================
+
+.. py:class:: ansys.scade.pyalmgw.documents.Requirement(owner: Container, id: str = '', *args, **kwargs)
+
+   Bases: :py:obj:`HierarchyElement`
+
+
+   
+   Implements the ``Requirement`` complex type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Requirement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~id`
+            - Return the ID of a requirement.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~xml_tag`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import Requirement
+
+Property detail
+---------------
+
+.. py:property:: id
+   :type: str
+
+
+   
+   Return the ID of a requirement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: xml_tag
+   :value: 'Requirement'
+
+
+
+
+
+

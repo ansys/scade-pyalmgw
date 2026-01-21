@@ -1,0 +1,118 @@
+
+
+
+
+
+
+:class:`AnnotatedLLRS`
+======================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.AnnotatedLLRS(llr_export: LLRExport, kind, root, note_types)
+
+   Bases: :py:obj:`StdLLRS`
+
+
+   Base implementation class for models that support annotations.
+
+
+
+
+.. py:currentmodule:: AnnotatedLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+   .. tab-item:: Abstract methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_note_value`
+            - Return the value of a note attribute.
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~gather_llr_fields`
+            - Cache the annotation fields tagged as ``LLR_PROP``.
+          * - :py:attr:`~get_item_attributes`
+            - Implement ``get_item_attributes``.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~llr_fields`
+            - 
+          * - :py:attr:`~note_types`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import AnnotatedLLRS
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: llr_fields
+
+.. py:attribute:: note_types
+
+
+
+Method detail
+-------------
+
+.. py:method:: gather_llr_fields()
+
+   Cache the annotation fields tagged as ``LLR_PROP``.
+
+
+.. py:method:: get_item_attributes(item: Any) -> list
+
+   Implement ``get_item_attributes``.
+
+
+.. py:method:: get_note_value(note: scade.model.suite.annotation.AnnNote, attribute: str) -> str
+   :abstractmethod:
+
+
+   Return the value of a note attribute.
+
+   Parameters
+   ----------
+   note : ann.AnnNote
+       Input note.
+   attribute : str
+       Name of the attribute.
+
+   Returns
+   -------
+   str
+       Value of the attribute.
+
+
+
+
+

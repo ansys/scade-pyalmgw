@@ -1,5 +1,5 @@
 [build-system]
-requires = ["flit_core >=3.2,<3.13"]
+requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
@@ -20,16 +20,14 @@ maintainers = [
 dependencies=[
     "importlib-metadata >= 1.0; python_version < '3.8'",
     "importlib-metadata >= 4.0; python_version >= '3.8'",
-    "ansys-scade-apitools >= 0.5",
+    "ansys-scade-apitools >= 0.5.0",
     "lxml",
 ]
 classifiers=[
     "Development Status :: 4 - Beta",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
 ]
 keywords=["Scade", "LifeCycle", "ALM Gateway"]

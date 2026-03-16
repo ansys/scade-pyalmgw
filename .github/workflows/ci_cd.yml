@@ -13,7 +13,6 @@ on:
   workflow_dispatch:
 
 env:
-  MAIN_PYTHON_VERSION: '3.10'
   DOCUMENTATION_CNAME: 'pyalmgw.scade.docs.pyansys.com'
   LIBRARY_NAME: 'ansys-scade-pyalmgw'
 
@@ -38,7 +37,7 @@ jobs:
       library-name: "ansys-scade-pyalmgw"
       repository-name: "ansys/scade-pyalmgw"
       is-public: true
-      main-python-version: '3.12'
+      main-python-version: '3.14'
       # strategies
       build-wheelhouse-versions: "['3.10']"
       python-tests-versions: "['3.10']"

@@ -121,6 +121,7 @@ This way, it's not possible for you to push code that fails the style checks::
   $ git commit -am "added my cool feature"
   Add License Headers......................................................Passed
   ruff.....................................................................Passed
+  ruff-format..............................................................Passed
   codespell................................................................Passed
   check for merge conflicts................................................Passed
   debug statements (python)................................................Passed

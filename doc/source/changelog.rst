@@ -9,6 +9,126 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`1.2.0 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.2.0>`_ - March 18, 2026
+======================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - ci: Fix update changelog action
+          - `#20 <https://github.com/ansys/scade-pyalmgw/pull/20>`_
+
+        * - Maintenance missing or outdated check-vulnerabilities and check-actions-security ansys actions
+          - `#45 <https://github.com/ansys/scade-pyalmgw/pull/45>`_
+
+        * - Suppress useless zizmor configuration file
+          - `#49 <https://github.com/ansys/scade-pyalmgw/pull/49>`_
+
+        * - Restore license information
+          - `#52 <https://github.com/ansys/scade-pyalmgw/pull/52>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - build(deps): Bump the dependencies group with 2 updates
+          - `#25 <https://github.com/ansys/scade-pyalmgw/pull/25>`_
+
+        * - Bump the dependencies group across 1 directory with 4 updates
+          - `#47 <https://github.com/ansys/scade-pyalmgw/pull/47>`_
+
+
+  .. tab-item:: Miscellaneous
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Build(deps): bump numpydoc from 1.8.0 to 1.9.0 in the dependencies group
+          - `#28 <https://github.com/ansys/scade-pyalmgw/pull/28>`_
+
+        * - Ci: bump ansys/actions from 9 to 10 in the actions group
+          - `#29 <https://github.com/ansys/scade-pyalmgw/pull/29>`_
+
+        * - Fix: enhance robustness
+          - `#30 <https://github.com/ansys/scade-pyalmgw/pull/30>`_
+
+        * - Docs: update ``contributors.md`` with the latest contributors
+          - `#31 <https://github.com/ansys/scade-pyalmgw/pull/31>`_
+
+        * - Build(deps): bump build from 1.2.2.post1 to 1.3.0 in the dependencies group
+          - `#34 <https://github.com/ansys/scade-pyalmgw/pull/34>`_
+
+        * - Ci: bump the actions group with 2 updates
+          - `#35 <https://github.com/ansys/scade-pyalmgw/pull/35>`_
+
+        * - Chore: Update missing or outdated files
+          - `#40 <https://github.com/ansys/scade-pyalmgw/pull/40>`_
+
+        * - Ci: bump the actions group across 1 directory with 5 updates
+          - `#41 <https://github.com/ansys/scade-pyalmgw/pull/41>`_
+
+        * - Chore: Update license headers
+          - `#44 <https://github.com/ansys/scade-pyalmgw/pull/44>`_
+
+
+  .. tab-item:: Documentation
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - chore: update CHANGELOG for v1.1.0
+          - `#16 <https://github.com/ansys/scade-pyalmgw/pull/16>`_
+
+        * - chore: update CHANGELOG for v1.1.2
+          - `#18 <https://github.com/ansys/scade-pyalmgw/pull/18>`_
+
+        * - chore: update CHANGELOG for v1.1.3
+          - `#22 <https://github.com/ansys/scade-pyalmgw/pull/22>`_
+
+        * - chore: update CHANGELOG for v1.1.4
+          - `#24 <https://github.com/ansys/scade-pyalmgw/pull/24>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - ci: Fix release action
+          - `#19 <https://github.com/ansys/scade-pyalmgw/pull/19>`_
+
+        * - ci: Bump ansys/actions from 8 to 9 in the actions group
+          - `#26 <https://github.com/ansys/scade-pyalmgw/pull/26>`_
+
+        * - Bump actions/download-artifact from 6.0.0 to 7.0.0 in the actions group
+          - `#46 <https://github.com/ansys/scade-pyalmgw/pull/46>`_
+
+        * - Bump Python and SCADE versions
+          - `#51 <https://github.com/ansys/scade-pyalmgw/pull/51>`_
+
+
+  .. tab-item:: Test
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - test: Fix typo for image directory
+          - `#27 <https://github.com/ansys/scade-pyalmgw/pull/27>`_
+
+
 `1.1.4 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.1.4>`_ - March 31, 2025
 ======================================================================================
 

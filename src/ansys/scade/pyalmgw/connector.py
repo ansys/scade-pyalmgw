@@ -198,7 +198,8 @@ class Connector(metaclass=ABCMeta):
         -------
         int
 
-            * -1: if an error occurs, therefore previous export status and requirement tree shall be kept
+            * -1: if an error occurs, therefore previous export status and
+              requirement tree shall be kept
             * 0: requirements and traceability links shall be correctly imported
         """
         code = self.on_import(req_file, pid)
@@ -226,7 +227,8 @@ class Connector(metaclass=ABCMeta):
         -------
         int
 
-            * -1: if an error occurs, therefore previous export status and requirement tree shall be kept
+            * -1: if an error occurs, therefore previous export status and
+              requirement tree shall be kept
             * 0: requirements and traceability links shall not be exported
             * 1: requirements and traceability links shall be exported
             * 2: previous export status and requirement tree shall be kept

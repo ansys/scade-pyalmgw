@@ -38,6 +38,8 @@ import scade.model.project.stdproject as std
 import scade.model.suite as suite
 import scade.model.testenv as qte
 
+from ansys.scade.apitools.info import get_scade_version
+
 
 @pytest.fixture(scope='session')
 def local_tmpdir():
@@ -91,3 +93,18 @@ def load_project_test(path: Path) -> Tuple[std.Project, qte.TestApplication]:
         if Path(file_ref.pathname).suffix.lower() == '.stp':
             application.load_procedure_tcl(file_ref.pathname)
     return project, application
+
+
+def filter_stderr(stderr: str) -> str:
+    """Filter coverage warnings from ``pytest-cov``."""
+    if get_scade_version() <= 231:
+        text = '\n'.join(
+            [
+                _
+                for _ in stderr.split('\n')
+                if 'CoverageWarning' not in _ and 'real_section, unknown, filename' not in _
+            ]
+        )
+    else:
+        text = stderr
+    return text

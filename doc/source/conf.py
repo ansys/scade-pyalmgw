@@ -115,11 +115,14 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # TODO: remove ignore links after public release
+linkcheck_exclude_documents = ['changelog']
 linkcheck_ignore = [
     'https://github.com/ansys/scade-pyalmgw',
     'https://github.com/ansys/scade-pyalmgw/actions/workflows/ci_cd.yml',
     'https://pypi.org/project/ansys-scade-pyalmgw',
     # The link below takes a long time to check
+    'https://github.com/ansys/pre-commit-hooks/.*',
+    'https://ansyshelp.ansys.com/*',
     'https://www.ansys.com/products/embedded-software/ansys-scade-suite',
     'https://www.ansys.com/*',
 ]

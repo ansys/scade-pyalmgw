@@ -32,7 +32,7 @@ import ansys.scade.pyalmgw as pyalmgw
 import ansys.scade.pyalmgw.connector as cnt
 import ansys.scade.pyalmgw.llrs as llrs
 import ansys.scade.pyalmgw.utils as utils
-from conftest import load_project, load_project_session, std, suite
+from conftest import filter_stderr, load_project, load_project_session, std, suite
 
 _pyalmgw_dir = Path(pyalmgw.__file__).parent
 _test_dir = Path(__file__).parent.parent / 'tests'
@@ -325,8 +325,9 @@ def test_main(local_tmpdir, command: str, args: List[str], pid: int, expected: i
     cmd.extend(args)
     cmd.append(str(pid))
     status = subprocess.run(cmd, capture_output=True)
-    if status.stderr:
-        print(status.stderr.decode('utf-8').strip('\n'))
+    stderr = filter_stderr(status.stderr.decode('utf-8').strip('\n'))
+    if stderr:
+        print(stderr)
         assert False
     out = status.stdout.decode('utf-8').strip('\n')
     print(out)

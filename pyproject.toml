@@ -1,5 +1,5 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
+requires = ["flit_core >=3.12,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
@@ -63,9 +63,6 @@ doc = [
     "sphinxnotes-strike==1.2.1; python_version <= '3.10'",
 ]
 
-[tool.flit.module]
-name = "ansys.scade.pyalmgw"
-
 [project.urls]
 Source = "https://github.com/ansys/scade-pyalmgw"
 Issues = "https://github.com/ansys/scade-pyalmgw/issues"
@@ -76,6 +73,9 @@ Homepage = "https://www.ansys.com/products/embedded-software/ansys-scade-suite"
 
 [project.scripts]
 pyalmgw_stub_connector = "ansys.scade.pyalmgw.stub:main"
+
+[tool.flit.module]
+name = "ansys.scade.pyalmgw"
 
 [tool.ruff]
 line-length = 100
@@ -110,12 +110,10 @@ convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["D",]
-"src/ansys/scade/pyalmgw/connector.py" = ["E501"]
-"src/ansys/scade/pyalmgw/llrs.py" = ["PTH"]
-
 
 [tool.coverage.run]
 source = ["ansys.scade.pyalmgw"]
+patch = ["subprocess"]
 
 [tool.coverage.report]
 show_missing = true
@@ -137,13 +135,13 @@ title_format = "`{version} <https://github.com/ansys/scade-pyalmgw/releases/tag/
 issue_format = "`#{issue} <https://github.com/ansys/scade-pyalmgw/pull/{issue}>`_"
 
 [[tool.towncrier.type]]
-directory = "added"
-name = "Added"
+directory = "breaking"
+name = "Breaking"
 showcontent = true
 
 [[tool.towncrier.type]]
-directory = "changed"
-name = "Changed"
+directory = "added"
+name = "Added"
 showcontent = true
 
 [[tool.towncrier.type]]
@@ -152,18 +150,13 @@ name = "Fixed"
 showcontent = true
 
 [[tool.towncrier.type]]
-directory = "dependencies"
-name = "Dependencies"
-showcontent = true
-
-[[tool.towncrier.type]]
-directory = "miscellaneous"
-name = "Miscellaneous"
-showcontent = true
-
-[[tool.towncrier.type]]
 directory = "documentation"
 name = "Documentation"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "dependencies"
+name = "Dependencies"
 showcontent = true
 
 [[tool.towncrier.type]]
@@ -172,6 +165,41 @@ name = "Maintenance"
 showcontent = true
 
 [[tool.towncrier.type]]
+directory = "miscellaneous"
+name = "Miscellaneous"
+showcontent = true
+
+[[tool.towncrier.type]]
 directory = "test"
 name = "Test"
 showcontent = true
+
+[[tool.towncrier.type]]
+directory = "changed"
+name = "Changed"
+showcontent = true
+
+[tool.codespell]
+ignore-words-list = ["synopsys"]
+
+[tool.numpydoc_validation]
+checks = [
+    'GL06',  # Found unknown section
+    'GL07',  # Sections are in the wrong order.
+    'GL08',  # The object does not have a docstring
+    'GL09',  # Deprecation warning should precede extended summary
+    'GL10',  # reST directives {directives} must be followed by two colons
+    'SS01',  # No summary found
+    'SS02',  # Summary does not start with a capital letter
+    'SS03',  # Summary does not end with a period
+    'SS04',  # Summary contains heading whitespaces
+    # "SS05", # Summary must start with infinitive verb, not third person
+    'RT02',  # The first line of the Returns section should contain only the
+    # type, unless multiple values are being returned"
+]
+exclude = [
+    '\._',  # ignore private definitions
+    'conftest.',
+    'test.',
+]
+

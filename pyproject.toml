@@ -74,10 +74,8 @@ Homepage = "https://www.ansys.com/products/embedded-software/ansys-scade-suite"
 [project.scripts]
 pyalmgw_stub_connector = "ansys.scade.pyalmgw.stub:main"
 
-
 [tool.flit.module]
 name = "ansys.scade.pyalmgw"
-
 
 [tool.ruff]
 line-length = 100
@@ -113,8 +111,6 @@ convention = "numpy"
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["D",]
 
-
-
 [tool.coverage.run]
 source = ["ansys.scade.pyalmgw"]
 patch = ["subprocess"]
@@ -125,11 +121,9 @@ exclude_also = [
     "@(abc\\.)?abstractmethod",
     ]
 
-
 [tool.pytest.ini_options]
 testpaths = "tests"
 addopts = "-ra --cov=ansys.scade.pyalmgw --cov-report html:.cov/html --cov-branch --cov-report xml:.cov/xml --cov-report term -vv"
-
 
 [tool.towncrier]
 package = "ansys.scade.pyalmgw"
@@ -141,13 +135,13 @@ title_format = "`{version} <https://github.com/ansys/scade-pyalmgw/releases/tag/
 issue_format = "`#{issue} <https://github.com/ansys/scade-pyalmgw/pull/{issue}>`_"
 
 [[tool.towncrier.type]]
-directory = "added"
-name = "Added"
+directory = "breaking"
+name = "Breaking"
 showcontent = true
 
 [[tool.towncrier.type]]
-directory = "changed"
-name = "Changed"
+directory = "added"
+name = "Added"
 showcontent = true
 
 [[tool.towncrier.type]]
@@ -158,11 +152,6 @@ showcontent = true
 [[tool.towncrier.type]]
 directory = "documentation"
 name = "Documentation"
-showcontent = true
-
-[[tool.towncrier.type]]
-directory = "test"
-name = "Test"
 showcontent = true
 
 [[tool.towncrier.type]]
@@ -178,6 +167,16 @@ showcontent = true
 [[tool.towncrier.type]]
 directory = "miscellaneous"
 name = "Miscellaneous"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "test"
+name = "Test"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "changed"
+name = "Changed"
 showcontent = true
 
 [tool.codespell]

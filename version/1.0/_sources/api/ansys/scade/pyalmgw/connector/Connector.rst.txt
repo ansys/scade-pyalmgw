@@ -1,0 +1,454 @@
+
+
+
+
+
+
+:class:`Connector`
+==================
+
+.. py:class:: ansys.scade.pyalmgw.connector.Connector(id, project = None)
+
+   
+   Top-level class for an external ALM Gateway connector.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+
+.. py:currentmodule:: Connector
+
+Overview
+--------
+
+.. tab-set::
+
+   .. tab-item:: Abstract methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~on_export`
+            - Process the ``export`` command.
+          * - :py:attr:`~on_import`
+            - Process the ``import`` command.
+          * - :py:attr:`~on_locate`
+            - Process the ``locate`` command.
+          * - :py:attr:`~on_manage`
+            - Process the ``manage`` command.
+          * - :py:attr:`~on_settings`
+            - Process the ``settings`` command.
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~execute`
+            - Execute the ALM Gateway command.
+          * - :py:attr:`~export_llrs`
+            - Generate the surrogate models.
+          * - :py:attr:`~get_export_class`
+            - Return an instance of LLRExport.
+          * - :py:attr:`~get_llr_default_schema`
+            - Return a default schema to be used for exporting the surrogate model.
+          * - :py:attr:`~get_llr_diagrams`
+            - Return whether the surrogfate model should include images: diagrams or panels for example.
+          * - :py:attr:`~get_llr_schema`
+            - Return the schema to be used for exporting the LLRS.
+          * - :py:attr:`~get_llrs_file`
+            - Return the default path of the file to contain the exported LLRS.
+          * - :py:attr:`~main`
+            - Package entry point.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~id`
+            - 
+          * - :py:attr:`~project`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.connector import Connector
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: id
+
+.. py:attribute:: project
+
+
+
+Method detail
+-------------
+
+.. py:method:: execute(command, *args)
+
+   
+   Execute the ALM Gateway command.
+
+
+   :Parameters:
+
+       **command** : :class:`python:str`
+           Input command, must be one of settings, manage, locate, import or export.
+
+       **\*args** : :class:`python:str`
+           Parameters of the command
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Return code of the executed command.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: export_llrs()
+
+   
+   Generate the surrogate models.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_export_class()
+
+   
+   Return an instance of LLRExport.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_llr_default_schema()
+
+   
+   Return a default schema to be used for exporting the surrogate model.
+
+   The schema depends on the project's nature: SCADE Suite, Test, Display or Architect.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_llr_diagrams()
+
+   
+   Return whether the surrogfate model should include images: diagrams or panels for example.
+
+   By default, the information is expected to be persisted in the project as
+   a tool property ``@ALMGW:DIAGRAMS`` (default: ``false``).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_llr_schema()
+
+   
+   Return the schema to be used for exporting the LLRS.
+
+   By default, the information is expected to be persisted in the project as
+   a tool property ``@ALMGW:LLRSCHEMA``. If the property is not defined, the
+   method returns a default schema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_llrs_file()
+
+   
+   Return the default path of the file to contain the exported LLRS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: main()
+
+   
+   Package entry point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: on_export(links, pid)
+   :abstractmethod:
+
+
+   
+   Process the ``export`` command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: on_import(file, pid)
+   :abstractmethod:
+
+
+   
+   Process the ``import`` command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: on_locate(req, pid)
+   :abstractmethod:
+
+
+   
+   Process the ``locate`` command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: on_manage(pid)
+   :abstractmethod:
+
+
+   
+   Process the ``manage`` command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: on_settings(pid)
+   :abstractmethod:
+
+
+   
+   Process the ``settings`` command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

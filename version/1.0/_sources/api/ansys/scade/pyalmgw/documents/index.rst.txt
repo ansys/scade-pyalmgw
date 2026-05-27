@@ -1,0 +1,139 @@
+
+
+
+
+
+
+The ``documents.py`` module
+===========================
+
+.. py:module:: ansys.scade.pyalmgw.documents
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: documents
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.Container`
+            - Base class for ``ReqDocument``, ``Section``, and ``Requirement`` classes.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.Element`
+            - Base class for ``ReqProject`` and ``Container`` classes.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.HierarchyElement`
+            - Base class for ``Section`` and ``Requirement`` classes.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.ReqDocument`
+            - Implements the ``Document`` complex type.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.ReqObject`
+            - Top level class for Requirements Document.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.ReqProject`
+            - Provides an implementation of a Requirement File.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.Requirement`
+            - Implements the ``Requirement`` complex type.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.Section`
+            - Implements the ``Section`` complex type.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.documents.TraceabilityLink`
+            - Implements the ``TraceabilityLinkEntity`` complex type.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Container</api/ansys/scade/pyalmgw/documents/Container>
+    <span class="nf nf-cod-symbol_class"></span> Element</api/ansys/scade/pyalmgw/documents/Element>
+    <span class="nf nf-cod-symbol_class"></span> HierarchyElement</api/ansys/scade/pyalmgw/documents/HierarchyElement>
+    <span class="nf nf-cod-symbol_class"></span> ReqDocument</api/ansys/scade/pyalmgw/documents/ReqDocument>
+    <span class="nf nf-cod-symbol_class"></span> ReqObject</api/ansys/scade/pyalmgw/documents/ReqObject>
+    <span class="nf nf-cod-symbol_class"></span> ReqProject</api/ansys/scade/pyalmgw/documents/ReqProject>
+    <span class="nf nf-cod-symbol_class"></span> Requirement</api/ansys/scade/pyalmgw/documents/Requirement>
+    <span class="nf nf-cod-symbol_class"></span> Section</api/ansys/scade/pyalmgw/documents/Section>
+    <span class="nf nf-cod-symbol_class"></span> TraceabilityLink</api/ansys/scade/pyalmgw/documents/TraceabilityLink>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides means to create a Requirements Document for ALM Gateway.
+
+The classes defined by the module correspond to the XML schema
+of a Requirements Document.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

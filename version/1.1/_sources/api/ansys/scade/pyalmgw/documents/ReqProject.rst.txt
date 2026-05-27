@@ -1,0 +1,289 @@
+
+
+
+
+
+
+:class:`ReqProject`
+===================
+
+.. py:class:: ansys.scade.pyalmgw.documents.ReqProject(path: Optional[pathlib.Path] = None, **kwargs)
+
+   Bases: :py:obj:`Element`
+
+
+   
+   Provides an implementation of a Requirements File.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ReqProject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~bind`
+            - Bind the traceability links.
+          * - :py:attr:`~parse`
+            - Build the project structure from a Requirements Document XML file.
+          * - :py:attr:`~read`
+            - Build the project structure from a Requirements Document XML file.
+          * - :py:attr:`~write`
+            - Serialize the project to a Requirements Document XML file.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~children`
+            - Return the contained elements to be serialized as a dictionary.
+          * - :py:attr:`~depth`
+            - Return the maximum depth of a section.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~documents`
+            - 
+          * - :py:attr:`~path`
+            - 
+          * - :py:attr:`~traceability_links`
+            - 
+          * - :py:attr:`~xml_tag`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import ReqProject
+
+Property detail
+---------------
+
+.. py:property:: children
+   :type: Dict[str, List[List[ReqObject]]]
+
+
+   
+   Return the contained elements to be serialized as a dictionary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: depth
+   :type: int
+
+
+   
+   Return the maximum depth of a section.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: documents
+   :type:  List[ReqDocument]
+   :value: []
+
+
+.. py:attribute:: path
+   :value: None
+
+
+.. py:attribute:: traceability_links
+   :type:  List[TraceabilityLink]
+   :value: []
+
+
+.. py:attribute:: xml_tag
+   :value: 'ReqProject'
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: bind() -> List[TraceabilityLink]
+
+   
+   Bind the traceability links.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`TraceabilityLink`]
+           Traceability links that can't be resolved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse(root: Any)
+
+   
+   Build the project structure from a Requirements Document XML file.
+
+
+   :Parameters:
+
+       **root** : :obj:`Any`
+           Root element of the XML DOM.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: read()
+
+   
+   Build the project structure from a Requirements Document XML file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: write(path: Optional[pathlib.Path] = None)
+
+   
+   Serialize the project to a Requirements Document XML file.
+
+
+   :Parameters:
+
+       **path** : :obj:`Path`
+           Path of the output file. Whene none, the file is saved to
+           current path of the project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

@@ -1,0 +1,224 @@
+
+
+
+
+
+
+:class:`QteLLRS`
+================
+
+.. py:class:: ansys.scade.pyalmgw.llrs.QteLLRS(llr_export, root)
+
+   Bases: :py:obj:`StdLLRS`
+
+
+   
+   LLRS implementation for SCADE Test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: QteLLRS
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_item_attributes`
+            - Implement ``get_item_attributes``.
+          * - :py:attr:`~get_item_name`
+            - Implement ``get_item_name``.
+          * - :py:attr:`~get_item_oid`
+            - Implement ``get_item_oid``.
+          * - :py:attr:`~get_item_pathname`
+            - Implement ``get_item_pathname``.
+          * - :py:attr:`~get_model_name`
+            - Implement ``get_model_name``.
+          * - :py:attr:`~get_model_oid`
+            - Implement ``get_model_oid``.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import QteLLRS
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_item_attributes(item)
+
+   
+   Implement ``get_item_attributes``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_name(item)
+
+   
+   Implement ``get_item_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_oid(item)
+
+   
+   Implement ``get_item_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_pathname(item)
+
+   
+   Implement ``get_item_pathname``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_name(model)
+
+   
+   Implement ``get_model_name``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_oid(model)
+
+   
+   Implement ``get_model_oid``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

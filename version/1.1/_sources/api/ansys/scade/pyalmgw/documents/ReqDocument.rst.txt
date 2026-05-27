@@ -1,0 +1,153 @@
+
+
+
+
+
+
+:class:`ReqDocument`
+====================
+
+.. py:class:: ansys.scade.pyalmgw.documents.ReqDocument(owner: ReqProject, file: str = '', name: str = '')
+
+   Bases: :py:obj:`Container`
+
+
+   
+   Implements the ``Document`` complex type.
+
+   Persistence.
+
+   * ``file`` maps to ``identifier``.
+
+     For example ``C:\Program Files\ANSYS Inc\examples\CruiseControl\CruiseControl.docx``.
+   * ``file.name`` maps to ``text``.
+
+     For example ``CruiseControl.docx``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ReqDocument
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~depth`
+            - Return the maximum depth of a section.
+          * - :py:attr:`~path`
+            - Return the path of the document.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~xml_tag`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import ReqDocument
+
+Property detail
+---------------
+
+.. py:property:: depth
+   :type: int
+
+
+   
+   Return the maximum depth of a section.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: path
+   :type: pathlib.Path
+
+
+   
+   Return the path of the document.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: xml_tag
+   :value: 'Document'
+
+
+
+
+
+

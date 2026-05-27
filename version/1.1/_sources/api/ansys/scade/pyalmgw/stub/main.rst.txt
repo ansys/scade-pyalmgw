@@ -1,0 +1,25 @@
+ansys.scade.pyalmgw.stub.main
+=============================
+
+.. py:function:: ansys.scade.pyalmgw.stub.main()
+
+   
+   Package integration test entry point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!

@@ -1,0 +1,224 @@
+
+
+
+
+
+
+The ``llrs.py`` module
+======================
+
+.. py:module:: ansys.scade.pyalmgw.llrs
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: llrs
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.AnnotatedLLRS`
+            - Base implementation class for models that support annotations.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.DisplayApp`
+            - Top-level class for SCADE Display models.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.DisplayLLRS`
+            - LLRS implementation for SCADE Display.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.LLRExport`
+            - Entry point for exporting the surrogate model.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.LLRS`
+            - Base class for creating a surrogate model for a given product.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.QteLLRS`
+            - LLRS implementation for SCADE Test.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.ScadeLLRS`
+            - LLRS implementation for SCADE Suite.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.StdLLRS`
+            - Base implementation class for models edited inside SCADE Studio IDE.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.SystemLLRS`
+            - LLRS implementation for SCADE Architect.
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.PathError`
+            - Exception for erroneous paths in schemas.
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.get_export_class`
+            - Create an instance of ``LLRExport`` for the input project.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.main`
+            - Create a surrogate model to the given output file.
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.llrs.read_project_id`
+            - Return the ALM Gateway ID of a project.
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~child`
+            - 
+
+
+          * - :py:obj:`~code`
+            - 
+
+
+          * - :py:obj:`~script_dir`
+            - 
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> AnnotatedLLRS</api/ansys/scade/pyalmgw/llrs/AnnotatedLLRS>
+    <span class="nf nf-cod-symbol_class"></span> DisplayApp</api/ansys/scade/pyalmgw/llrs/DisplayApp>
+    <span class="nf nf-cod-symbol_class"></span> DisplayLLRS</api/ansys/scade/pyalmgw/llrs/DisplayLLRS>
+    <span class="nf nf-cod-symbol_class"></span> LLRExport</api/ansys/scade/pyalmgw/llrs/LLRExport>
+    <span class="nf nf-cod-symbol_class"></span> LLRS</api/ansys/scade/pyalmgw/llrs/LLRS>
+    <span class="nf nf-cod-symbol_class"></span> QteLLRS</api/ansys/scade/pyalmgw/llrs/QteLLRS>
+    <span class="nf nf-cod-symbol_class"></span> ScadeLLRS</api/ansys/scade/pyalmgw/llrs/ScadeLLRS>
+    <span class="nf nf-cod-symbol_class"></span> StdLLRS</api/ansys/scade/pyalmgw/llrs/StdLLRS>
+    <span class="nf nf-cod-symbol_class"></span> SystemLLRS</api/ansys/scade/pyalmgw/llrs/SystemLLRS>
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> PathError</api/ansys/scade/pyalmgw/llrs/PathError>
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-function_variant"></span> get_export_class</api/ansys/scade/pyalmgw/llrs/get_export_class>
+    <span class="nf nf-md-function_variant"></span> main</api/ansys/scade/pyalmgw/llrs/main>
+    <span class="nf nf-md-function_variant"></span> read_project_id</api/ansys/scade/pyalmgw/llrs/read_project_id>
+
+
+
+
+
+
+Description
+-----------
+
+Generic tool for exporting the surrogate model to an ALM tool.
+
+This tool uses a json schema to find the contributing elements of a model,
+as well the document structure.
+
+Refer to *Model Export Customization* in appendix H of the *SCADE LifeCycle User Manual*
+in the SCADE documentation for a complete reference of the json output file.
+
+.. Note::
+
+   The term ``LLR`` used in this tool comes from its initial version for
+   SCADE Suite. It should be read as Contributing Element for traceability.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: child
+   :value: None
+
+
+.. py:data:: code
+
+.. py:data:: script_dir
+
+
+

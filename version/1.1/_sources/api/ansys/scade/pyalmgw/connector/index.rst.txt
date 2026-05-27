@@ -1,0 +1,84 @@
+
+
+
+
+
+
+The ``connector.py`` module
+===========================
+
+.. py:module:: ansys.scade.pyalmgw.connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.scade.pyalmgw.connector.Connector`
+            - Top-level class for an external ALM Gateway connector.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Connector</api/ansys/scade/pyalmgw/connector/Connector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+SCADE LifeCycle ALM Gateway Python interface for external connectors.
+
+New connectors must derive the ``Connector`` class and implement the abstract methods.
+
+The other methods can be also overridden to provide alternative implementations.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

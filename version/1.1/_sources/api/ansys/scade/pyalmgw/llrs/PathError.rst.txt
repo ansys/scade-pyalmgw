@@ -1,0 +1,122 @@
+
+
+
+
+
+
+:class:`PathError`
+==================
+
+.. py:exception:: ansys.scade.pyalmgw.llrs.PathError(path, message, **kwargs)
+
+   Bases: :py:obj:`BaseException`
+
+
+   Exception for erroneous paths in schemas.
+
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: PathError
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~message`
+            - 
+          * - :py:attr:`~path`
+            - 
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__str__`
+            - Return the string representation of the exception.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import PathError
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: message
+
+.. py:attribute:: path
+
+
+
+Method detail
+-------------
+
+.. py:method:: __str__() -> str
+
+   
+   Return the string representation of the exception.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

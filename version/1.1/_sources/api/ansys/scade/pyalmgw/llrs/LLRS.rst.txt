@@ -1,0 +1,722 @@
+
+
+
+
+
+
+:class:`LLRS`
+=============
+
+.. py:class:: ansys.scade.pyalmgw.llrs.LLRS(llr_export: LLRExport, kind, root)
+
+   
+   Base class for creating a surrogate model for a given product.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: LLRS
+
+Overview
+--------
+
+.. tab-set::
+
+   .. tab-item:: Abstract methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_item_attribute`
+            - Return the value of an attribute of a model element.
+          * - :py:attr:`~get_item_attributes`
+            - Return the built-in attributes of a model element.
+          * - :py:attr:`~get_item_class`
+            - Return the class name of a model element.
+          * - :py:attr:`~get_item_links`
+            - Return the elements linked to a model element for a given association.
+          * - :py:attr:`~get_item_name`
+            - Return the name of a model element.
+          * - :py:attr:`~get_item_oid`
+            - Return the oid of a model element.
+          * - :py:attr:`~get_item_pathname`
+            - Return the path of a model element.
+          * - :py:attr:`~get_model_name`
+            - Return the name of a model.
+          * - :py:attr:`~get_model_oid`
+            - Return the oid of a model.
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~decompose_role`
+            - Parse a role expressions and return the role name and the list of classes.
+          * - :py:attr:`~dump_children`
+            - Dump the child elements as a tree.
+          * - :py:attr:`~dump_item`
+            - Add an entry for a model element.
+          * - :py:attr:`~dump_siblings`
+            - Dump the child elements as a list.
+          * - :py:attr:`~dump_sub_elements`
+            - Dump the children of a model element to a list.
+          * - :py:attr:`~get_attribute`
+            - Return the attribute value of a model element.
+          * - :py:attr:`~get_item_image`
+            - Generate the image of a model element and return its path when applicable or None.
+          * - :py:attr:`~get_links`
+            - Return the linked elements of a model element for a given path.
+          * - :py:attr:`~get_url`
+            - Return the URL corresponding to an oid.
+          * - :py:attr:`~new_section`
+            - Create a Section entry.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~V194`
+            - 
+          * - :py:attr:`~VCUSTOM`
+            - 
+          * - :py:attr:`~kind`
+            - 
+          * - :py:attr:`~llr_export`
+            - 
+          * - :py:attr:`~re_path`
+            - 
+          * - :py:attr:`~root`
+            - 
+          * - :py:attr:`~version`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.llrs import LLRS
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: V194
+   :value: 4
+
+
+.. py:attribute:: VCUSTOM
+   :value: 0
+
+
+.. py:attribute:: kind
+
+.. py:attribute:: llr_export
+
+.. py:attribute:: re_path
+
+.. py:attribute:: root
+
+.. py:attribute:: version
+   :value: 0
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: decompose_role(item, role_expression: str)
+
+   
+   Parse a role expressions and return the role name and the list of classes.
+
+   The syntax of a role expression is ``<role> [ '{' <class> [ ',' <class> ]* '}' ]``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: dump_children(container, item, cls, parent_oid)
+
+   
+   Dump the child elements as a tree.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: dump_item(container: List[Any], item: Any, kind: str, parent_oid: str)
+
+   
+   Add an entry for a model element.
+
+
+   :Parameters:
+
+       **container** : :obj:`List`\[:obj:`Any`]
+           List to add the element to.
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **kind** : :class:`python:str`
+           Kind of the model element, that overrides the default if not empty.
+
+       **parent_oid** : :class:`python:str`
+           Oid of the element's parent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: dump_siblings(container, item, cls, parent_oid)
+
+   
+   Dump the child elements as a list.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: dump_sub_elements(container: List[Any], item: Any, cls: str, flatten: bool, parent_oid: str)
+
+   
+   Dump the children of a model element to a list.
+
+
+   :Parameters:
+
+       **container** : :obj:`List`\[:obj:`Any`]
+           List to add the child elements to.
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **cls** : :class:`python:str`
+           Name of the model element's class.
+
+       **flatten**
+           Whether the child elements are in the same list or in a sub-tree.
+
+       **parent_oid** : :class:`python:str`
+           Oid of the parent item.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_attribute(item: Any, path: str) -> Any
+
+   
+   Return the attribute value of a model element.
+
+
+   :Parameters:
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **path** : :class:`python:str`
+           Path of the attribute.
+
+
+
+   :Returns:
+
+       :obj:`Any`
+           The value of the attribute or None if an error occurs.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_attribute(item: Any, name: str) -> Any
+   :abstractmethod:
+
+
+   
+   Return the value of an attribute of a model element.
+
+
+   :Parameters:
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **name** : :class:`python:str`
+           Name of the attribute to consider in the meta-model.
+
+
+
+   :Returns:
+
+       :obj:`Any`
+           Attribute value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_attributes(item: Any) -> list
+   :abstractmethod:
+
+
+   
+   Return the built-in attributes of a model element.
+
+   This applies to annotatable elements: the list contains
+   the annotation values tagged as ``LLR_PROP``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_class(item: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the class name of a model element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_image(item: Any) -> Optional[str]
+
+   
+   Generate the image of a model element and return its path when applicable or None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_links(item: Any, role: str, sort: bool) -> List[Any]
+   :abstractmethod:
+
+
+   
+   Return the elements linked to a model element for a given association.
+
+
+   :Parameters:
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **role** : :class:`python:str`
+           Name of the association end to consider in the meta-model.
+
+       **sort** : :ref:`bool <python:bltin-boolean-values>`
+           Whether the output collection should be sorted.
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`Any`]
+           List of linked elements.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_name(item: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the name of a model element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_oid(item: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the oid of a model element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_item_pathname(item: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the path of a model element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_links(item: Any, path: str, sort: bool) -> List[Any]
+
+   
+   Return the linked elements of a model element for a given path.
+
+
+   :Parameters:
+
+       **item** : :obj:`Any`
+           Input model element.
+
+       **path** : :class:`python:str`
+           Dot-separated list of association ends of the meta-model.
+
+       **sort** : :ref:`bool <python:bltin-boolean-values>`
+           Whether the list should be sorted.
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`Any`]
+           List of linked elements.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_name(model: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the name of a model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_model_oid(model: Any) -> str
+   :abstractmethod:
+
+
+   
+   Return the oid of a model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_url(oid)
+
+   
+   Return the URL corresponding to an oid.
+
+   The default implementation uses the generic one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: new_section(name: str, elements: List[Any], oid: str) -> dict
+
+   
+   Create a Section entry.
+
+
+   :Parameters:
+
+       **name** : :class:`python:str`
+           Title of the section.
+
+       **elements** : :obj:`List`\[:obj:`Any`]
+           List of contained elements.
+
+       **oid** : :class:`python:str`
+           Oid of the section.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           ..
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

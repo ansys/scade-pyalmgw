@@ -1,0 +1,205 @@
+
+
+
+
+
+
+:class:`Section`
+================
+
+.. py:class:: ansys.scade.pyalmgw.documents.Section(owner: Container, number: str = '', title: str = '', description: str = '')
+
+   Bases: :py:obj:`HierarchyElement`
+
+
+   
+   Implements the ``Section`` complex type.
+
+   Level of the a document hierarchy.
+
+   Persistence:
+
+   * ``number`` maps to ``identifier``. For example ``1``, ``2.3.4``...
+   * ``title`` maps to ``text``. For example ``1``, ``2.3.4``...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Section
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~depth`
+            - Return the maximum depth of a section.
+          * - :py:attr:`~level`
+            - Return the level of a section, defined as its number of owners.
+          * - :py:attr:`~number`
+            - Return the section number.
+          * - :py:attr:`~title`
+            - Return the section title.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~xml_tag`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.scade.pyalmgw.documents import Section
+
+Property detail
+---------------
+
+.. py:property:: depth
+   :type: int
+
+
+   
+   Return the maximum depth of a section.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: level
+   :type: int
+
+
+   
+   Return the level of a section, defined as its number of owners.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: number
+   :type: str
+
+
+   
+   Return the section number.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: title
+   :type: str
+
+
+   
+   Return the section title.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: xml_tag
+   :value: 'Section'
+
+
+
+
+
+

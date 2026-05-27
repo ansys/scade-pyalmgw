@@ -96,6 +96,8 @@ The properties of a class are described in the list ``properties``. Each propert
 Prefixes allow declaring references that can be bound in the ALM tool.
 For example, a DXL script can search for all properties starting by the prefix and create an internal link to ease the navigation.
 
+Note: when a property can't be evaluated, its value has the following form: ``<error: {path}>``, for example ``<error: type.name>``.
+
 **Example 1:**
 
 .. code-block:: json

@@ -7,8 +7,8 @@
                     "almtype": "req",
                     "attributes": [
                         {
-                            "name": "#Type",
-                            "value": "!ed/36a/6294/AC5C/6734ca9f457f"
+                            "name": "Type",
+                            "value": "<error: type.unknown>"
                         }
                     ],
                     "name": "b",
@@ -20,8 +20,8 @@
                     "almtype": "req",
                     "attributes": [
                         {
-                            "name": "#Type",
-                            "value": "!ed/373/6294/AC5C/6734caba49c"
+                            "name": "Type",
+                            "value": "<error: type.unknown>"
                         }
                     ],
                     "name": "f",
@@ -33,7 +33,7 @@
                     "almtype": "req",
                     "attributes": [
                         {
-                            "name": "#Type",
+                            "name": "Type",
                             "value": "<empty>"
                         }
                     ],
@@ -46,8 +46,8 @@
                     "almtype": "req",
                     "attributes": [
                         {
-                            "name": "#Type",
-                            "value": "<empty>"
+                            "name": "Type",
+                            "value": "<error: type.unknown>"
                         }
                     ],
                     "name": "a",

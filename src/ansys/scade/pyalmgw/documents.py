@@ -128,7 +128,14 @@ class Element(ReqObject):
     def attributes(self) -> Dict[str, str]:
         """Return the attributes to be serialized as a dictionary."""
         attributes_ = super().attributes
-        attributes_.update({'identifier': self.identifier, 'text': self.text})
+        # SCADE Suite displays 'identifier' in the requirements tree
+        # and SCADE Display displays 'text'
+        # (tested with 2025 R2)
+        # -> for external connectors that provide only one of those data,
+        #    use it for both attributes
+        identifier = self.identifier if self.identifier else self.text
+        text = self.text if self.text else self.identifier
+        attributes_.update({'identifier': identifier, 'text': text})
         return attributes_
 
 

@@ -9,6 +9,51 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`1.2.1 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.2.1>`_ - May 27, 2026
+====================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Do not raise an exception for incorrect properties.
+          - `#60 <https://github.com/ansys/scade-pyalmgw/pull/60>`_
+
+        * - Provide a workaround for identifier/text mismatch when importing requirements documents
+          - `#61 <https://github.com/ansys/scade-pyalmgw/pull/61>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump the dependencies group with 2 updates
+          - `#55 <https://github.com/ansys/scade-pyalmgw/pull/55>`_
+
+        * - Bump build from 1.4.1 to 1.4.4 in the dependencies group
+          - `#58 <https://github.com/ansys/scade-pyalmgw/pull/58>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump actions/download-artifact from 7.0.0 to 8.0.1 in the actions group
+          - `#54 <https://github.com/ansys/scade-pyalmgw/pull/54>`_
+
+        * - Bump pypa/gh-action-pypi-publish from 1.13.0 to 1.14.0 in the actions group
+          - `#57 <https://github.com/ansys/scade-pyalmgw/pull/57>`_
+
+
 `1.2.0 <https://github.com/ansys/scade-pyalmgw/releases/tag/v1.2.0>`_ - March 18, 2026
 ======================================================================================
 

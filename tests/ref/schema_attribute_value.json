@@ -53,6 +53,23 @@
                     "oid": "!ed/3bf/6294/AC5C/6734d01b4111",
                     "pathname": "P::Attribute/u/",
                     "scadetype": "LocalVariable"
+                },
+                {
+                    "almtype": "req",
+                    "attributes": [
+                        {
+                            "name": "Type",
+                            "value": "<error: type.name>"
+                        },
+                        {
+                            "name": "Comment",
+                            "value": "<empty>"
+                        }
+                    ],
+                    "name": "a",
+                    "oid": "!ed/8f/3870/90C4/6a15bb883075",
+                    "pathname": "P::Attribute/a/",
+                    "scadetype": "LocalVariable"
                 }
             ],
             "name": "Schemas",

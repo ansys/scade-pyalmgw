@@ -562,6 +562,25 @@
 								</ed:Variable>
 							</pragmas>
 						</Variable>
+						<Variable name="a">
+							<type>
+								<Table>
+									<type>
+										<NamedType>
+											<type>
+												<TypeRef name="uint8"/>
+											</type>
+										</NamedType>
+									</type>
+									<size>
+										<ConstValue value="8"/>
+									</size>
+								</Table>
+							</type>
+							<pragmas>
+								<ed:Variable oid="!ed/8f/3870/90C4/6a15bb883075"/>
+							</pragmas>
+						</Variable>
 					</inputs>
 					<locals>
 						<Variable name="_L1">

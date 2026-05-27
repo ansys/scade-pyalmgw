@@ -279,6 +279,8 @@ def test_system(local_tmpdir):
         'sibling.json',
         'sort.json',
         'unknown.json',
+        'path_error_end.json',
+        'path_error_start.json',
     ],
 )
 def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session], schema: str):
@@ -293,8 +295,6 @@ def test_schema_nominal(local_tmpdir, schemas: Tuple[std.Project, suite.Session]
 @pytest.mark.parametrize(
     'schema',
     [
-        'path_error_end.json',
-        'path_error_start.json',
         'path_error_syntax.json',
         'path_error_unknown.json',
     ],
@@ -314,7 +314,6 @@ def test_schema_robustness(local_tmpdir, schemas: Tuple[std.Project, suite.Sessi
     [
         [0, 'Unknown/Unknown.vsp', [_root_dir / 'tests' / 'Unknown' / 'noschema.json']],
         [1, 'Schemas/Schemas.etp', []],
-        [2, 'Schemas/Schemas.etp', [_root_dir / 'tests' / 'Schemas' / 'path_error_end.json']],
     ],
 )
 def test_llr_robustness(local_tmpdir, index, project, args):

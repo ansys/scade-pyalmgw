@@ -455,10 +455,12 @@ class LLRS(metaclass=ABCMeta):
             try:
                 items = self.get_item_links(dstitem, role, False)
             except BaseException:
-                raise PathError(
-                    path,
-                    "Invalid role '{0}' for class {1}".format(role, self.get_item_class(dstitem)),
-                )
+                # issue #59: return '<error>' instead of raising an exception
+                # raise PathError(
+                #     path,
+                #     "Invalid role '{0}' for class {1}".format(role, self.get_item_class(dstitem)),
+                # )
+                return f'<error: {path}>'
             if len(items) == 0:
                 # for example type.name and type is None
                 return ''
@@ -470,12 +472,14 @@ class LLRS(metaclass=ABCMeta):
         try:
             value = self.get_item_attribute(dstitem, path_elements[-1])
         except BaseException:
-            raise PathError(
-                path,
-                "Invalid attribute '{0}' for class {1}".format(
-                    path_elements[-1], self.get_item_class(dstitem)
-                ),
-            )
+            # issue #59: return '<error>' instead of raising an exception
+            # raise PathError(
+            #     path,
+            #     "Invalid attribute '{0}' for class {1}".format(
+            #         path_elements[-1], self.get_item_class(dstitem)
+            #     ),
+            # )
+            value = f'<error: {path}>'
         return value
 
     def get_links(self, item: Any, path: str, sort: bool) -> List[Any]:
@@ -627,6 +631,10 @@ class LLRS(metaclass=ABCMeta):
                 elif name[0] == '#':
                     # value is expected to be a reference
                     value = self.get_item_oid(value)
+                    if not value:
+                        # for example: anonymous types (use case derived from #59)
+                        # some ALM tools raise exceptions with empty values
+                        value = self.llr_export.empty
                 attributes.append({'name': name, 'value': str(value)})
 
             if len(attributes) != 0:
